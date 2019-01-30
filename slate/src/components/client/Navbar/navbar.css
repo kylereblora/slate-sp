@@ -4,7 +4,7 @@
     height: 64px;
     top: 0;
     left: 0;
-    padding: 1.2em 0;
+    padding: 10px 0;
     background: #fafafa;
     opacity: 0.99;
     z-index:100;
@@ -45,4 +45,5 @@
     .spacer {
         flex: 0;
     }
+
 }
