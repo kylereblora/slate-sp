@@ -62,3 +62,24 @@ font-style: normal;
 font-weight: normal;
 src: local('Circular Std Black Italic'), url('CircularStd-BlackItalic.woff') format('woff');
 }
+
+@font-face {
+    font-family: 'Wavehaus Thin';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Wavehaus Thin'), url('./wavehaus/Wavehaus-28Thin.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Wavehaus Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Wavehaus Light'), url('./wavehaus/Wavehaus-42Light.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Wavehaus Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Wavehaus Bold'), url('./wavehaus/Wavehaus-128Bold.otf') format('opentype');
+}

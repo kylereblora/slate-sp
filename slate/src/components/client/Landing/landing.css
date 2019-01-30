@@ -1,0 +1,29 @@
+.landing-main {
+    margin-top: 100px;
+    background: #313131;
+    height: 100%;
+}
+
+.landing-header {
+    height: 350px;
+    text-align: center;
+    line-height: 350px;
+}
+
+.landing-header span {
+    line-height: normal;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.landing-header span h1 {
+    font-size: 60px;
+    font-family: 'Circular Std Bold', sans-serif;
+    margin: 10px;
+}
+
+.landing-header span p {
+    font-size: 20px;
+    margin: 10px;
+    
+}
