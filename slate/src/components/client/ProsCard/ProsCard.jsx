@@ -1,7 +1,7 @@
 import React from 'react';
 import './proscard.css';
 import PlaceholderImg from '../../../assets/img/placeholderhouse.jpg';
-// import { Button } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 
 const ProsCard = props => {
@@ -18,7 +18,7 @@ const ProsCard = props => {
             </div>
 
             <div className="card-action">
-                <button>View</button>
+                <Button>View</Button>
             </div>
         </div>
     )
