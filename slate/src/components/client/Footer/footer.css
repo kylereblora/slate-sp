@@ -1,0 +1,30 @@
+.footer-main {
+    padding: 10px 200px 50px 200px;
+    height:300px;
+    display: flex;
+    background: #eeeeee;
+}
+
+h3 {
+    font-family: 'Circular Std Book', sans-serif;
+    color: #707070;
+}
+
+.about, .shop, .hire {
+    padding: 20px 50px;
+}
+
+
+
+.about ul, .shop ul, .hire ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-main ul li a{
+    color: #707070;
+}
+
+.footer-main ul li a:hover {
+    color: #e28324;
+}

@@ -1,24 +1,28 @@
 .landing-main {
-    margin-top: 84px;
-    background: #313131;
+    padding-top: 64px;
     height: 100%;
 }
 
 .landing-header {
-    height: 350px;
+    height: 550px;
     text-align: center;
-    line-height: 350px;
+    line-height: 550px;
+    background: url(../../../assets/img/Old-parking-lot-in-Paris-turned-into-a-beautiful-modern-apartment.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 3% 30%;
 }
 
 .landing-header span {
     line-height: normal;
     vertical-align: middle;
     display: inline-block;
+    color: white;
 }
 
 .landing-header span h1 {
     font-size: 60px;
-    font-family: 'Circular Std Bold', sans-serif;
+    font-family: 'Circular Std Medium', sans-serif;
     margin: 10px;
 }
 
@@ -26,4 +30,61 @@
     font-size: 20px;
     margin: 10px;
     
+}
+
+.shop-preview {
+    height: 500px;
+}
+
+.pros-prods-action-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.shop-items {
+    background: rgba(8,155,8,1);
+    background: -moz-linear-gradient(45deg, rgba(8,155,8,1) 0%, rgba(25,254,216,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(8,155,8,1)), color-stop(100%, rgba(25,254,216,1)));
+    background: -webkit-linear-gradient(45deg, rgba(8,155,8,1) 0%, rgba(25,254,216,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(8,155,8,1) 0%, rgba(25,254,216,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(8,155,8,1) 0%, rgba(25,254,216,1) 100%);
+    background: linear-gradient(45deg, rgba(8,155,8,1) 0%, rgba(25,254,216,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#089b08', endColorstr='#19fed8', GradientType=1 );
+}
+
+.hire-pros {
+    background: rgba(74,124,181,1);
+    background: -moz-linear-gradient(45deg, rgba(74,124,181,1) 0%, rgba(213,118,246,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(74,124,181,1)), color-stop(100%, rgba(213,118,246,1)));
+    background: -webkit-linear-gradient(45deg, rgba(74,124,181,1) 0%, rgba(213,118,246,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(74,124,181,1) 0%, rgba(213,118,246,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(74,124,181,1) 0%, rgba(213,118,246,1) 100%);
+    background: linear-gradient(45deg, rgba(74,124,181,1) 0%, rgba(213,118,246,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4a7cb5', endColorstr='#d576f6', GradientType=1 );
+}
+
+.shop-items, .hire-pros {
+    flex: 0.5;
+    text-align: center;
+    min-height: 400px;
+    line-height: 400px;
+    color: white;
+}
+
+.shop-items span, .hire-pros span {
+    line-height: normal;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.shop-items h1, .hire-pros h1 {
+    font-size: 30px;
+    font-family: 'Circular Std Book', sans-serif;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .pros-prods-action-header {
+        flex-direction: column;
+    }
 }
