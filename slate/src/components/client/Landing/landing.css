@@ -87,4 +87,24 @@
     .pros-prods-action-header {
         flex-direction: column;
     }
+
+    .shop-items, .hire-pros {
+        flex: 1;
+    }
+
+    .landing-header {
+        background-size: cover;
+        height: 400px;
+        line-height: 400px;
+    }
+
+    .landing-header span h1 {
+        font-size: 30px;
+    }
+
+    .landing-header span p {
+        font-size: 15px;
+    }
+
+
 }

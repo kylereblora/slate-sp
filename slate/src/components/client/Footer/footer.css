@@ -28,3 +28,13 @@ h3 {
 .footer-main ul li a:hover {
     color: #e28324;
 }
+
+@media only screen and (max-width: 768px) {
+    .footer-main {
+        padding: 0px;
+    }
+
+    .about, .shop, .hire  {
+        padding: 10px;
+    }
+}
