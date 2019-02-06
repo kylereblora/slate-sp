@@ -11,7 +11,6 @@ const Navbar = props => (
                 <h1><a href="/">slate</a></h1>
             </div>
             <div className="spacer" />
-            {/* <Col>hhh</Col> */}
             <SignedOutLinks />
             <SignedInLinks /> 
              

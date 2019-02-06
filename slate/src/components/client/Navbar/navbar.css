@@ -1,14 +1,13 @@
 .navbar {
     width: 100%;
     position: fixed;
-    /* height: 84px; */
-    height: 64px;
+    height: 65px;
     top: 0;
     left: 0;
-    padding: 10px 0;
     background: #fafafa;
     opacity: 0.99;
     z-index:100;
+    font-family: 'Circular Std Book', sans-serif;
 }
 
 .navbar .navbar-logo h1 a {
@@ -33,7 +32,16 @@
     flex: 1;
 }
 
+
 @media only screen and (max-width: 768px) {
+    .spacer {
+        display: none;
+    }
+
+    .navbar-main {
+        padding: 0;
+    }
+
     .navbar-logo {
         flex: 1;
         margin-left: 0;
@@ -42,9 +50,6 @@
     .navbar-logo h1 {
         text-align: center;
     }
-
-    .spacer {
-        flex: 0;
-    }
+    
 
 }

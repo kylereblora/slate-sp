@@ -18,10 +18,15 @@ const SignedOutLinks = () => {
                         activeClassName="active-item"
                         >Hire</NavLink></li>
                     <li><NavLink 
+                        to="/register"
+                        className="navlink-hover"
+                        activeClassName="active-item"
+                        >Sign Up</NavLink></li>
+                    <li><NavLink 
                         to="/signin"
                         className="navlink-hover"
                         activeClassName="active-item"
-                        >Sign In</NavLink></li>
+                        >Log In</NavLink></li>
                 </ul> 
             </div>
         </div>

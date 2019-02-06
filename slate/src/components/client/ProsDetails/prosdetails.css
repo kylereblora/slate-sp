@@ -1,0 +1,40 @@
+.pros-details-main {
+    margin: 0px 200px;
+    padding-top: 110px;
+    font-family: 'Circular Std Book', sans-serif;
+}
+
+
+.basic-info-header {
+    display: flex;
+}
+
+
+.spacer {
+    flex: 1;
+}
+
+
+.name-loc-rating h1 {
+    font-family: 'Circular Std Bold', sans-serif;
+    font-size: 30px;
+}
+
+.name-loc-rating > * {
+    margin: 0
+}
+
+.pro-picture {
+    margin-right: 10px;
+}
+
+.pro-picture img{
+    height: 120px;
+    width: 120px;  
+}
+
+.desc, .reviews, .projs {
+    font-family: 'Circular Std Medium', sans-serif;
+    font-size: 25px;
+    margin: 0;
+}
