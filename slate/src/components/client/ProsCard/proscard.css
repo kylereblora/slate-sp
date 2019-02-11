@@ -1,22 +1,22 @@
 .pros-card-main {
-    border-radius: 10px;
-    padding: 10px;
-    background: #fafafa;
-    margin: 10px 0px;
+    margin: 10px;
     display: flex;
 }
 
+
 .pros-picture {
-    height: 200px;
+    height: 250px;
     background: #414242;
 }
 
 .pros-picture img {
-    height: 200px;
+    height: 250px;
 }
 
 .pros-misc {
     margin-left: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .pros-name {
@@ -29,6 +29,6 @@
     font-size: 15px;
 }
 
-.card-button {
-    /* padding: 10px; */
+.divider-container {
+    margin: 10px;
 }

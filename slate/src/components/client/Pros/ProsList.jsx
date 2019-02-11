@@ -6,19 +6,21 @@ import './proslist.css';
 const ProsList = props => {
     return(
         <div className="pros-list">
-            <Breadcrumb>
-                <Breadcrumb.Section link>Home</Breadcrumb.Section>
-                <Breadcrumb.Divider icon='right angle' />
-                <Breadcrumb.Section active>Store</Breadcrumb.Section>
-            </Breadcrumb>
+            <div className="crumbs">
+                <Breadcrumb>
+                    <Breadcrumb.Section link>Home</Breadcrumb.Section>
+                    <Breadcrumb.Divider icon='right angle' />
+                    <Breadcrumb.Section active>Store</Breadcrumb.Section>
+                </Breadcrumb>
+            </div>
 
             
             <p className="pros-list-heading">We've found 5 pros for you.</p>
-            <ProsCard proName={"Architect 1"} proLocation={"Quezon City"} proDescription={"Hello i am from qc"}/>            
-            <ProsCard proName={"Architect 1"} proLocation={"Quezon City"} proDescription={"Hello i am from qc"}/>            
-            <ProsCard proName={"Architect 1"} proLocation={"Quezon City"} proDescription={"Hello i am from qc"}/>            
-            <ProsCard proName={"Architect 1"} proLocation={"Quezon City"} proDescription={"Hello i am from qc"}/>            
-            <ProsCard proName={"Architect 1"} proLocation={"Quezon City"} proDescription={"Hello i am from qc"}/>            
+            <ProsCard proName={"Architect 1"} proLocation={"Quezon City"} proDescription={"Hello i am from qc"} contactNumber={"09283049470"}/>            
+            <ProsCard proName={"Architect 1"} proLocation={"Quezon City"} proDescription={"Hello i am from qc"} contactNumber={"09283049470"}/>            
+            <ProsCard proName={"Architect 1"} proLocation={"Quezon City"} proDescription={"Hello i am from qc"} contactNumber={"09283049470"}/>            
+            <ProsCard proName={"Architect 1"} proLocation={"Quezon City"} proDescription={"Hello i am from qc"} contactNumber={"09283049470"}/>            
+            <ProsCard proName={"Architect 1"} proLocation={"Quezon City"} proDescription={"Hello i am from qc"} contactNumber={"09283049470"}/>            
             
         </div>
     )

@@ -1,0 +1,58 @@
+.signin-main {
+    height: 650px;
+    line-height: 650px;
+    text-align: center;
+}
+
+.sg {
+    line-height: normal;
+    vertical-align: middle;
+    display: inline-block;
+    
+}
+
+.signin-card {
+    width: 450px;
+    text-align: center;
+    padding: 50px;
+    border: 1px solid #dfdfdf;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+
+.signin-logo {
+    font-family: 'Wavehaus Bold', sans-serif;
+    font-size: 50px;
+}
+
+.signin-logo a {
+    color: #313131;
+}
+
+.form-buttons {
+    display: flex;
+    height: 50px;
+    line-height: 50px;
+}
+
+.login-instead {
+    flex: 0.5;
+    text-align: left;    
+}
+
+.login-instead a {
+    color: #E28324;
+}
+
+.submit-btn {
+    flex: 0.5;
+    text-align: right;
+}
+
+.create-your-acc {
+    font-family: 'GT Walsheim', sans-serif;
+    font-weight: 700;
+    padding-bottom: 30px;
+}

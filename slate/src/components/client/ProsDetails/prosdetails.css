@@ -1,9 +1,28 @@
+:root {
+    --space: 1.5em 0;
+    --space: 2em 0;
+}
+
+.pros-site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .pros-details-main {
-    margin: 0px 200px;
+    margin: 0px 100px;
     padding-top: 110px;
+    flex: 1 0 auto;
     font-family: 'Circular Std Book', sans-serif;
 }
 
+.pros-details-main:after {
+    content: '\00a0';
+    display: block;
+    margin-top: var(--space);
+    height: 0;
+    visibility: hidden;
+}
 
 .basic-info-header {
     display: flex;

@@ -5,12 +5,11 @@ import Footer from '../Footer/Footer';
 
 const Home = () => {
     return(
-        <div>
+        <div className="home-site">
             <Navbar />
             <div className = "home-main">
                 <div className ="product-section">
                     <p className="product-section-heading">Discover home products</p>
-                    
                 </div>
 
                 <div className ="pros-section">

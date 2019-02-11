@@ -1,0 +1,31 @@
+.item-card {
+    /* width: 200px; */
+    /* background: #313131; */
+    /* padding: 10px; */
+    margin:10px;
+
+}
+
+.item-picture {
+    width: 250px;
+    /* background: #414242; */
+}
+
+.item-name {
+    font-size: 20px;
+    font-family: 'Circular Std Bold', sans-serif;
+}
+
+.item-price {
+    font-family: 'GT Walsheim', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.item-picture img {
+    width: 250px;
+}
+
+.item-misc p {
+    margin: 0;
+}

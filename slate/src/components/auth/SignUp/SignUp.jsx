@@ -1,13 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Form } from 'semantic-ui-react'
 import './signup.css'
-import styled from 'styled-components'
-
-const formStyle = styled.div`
-    &&& {
-        color: palevioletred;
-    }`
-
 
 export class SignUp extends Component {
     state = {

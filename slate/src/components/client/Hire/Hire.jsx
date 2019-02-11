@@ -7,7 +7,7 @@ import './hire.css';
 class Hire extends React.Component {
     render() {
         return(
-            <div>
+            <div className="hire-site">
                 <Navbar />
                 <div className="hire-main">
                     <ProsList />

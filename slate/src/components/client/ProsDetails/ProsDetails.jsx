@@ -10,7 +10,7 @@ const ProsDetails = (props) => {
     const id = props.match.params.id;
 
     return (
-        <div>
+        <div className="pros-site">
             <Navbar />
             <div className="pros-details-main">
                 <div className="basic-info-header">

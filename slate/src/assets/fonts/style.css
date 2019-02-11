@@ -86,30 +86,21 @@ src: local('Circular Std Black Italic'), url('CircularStd-BlackItalic.woff') for
 
 @font-face {
     font-family: 'GT Walsheim';
-       src: url('./gtwalsheim/GT-Walsheim-Regular.eot');
-       src: url('./gtwalsheim/GT-Walsheim-Regular.eot?#iefix') format('embedded-opentype'),
-            url('./gtwalsheim/GT-Walsheim-Regular.woff') format('woff'),
-            url('./gtwalsheim/GT-Walsheim-Regular.ttf') format('truetype');
+       src: url('./gtwalsheim/GT-Walsheim-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'GT Walsheim';
-    src: url('./gtwalsheim/GT-Walsheim-Medium.eot');
-    src: url('./gtwalsheim/GT-Walsheim-Medium.eot?#iefix') format('embedded-opentype'),
-         url('./gtwalsheim/GT-Walsheim-Medium.woff') format('woff'),
-         url('./gtwalsheim/GT-Walsheim-Medium.ttf') format('truetype');
+    src: url('./gtwalsheim/GT-Walsheim-Medium.woff') format('woff');
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'GT Walsheim';
-        src: url('./gtwalsheim/GT-Walsheim-Bold.eot');
-        src: url('./gtwalsheim/GT-Walsheim-Bold.eot?#iefix') format('embedded-opentype'),
-            url('./gtwalsheim/GT-Walsheim-Bold.woff') format('woff'),
-            url('./gtwalsheim/GT-Walsheim-Bold.ttf') format('truetype');
+        src: url('./gtwalsheim/GT-Walsheim-Bold.woff') format('woff');
    font-weight: 900;
    font-style: normal;
 }

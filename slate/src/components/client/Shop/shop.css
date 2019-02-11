@@ -3,21 +3,20 @@
     --space: 2em 0;
 }
 
-.hire-site {
+.shop-site {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     background: #fafafa;
 }
 
-.hire-main {
+.shop-main {
     margin: 0px 100px;
     flex: 1 0 auto;
     text-align: center;
-    
 }
 
-.hire-main:after {
+.shop-main:after {
     content: '\00a0';
     display: block;
     margin-top: var(--space);

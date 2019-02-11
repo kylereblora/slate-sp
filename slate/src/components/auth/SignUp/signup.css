@@ -14,12 +14,11 @@
     border: 1px solid #dfdfdf;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-top: 15px solid #E28324;
+    /* border-image: linear-gradient(to left, #E28324 50%, #EB5FB3 100%) 
+              100% 0 100% 0/3px 0 3px 0 stretch; */
 }
 
-.brand-color {
-    background: #313131;
-    /* height: 20px; */
-}
 
 .signup-logo {
     font-family: 'Wavehaus Bold', sans-serif;
@@ -59,3 +58,4 @@
     border-color: #313131;
     color: green
 }
+

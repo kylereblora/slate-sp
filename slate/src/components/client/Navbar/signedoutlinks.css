@@ -1,10 +1,10 @@
 .navbar-items {
-    margin-right: 40px;
+    margin-right: 70px;
     align-self: auto;
 }
 
 .navbar-items a {
-    display: inline-block;
+    display: block;
     color:#464646;
     text-decoration: none;
     padding: 8px 10px;
