@@ -39,6 +39,17 @@
     justify-content: center;
 }
 
+.product-previews {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.product-previews > * {
+    flex: 1 1 10px;
+
+}
+
 .architects {
     background: rgba(36,226,74,1);
     background: -moz-linear-gradient(left, rgba(36,226,74,1) 0%, rgba(107,161,154,1) 100%);

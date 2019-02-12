@@ -3,7 +3,11 @@ import ProsCard from '../ProsCard/ProsCard';
 import { Breadcrumb } from 'semantic-ui-react';
 import './proslist.css';
 
-const ProsList = props => {
+const ProsList = ({pros, category}) => {
+    let categ = category;
+    if (categ === "interior-designer") categ = 'Interior Designers';
+    else if(categ === "architect") categ = 'Architects';
+
     return(
         <div className="pros-list">
             <div className="crumbs">
@@ -15,12 +19,12 @@ const ProsList = props => {
             </div>
 
             
-            <p className="pros-list-heading">We've found 5 pros for you.</p>
-            <ProsCard proName={"Architect 1"} proLocation={"Quezon City"} proDescription={"Hello i am from qc"} contactNumber={"09283049470"}/>            
-            <ProsCard proName={"Architect 1"} proLocation={"Quezon City"} proDescription={"Hello i am from qc"} contactNumber={"09283049470"}/>            
-            <ProsCard proName={"Architect 1"} proLocation={"Quezon City"} proDescription={"Hello i am from qc"} contactNumber={"09283049470"}/>            
-            <ProsCard proName={"Architect 1"} proLocation={"Quezon City"} proDescription={"Hello i am from qc"} contactNumber={"09283049470"}/>            
-            <ProsCard proName={"Architect 1"} proLocation={"Quezon City"} proDescription={"Hello i am from qc"} contactNumber={"09283049470"}/>            
+            <p className="pros-list-heading">We've found 5 {category === undefined ? "Pros" : category} for you.</p>
+            { pros && pros.map(pro => {
+                return (
+                    <ProsCard pro={pro} key={pro.id} />
+                )
+            })}           
             
         </div>
     )

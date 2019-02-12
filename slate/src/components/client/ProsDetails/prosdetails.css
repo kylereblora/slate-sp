@@ -7,16 +7,29 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background: #fafafa;
+    
+}
+
+.pros-details-container {
+    text-align: center;
+    margin: 0px 100px;
+    flex: 1 0 auto;
 }
 
 .pros-details-main {
-    margin: 0px 100px;
-    padding-top: 110px;
-    flex: 1 0 auto;
     font-family: 'Circular Std Book', sans-serif;
+    background: #fff;
+    box-shadow: 0 0.7px 1px 0 rgba(0, 0, 0, 0.1);
+    padding: 100px 20px 20px 20px;
+    width: 1150px;
+    max-width: 1150px;
+    display: inline-block;
+    text-align: left;
+    margin-bottom: 20px;
 }
 
-.pros-details-main:after {
+.pros-details-container:after {
     content: '\00a0';
     display: block;
     margin-top: var(--space);

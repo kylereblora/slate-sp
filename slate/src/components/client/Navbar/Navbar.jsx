@@ -5,7 +5,7 @@ import SignedOutLinks from './SignedOutLinks';
 import SignedInLinks from './SignedInLinks';   
 
 const Navbar = props => (
-    <header className="navbar">
+    <header className="navbar"> 
         <nav className="navbar-main">
             <div className="navbar-logo">
                 <h1><a href="/">slate</a></h1>

@@ -4,7 +4,7 @@ import PlaceholderImg from '../../../assets/img/placeholderhouse.jpg';
 import { Button, Rating, Divider } from 'semantic-ui-react';
 
 
-const ProsCard = props => {
+const ProsCard = ({pro}) => {
     return (
         <div className="pros-card">
             <div className="pros-card-main">
@@ -14,14 +14,14 @@ const ProsCard = props => {
 
                 <div className="pros-misc">
                     <div className="pros-details">
-                        <span className="pros-name">{props.proName}</span>
-                        <p className="pros-location">{props.proLocation}</p>
+                        <span className="pros-name">{pro.proName}</span>
+                        <p className="pros-location">{pro.proLocation}</p>
                         <Rating icon="star" defaultRating = {4} maxRating = {5} disabled/>
-                        <p className="pros-description">{props.proDescription}</p>
+                        <p className="pros-description">{pro.proDescription}</p>
                     </div>
 
                     <div className="spacer" />
-                    <p className="contact-no">{props.contactNumber}</p>
+                    <p className="contact-no">{pro.contactNumber}</p>
                 </div>
 
                 <div className="spacer" />

@@ -15,13 +15,13 @@ class App extends React.Component {
             <Router>
                 <div>
                     <Switch>
-                        <Route exact={true} path='/' component = {Landing} />
+                        <Route exact={true} path='/' component = {Landing} /> 
                         <Route exact={true} path='/register' component = {SignUp} />
                         <Route exact={true} path='/signin' component = {SignIn} />
                         <Route exact={true} path='/home' component = {Home} />
 
                         <Route exact={true} path='/hire' component = {Hire} />
-                        {/* <Route exact={true} path='/hire/:category' component = {Hire} /> */}
+                        <Route exact={true} path='/hire/:category' component = {Hire} />
                         <Route exact={true} path='/pro/:category/:id' component = {ProsDetails} />
                         
                         <Route exact={true} path='/shop' component = {Shop} />

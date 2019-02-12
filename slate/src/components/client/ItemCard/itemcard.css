@@ -1,14 +1,16 @@
 .item-card {
-    /* width: 200px; */
-    /* background: #313131; */
-    /* padding: 10px; */
+    /* width: 300px; */
     margin:10px;
 
 }
 
+.item-card-main {
+    width: 250px;
+    max-width: 250px;
+}
+
 .item-picture {
     width: 250px;
-    /* background: #414242; */
 }
 
 .item-name {
@@ -23,6 +25,10 @@
 }
 
 .item-picture img {
+    width: 250px;
+}
+
+.item-misc {
     width: 250px;
 }
 
