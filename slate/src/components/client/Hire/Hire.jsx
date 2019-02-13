@@ -10,7 +10,6 @@ export class Hire extends Component {
 
     render() {
         const category = this.props.match.params.category;
-        // console.log(this.props);
         const { pros } = this.props;
         console.log(pros)
         return (

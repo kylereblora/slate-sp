@@ -3,7 +3,7 @@ import ItemCard from '../ItemCard/ItemCard';
 import { Breadcrumb } from 'semantic-ui-react';
 import './itemlist.css';
 
-const ItemList = (props) => {
+const ItemList = ({products}) => {
     return (
         <div className="items-list">
             <div className="crumbs">
@@ -15,14 +15,11 @@ const ItemList = (props) => {
             </div>
 
             <div className="items-list-main">
-                <ItemCard itemName ={"Luxe Sofa With Underlying Mattress but has his own set of wheels"} itemPrice={"$1231.23"} /> 
-                <ItemCard itemName ={"Luxe Sofa"} itemPrice={"$1231.23"} />
-                <ItemCard itemName ={"Luxe Sofa"} itemPrice={"$1231.23"} />
-                <ItemCard itemName ={"Luxe Sofa"} itemPrice={"$1231.23"} />
-                <ItemCard itemName ={"Luxe Sofa"} itemPrice={"$1231.23"} />
-                <ItemCard itemName ={"Luxe Sofa"} itemPrice={"$1231.23"} />
-                <ItemCard itemName ={"Luxe Sofa"} itemPrice={"$1231.23"} />
-                <ItemCard itemName ={"Luxe Sofa"} itemPrice={"$1231.23"} />
+                { products && products.map(product => {
+                    return(
+                        <ItemCard product={product} key={product.id} />
+                    )
+                })}
             </div>
             
 

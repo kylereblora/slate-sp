@@ -1,0 +1,78 @@
+:root {
+    --space: 1.5em 0;
+    --space: 2em 0;
+}
+
+.home-site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #fafafa;
+    
+}
+
+.home-main {
+    margin: 0px 100px;
+    padding-top: 110px;
+    flex: 1 0 auto;
+    text-align: center;
+    
+}
+
+.home-main:after {
+    content: '\00a0';
+    display: block;
+    margin-top: var(--space);
+    height: 0;
+    visibility: hidden;
+}
+
+.listing-section {
+    width: 1150px;
+    max-width: 1150px;
+    display: inline-block;
+    text-align: left;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0.7px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.listing-section-heading {
+    font-family: 'Circular Std Medium', sans-serif;
+    font-size: 40px;
+}
+
+.listing-previews {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.listing-details {
+    display: flex;
+}
+
+.listing-previews > * {
+    flex: 1 1 10px;
+}
+
+.no-listings-yet {
+    text-align: center;
+    height: 200px;
+    line-height: 200px;
+}
+
+.no-listings-span {
+    vertical-align: middle;
+    line-height: normal;
+    display: inline-block;
+    background: #e9e9e9;
+    border-radius: 100px;
+    padding: 10px;
+}
+
+.no-listings-yet h1 {
+    font-family: 'GT Walsheim', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #6e6e6e;
+}

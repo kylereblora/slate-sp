@@ -8,6 +8,8 @@ import SignUp from './components/auth/SignUp/SignUp';
 import SignIn from './components/auth/SignIn/SignIn';
 import ItemDetails from './components/client/ItemDetails/ItemDetails';
 import Shop from './components/client/Shop/Shop';
+import HomeAdmin from './components/admin/Home/Home';
+import CreateItem from './components/admin/Items/CreateItem/CreateItem';
 
 class App extends React.Component {
     render() {
@@ -26,6 +28,9 @@ class App extends React.Component {
                         
                         <Route exact={true} path='/shop' component = {Shop} />
                         <Route exact={true} path='/item/:category/:id' component = {ItemDetails} />
+                        
+                        <Route exact={true} path='/home/admin' component = {HomeAdmin} />
+                        <Route exact={true} path='/create_item' component = {CreateItem} />
                         
                     </Switch>
                 </div>
