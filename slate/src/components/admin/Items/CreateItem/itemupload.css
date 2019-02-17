@@ -1,0 +1,12 @@
+.ui.small.active.indicating.inverted {
+    margin: 0
+}
+
+.item-upload-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-upload-input {
+    display: flex;
+}

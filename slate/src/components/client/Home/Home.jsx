@@ -12,9 +12,7 @@ const Home = () => {
                 <div className ="product-section">
                     <p className="product-section-heading">Discover home products</p>
                     <div className="product-previews">
-                        <ItemCard itemName ={"Luxe Sofa"} itemPrice={"$1231.23"} />
-                        <ItemCard itemName ={"Luxe Sofa"} itemPrice={"$1231.23"} />
-                        <ItemCard itemName ={"Luxe Sofa"} itemPrice={"$1231.23"} />
+                        
                     </div>
                 </div>
 

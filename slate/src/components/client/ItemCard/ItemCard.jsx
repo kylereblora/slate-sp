@@ -12,7 +12,8 @@ const ItemCard = ({product}) => {
                 </div>
 
                 <div className="item-misc">
-                    <span className="item-name">{product.itemName}</span>
+                    <span className="item-name"><a href={`/item/${product.itemCategory}/${product.id}`}>{product.itemName}</a></span>
+                    <p className="item-price">{product.itemCategory}</p>
                     <p className="item-price">&#8369;{product.itemPrice}</p>
                     <Rating icon="star" defaultRating = {product.itemRating} maxRating = {5} disabled/>
                 </div>

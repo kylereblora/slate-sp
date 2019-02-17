@@ -28,3 +28,7 @@ h1 {
     font-family: 'GT Walsheim', sans-serif;
     font-size: 40px;
 }
+
+/* .required.field .ui.selection.dropdown::selection {
+    background-color: #193a66 !important;
+} */

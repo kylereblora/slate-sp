@@ -66,7 +66,7 @@ export class CreateItem extends Component {
                             <Form.Field required onChange={this.handleChange}>
                                 <label>Item Price</label>
                             
-                                <Input id="itemPrice" labelPosition='right' type='text' placeholder='450'>
+                                <Input id="itemPrice" labelPosition='right' type='number' placeholder='450'>
                                     <input />
                                     <Label>.00</Label>
                                 </Input>
@@ -97,7 +97,7 @@ export class CreateItem extends Component {
 
                             
                             <div className="form-buttons">
-                                <Button fluid inverted color="orange" type='submit' onClick={this.handleSubmit}>Add Item</Button>
+                                <Button fluid color="orange" type='submit' onClick={this.handleSubmit}>Add Item</Button>
                             </div>
                             
                         </Form>
