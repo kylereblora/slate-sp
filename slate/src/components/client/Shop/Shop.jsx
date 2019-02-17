@@ -3,12 +3,13 @@ import ItemList from '../ItemList/ItemList'
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 import './shop.css';
 
 export class Shop extends Component {
     render() {
         const { products } = this.props;
-        console.log(products)
         return (
             <div className="shop-site">
                 <Navbar />
@@ -23,8 +24,13 @@ export class Shop extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.product.products
+        products: state.firestore.ordered.products
     }
 }
 
-export default connect(mapStateToProps)(Shop)
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        { collection : 'products' }
+    ])
+)(Shop)

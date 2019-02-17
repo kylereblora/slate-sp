@@ -8,29 +8,23 @@ const initState = {
             itemDescription: 'A 60x60 Floor Tile made from solid granite.',
             itemCategory: 'Walls and Flooring',
         },
-
-        {
-            id: '2',
-            itemName: 'Genoa Pink Floor Tile',
-            itemPrice: 'P120.00',
-            itemQuantity: 80,
-            itemDescription: 'A 60x60 Floor Tile made from solid granite.',
-            itemCategory: 'Walls and Flooring',
-        },
-
-        {
-            id: '3',
-            itemName: 'La Valle Floor Tile',
-            itemPrice: 'P120.00',
-            itemQuantity: 80,
-            itemDescription: 'A 60x60 Floor Tile made from solid granite.',
-            itemCategory: 'Walls and Flooring',
-        },
     ]
 }
 
 const productReducer = (state = initState, action) => {
-    return state
+    switch (action.type) {
+        case 'CREATE_PRODUCT' : 
+            console.log('created product', action.product);
+            return state;
+        
+        case 'CREATE_PRODUCT_ERROR':
+            console.log('create product error', action.err);
+            return state;
+
+        default: 
+            return state;
+            
+    }
 }
 
 export default productReducer

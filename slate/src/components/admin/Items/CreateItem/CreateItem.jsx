@@ -3,6 +3,9 @@ import Navbar from '../../../client/Navbar/Navbar';
 import Footer from '../../../client/Footer/Footer';
 import { Button, Form, TextArea, Label, Input, Dropdown } from 'semantic-ui-react'
 import './createitem.css';
+import { createProduct } from '../../../../store/actions/productActions'
+import { connect } from 'react-redux'
+import ItemUpload from './ItemUpload';
 
 const options = [
     {key: 1, text: 'Bath', value: 'Bath'},
@@ -20,10 +23,11 @@ export class CreateItem extends Component {
         itemQuantity:       '',
         itemDescription:    '',
         itemCategory:       '',
-        itemImage:          '',
+        itemImageUrl:       '',
     }
     
     handleChange = (e) => {
+        // changes the value of the state based on the value and the id
         this.setState({
             [e.target.id] : e.target.value
         })
@@ -37,8 +41,13 @@ export class CreateItem extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        // calls the dispatch to create a product using the state that we have right now
+        this.props.createProduct(this.state)
+    }
 
-        console.log(this.state);
+    imageUrlCallback = (data) => {
+        // gets the image url from the ItemUpload child for later use
+        this.setState({itemImageUrl : data})        
     }
 
     render() {
@@ -48,14 +57,14 @@ export class CreateItem extends Component {
                 <div className="create-item-main">
                     <div className="create-item-form">
                         <h1>Add Item</h1>
-                        <Form  onSubmit={this.handleSubmit}>
+                        <Form>
                             <Form.Field required onChange={this.handleChange}>
-                                <h3>Item Name</h3>
+                                <label>Item Name</label>
                                 <Input id="itemName" placeholder='Soft Faux Leather Chair' />
                             </Form.Field>
 
                             <Form.Field required onChange={this.handleChange}>
-                                <h3>Item Price</h3>
+                                <label>Item Price</label>
                             
                                 <Input id="itemPrice" labelPosition='right' type='text' placeholder='450'>
                                     <input />
@@ -64,26 +73,31 @@ export class CreateItem extends Component {
                             </Form.Field>
 
                             <Form.Field required onChange={this.handleChange}>
-                                <h3>Item Quantity</h3>
+                                <label>Item Quantity</label>
                             
                                 <Input type="number" id="itemQuantity" placeholder='20' />
                                 
                             </Form.Field>
                             
                             <Form.Field required>
-                                <h3>Item Category</h3>
+                                <label>Item Category</label>
                                 <Dropdown placeholder='Bath' name='itemCategory' clearable options={options} onChange={this.handleDropdownChange} selection />
                                 
                             </Form.Field>
 
                             <Form.Field required onChange={this.handleChange}>
-                                <h3>Item Description</h3>
+                                <label>Item Description</label>
                                 <TextArea id="itemDescription" placeholder='Describe this item!' />
                             </Form.Field>
-                            
 
+                            <Form.Field required>
+                                <label>Item Image</label>
+                                <ItemUpload callbackFromParent = {this.imageUrlCallback} />
+                            </Form.Field>
+
+                            
                             <div className="form-buttons">
-                                <Button fluid inverted color="orange" type='submit' onClick={this.handleClick}>Add Item</Button>
+                                <Button fluid inverted color="orange" type='submit' onClick={this.handleSubmit}>Add Item</Button>
                             </div>
                             
                         </Form>
@@ -94,4 +108,10 @@ export class CreateItem extends Component {
     }
 }
 
-export default CreateItem
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createProduct: (product) => dispatch(createProduct(product))
+    }
+} 
+
+export default connect(null, mapDispatchToProps)(CreateItem)

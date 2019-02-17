@@ -8,13 +8,13 @@ const ItemCard = ({product}) => {
         <div className="item-card">
             <div className="item-card-main">
                 <div className="item-picture">
-                    <img src={PlaceholderImg} alt="house"/>
+                    <img src={product.itemImageUrl} alt="image"/>
                 </div>
 
                 <div className="item-misc">
                     <span className="item-name">{product.itemName}</span>
-                    <p className="item-price">{product.itemPrice}</p>
-                    <Rating icon="star" defaultRating = {4} maxRating = {5} disabled/>
+                    <p className="item-price">&#8369;{product.itemPrice}</p>
+                    <Rating icon="star" defaultRating = {product.itemRating} maxRating = {5} disabled/>
                 </div>
             </div>
         </div>
