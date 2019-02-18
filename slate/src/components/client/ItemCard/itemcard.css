@@ -1,16 +1,20 @@
 .item-card {
     /* width: 300px; */
     margin:10px;
-
+    
 }
 
 .item-card-main {
     width: 250px;
     max-width: 250px;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .item-picture {
     width: 250px;
+    max-height:300px;
 }
 
 .item-name {
@@ -26,6 +30,7 @@
 
 .item-picture img {
     width: 250px;
+    max-height:250px;
 }
 
 .item-misc {

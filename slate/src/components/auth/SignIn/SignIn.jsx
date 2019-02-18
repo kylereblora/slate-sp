@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Message } from 'semantic-ui-react'
 import './signin.css'
-
+import { connect } from 'react-redux'
+import { signIn } from '../../../store/actions/authActions'
 
 export class SignIn extends Component {
     state = {
@@ -17,11 +18,11 @@ export class SignIn extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-
-        console.log(this.state);
+        this.props.signIn(this.state);
     }
 
     render() {
+        const { authError } = this.props;
         return (
             <div className="signin-main">
                 <div className="sg">
@@ -29,7 +30,7 @@ export class SignIn extends Component {
                     <div className="signin-card">
                         <div className="signin-form">
                             <h1 className="create-your-acc">Log in</h1>
-                            <Form  onSubmit={this.handleSubmit}>
+                            <Form onSubmit={this.handleSubmit}>
                                 <Form.Field required onChange={this.handleChange}>
                                     <input type="email" id="email" placeholder='Email' />
                                 </Form.Field>
@@ -47,6 +48,18 @@ export class SignIn extends Component {
                                     </div>
                                 </div>
                             </Form>
+
+                            <div className="message-negative">
+                                { 
+                                    authError ? 
+                                    <Message negative>
+                                        <Message.Header>Oof. Login Failed</Message.Header>
+                                        <p>The email/password used was incorrect.</p>
+                                    </Message>
+                                    : null
+                                }
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -56,4 +69,17 @@ export class SignIn extends Component {
     }
 }
 
-export default SignIn
+const mapStateToProps = (state) => {
+    // state > auth in rootReducer > authError in authReducer
+    return {
+        authError: state.auth.authError
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signIn: (creds) => dispatch(signIn(creds))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)

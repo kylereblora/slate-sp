@@ -15,9 +15,7 @@
 
 .items-list-main {
     display: flex;
-    /* flex-basis: 1; */
     flex-wrap: wrap;
-    /* flex-grow: 3; */
 }
 
 .items-list-main > * {

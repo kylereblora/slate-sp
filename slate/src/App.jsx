@@ -17,6 +17,7 @@ class App extends React.Component {
             <Router>
                 <div>
                     <Switch>
+                        <Route exact={true} path='/landing' component = {Landing} /> 
                         <Route exact={true} path='/' component = {Landing} /> 
                         <Route exact={true} path='/register' component = {SignUp} />
                         <Route exact={true} path='/signin' component = {SignIn} />

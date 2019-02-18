@@ -2,6 +2,7 @@ import React from 'react'
 import ItemCard from '../ItemCard/ItemCard';
 import { Breadcrumb } from 'semantic-ui-react';
 import './itemlist.css';
+import { Link } from 'react-router-dom'
 
 const ItemList = ({products}) => {
     return (
@@ -17,7 +18,9 @@ const ItemList = ({products}) => {
             <div className="items-list-main">
                 { products && products.map(product => {
                     return(
-                        <ItemCard product={product} key={product.id} />
+                        <Link to={'/item/'+ product.itemCategory + '/' + product.id} key={product.id}>
+                            <ItemCard product={product} />
+                        </Link>
                     )
                 })}
             </div>

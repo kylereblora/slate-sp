@@ -51,6 +51,10 @@
     padding: 0 .7rem;
 }
 
+.log-out {
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 768px) {
     .navbar-items ul {
         display: none;

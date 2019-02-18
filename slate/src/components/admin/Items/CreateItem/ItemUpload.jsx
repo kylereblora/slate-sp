@@ -54,7 +54,7 @@ export class ItemUpload extends Component {
             <div className="item-upload-main">
                 <Progress percent={this.state.progress} size="small" inverted indicating />
                 <div className="item-upload-input">
-                    <input type="file" onChange={this.handleUploadChange}/>
+                    <input type="file" accept="image/*" onChange={this.handleUploadChange}/>
                     <Button inverted color="orange" onClick={this.handleUpload}>Upload</Button>
                 </div>
                 {/* <img src={this.state.url || 'http://via.placeholder.com/400x300'} alt={"uploaded image"} /> */}

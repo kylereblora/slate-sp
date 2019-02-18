@@ -1,8 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Dropdown } from 'semantic-ui-react';
 import './signedoutlinks.css';
+import { connect } from 'react-redux';
+import { signOut } from '../../../store/actions/authActions'
 
-const SignedInLinks = () => {
+const SignedInLinks = (props) => {
     return(
         <div>
             <div className="navbar-items">
@@ -32,10 +35,19 @@ const SignedInLinks = () => {
                         className="navlink-hover"
                         activeClassName="active-item"
                         >KBR</NavLink></li>
+                    <li>
+                        <a className = "log-out" onClick={props.signOut}>Log Out</a>
+                    </li>
                 </ul> 
             </div>
         </div>
     )
 }
 
-export default SignedInLinks; 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signOut: () => dispatch(signOut())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignedInLinks) 

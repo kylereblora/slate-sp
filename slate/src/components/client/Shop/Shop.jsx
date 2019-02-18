@@ -22,6 +22,8 @@ export class Shop extends Component {
     }
 }
 
+
+// get the products from the firestore database and assign it to this state's products
 const mapStateToProps = (state) => {
     return {
         products: state.firestore.ordered.products

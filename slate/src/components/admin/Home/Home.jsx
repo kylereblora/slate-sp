@@ -6,6 +6,11 @@ import ItemCard from '../../client/ItemCard/ItemCard';
 import { Button } from 'semantic-ui-react';
 
 const Home = () => {
+
+    const handleClick = () => {
+        window.location.href = '/create_item';
+    }
+
     return(
         <div className="home-site">
             <Navbar />
@@ -15,7 +20,7 @@ const Home = () => {
                         <p className="listing-section-heading">Your Listings</p>
                         <div className="spacer" />
                         <div className="add-item-btn">
-                            <Button color='orange' >Add Item</Button>
+                            <Button color='orange' onClick={handleClick}>Add Item</Button>
                         </div>
                     </div>
                     <div className="no-listings-yet">

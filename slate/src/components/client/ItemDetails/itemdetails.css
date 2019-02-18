@@ -11,11 +11,13 @@
 
 .item-details-main {
     margin: 0px 100px;
-    padding-top: 110px;
-    flex: 1 0 auto;
+    padding: 110px 0px;
     font-family: 'Circular Std Book', sans-serif;
     text-align: center;
-    
+}
+
+.item-two-columns {
+    display: flex;
 }
 
 .item-details-main:after {
@@ -26,14 +28,16 @@
     visibility: hidden;
 }
 
-.item-picture {
+.item-pic {
     width: 500px;
-    /* max-width: 500px; */
+    max-width: 500px;
 }
 
-/* .item-picture img {
+.item-pic img {
+    width: 500px;
+    max-width: 500px;
+}
 
-} */
 
 .item-info {
     display: inline-block;
@@ -41,4 +45,65 @@
     max-width: 1150px;
     text-align: left;
     
+}
+
+.item-info-2 {
+    margin-left: 30px;
+    padding-left: 30px;
+    width: 500px;
+}
+
+.item-info-2 .item-name {
+    font-family: 'GT Walsheim', sans-serif;
+    font-weight: 600;
+    font-size: 35px;
+    margin: 0;
+    padding: 0;
+}
+
+.item-info-2  .item-price {
+    font-size: 30px;
+    font-family: 'Circular Std Book', sans-serif;
+    margin: 0;
+}
+
+.item-info-quantity {
+    display: flex;
+}
+
+.item-info-quantity p {
+    padding: 0px 10px 0px 0px;
+}
+
+.add-to-wishlist {
+    width: 300px;
+}
+
+.quantity label {
+    font-size: 18px;
+    font-family: 'Circular Std Medium', sans-serif;
+}
+
+.quantity input{
+    padding: 8px;
+    border: 1px solid #fafafa;
+    border-radius: 5px;
+}
+
+.quantity {
+    margin-right: 10px;
+}
+
+.item-description p {
+    margin: 0;
+}
+
+.item-description {
+    margin-top: 15px;   
+}
+
+.item-description-header {
+    font-family: 'Circular Std Medium', sans-serif;
+    font-size: 18px;
+    padding: 0px 0px 5px 0px;
 }

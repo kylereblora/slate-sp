@@ -40,9 +40,21 @@ export class CreateItem extends Component {
     }
 
     handleSubmit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         // calls the dispatch to create a product using the state that we have right now
-        this.props.createProduct(this.state)
+        if((this.state.itemName || this.state.itemPrice || this.state.itemQuantity || this.state.itemDescription
+        || this.state.itemCategory || this.state.itemImageUrl) !== '') {
+            
+            this.props.createProduct(this.state)
+            this.setState({
+                itemName:           '',
+                itemPrice:          '',
+                itemQuantity:       '',
+                itemDescription:    '',
+                itemCategory:       '',
+                itemImageUrl:       '',
+            })
+        } 
     }
 
     imageUrlCallback = (data) => {
@@ -66,7 +78,7 @@ export class CreateItem extends Component {
                             <Form.Field required onChange={this.handleChange}>
                                 <label>Item Price</label>
                             
-                                <Input id="itemPrice" labelPosition='right' type='number' placeholder='450'>
+                                <Input id="itemPrice" labelPosition='right' type='number' min='1' placeholder='450'>
                                     <input />
                                     <Label>.00</Label>
                                 </Input>
@@ -75,7 +87,7 @@ export class CreateItem extends Component {
                             <Form.Field required onChange={this.handleChange}>
                                 <label>Item Quantity</label>
                             
-                                <Input type="number" id="itemQuantity" placeholder='20' />
+                                <Input type="number" id="itemQuantity" min='1' placeholder='20' />
                                 
                             </Form.Field>
                             
