@@ -32,14 +32,14 @@ class Landing extends React.Component {
                         <div className="shop-items">
                             <span>
                                 <h1>Shop for Items</h1>
-                                <Button size="large" color="orange" onClick = {this.handleGetStartedClick}>Shop ></Button>
+                                <Button size="large" color="orange" onClick = {() => {window.location.href = '/shop'}}>Shop ></Button>
                             </span>
                         </div>
 
                         <div className="hire-pros">
                             <span>
                                 <h1>Search for Pros</h1>
-                                <Button size="large" color="orange" onClick = {this.handleGetStartedClick}>Hire ></Button>
+                                <Button size="large" color="orange" onClick = {() => {window.location.href = '/hire'}}>Hire ></Button>
                             </span>
                         </div>
                     </div>

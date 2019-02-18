@@ -40,19 +40,21 @@ export class CreateItem extends Component {
     }
 
     handleSubmit = (e) => {
-        // e.preventDefault();
         // calls the dispatch to create a product using the state that we have right now
         if((this.state.itemName || this.state.itemPrice || this.state.itemQuantity || this.state.itemDescription
         || this.state.itemCategory || this.state.itemImageUrl) !== '') {
             
-            this.props.createProduct(this.state)
-            this.setState({
-                itemName:           '',
-                itemPrice:          '',
-                itemQuantity:       '',
-                itemDescription:    '',
-                itemCategory:       '',
-                itemImageUrl:       '',
+            this.props.createProduct(this.state).then(() => {
+                this.setState({
+                    itemName:           '',
+                    itemPrice:          '',
+                    itemQuantity:       '',
+                    itemDescription:    '',
+                    itemCategory:       '',
+                    itemImageUrl:       '',
+                });
+
+                window.location.reload();
             })
         } 
     }
