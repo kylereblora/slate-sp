@@ -8,6 +8,7 @@ import { Button } from 'semantic-ui-react';
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { Redirect } from 'react-router-dom'
 
 const Home = (props) => {
 
@@ -15,7 +16,9 @@ const Home = (props) => {
         window.location.href = '/create_item';
     }
 
-    const { products } = props;
+    const { products, auth } = props;
+    if (!auth.uid) return <Redirect to='/signin' />
+    
     return(
         <div className="home-site">
             <Navbar />
@@ -48,7 +51,8 @@ const Home = (props) => {
 // get the products from the firestore database and assign it to this state's products
 const mapStateToProps = (state) => {
     return {
-        products: state.firestore.ordered.products
+        products: state.firestore.ordered.products,
+        auth : state.firebase.auth
     }
 }
 

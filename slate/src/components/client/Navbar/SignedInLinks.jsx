@@ -21,22 +21,22 @@ const SignedInLinks = (props) => {
                         activeClassName="active-item"
                         >Hire</NavLink></li>
                     <li><NavLink 
-                        to="/wishlist/:id"
+                        to={"/wishlist/" + props.auth.uid}
                         className="navlink-hover"
                         activeClassName="active-item"
                         >Wishlist</NavLink></li>
                     <li><NavLink 
-                        to="/notifications/:id"
+                        to={"/notifications/"+ props.auth.uid}
                         className="navlink-hover"
                         activeClassName="active-item"
                         >Notifications</NavLink></li>
                     <li><NavLink 
-                        to="/profile/:id"
+                        to={"/profile/"+ props.auth.uid}
                         className="navlink-hover"
                         activeClassName="active-item"
-                        >KBR</NavLink></li>
+                        >{props.profile.initials}</NavLink></li>
                     <li>
-                        <a className = "log-out" onClick={props.signOut}>Log Out</a>
+                        <a className="log-out" onClick={props.signOut}>Log Out</a>
                     </li>
                 </ul> 
             </div>

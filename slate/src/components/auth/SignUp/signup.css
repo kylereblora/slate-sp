@@ -55,8 +55,7 @@
     font-weight: 700;
 }
 
-.ui.form.styled {
-    border-color: #313131;
-    color: green
-}
 
+.signup-form {
+    text-align: left;
+}

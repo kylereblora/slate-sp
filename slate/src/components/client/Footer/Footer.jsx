@@ -14,7 +14,6 @@ const Footer = () => {
             <div className="shop">
                 <h3>SHOP</h3>
                 <ul>
-                    <li><a href="#">Architectural Hardware</a></li>
                     <li><a href="#">Bath</a></li>
                     <li><a href="#">Curtains and Blinds</a></li>
                     <li><a href="#">Home Interior</a></li>
@@ -26,8 +25,8 @@ const Footer = () => {
             <div className="hire">
                 <h3>HIRE</h3>
                 <ul>                    
-                    <li><a href="#">Architects</a></li>
-                    <li><a href="#">Interior Designers</a></li>
+                    <li><a href="/hire/architect">Architects</a></li>
+                    <li><a href="/hire/interior-designer">Interior Designers</a></li>
                 </ul>
             </div>
 

@@ -3,6 +3,7 @@ import { Button, Form, Message } from 'semantic-ui-react'
 import './signin.css'
 import { connect } from 'react-redux'
 import { signIn } from '../../../store/actions/authActions'
+import { Redirect } from 'react-router-dom'
 
 export class SignIn extends Component {
     state = {
@@ -22,7 +23,10 @@ export class SignIn extends Component {
     }
 
     render() {
-        const { authError } = this.props;
+        const { authError, auth } = this.props;
+
+        // ROUTE GUARD -- if the user isn't logged in yet and tries to access this component, redirect.
+        if (auth.uid) return <Redirect to='/home' />
         return (
             <div className="signin-main">
                 <div className="sg">
@@ -71,7 +75,8 @@ export class SignIn extends Component {
 const mapStateToProps = (state) => {
     // state > auth in rootReducer > authError in authReducer
     return {
-        authError: state.auth.authError
+        authError: state.auth.authError,
+        auth: state.firebase.auth
     }
 }
 

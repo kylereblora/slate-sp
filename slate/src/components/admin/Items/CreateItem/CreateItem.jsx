@@ -6,6 +6,7 @@ import './createitem.css';
 import { createProduct } from '../../../../store/actions/productActions'
 import { connect } from 'react-redux'
 import ItemUpload from './ItemUpload';
+import { Redirect } from 'react-router-dom'
 
 const options = [
     {key: 1, text: 'Bath', value: 'Bath'},
@@ -65,6 +66,10 @@ export class CreateItem extends Component {
     }
 
     render() {
+        const { auth } = this.props;
+
+        // ROUTE GUARD -- if the user isn't logged in yet and tries to access this component, redirect.
+        if (!auth.uid) return <Redirect to='/signin' />
         return (
             <div className="create-item-site">
                 <Navbar />
@@ -122,10 +127,16 @@ export class CreateItem extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
         createProduct: (product) => dispatch(createProduct(product))
     }
 } 
 
-export default connect(null, mapDispatchToProps)(CreateItem)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateItem)
