@@ -21,7 +21,6 @@ const Navbar = (props) => {
                 </div>
                 <div className="spacer" />
                 { links }
-                
             </nav>
         </header>
     )
