@@ -1,0 +1,15 @@
+.item-listings-main {
+    margin: 0px 0px 30px 0px;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0.7px 1px 0 rgba(0, 0, 0, 0.1);
+    width: 1108px;
+    max-width: 1108px;
+    display: inline-block;
+    text-align: left;
+}
+
+.bath-products-preview {
+    display: flex;
+    flex-direction: column;
+}

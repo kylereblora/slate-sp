@@ -1,21 +1,13 @@
 import React, { Component } from 'react'
 import Navbar from '../../../client/Navbar/Navbar';
-import Footer from '../../../client/Footer/Footer';
 import { Button, Form, TextArea, Label, Input, Dropdown } from 'semantic-ui-react'
 import './createitem.css';
 import { createProduct } from '../../../../store/actions/productActions'
 import { connect } from 'react-redux'
 import ItemUpload from './ItemUpload';
 import { Redirect } from 'react-router-dom'
+import { options } from '../../Items/CreateItem/itemoptions'
 
-const options = [
-    {key: 1, text: 'Bath', value: 'Bath'},
-    {key: 2, text: 'Curtains and Blinds', value: 'Curtains and Blinds'},
-    {key: 3, text: 'Home Interior', value: 'Home Interior'},
-    {key: 4, text: 'Lightings and Fans', value: 'Lightings and Fans'},
-    {key: 5, text: 'Walls and Flooring', value: 'Walls and Flooring'},
-    
-]
 
 export class CreateItem extends Component {
     state = {
@@ -118,7 +110,6 @@ export class CreateItem extends Component {
                             <div className="form-buttons">
                                 <Button fluid color="orange" type='submit' onClick={this.handleSubmit}>Add Item</Button>
                             </div>
-                            
                         </Form>
                     </div>
                 </div>

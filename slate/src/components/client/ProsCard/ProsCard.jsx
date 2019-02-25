@@ -14,8 +14,8 @@ const ProsCard = ({pro}) => {
 
                 <div className="pros-misc">
                     <div className="pros-details">
-                        <span className="pros-name">{pro.proName}</span>
-                        <p className="pros-location">{pro.proLocation}</p>
+                        <span className="pros-name">{pro.firstName} {pro.lastName}</span>
+                        <p className="pros-location">{pro.occupation}</p>
                         <Rating icon="star" defaultRating = {4} maxRating = {5} disabled/>
                         <p className="pros-description">{pro.proDescription}</p>
                     </div>

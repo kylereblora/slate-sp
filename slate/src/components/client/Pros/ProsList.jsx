@@ -9,17 +9,8 @@ const ProsList = ({pros, category}) => {
     else if(categ === "architect") categ = 'Architects';
 
     return(
-        <div className="pros-list">
-            <div className="crumbs">
-                <Breadcrumb>
-                    <Breadcrumb.Section link>Home</Breadcrumb.Section>
-                    <Breadcrumb.Divider icon='right angle' />
-                    <Breadcrumb.Section active>Store</Breadcrumb.Section>
-                </Breadcrumb>
-            </div>
-
-            
-            <p className="pros-list-heading">We've found 5 {category === undefined ? "Pros" : category} for you.</p>
+        <div className="pros-list">           
+            <p className="pros-list-heading">We've found 5 {categ === undefined ? "Pros" : categ} for you.</p>
             { pros && pros.map(pro => {
                 return (
                     <ProsCard pro={pro} key={pro.id} />

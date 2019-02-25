@@ -17,3 +17,34 @@ export const createProduct = (product) => {
         })
     }
 } 
+
+export const deleteProduct = (product) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('products').doc(product.id).delete().then(() => {
+            dispatch({ type: 'DELETE_PRODUCT' });
+        }).catch((err) => {
+            dispatch({ type: 'DELETE_PRODUCT_ERROR', err});
+        })
+    }
+}
+
+export const editProduct = (product, state) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('products').doc(product.id).set({
+            itemRating:         product.itemRating,
+            createdAt:          product.createdAt,
+            itemName:           state.itemName,
+            itemPrice:          state.itemPrice,
+            itemQuantity:       state.itemQuantity,
+            itemDescription:    state.itemDescription,
+            itemCategory:       state.itemCategory,
+            itemImageUrl:       state.itemImageUrl,
+        }).then(() => {
+            dispatch({ type: 'EDIT_PRODUCT' });
+        }).catch((err) => {
+            dispatch({ type: 'EDIT_PRODUCT_ERROR', err});
+        })
+    }
+}

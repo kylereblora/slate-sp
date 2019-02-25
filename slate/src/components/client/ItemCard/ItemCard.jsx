@@ -1,6 +1,5 @@
 import React from 'react' // rafce
 import './itemcard.css';
-import PlaceholderImg from '../../../assets/img/placeholderhouse.jpg';
 import { Button, Rating, Divider } from 'semantic-ui-react'
 
 const ItemCard = ({product}) => {

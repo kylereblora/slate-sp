@@ -14,7 +14,9 @@ export class Shop extends Component {
             <div className="shop-site">
                 <Navbar />
                 <div className="shop-main">
-                    <ItemList products={products} />
+                    {
+                        products ? <ItemList products={products} /> : null
+                    }
                 </div>
                 <Footer />
             </div>

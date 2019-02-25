@@ -2,8 +2,7 @@ import React from 'react';
 import './home.css';
 import Navbar from '../../client/Navbar/Navbar';
 import Footer from '../../client/Footer/Footer';
-import ItemCard from '../../client/ItemCard/ItemCard';
-import ItemList from '../../client/ItemList/ItemList';
+import ItemListings from '../ItemListings/ItemListings';
 import { Button } from 'semantic-ui-react';
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
@@ -17,7 +16,7 @@ const Home = (props) => {
     }
 
     const { products, auth } = props;
-    if (!auth.uid) return <Redirect to='/signin' />
+    if (!(auth.email === 'tester@gmail.com')) return <Redirect to='/signin' />
     
     return(
         <div className="home-site">
@@ -34,7 +33,7 @@ const Home = (props) => {
 
                     { 
                         products ?
-                        <ItemList products={products}/>
+                        <ItemListings products={products}/>
                         : 
                         <div className="no-listings-yet">
                             <span className="no-listings-span"><h1>No listings yet. Add a new item to list!</h1></span>

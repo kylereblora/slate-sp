@@ -15,6 +15,8 @@ export class Home extends Component {
 
         // ROUTE GUARD -- if the user isn't logged in yet and tries to access this component, redirect.
         if (!auth.uid) return <Redirect to='/signin' />
+        // admin email
+        if (auth.email === 'tester@gmail.com') return <Redirect to='/home/admin' />
 
         return (
             <div className="home-site">

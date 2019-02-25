@@ -20,6 +20,22 @@ const productReducer = (state = initState, action) => {
         case 'CREATE_PRODUCT_ERROR':
             console.log('create product error', action.err);
             return state;
+        
+        case 'DELETE_PRODUCT' :
+            console.log('deleted product');
+            return state;
+
+        case 'DELETE_PRODUCT_ERROR' :
+            console.log('delete product error', action.err);
+            return state;
+
+        case 'EDIT_PRODUCT' :
+            console.log('edited product');
+            return state;
+            
+        case 'EDIT_PRODUCT_ERROR' :
+            console.log('edit product error', action.err);
+            return state;
 
         default: 
             return state;

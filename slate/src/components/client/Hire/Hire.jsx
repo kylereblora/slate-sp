@@ -3,6 +3,8 @@ import ProsList from '../Pros/ProsList';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 import './hire.css';
 
 
@@ -11,7 +13,6 @@ export class Hire extends Component {
     render() {
         const category = this.props.match.params.category;
         const { pros } = this.props;
-        console.log(pros)
         return (
             <div className="hire-site">
                 <Navbar />
@@ -25,9 +26,15 @@ export class Hire extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
-        pros: state.pro.pros
+        pros: state.firestore.ordered.users
     }
 }
 
-export default connect(mapStateToProps)(Hire)
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        { collection : 'users' }
+    ])
+)(Hire)

@@ -3,6 +3,9 @@ import './landing.css';
 import { Button } from 'semantic-ui-react';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { Redirect } from 'react-router-dom'
 
 class Landing extends React.Component {
     
@@ -11,6 +14,11 @@ class Landing extends React.Component {
     }
 
     render() {
+        const { auth } = this.props;
+        
+         // ROUTE GUARD -- if the user isn't logged in yet and tries to access this component, redirect.
+         if (auth.uid) return <Redirect to='/home' />
+
         return(
             <div>
                 <Navbar />
@@ -51,5 +59,13 @@ class Landing extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        auth : state.firebase.auth
+    }
+}
 
-export default Landing;
+export default compose(
+    connect(mapStateToProps)
+)(Landing);

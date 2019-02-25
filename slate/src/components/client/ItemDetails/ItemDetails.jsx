@@ -1,7 +1,6 @@
 import React from 'react'
-import { Button, Rating, Divider } from 'semantic-ui-react'
+import { Button, Rating, Divider} from 'semantic-ui-react'
 import './itemdetails.css';
-import PlaceholderImg from '../../../assets/img/placeholderhouse.jpg';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import { connect } from 'react-redux';
