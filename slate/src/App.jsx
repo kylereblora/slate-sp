@@ -10,6 +10,7 @@ import ItemDetails from './components/client/ItemDetails/ItemDetails';
 import Shop from './components/client/Shop/Shop';
 import HomeAdmin from './components/admin/Home/Home';
 import CreateItem from './components/admin/Items/CreateItem/CreateItem';
+import Wishlist from './components/client/Wishlist/Wishlist';
 
 class App extends React.Component {
     render() {
@@ -27,6 +28,9 @@ class App extends React.Component {
                         <Route exact={true} path='/hire/:category' component = {Hire} />
                         <Route exact={true} path='/pro/:category/:id' component = {ProsDetails} />
                         
+                        <Route exact={true} path='/wishlist/:id' component = {Wishlist} />
+                        
+
                         <Route exact={true} path='/shop' component = {Shop} />
                         <Route exact={true} path='/item/:category/:id' component = {ItemDetails} />
                         

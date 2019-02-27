@@ -1,0 +1,36 @@
+:root {
+    --space: 1.5em 0;
+    --space: 2em 0;
+}
+
+.wishlist-site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #fafafa;
+}
+
+.wishlist-main {
+    margin: 0px 100px;
+    flex: 1 0 auto;
+    text-align: center;
+}
+
+.wishlist-main:after {
+    content: '\00a0';
+    display: block;
+    margin-top: var(--space);
+    height: 0;
+    visibility: hidden;
+}
+
+.wishlist-products {
+    margin: 100px 0px 30px 0px;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0.7px 1px 0 rgba(0, 0, 0, 0.1);
+    width: 1150px;
+    max-width: 1150px;
+    display: inline-block;
+    text-align: left;
+}
