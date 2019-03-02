@@ -5,36 +5,33 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
+import ItemInWishlist from './ItemInWishlist/ItemInWishlist'
 import './wishlist.css'
-
-function isWishlistAuthorCurrentUid(uid) {
-    return function(obj) {
-        return obj.wishlistAuthor === uid;
-    }
-}
 
 export class Wishlist extends Component {
     render() {
-        const { auth, profile, wishlist } = this.props;
+        const { auth, profile, wishlist} = this.props;
         if (!auth.uid) return <Redirect to='/' />
         
         return (
             <div className="wishlist-site">
                 <Navbar />
                 <div className="wishlist-main">
+                
                     <div className="wishlist-products">
                         <h1>Wishlist</h1>
                         {
-                            wishlist ? 
-                            wishlist.filter(isWishlistAuthorCurrentUid(auth.uid)).map(product => {
+                            wishlist && wishlist.length > 0 ? 
+                            wishlist.map(product => {
                                 return (
-                                    <div>{product.itemName}</div>
+                                    <ItemInWishlist product={product} key={product.id} currentUser={auth.uid}/>
                                 )
                             })
                             :
-                            <p>You have no products in your wishlist yet.</p>
+                            <p>No items in wishlist yet.</p>
                         }
                     </div>
+                
                 </div>
                 <Footer />
             </div>
@@ -42,18 +39,19 @@ export class Wishlist extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    console.log(state)
+const mapStateToProps = (state, ownProps) => {
+    const id = ownProps.match.params.id;
+    const users = state.firestore.data.users;
+    const wishlist = users ? users[id].wishlist : null 
+
     return { 
         auth: state.firebase.auth,
         profile: state.firebase.profile,
-        wishlist: state.firestore.ordered.wishlist
+        wishlist
     }
 }
 
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([
-        { collection : 'wishlist' }
-    ])
+    firestoreConnect(['users'])
 )(Wishlist)

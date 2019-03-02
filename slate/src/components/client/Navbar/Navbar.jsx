@@ -8,7 +8,8 @@ import { Redirect } from 'react-router-dom'
 
 const Navbar = (props) => {
     const { auth, profile } = props;
-    const links = auth.uid ? <SignedInLinks profile={profile} auth = {auth}/> : <SignedOutLinks />
+
+    const links = auth.uid ? <SignedInLinks profile={profile} auth={auth}/> : <SignedOutLinks />
     
 
     return (
@@ -29,11 +30,9 @@ const Navbar = (props) => {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state);
-    
     return {
         auth: state.firebase.auth,
-        profile: state.firebase.profile
+        profile: state.firebase.profile,
     }
 }
 

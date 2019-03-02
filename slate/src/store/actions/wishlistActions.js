@@ -1,13 +1,32 @@
-export const addItemToWishlist = (product, state) => {
+export const addItemToWishlist = (productId, product, state) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        return new Promise((resolve, reject) => {
+            const firestore = getFirestore();
+            const firebase = getFirebase();
+            firestore.collection('users').doc(state.uid).update({
+                wishlist: firebase.firestore.FieldValue.arrayUnion({...product, id: productId})
+            }).then(() => {
+                dispatch({ type : 'ADD_PRODUCT_TO_WISHLIST', productId})
+            }).then(() => {
+                resolve();
+            }).catch((err) => {
+                dispatch({ type: 'ADD_PRODUCT_TO_WISHLIST_ERROR', err})
+            })
+        })
+    }
+}
+
+export const deleteItemFromWishlist = (productId, product, state) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
-        firestore.collection('wishlist').add({
-            ...product,
-            wishlistAuthor: state.uid
+        const firebase = getFirebase();
+        
+        firestore.collection('users').doc(state).update({
+            wishlist : firebase.firestore.FieldValue.arrayRemove({...product, id: productId})
         }).then(() => {
-            dispatch({ type : 'ADD_PRODUCT_TO_WISHLIST', product})
+            dispatch({ type: 'DELETE_PRODUCT_FROM_WISHLIST', productId })
         }).catch((err) => {
-            dispatch({ type: 'ADD_PRODUCT_TO_WISHLIST_ERROR', err})
+            dispatch({ type : 'DELETE_PRODUCT_FROM_WISHLIST_ERROR', err})
         })
     }
 }

@@ -7,17 +7,29 @@ import { addItemToWishlist } from '../../../store/actions/wishlistActions'
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux'
-
+import { getProductFromWishlist } from '../Wishlist/wishlistFunctions'
 
 
 export class ItemDetails extends Component {
-    
+    state = {
+        addedToWishlist: false
+    }
+
     handleAddToWishlist = (e) => {
-        this.props.addItemToWishlist(this.props.product, this.props.auth);
+        this.props.addItemToWishlist(this.props.id, this.props.product, this.props.auth).then(() => {
+            this.setState({addedToWishlist: true})
+        })
     }
 
     render() {
-        const { product, auth } = this.props;
+        const { id, product, auth, wishlist } = this.props;
+        let inWishlist = null
+
+        if (wishlist) {
+            inWishlist = wishlist.find(getProductFromWishlist(id))
+        }
+        
+        
         if (product) {
             return (
                 <div className="item-site">
@@ -42,7 +54,12 @@ export class ItemDetails extends Component {
                                                 <input type="number" min='1' max={product.itemQuantity} placeholder='1'/>
                                             </div>
                                             <div className="add-to-wishlist">
-                                                <Button fluid color='orange' onClick={this.handleAddToWishlist}>Add to Wishlist</Button>
+                                                { 
+                                                    this.state.addedToWishlist || inWishlist ? 
+                                                    <Button fluid disabled>Added to Wishlist</Button>
+                                                    :
+                                                    <Button fluid color='orange' onClick={this.handleAddToWishlist}>Add to Wishlist</Button>
+                                                }
                                             </div>
                                         </div>
                                         
@@ -74,21 +91,24 @@ const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id
     const products = state.firestore.data.products
     const product = products ? products[id] : null
+    const users = state.firestore.data.users
+    const wishlist = users ? users[state.firebase.auth.uid].wishlist : null
+
     return {
-        product : product,
-        auth: state.firebase.auth
+        id,
+        product,
+        auth: state.firebase.auth,
+        wishlist
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addItemToWishlist: (product, state) => dispatch(addItemToWishlist(product, state))
+        addItemToWishlist: (id, product, state) => dispatch(addItemToWishlist(id, product, state))
     }
 } 
 
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
-    firestoreConnect([
-        { collection : 'products' }
-    ])
+    firestoreConnect(['products', 'users'])
 )(ItemDetails)

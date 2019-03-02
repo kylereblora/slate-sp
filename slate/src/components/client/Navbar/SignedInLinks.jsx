@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Dropdown } from 'semantic-ui-react';
 import './signedoutlinks.css';
 import { connect } from 'react-redux';
 import { signOut } from '../../../store/actions/authActions'
