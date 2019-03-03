@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux'
 import { getProductFromWishlist } from '../Wishlist/wishlistFunctions'
-
+import { Redirect } from 'react-router-dom'
 
 export class ItemDetails extends Component {
     state = {
@@ -16,9 +16,14 @@ export class ItemDetails extends Component {
     }
 
     handleAddToWishlist = (e) => {
-        this.props.addItemToWishlist(this.props.id, this.props.product, this.props.auth).then(() => {
-            this.setState({addedToWishlist: true})
-        })
+
+        if(this.props.auth.uid) {
+            this.props.addItemToWishlist(this.props.id, this.props.product, this.props.auth).then(() => {
+                this.setState({addedToWishlist: true})
+            })
+        } else {
+            window.location.href = '/signin'
+        }
     }
 
     render() {
@@ -92,8 +97,9 @@ const mapStateToProps = (state, ownProps) => {
     const products = state.firestore.data.products
     const product = products ? products[id] : null
     const users = state.firestore.data.users
-    const wishlist = users ? users[state.firebase.auth.uid].wishlist : null
-
+    const wishlist = users && state.firebase.auth.uid ? users[state.firebase.auth.uid].wishlist : null
+    console.log(state);
+    
     return {
         id,
         product,

@@ -1,5 +1,5 @@
 import React from 'react';
-import './home.css';
+import './homeadmin.css';
 import Navbar from '../../client/Navbar/Navbar';
 import Footer from '../../client/Footer/Footer';
 import ItemListings from '../ItemListings/ItemListings';
@@ -21,7 +21,7 @@ const Home = (props) => {
     return(
         <div className="home-site">
             <Navbar />
-            <div className = "home-main">
+            <div className = "home-admin-main">
                 <div className ="listing-section">
                     <div className="listing-details">
                         <p className="listing-section-heading">Your Listings</p>

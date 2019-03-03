@@ -6,8 +6,12 @@ const ItemCard = ({product}) => {
     return (
         <div className="item-card">
             <div className="item-card-main">
-                <div className="item-picture">
-                    <img src={product.itemImageUrl} alt="image"/>
+                <div className="responsive-container">
+                    <div className="dummy"></div>
+                    
+                    <div className="item-picture">
+                        <img src={product.itemImageUrl} alt="image"/>
+                    </div>
                 </div>
 
                 <div className="spacer" />

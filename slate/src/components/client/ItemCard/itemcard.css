@@ -12,10 +12,32 @@
 
 }
 
-.item-picture {
+.responsive-container {
+    position: relative;
     width: 250px;
-    max-height:270px;
     height: 270px;
+    max-height: 270px;
+}
+
+.dummy {
+    padding-top: 100%; /* forces 1:1 aspect ratio */
+}
+
+.item-picture {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    text-align:center; /* Align center inline elements */
+}
+
+.item-picture:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
 }
 
 .item-name {
@@ -32,6 +54,8 @@
 .item-picture img {
     width: 250px;
     max-height:250px;
+    vertical-align: middle;
+    display: inline-block;
 }
 
 .item-misc {

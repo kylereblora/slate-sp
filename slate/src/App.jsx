@@ -36,7 +36,6 @@ class App extends React.Component {
                         
                         <Route exact={true} path='/home/admin' component = {HomeAdmin} />
                         <Route exact={true} path='/create_item' component = {CreateItem} />
-                        
                     </Switch>
                 </div>
             </Router>

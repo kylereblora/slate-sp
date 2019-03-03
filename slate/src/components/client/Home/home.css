@@ -10,11 +10,9 @@
 }
 
 .home-main {
-    margin: 0px 200px;
-    padding-top: 110px;
     flex: 1 0 auto;
-    /* padding: var(--space) var(--space) 0; */
-    /* width: 100%; */
+    text-align: center;
+    padding-top: 100px;
 }
 
 .home-main:after {
@@ -25,29 +23,46 @@
     visibility: hidden;
 }
 
+.home-content {
+    width: 1150px;
+    max-width: 1150px;
+    display: inline-block;
+    text-align: left;
+    
+}
+
 .pros-section {
-    margin-top: 10px;
+    margin: 30px 0px;
+}
+
+.pros-section, .product-section {
+    background: #fff;
+    box-shadow: 0 0.7px 1px 0 rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
 .pros-section-heading, .product-section-heading {
-    font-family: 'Circular Std Medium', sans-serif;
-    font-size: 20px;
+    font-family: 'GT Walsheim', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
 }
 
 .pros-holder {
     display: flex;
     justify-content: center;
+    padding-top: 10px;
 }
 
 .product-previews {
     display: flex;
     flex-wrap: wrap;
-    
+    text-align: left;
 }
 
 .product-previews > * {
     flex: 1 1 10px;
-
 }
 
 .architects {
@@ -59,8 +74,6 @@
     background: -ms-linear-gradient(left, rgba(36,226,74,1) 0%, rgba(107,161,154,1) 100%);
     background: linear-gradient(to right, rgba(36,226,74,1) 0%, rgba(107,161,154,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#24e24a', endColorstr='#6ba19a', GradientType=1 );
-    /* background: url(../../../assets/img/architectural-banner.jpg);
-    background-size: cover; */
     flex: 0.5;
 }
 
@@ -73,13 +86,11 @@
     background: -ms-linear-gradient(45deg, rgba(255,0,119,1) 0%, rgba(226,122,32,1) 100%);
     background: linear-gradient(45deg, rgba(255,0,119,1) 0%, rgba(226,122,32,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0077', endColorstr='#e27a20', GradientType=1 );
-    /* background: url(../../../assets/img/interior-banner.jpg);
-    background-size: 100% ; */
     flex: 0.5;
 }
 
 .architects, .intdes {
-    border-radius: 10px;
+    border-radius: 5px;
     text-align: center;
 }
 
@@ -93,6 +104,13 @@
     color: white;
     display: block;
     padding: 35px 80px;
-
 }
 
+.item-link-style {
+    color: #313131;
+    max-width: 300px;
+}
+
+.item-link-style:hover {
+    color: #505050;
+}
