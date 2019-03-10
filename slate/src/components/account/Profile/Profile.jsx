@@ -6,6 +6,8 @@ import { compose } from 'redux'
 import Navbar from '../../client/Navbar/Navbar'
 import Footer from '../../client/Footer/Footer'
 import './profile.css'
+import { ProfileHeader } from './ProfileHeader';
+import { ProfileProjects } from './ProfileProjects';
 
 export class Profile extends Component {
     render() {
@@ -22,50 +24,11 @@ export class Profile extends Component {
                                 
                                 <div className="profile-current-user">
                                     <div className="profile-header">
-                                        <div className="profile-header-items">
-                                            <div className="profile-picture">
-                                                <img src={profile.proPicture ? profile.proPicture : "https://via.placeholder.com/150"} alt="avatar"/>
-                                            </div>
-                                            <div className="profile-name">
-                                                <h1>{profile.firstName} {profile.lastName}</h1>
-                                                <h3>{profile && profile.location ? profile.location : "No Location"}</h3>
-                                                <Rating icon="star" defaultRating = { profile.proRating } maxRating = {5} disabled/>
-                                            </div>
-                                            
-                                            <div className="spacer"></div>
-                                        
-                                            <div className="contact-btn">
-                                                {
-                                                    id && auth && id === auth.uid ? 
-                                                    <Button inverted color='orange' size='large'>Edit Profile</Button>  : null
-                                                }
-                                            </div>
-                                        </div>
-
-                                        <div className="profile-description">
-                                            <p className="description-heading">Description</p>
-                                            <p className="description-content">{profile.proDescription ? profile.proDescription : "No Description Yet"}</p>
-                                        </div>
-
+                                        <ProfileHeader user={user} id={id} auth={auth} />
                                     </div>
 
                                     <div className="profile-projects">
-                                        <div className="project-header">
-                                            <p className="project-heading">Projects</p>
-                                            <div className="spacer" />
-                                            <div className="contact-btn">
-                                                    <Button inverted color='orange' size='large'>Add Project</Button>
-                                            </div>
-                                        </div>
-                                        {
-                                            profile.proProjects ? 
-
-                                            <div>Yay</div>
-                                            :
-                                            <div className="no-projects-yet">
-                                                <span className="no-projects-span"><h1>No projects yet. Add one to display!</h1></span>
-                                            </div> 
-                                        }
+                                        <ProfileProjects user={user} isCurrent={true}/>
                                     </div>
 
                                     <div className="profile-reviews">
@@ -85,37 +48,11 @@ export class Profile extends Component {
                                 
                                 <div className="profile-unlogged-user">
                                     <div className="profile-header">
-                                        <div className="profile-header-items">
-                                            <div className="profile-picture">
-                                                <img src={user.proPicture ? user.proPicture : "https://via.placeholder.com/150"} alt="avatar"/>
-                                            </div>
-                                            <div className="profile-name">
-                                                <h1>{user.firstName} {user.lastName}</h1>
-                                                <h3>{user && user.location ? user.location : "No Location"}</h3>
-                                                <Rating icon="star" defaultRating = { user.proRating } maxRating = {5} disabled/>
-                                            </div>
-                                        </div>
-
-                                        <div className="profile-description">
-                                            <p className="description-heading">Description</p>
-                                            <p className="description-content">{user.proDescription ? user.proDescription : "No Description Yet"}</p>
-                                        </div>
-
+                                        <ProfileHeader user={user} id={id} auth={auth} />
                                     </div>
 
                                     <div className="profile-projects">
-                                        <div className="project-header">
-                                            <p className="project-heading">Projects</p>
-                                        </div>
-                                        {
-                                            user.proProjects ? 
-
-                                            <div>Yay</div>
-                                            :
-                                            <div className="no-projects-yet">
-                                                <span className="no-projects-span"><h1>No projects yet.</h1></span>
-                                            </div> 
-                                        }
+                                        <ProfileProjects user={user} isCurrent={false}/>
                                     </div>
 
                                     <div className="profile-reviews">
