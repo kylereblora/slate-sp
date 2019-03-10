@@ -11,6 +11,7 @@ import Shop from './components/client/Shop/Shop';
 import HomeAdmin from './components/admin/Home/Home';
 import CreateItem from './components/admin/Items/CreateItem/CreateItem';
 import Wishlist from './components/client/Wishlist/Wishlist';
+import Profile from './components/account/Profile/Profile';
 
 class App extends React.Component {
     render() {
@@ -29,6 +30,7 @@ class App extends React.Component {
                         <Route exact={true} path='/pro/:category/:id' component = {ProsDetails} />
                         
                         <Route exact={true} path='/wishlist/:id' component = {Wishlist} />
+                        <Route exact={true} path='/profile/:id' component = {Profile} />
                         
 
                         <Route exact={true} path='/shop' component = {Shop} />
