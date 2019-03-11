@@ -103,7 +103,7 @@ export class CreateItem extends Component {
 
                             <Form.Field required>
                                 <label>Item Image</label>
-                                <ItemUpload callbackFromParent = {this.imageUrlCallback} />
+                                <ItemUpload callbackFromParent = {this.imageUrlCallback} store={'items'}/>
                             </Form.Field>
 
                             

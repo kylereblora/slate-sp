@@ -23,7 +23,7 @@ export class ItemUpload extends Component {
     handleUpload = (e) => {
         if(this.state.image !== null) {
             const { image } = this.state;
-            const uploadTask =  storage.ref(`items/${image.name}`).put(image);
+            const uploadTask =  storage.ref(`${this.props.store}/${image.name}`).put(image);
 
             uploadTask.on('state_changed', 
                 (snapshot) => {
@@ -34,7 +34,7 @@ export class ItemUpload extends Component {
                     console.log(error) 
                 },
                 () => {
-                    storage.ref('items')
+                    storage.ref(`${this.props.store}`)
                         .child(image.name)
                         .getDownloadURL()
                         .then(url => {

@@ -16,8 +16,12 @@ export class ItemPreviews extends Component {
         const { product } = this.props;
         return (
             <div className="item-preview">
-                <div className="item-picture-preview">
-                    <img src={product.itemImageUrl} alt="image"/>
+                <div className="responsive-container-preview">
+                    <div className="dummy"></div>
+                    
+                    <div className="item-picture-preview-preview">
+                        <img src={product.itemImageUrl} alt="image"/>
+                    </div>
                 </div>
                 
                 <div className="spacer" />

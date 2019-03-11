@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Form, TextArea, Label, Input, Dropdown, Modal } from 'semantic-ui-react'
-import { options } from '../Items/CreateItem//itemoptions'
+import { options } from '../Items/CreateItem/itemoptions'
 import ItemUpload from '../Items/CreateItem/ItemUpload'
 import { editProduct } from '../../../store/actions/productActions'
 import { connect } from 'react-redux'
@@ -36,23 +36,27 @@ export class ItemEdit extends Component {
         this.props.editProduct(this.props.product, this.state)
     }
 
+    imageUrlCallback = (data) => {
+        // gets the image url from the ItemUpload child for later use
+        this.setState({itemImageUrl : data})        
+    }
+
     render() {
         return (
             <Modal trigger={<Button icon='edit' color='yellow' />}>
-                <Modal.Header>Edit Product</Modal.Header>
                 <Modal.Content>
                     <div className="edit-item-form">
                         <h1>Edit Item</h1>
                         <Form>
                             <Form.Field required onChange={this.handleChange}>
                                 <label>Item Name</label>
-                                <Input id="itemName" placeholder={this.props.product.itemName}/>
+                                <Input id="itemName" value={this.state.itemName}/>
                             </Form.Field>
 
                             <Form.Field required onChange={this.handleChange}>
                                 <label>Item Price</label>
                             
-                                <Input id="itemPrice" labelPosition='right' type='number' min='1' placeholder={this.props.product.itemPrice}>
+                                <Input id="itemPrice" labelPosition='right' type='number' min='1' value={this.state.itemPrice}>
                                     <input />
                                     <Label>.00</Label>
                                 </Input>
@@ -61,24 +65,24 @@ export class ItemEdit extends Component {
                             <Form.Field required onChange={this.handleChange}>
                                 <label>Item Quantity</label>
                             
-                                <Input type="number" id="itemQuantity" min='1' placeholder={this.props.product.itemQuantity} />
+                                <Input type="number" id="itemQuantity" min='1' value={this.state.itemQuantity} />
                                 
                             </Form.Field>
                             
                             <Form.Field required>
                                 <label>Item Category</label>
-                                <Dropdown placeholder={this.props.product.itemCategory} name='itemCategory' clearable options={options} onChange={this.handleDropdownChange} selection />
+                                <Dropdown value={this.state.itemCategory} name='itemCategory' clearable options={options} onChange={this.handleDropdownChange} selection />
                                 
                             </Form.Field>
 
                             <Form.Field required onChange={this.handleChange}>
                                 <label>Item Description</label>
-                                <TextArea id="itemDescription" placeholder={this.props.product.itemDescription} />
+                                <TextArea id="itemDescription" value={this.state.itemDescription} />
                             </Form.Field>
 
                             <Form.Field required>
                                 <label>Item Image</label>
-                                <ItemUpload callbackFromParent = {this.imageUrlCallback} />
+                                <ItemUpload callbackFromParent = {this.imageUrlCallback} store={'items'} />
                             </Form.Field>
 
                             

@@ -40,7 +40,13 @@ export const signUp = (newUser) => {
                 lastName: newUser.lastName,
                 initials: newUser.firstName[0] + newUser.lastName[0],
                 occupation: newUser.occupation,
-                wishlist: []
+                province : '',
+                proDescription: '',
+                proImageUrl: '',
+                proRating: 0,
+                wishlist: [],
+                projects: [],
+                reviews: []
             })
         }).then(() => {
             dispatch({ type: 'SIGNUP_SUCCESS' });
@@ -48,4 +54,28 @@ export const signUp = (newUser) => {
             dispatch({ type: 'SIGNUP_ERROR', err});
         })
     }
+}
+
+
+export const editUser = (user, state) => {
+    return (dispatch, getState, {getFirebase, getFirestore}) => {
+        const firestore = getFirestore();
+        firestore.collection('users').doc(user.id).set({
+            firstName: state.firstName,
+            lastName: state.lastName,
+            initials: state.firstName[0] + state.lastName[0],
+            province : state.province,
+            proDescription: state.proDescription,
+            proImageUrl: state.proImageUrl,
+            proRating: user.proRating,
+            wishlist: user.wishlist,
+            projects: user.projects,
+            reviews: user.reviews,
+            occupation : user.occupation
+        }).then(() => {
+            dispatch({ type: 'EDIT_PROFILE_SUCCESS' });
+        }).catch((err) => {
+            dispatch({ type: 'EDIT_PROFILE_ERROR', err});
+        })
+    }    
 }

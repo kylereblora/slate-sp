@@ -7,17 +7,41 @@
     width: 1080px;
 }
 
-.item-picture-preview {
+.responsive-container-preview {
+    position: relative;
+    width: 80px;
     height: 80px;
     max-height: 80px;
-    width: 80px;
-    max-width: 80px;
-    /* display: inline-grid; */
 }
 
-.item-picture-preview img {
-    height: 80px;
-    width: 80px;
+.dummy {
+    padding-top: 100%; /* forces 1:1 aspect ratio */
+}
+
+.item-picture-preview-preview {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    text-align:center; /* Align center inline elements */
+}
+
+.item-picture-preview-preview:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.item-picture-preview-preview img {
+    max-width:80px;
+    max-height:80px;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+    display: inline-block;
 }
 
 .item-misc-preview {

@@ -1,0 +1,100 @@
+export const provinces = [
+    { text: "Metro Manila", value: "Metro Manila", region: "NCR", key: "MM" },
+  
+    { text: "Abra", value: "Abra", region: "CAR", key: "ABR" },
+    { text: "Apayao",  value: "Apayao", region: "CAR", key: "APA" },
+    { text: "Benguet", value: "Benguet", region: "CAR", key: "BEN" },
+    { text: "Ifugao", value: "Ifugao", region: "CAR", key: "IFU" },
+    { text: "Kalinga", value: "Kalinga", region: "CAR", key: "KAL" },
+    { text: "Mountain Province", value: "Mountain Province", region: "CAR", key: "MOU" },
+  
+    { text: "Ilocos Norte", value: "Ilocos Norte", region: "I", key: "ILN" },
+    { text: "Ilocos Sur", value: "Ilocos Sur", region: "I", key: "ILS" },
+    { text: "La Union", value: "La Union", region: "I", key: "LUN" },
+    { text: "Pangasinan", value: "Pangasinan", region: "I", key: "PAN" },
+  
+    { text: "Batanes", value: "Batanes", region: "II", key: "BTN" },
+    { text: "Cagayan", value: "Cagayan", region: "II", key: "CAG" },
+    { text: "Isabela", value: "Isabela", region: "II", key: "ISA" },
+    { text: "Nueva Vizcaya", value: "Nueva Vizcaya", region: "II", key: "NUV" },
+    { text: "Quirino", value: "Quirino", region: "II", key: "QUI" },
+  
+    { text: "Aurora", value: "Aurora", region: "III", key: "AUR" },
+    { text: "Bataan", value: "Bataan", region: "III", key: "BAN" },
+    { text: "Bulacan", value: "Bulacan", region: "III", key: "BUL" },
+    { text: "Nueva Ecija", value: "Nueva Ecija", region: "III", key: "NUE" },
+    { text: "Pampanga", value: "Pampanga", region: "III", key: "PAM" },
+    { text: "Tarlac", value: "Tarlac", region: "III", key: "TAR" },
+    { text: "Zambales", value: "Zambales", region: "III", key: "ZMB" },
+  
+    { text: "Batangas", value: "Batangas", region: "IV-A", key: "BTG" },
+    { text: "Cavite", value: "Cavite", region: "IV-A", key: "CAV" },
+    { text: "Laguna", value: "Laguna", region: "IV-A", key: "LAG" },
+    { text: "Quezon", value: "Quezon", region: "IV-A", key: "QUE" },
+    { text: "Rizal", value: "Rizal", region: "IV-A", key: "RIZ" },
+  
+    { text: "Marinduque", value: "Marinduque", region: "IV-B", key: "MAD" },
+    { text: "Occidental Mindoro", value: "Occidental Mindoro", region: "IV-B", key: "MDC" },
+    { text: "Oriental Mindoro", value: "Oriental Mindoro", region: "IV-B", key: "MDR" },
+    { text: "Palawan", value: "Palawan", region: "IV-B", key: "PLW" },
+    { text: "Romblon", value: "Romblon", region: "IV-B", key: "ROM" },
+  
+    { text: "Albay", value: "Albay", region: "V", key: "ALB" },
+    { text: "Camarines Norte", value: "Camarines Norte", region: "V", key: "CAN" },
+    { text: "Camarines Sur", value: "Camarines Sur", region: "V", key: "CAS" },
+    { text: "Catanduanes",  value: "Catanduanes", region: "V", key: "CAT" },
+    { text: "Masbate", value: "Masbate", region: "V", key: "MAS" },
+    { text: "Sorsogon", value: "Sorsogon", region: "V", key: "SOR" },
+  
+    { text: "Aklan", value: "Aklan", region: "VI", key: "AKL" },
+    { text: "Antique", value: "Antique", region: "VI", key: "ANT" },
+    { text: "Capiz", value: "Capiz", region: "VI", key: "CAP" },
+    { text: "Guimaras", value: "Guimaras", region: "VI", key: "GUI" },
+    { text: "Iloilo", value: "Iloilo", region: "VI", key: "ILI" },
+    { text: "Negros Occidental", value: "Negros Occidental", region: "VI", key: "NEC" },
+  
+    { text: "Bohol", value: "Bohol", region: "VII", key: "BOH" },
+    { text: "Cebu", value: "Cebu", region: "VII", key: "CEB" },
+    { text: "Negros Oriental", value: "Negros Oriental", region: "VII", key: "NER" },
+    { text: "Siquijor", value: "Siquijor", region: "VII", key: "SIG" },
+  
+    { text: "Biliran", value: "Biliran", region: "VIII", key: "BIL" },
+    { text: "Eastern Samar", value: "Eastern Samar", region: "VIII", key: "EAS" },
+    { text: "Leyte", value: "Leyte", region: "VIII", key: "LEY" },
+    { text: "Northern Samar", value: "Northern Samar", region: "VIII", key: "NSA" },
+    { text: "Samar", value: "Samar", region: "VIII", key: "WSA" },
+    { text: "Southern Leyte", value: "Southern Leyte", region: "VIII", key: "SLE" },
+  
+    { text: "Zamboanga del Norte", value: "Zamboanga del Norte", region: "IX", key: "ZAN" },
+    { text: "Zamboanga del Sur", value: "Zamboanga del Sur", region: "IX", key: "ZAS" },
+    { text: "Zamboanga Sibugay", value: "Zamboanga Sibugay", region: "IX", key: "ZSI" },
+  
+    { text: "Bukidnon", value: "Bukidnon", region: "X", key: "BUK" },
+    { text: "Camiguin",  value: "Camiguin", region: "X", key: "CAM" },
+    { text: "Lanao del Norte", value: "Lanao del Norte", region: "X", key: "LAN" },
+    { text: "Misamis Occidental", value: "Misamis Occidental", region: "X", key: "MSC" },
+    { text: "Misamis Oriental", value: "Misamis Oriental", region: "X", key: "MSR" },
+  
+    { text: "Compostela Valley", value: "Compostela Valley", region: "XI", key: "COM" },
+    { text: "Davao del Norte", value: "Davao del Norte", region: "XI", key: "DAV" },
+    { text: "Davao del Sur", value: "Davao del Sur", region: "XI", key: "DAS" },
+    { text: "Davao Occidental", value: "Davao Occidental", region: "XI", key: "DAC" },
+    { text: "Davao Oriental", value: "Davao Oriental", region: "XI", key: "DAO" },
+  
+    { text: "Cotabato", value: "Cotabato", region: "XII", key: "NCO" },
+    { text: "Sarangani", value: "Sarangani", region: "XII", key: "SAR" },
+    { text: "South Cotabato", value: "South Cotabato", region: "XII", key: "SCO" },
+    { text: "Sultan Kudarat", value: "Sultan Kudarat", region: "XII", key: "SUK" },
+  
+    { text: "Agusan del Norte", value: "Agusan del Norte", region: "XIII", key: "AGN" },
+    { text: "Agusan del Sur", value: "Agusan del Sur", region: "XIII", key: "AGS" },
+    { text: "Dinagat Islands", value: "Dinagat Islands", region: "XIII", key: "DIN" },
+    { text: "Surigao del Norte", value: "Surigao del Norte", region: "XIII", key: "SUN" },
+    { text: "Surigao del Sur", value: "Surigao del Sur", region: "XIII", key: "SUR" },
+  
+    { text: "Basilan", value: "Basilan", region: "ARMM", key: "BAS" },
+    { text: "Lanao del Sur", value: "Lanao del Sur", region: "ARMM", key: "LAS" },
+    { text: "Maguindanao", value: "Maguindanao", region: "ARMM", key: "MAG" },
+    { text: "Sulu", value: "Sulu", region: "ARMM", key: "SLU" },
+    { text: "Tawi-tawi", value: "Tawi-tawi", region: "ARMM", key: "TAW" }
+  ]

@@ -88,6 +88,20 @@
     text-align: left;
 }
 
+.profile-picture {
+    width: 150px;
+    max-width: 150px;
+    height: 150px;
+    max-height: 150px;
+}
+
+.profile-picture img{
+    max-width:150px;
+    max-height:150px;
+    width: auto;
+    height: auto;
+}
+
 .no-projects-yet {
     text-align: center;
     height: 200px;

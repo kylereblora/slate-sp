@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Rating, Dimmer, Loader, Image } from 'semantic-ui-react'
+import { Dimmer, Loader, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
@@ -14,63 +14,70 @@ export class Profile extends Component {
         const { id, auth, profile, user } = this.props;
         return (
             <div className="profile-site">
+                <Navbar />
                 {
                     profile && user ?
-                    <div>
-                        <Navbar />
-                        <div className="profile-main">
-                            {
-                                id === auth.uid ? 
+                    <div className="profile-main">
+                        {
+                            user.occupation === "Regular" || user.occupation === "Seller" ? 
+                            <div className="profile-header">
+                                <ProfileHeader user={user} id={id} auth={auth} />
+                            </div>
+                            :
+
+                            <div>
+                                {
+                                    id === auth.uid ? 
                                 
-                                <div className="profile-current-user">
-                                    <div className="profile-header">
-                                        <ProfileHeader user={user} id={id} auth={auth} />
-                                    </div>
+                                    <div className="profile-current-user">
+                                        <div className="profile-header">
+                                            <ProfileHeader user={user} id={id} auth={auth} />
+                                        </div>
 
-                                    <div className="profile-projects">
-                                        <ProfileProjects user={user} isCurrent={true}/>
-                                    </div>
+                                        <div className="profile-projects">
+                                            <ProfileProjects user={user} isCurrent={true}/>
+                                        </div>
 
-                                    <div className="profile-reviews">
-                                        <p className="review-heading">Reviews</p>
-                                        {
-                                            profile.proReviews ? 
+                                        <div className="profile-reviews">
+                                            <p className="review-heading">Reviews</p>
+                                            {
+                                                profile.proReviews ? 
 
-                                            <div>Yay</div>
-                                            :
-                                            <div className="no-projects-yet">
-                                                <span className="no-projects-span"><h1>No reviews for this pro yet.</h1></span>
-                                            </div> 
-                                        }
+                                                <div>Yay</div>
+                                                :
+                                                <div className="no-projects-yet">
+                                                    <span className="no-projects-span"><h1>No reviews for this pro yet.</h1></span>
+                                                </div> 
+                                            }
+                                        </div>
                                     </div>
-                                </div>
-                                :
-                                
-                                <div className="profile-unlogged-user">
-                                    <div className="profile-header">
-                                        <ProfileHeader user={user} id={id} auth={auth} />
-                                    </div>
+                                    :
+                                    
+                                    <div className="profile-unlogged-user">
+                                        <div className="profile-header">
+                                            <ProfileHeader user={user} id={id} auth={auth} />
+                                        </div>
 
-                                    <div className="profile-projects">
-                                        <ProfileProjects user={user} isCurrent={false}/>
-                                    </div>
+                                        <div className="profile-projects">
+                                            <ProfileProjects user={user} isCurrent={false}/>
+                                        </div>
 
-                                    <div className="profile-reviews">
-                                        <p className="review-heading">Reviews</p>
-                                        {
-                                            user.proReviews ? 
+                                        <div className="profile-reviews">
+                                            <p className="review-heading">Reviews</p>
+                                            {
+                                                user.proReviews ? 
 
-                                            <div>Yay</div>
-                                            :
-                                            <div className="no-projects-yet">
-                                                <span className="no-projects-span"><h1>No reviews for this pro yet.</h1></span>
-                                            </div> 
-                                        }
+                                                <div>Yay</div>
+                                                :
+                                                <div className="no-projects-yet">
+                                                    <span className="no-projects-span"><h1>No reviews for this pro yet.</h1></span>
+                                                </div> 
+                                            }
+                                        </div>
                                     </div>
-                                </div>
-                            }
-                        </div>
-                        <Footer />
+                                }
+                            </div>
+                        }
                     </div>
 
                     :
@@ -83,6 +90,8 @@ export class Profile extends Component {
                         <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
                     </div>
                 }
+                <Footer />
+                
             </div>
         )
     }
@@ -92,7 +101,6 @@ const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id
     const users = state.firestore.data.users;
     const user = users ? users[id] : null
-
     return {
         id,
         auth: state.firebase.auth,

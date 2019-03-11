@@ -13,8 +13,6 @@ export class ProsCard extends Component {
 
     render() {
         const { pro } = this.props;
-        console.log(pro);
-        
         return (
             <div className="pros-card">
                 <div className="pros-card-main">
