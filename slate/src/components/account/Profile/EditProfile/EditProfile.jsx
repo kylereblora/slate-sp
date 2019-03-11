@@ -12,6 +12,7 @@ export class EditProfile extends Component {
             firstName : this.props.user.firstName,
             lastName : this.props.user.lastName,
             province : this.props.user.province,
+            contactNumber : this.props.user.contactNumber,
             proDescription: this.props.user.proDescription,
             proImageUrl: this.props.user.proImageUrl,
         }
@@ -67,6 +68,11 @@ export class EditProfile extends Component {
                             <Form.Field required>
                                 <label>Province</label>
                                 <Dropdown value={this.state.province} name='province' clearable options={provinces} onChange={this.handleDropdownChange} search selection />
+                            </Form.Field>
+
+                            <Form.Field required onChange={this.handleChange}>
+                                <label>Contact Number</label>
+                                <Input id="contactNumber" value={this.state.contactNumber}/>
                             </Form.Field>
 
                             <Form.Field required onChange={this.handleChange}>

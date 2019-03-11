@@ -14,6 +14,7 @@ export class ProfileHeader extends Component {
                     </div>
                     <div className="profile-name">
                         <h1>{user.firstName} {user.lastName}</h1>
+                        <h3>{user && user.contactNumber ? user.contactNumber : "No Contact Number"}</h3>
                         <h3>{user && user.province ? user.province : "No Location"}</h3>
                         {
                             user.occupation !== "Regular" ? <Rating icon="star" defaultRating = { user.proRating } maxRating = {5} disabled/> : null
