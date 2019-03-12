@@ -31,9 +31,9 @@ const SignedInLinks = (props) => {
                         >Notifications</NavLink></li>
                     <li><NavLink 
                         to={"/profile/"+ props.auth.uid}
-                        className="navlink-hover"
-                        activeClassName="active-item"
-                        >{props.profile.initials}</NavLink></li>
+                        // className="navlink-hover"
+                        // activeClassName="active-item"
+                        ><span className="profile-initials-circle">{props.profile.initials}</span></NavLink></li>
                     <li>
                         <a className="log-out" onClick={props.signOut}>Log Out</a>
                     </li>
