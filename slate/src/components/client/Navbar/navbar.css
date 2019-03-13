@@ -5,50 +5,22 @@
     top: 0;
     left: 0;
     background: #ffffff;
-    box-shadow: 0 0.7px 1px 0 rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #EAEAE8;
     z-index:100;
     font-family: 'Circular Std Book', sans-serif;
 }
 
-.navbar .navbar-logo h1 a {
+.navbar-logo h1 a {
     color: #333;
     text-decoration: none;
     font-family: 'Wavehaus Bold', sans-serif;
     font-size: 40px;
 }
 
-
 .navbar-main {
-    display: flex;
     height: 100%;
     align-items: center;
-    width: 1150px;
     max-width: 1150px;
+    width: 100%;
     margin: auto;    
-}
-
-.spacer {
-    flex: 1;
-}
-
-
-@media only screen and (max-width: 768px) {
-    .spacer {
-        display: none;
-    }
-
-    .navbar-main {
-        padding: 0;
-    }
-
-    .navbar-logo {
-        flex: 1;
-        margin-left: 0;
-    }
-
-    .navbar-logo h1 {
-        text-align: center;
-    }
-    
-
 }

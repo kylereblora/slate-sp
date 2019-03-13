@@ -1,5 +1,36 @@
-.navbar-items {
-    align-self: auto;
+.menu-choices {
+    text-align: right;
+    line-height: 65px;
+}
+
+.navbar-logo {
+    float: left;
+}
+
+.navbar-logo h1 a {
+    line-height: 65px;
+    
+}
+
+.navbar-items .active-item {
+    color: rgb(235, 141, 1);
+}
+
+.navbar-items a {
+    clear: left;
+    clear: right;
+    color:#464646;
+    text-decoration: none;
+    padding: 27px 10px;
+    font-weight: 600;
+    transition: 0.25s;
+    position: relative;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin: 0 10px;
+    line-height: 65px;
+    background: #fff;
+    border-bottom: 1px solid #EAEAE8;
 }
 
 .navlink-hover:hover{
@@ -33,10 +64,6 @@
     transition: .25s ease;
 }
 
-.navbar-items .active-item {
-    color: rgb(235, 141, 1);
-}
-
 .active-item:after {
     content: '';
     position: absolute;
@@ -47,43 +74,51 @@
     height: 3px;
     background-color:  rgb(235, 141, 1);
     opacity: 1;
-}
+} 
 
-.navbar-items ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    float: right;
-    
-}
-
-.navbar-items li {
-    padding: 0 .7rem;
-    float: left;
-}
-
-.navbar-items li a {
-    display: block;
-    color:#464646;
-    text-decoration: none;
-    padding: 23px 10px;
-    font-weight: 600;
-    transition: 0.25s;
-    position: relative;
-    text-transform: uppercase;
-    font-size: 12px;
-}
 
 .log-out {
     cursor: pointer;
 }
 
+
+.hamburger {
+    font-size: 26px;
+    margin-right: 40px;
+    line-height: 65px;
+    display: none;
+    width: 26px;
+    float: right;
+} 
+
+
+#toggle {
+    display: none;
+}
+
 @media only screen and (max-width: 768px) {
-    .navbar-items ul {
-        display: none;
+    .navbar-logo {
+        margin-left: 40px;
     }
 
     .navbar-items {
-        margin-right: 0px;
+        text-align: center;
+        width: 100%;
+        display: none;
+    }    
+
+    .navbar-items a {
+        display: block;
+        margin: 0;
+        padding: 5px 10px;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    #toggle:checked + .navbar-items {
+        display: block;
     }
 }

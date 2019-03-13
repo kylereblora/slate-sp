@@ -15,13 +15,17 @@ const Navbar = (props) => {
     return (
         <div className="navbar"> 
             <div className="navbar-main">
-                <div className="navbar-logo">
+                {/* <div className="navbar-logo">
                     {
                         auth.uid ? <h1><a href="/home">slate</a></h1> : <h1><a href="/">slate</a></h1>
                     }
                 </div>
-                <div className="spacer" />
-                { links }
+                <div className="spacer"></div> */}
+
+                
+                <div className="menu">
+                    { links }
+                </div>
             </div>
         </div>
     )
