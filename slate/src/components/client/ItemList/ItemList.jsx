@@ -31,7 +31,6 @@ const ItemList = ({products}) => {
     return (
         <div className="items-list">
             <div className="items-list-main">
-
                 <h1>Bath</h1>
                 <div className="bath-products">
                     { products && products.filter(isBath).map(product => {
@@ -89,10 +88,7 @@ const ItemList = ({products}) => {
                         )
                     })}
                 </div>
-
             </div>
-            
-
         </div>
     )
 }

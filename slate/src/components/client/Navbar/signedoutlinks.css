@@ -9,7 +9,6 @@
 
 .navbar-logo h1 a {
     line-height: 65px;
-    
 }
 
 .navbar-items .active-item {
@@ -21,7 +20,7 @@
     clear: right;
     color:#464646;
     text-decoration: none;
-    padding: 27px 10px;
+    padding: 26px 10px;
     font-weight: 600;
     transition: 0.25s;
     position: relative;
@@ -32,6 +31,7 @@
     background: #fff;
     border-bottom: 1px solid #EAEAE8;
 }
+
 
 .navlink-hover:hover{
     color: rgb(235, 141, 1);
@@ -96,6 +96,13 @@
     display: none;
 }
 
+
+.profile-initials-circle {
+    background: #a3a3a3;
+    padding: 10px;
+    border-radius: 20px;
+}
+
 @media only screen and (max-width: 768px) {
     .navbar-logo {
         margin-left: 40px;
@@ -110,7 +117,7 @@
     .navbar-items a {
         display: block;
         margin: 0;
-        padding: 5px 10px;
+        padding: 15px 10px;
     }
 
     .hamburger {

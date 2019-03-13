@@ -8,6 +8,7 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { Dimmer, Loader } from 'semantic-ui-react'
 import { getRandom } from './getRandomPreviews'
 
 export class Home extends Component {
@@ -45,7 +46,9 @@ export class Home extends Component {
 
                                     :
                                     <div>
-                                        <p>No products are currently available.</p>
+                                        <Dimmer active inverted>
+                                            <Loader inverted></Loader>
+                                        </Dimmer>
                                     </div>
                                 }
                             </div>
