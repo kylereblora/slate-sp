@@ -49,7 +49,7 @@ export class EditProfile extends Component {
 
     render() {
         return (
-            <Modal trigger={<Button inverted color='orange' size='large'>Edit Profile</Button>}>
+            <Modal trigger={<Button inverted color='orange' size='large'>Edit Profile</Button>} closeIcon>
                 <Modal.Content>
                     <div className="edit-item-form">
                         <h1>Edit Profile</h1>

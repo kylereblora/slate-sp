@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Rating, Divider} from 'semantic-ui-react'
+import { Button, Rating, Divider, Dimmer, Loader} from 'semantic-ui-react'
 import './itemdetails.css';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
@@ -42,9 +42,14 @@ export class ItemDetails extends Component {
                     <div className="item-details-main">
                         <div className="item-info">
                             <div className="item-two-columns">
-                                <div className="item-pic">
-                                    <img src={ product.itemImageUrl } alt="placeholder"/>
+
+                                <div className="responsive-container-details">
+                                    <div className="dummy"></div>
+                                    <div className="item-picture-details">
+                                        <img src={ product.itemImageUrl } alt="placeholder"/>
+                                    </div>
                                 </div>
+
                                 <div className="spacer"/>
                                 <div className="item-info-2">
                                     <div>
@@ -84,8 +89,10 @@ export class ItemDetails extends Component {
             )
         } else {
             return (
-                <div className="empty-product">
-                    <p>Loading product...</p>
+                <div>
+                    <Dimmer active inverted>
+                        <Loader inverted></Loader>
+                    </Dimmer>
                 </div>
             )
         }
@@ -98,7 +105,6 @@ const mapStateToProps = (state, ownProps) => {
     const product = products ? products[id] : null
     const users = state.firestore.data.users
     const wishlist = users && state.firebase.auth.uid ? users[state.firebase.auth.uid].wishlist : null
-    console.log(state);
     
     return {
         id,

@@ -1,23 +1,19 @@
 .signin-main {
     height: 650px;
     line-height: 650px;
-    text-align: center;
 }
 
 .sg {
-    line-height: normal;
+    line-height: 650px;
     vertical-align: middle;
     display: inline-block;
-    
+    margin: 0 0 0 80px;
 }
 
 .signin-card {
-    width: 450px;
-    text-align: center;
-    padding: 50px;
-    border: 1px solid #dfdfdf;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 400px;
+    margin-top: 35px;
+    line-height: normal;
 }
 
 
@@ -38,7 +34,7 @@
 
 .login-instead {
     flex: 0.5;
-    text-align: left;    
+    text-align: right;    
 }
 
 .login-instead a {
@@ -47,11 +43,12 @@
 
 .submit-btn {
     flex: 0.5;
-    text-align: right;
+    text-align: left;
 }
 
 .create-your-acc {
     font-family: 'GT Walsheim', sans-serif;
     font-weight: 700;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
+    font-size: 25px;
 }

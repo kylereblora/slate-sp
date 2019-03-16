@@ -16,6 +16,9 @@ export class Hire extends Component {
         return (
             <div className="hire-site">
                 <Navbar />
+                <div className="hire-header">
+                    <h1>Hire</h1>
+                </div>
                 <div className="hire-main">
                     <ProsList category={category} pros={pros}/>
                 </div>

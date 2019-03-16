@@ -1,5 +1,8 @@
+.pros-card {
+    padding-bottom: 30px;
+}
+
 .pros-card-main {
-    margin: 10px;
     display: flex;
 }
 
@@ -29,6 +32,6 @@
     font-size: 15px;
 }
 
-.divider-container {
-    margin: 10px;
+@media only screen and (max-width: 768px) {
+    
 }

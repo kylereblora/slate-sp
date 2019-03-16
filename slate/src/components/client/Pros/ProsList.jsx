@@ -1,6 +1,5 @@
 import React from 'react';
 import ProsCard from '../ProsCard/ProsCard';
-import { Breadcrumb } from 'semantic-ui-react';
 import './proslist.css';
 
 function isArchitect(obj) {
@@ -18,7 +17,7 @@ const ProsList = ({pros, category}) => {
 
     return(
         <div className="pros-list">           
-            <p className="pros-list-heading">We've found 5 {categ === undefined ? "Pros" : categ} for you.</p>
+            {/* <p className="pros-list-heading">We've found 5 {categ === undefined ? "Pros" : categ} for you.</p> */}
             <h2>Architects</h2>
             { pros && pros.filter(isArchitect).map(pro => {
                 return (

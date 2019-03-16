@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './proscard.css';
 import PlaceholderImg from '../../../assets/img/placeholderhouse.jpg';
-import { Button, Rating, Divider } from 'semantic-ui-react';
+import { Button, Rating } from 'semantic-ui-react';
 
 
 
@@ -23,22 +23,19 @@ export class ProsCard extends Component {
                     <div className="pros-misc">
                         <div className="pros-details">
                             <span className="pros-name">{pro.firstName} {pro.lastName}</span>
-                            <p className="pros-location">{pro.occupation}</p>
-                            <Rating icon="star" defaultRating = {4} maxRating = {5} disabled/>
+                            <p className="pros-location">{pro.province || "N/A"}</p>
+                            <Rating icon="star" defaultRating = {pro.proRating} maxRating = {5} disabled/>
                             <p className="pros-description">{pro.proDescription}</p>
                         </div>
     
                         <div className="spacer" />
-                        <p className="contact-no">{pro.contactNumber}</p>
+                        <p className="contact-no">{pro.contactNumber || "N/A"}</p>
                     </div>
     
                     <div className="spacer" />
                     <div className="card-action">
                         <Button inverted color="orange" onClick={(e) => this.handleClick(e, pro.id)}>View</Button>
                     </div>
-                </div>
-                <div className="divider-container">
-                    <Divider />
                 </div>
             </div>
         )

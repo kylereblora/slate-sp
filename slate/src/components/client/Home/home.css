@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background: #fafafa;
 }
 
 .home-main {
@@ -24,7 +25,7 @@
 }
 
 .home-content {
-    width: 1150px;
+    width: 100%;
     max-width: 1150px;
     display: inline-block;
     text-align: left;
@@ -37,8 +38,11 @@
 
 .pros-section, .product-section {
     background: #fff;
-    box-shadow: 0 0.7px 1px 0 rgba(0, 0, 0, 0.1);
     padding: 20px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
 }
 
 .pros-section-heading, .product-section-heading {
@@ -90,7 +94,7 @@
 }
 
 .architects, .intdes {
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: center;
 }
 
@@ -103,7 +107,7 @@
     font-family: 'Circular Std Medium', sans-serif;
     color: white;
     display: block;
-    padding: 35px 80px;
+    padding: 40px 80px;
 }
 
 .item-link-style {
@@ -113,4 +117,41 @@
 
 .item-link-style:hover {
     color: #505050;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .pros-holder {
+        display: block;
+    }
+
+
+    :root {
+        --space: 0 0;
+        --space: 0 0;
+    
+    }
+
+    .product-section, .pros-section {
+        margin: 0px 20px 30px 20px;
+    }
+
+    .product-section-heading, .pros-section-heading {
+        font-size: 35px;
+        margin-bottom: 15px;
+    }
+
+    .architects a, .intdes a {
+        padding: 60px 80px;
+        
+    }
+    
+}
+
+@media only screen and (max-width: 398px) {
+    .product-section-heading, .pros-section-heading {
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
 }

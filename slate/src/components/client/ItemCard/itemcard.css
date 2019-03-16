@@ -1,11 +1,9 @@
 .item-card {
-    /* width: 300px; */
     margin:10px;
-    
 }
 
 .item-card-main {
-    width: 250px;
+    width: 100%;
     max-width: 250px;
     display: flex;
     flex-direction: column;
@@ -15,7 +13,7 @@
 .responsive-container {
     position: relative;
     width: 250px;
-    height: 270px;
+    height: 100%;
     max-height: 270px;
 }
 
@@ -52,7 +50,7 @@
 }
 
 .item-picture img {
-    width: 250px;
+    width: 100%;
     max-height:250px;
     vertical-align: middle;
     display: inline-block;
@@ -64,4 +62,88 @@
 
 .item-misc p {
     margin: 0;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .item-card-main {
+        max-width: 120px;
+    }
+
+    .responsive-container {
+        width: 120px;
+        max-height: 140px;
+    }
+
+    .item-picture img {
+        max-height: 140px;
+        max-width:  120px;
+        width: auto;
+        height: auto;
+    }
+
+    .item-misc {
+        width: 120px;
+    }
+
+    .item-name {
+        font-size: 15px;
+    }
+
+    .item-price {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 398px) {
+    .item-card-main {
+        max-width: 100px;
+    }
+
+    .responsive-container {
+        width: 100px;
+        max-height: 120px;
+    }
+
+    .item-picture img {
+        max-height: 120px;
+        max-width:  100px;
+        width: auto;
+        height: auto;
+    }
+
+    .item-misc {
+        width: 100px;
+    }
+
+}
+
+@media only screen and (max-width: 320px) {
+    .item-card-main {
+        max-width: 75px;
+    }
+
+    .responsive-container {
+        width: 75px;
+        max-height: 95px;
+    }
+
+    .item-picture img {
+        max-height: 95px;
+        max-width:  75px;
+        width: auto;
+        height: auto;
+    }
+
+    .item-misc {
+        width: 75px;
+    }
+
+    .item-name {
+        font-size: 10px;
+    }
+
+    .item-price {
+        font-size: 8px;
+    }
 }

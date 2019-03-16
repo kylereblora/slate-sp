@@ -7,17 +7,35 @@
     width: 1080px;
 }
 
-.item-picture-preview {
-    height: 80px;
-    max-height: 80px;
+.responsive-container-wishlist {
+    position: relative;
     width: 80px;
-    max-width: 80px;
-    /* display: inline-grid; */
+    height: 100%;
+    max-height: 80px;
+}
+
+.item-picture-preview {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    text-align:center; /* Align center inline elements */
+}
+
+.item-picture-preview:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
 }
 
 .item-picture-preview img {
-    height: 80px;
-    width: 80px;
+    max-height: 80px;
+    max-width:  80px;
+    width: auto;
+    height: auto;
 }
 
 .item-misc-preview {
