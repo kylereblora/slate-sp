@@ -84,7 +84,7 @@ export class Profile extends Component {
 
                     <div>
                         <Dimmer active inverted>
-                            <Loader inverted>Loading</Loader>
+                            <Loader inverted></Loader>
                         </Dimmer>
 
                         <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />

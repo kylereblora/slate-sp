@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
-import { Button } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 import './profile.css'
 
 export class ProfileProjects extends Component {
+
+    handleClick = (e) => {
+        window.location.href = '/add/project';
+    } 
+
     render() {
         const { user, isCurrent } = this.props;
         return (
@@ -13,7 +18,7 @@ export class ProfileProjects extends Component {
                     {
                         isCurrent ? 
                         <div className="contact-btn">
-                            <Button inverted color='orange' size='large'>Add Project</Button>
+                            <Button inverted color='orange' size='large' onClick={this.handleClick}><Icon name='add' />Add Project</Button>
                         </div>
                         : 
                         null

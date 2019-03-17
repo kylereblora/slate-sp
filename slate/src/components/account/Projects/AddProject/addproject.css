@@ -1,0 +1,69 @@
+.add-project-site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #fafafa;
+}
+
+.add-project-main {
+    flex: 1 0 auto;
+    text-align: center;
+    padding: 100px 50px;
+}
+
+.add-project-main:after {
+    content: '\00a0';
+    display: block;
+    margin-top: var(--space);
+    height: 0;
+    visibility: hidden;
+}
+
+.add-project-content {
+    width: 100%;
+    max-width: 1150px;
+    display: inline-block;
+    text-align: left;
+}
+
+.add-project-grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 20px;
+    padding: 10px 0px;
+    background-color: #fafafa;
+    
+}
+
+.add-project-grid-container > div {
+    background: #fff;
+    text-align: left;
+    padding: 20px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+}
+
+.add-project-form {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.add-project-form h1{
+    margin: 0;
+}
+
+.add-project-form label {
+    font-family: 'Circular Std Book', sans-serif;
+}
+
+.add-project-desc {
+    padding: 5px 0px;
+    font-family: 'Circular Std Book', sans-serif;
+    font-size: 15px;
+    margin: 0 0 30px 0;
+}

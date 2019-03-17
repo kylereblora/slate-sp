@@ -12,6 +12,7 @@ import HomeAdmin from './components/admin/Home/Home';
 import CreateItem from './components/admin/Items/CreateItem/CreateItem';
 import Wishlist from './components/client/Wishlist/Wishlist';
 import Profile from './components/account/Profile/Profile';
+import AddProject from './components/account/Projects/AddProject/AddProject';
 
 class App extends React.Component {
     render() {
@@ -24,7 +25,8 @@ class App extends React.Component {
                         <Route exact={true} path='/register' component = {SignUp} />
                         <Route exact={true} path='/signin' component = {SignIn} />
                         <Route exact={true} path='/home' component = {Home} />
-
+                        <Route exact={true} path='/add/project' component = {AddProject} />
+                        
                         <Route exact={true} path='/hire' component = {Hire} />
                         <Route exact={true} path='/hire/:category' component = {Hire} />
                         <Route exact={true} path='/pro/:category/:id' component = {ProsDetails} />

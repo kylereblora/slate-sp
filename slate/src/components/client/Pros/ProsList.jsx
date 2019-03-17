@@ -18,14 +18,14 @@ const ProsList = ({pros, category}) => {
     return(
         <div className="pros-list">           
             {/* <p className="pros-list-heading">We've found 5 {categ === undefined ? "Pros" : categ} for you.</p> */}
-            <h2>Architects</h2>
+            <h1>Architects</h1>
             { pros && pros.filter(isArchitect).map(pro => {
                 return (
                     <ProsCard pro={pro} key={pro.id} />
                 )
             })}           
 
-            <h2>Interior Designers</h2>
+            <h1>Interior Designers</h1>
             { pros && pros.filter(isInteriorDesigner).map(pro => {
                 return (
                     <ProsCard pro={pro} key={pro.id} />

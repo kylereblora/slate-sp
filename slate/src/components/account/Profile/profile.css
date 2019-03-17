@@ -28,7 +28,9 @@
     margin: 0px 0px 30px 0px;
     background: #fff;
     padding: 20px;
-    box-shadow: 0 0.7px 1px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
     width: 950px;
     max-width: 950px;
     display: inline-block;
@@ -48,20 +50,27 @@
     margin: 0;
 }
 
+
+.profile-name h1 {
+    padding: 8px 0px;
+}
 .profile-name h3 {
     font-family: 'Circular Std Book', sans-serif;
     font-size: 15px;
     color: #2b2b2b;
-    padding-top: 8px;
 }
 
 .profile-description{
-    padding-top: 20px;
+    padding-top: 30px;
 }
 
-.description-heading, .profile-description p {
+.description-heading, .description-content {
     margin: 0;
     padding: 0;
+}
+
+.description-heading {
+    padding: 0px 0px 5px 0px;
 }
 
 .description-heading, .project-heading, .review-heading {
@@ -81,7 +90,9 @@
     margin: 0px 0px 30px 0px;
     background: #fff;
     padding: 20px;
-    box-shadow: 0 0.7px 1px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
     width: 950px;
     max-width: 950px;
     display: inline-block;
@@ -89,23 +100,25 @@
 }
 
 .profile-picture {
-    width: 150px;
+    width: 100%;
     max-width: 150px;
-    height: 150px;
+    height: 100%;
     max-height: 150px;
 }
 
 .profile-picture img{
     max-width:150px;
     max-height:150px;
-    width: auto;
-    height: auto;
+    /* width: auto;
+    height: auto; */
+    object-fit: contain;
+    border-radius: 1000px;
 }
 
 .no-projects-yet {
     text-align: center;
-    height: 200px;
-    line-height: 200px;
+    height: 150px;
+    line-height: 150px;
 }
 
 .no-projects-span {

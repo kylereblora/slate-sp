@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, TextArea, Label, Input, Dropdown, Modal } from 'semantic-ui-react'
+import { Button, Form, TextArea, Label, Input, Dropdown, Modal, Icon } from 'semantic-ui-react'
 import { provinces } from './provinces'
 import ItemUpload from '../../../admin/Items/CreateItem/ItemUpload'
 import { editUser } from '../../../../store/actions/authActions'
@@ -49,7 +49,7 @@ export class EditProfile extends Component {
 
     render() {
         return (
-            <Modal trigger={<Button inverted color='orange' size='large'>Edit Profile</Button>} closeIcon>
+            <Modal trigger={<Button inverted color='orange' size='large'><Icon name='pencil alternate' />Edit Profile</Button>} closeIcon>
                 <Modal.Content>
                     <div className="edit-item-form">
                         <h1>Edit Profile</h1>

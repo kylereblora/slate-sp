@@ -22,7 +22,7 @@ export class ProsCard extends Component {
     
                     <div className="pros-misc">
                         <div className="pros-details">
-                            <span className="pros-name">{pro.firstName} {pro.lastName}</span>
+                            <p className="pros-name">{pro.firstName} {pro.lastName}</p>
                             <p className="pros-location">{pro.province || "N/A"}</p>
                             <Rating icon="star" defaultRating = {pro.proRating} maxRating = {5} disabled/>
                             <p className="pros-description">{pro.proDescription}</p>
