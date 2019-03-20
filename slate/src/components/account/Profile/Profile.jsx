@@ -18,66 +18,49 @@ export class Profile extends Component {
                 {
                     profile && user ?
                     <div className="profile-main">
-                        {
-                            user.occupation === "Regular" || user.occupation === "Seller" ? 
-                            <div className="profile-header">
-                                <ProfileHeader user={user} id={id} auth={auth} />
-                            </div>
-                            :
+                       <div className="profile-content">
+                       
+                            {
+                                user.occupation === "Regular" || user.occupation === "Seller" ? 
+                                <div className="profile-header">
+                                    <ProfileHeader user={user} id={id} auth={auth} />
+                                </div>
+                                :
 
-                            <div>
-                                {
-                                    id === auth.uid ? 
-                                
-                                    <div className="profile-current-user">
-                                        <div className="profile-header">
-                                            <ProfileHeader user={user} id={id} auth={auth} />
-                                        </div>
+                                <div className="profile-current-user-grid-container">
+                                    <div className="profile-header">
+                                        <ProfileHeader user={user} id={id} auth={auth} />
+                                    </div>
 
-                                        <div className="profile-projects">
+                                    <div className="profile-projects">
+                                        {
+                                            id === auth.uid ? 
+
                                             <ProfileProjects user={user} isCurrent={true}/>
-                                        </div>
-
-                                        <div className="profile-reviews">
-                                            <p className="review-heading">Reviews</p>
-                                            {
-                                                profile.proReviews ? 
-
-                                                <div>Yay</div>
-                                                :
-                                                <div className="no-projects-yet">
-                                                    <span className="no-projects-span"><h1>No reviews for this pro yet.</h1></span>
-                                                </div> 
-                                            }
-                                        </div>
-                                    </div>
-                                    :
-                                    
-                                    <div className="profile-unlogged-user">
-                                        <div className="profile-header">
-                                            <ProfileHeader user={user} id={id} auth={auth} />
-                                        </div>
-
-                                        <div className="profile-projects">
+                                            :
                                             <ProfileProjects user={user} isCurrent={false}/>
-                                        </div>
+                                            
+                                        }
 
-                                        <div className="profile-reviews">
-                                            <p className="review-heading">Reviews</p>
-                                            {
-                                                user.proReviews ? 
-
-                                                <div>Yay</div>
-                                                :
-                                                <div className="no-projects-yet">
-                                                    <span className="no-projects-span"><h1>No reviews for this pro yet.</h1></span>
-                                                </div> 
-                                            }
-                                        </div>
                                     </div>
-                                }
-                            </div>
-                        }
+
+                                    <div className="profile-reviews">
+                                        <p className="review-heading">Reviews</p>
+                                        {
+                                            profile.proReviews ? 
+
+                                            <div>Yay</div>
+                                            :
+                                            <div className="no-projects-yet">
+                                                <span className="no-projects-span"><h1>No reviews for this pro yet.</h1></span>
+                                            </div> 
+                                        }
+                                    </div>
+                                </div>
+
+                            }
+
+                       </div>
                     </div>
 
                     :

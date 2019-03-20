@@ -26,51 +26,56 @@ export class Home extends Component {
         }
 
         return (
-            <div className="home-site">
-                <Navbar />
-                <div className = "home-main">
-                    <div className="home-content">
-                        <div className ="product-section">
-                            <p className="product-section-heading">Discover home products</p>
-                            <div className="product-previews">
-                                {
-                                    products && productPreviewArr ? 
-                                    
-                                    productPreviewArr.map(product => {
-                                        return (
-                                            <Link className='item-link-style' to={'/item/'+ product.itemCategory + '/' + product.id} key={product.id}>
-                                                <ItemCard product={product}/>
-                                            </Link>
-                                        )
-                                    })
+            <div>
+                {
+                    products && productPreviewArr ? 
 
-                                    :
-                                    <div>
-                                        <Dimmer active inverted>
-                                            <Loader inverted></Loader>
-                                        </Dimmer>
+                    <div className="home-site">
+                        <Navbar />
+                        <div className = "home-main">
+                            <div className="home-content">
+                                <div className ="product-section">
+                                    <p className="product-section-heading">Discover home products</p>
+                                    <div className="product-previews">
+                                        {
+                                            productPreviewArr.map(product => {
+                                                return (
+                                                    <Link className='item-link-style' to={'/item/'+ product.itemCategory + '/' + product.id} key={product.id}>
+                                                        <ItemCard product={product}/>
+                                                    </Link>
+                                                )
+                                            })
+                                        }
                                     </div>
-                                }
-                            </div>
-                        </div>
-
-                        <div className ="pros-section">
-                            <p className="pros-section-heading">Find pros for the design you need</p>
-                            <div className="pros-holder">
-                                <div className="architects">
-                                    <a href="/hire/architect">Architects</a>
                                 </div>
 
-                                <div className="spacer-mini" />
+                                <div className ="pros-section">
+                                    <p className="pros-section-heading">Find pros for the design you need</p>
+                                    <div className="pros-holder">
+                                        <div className="architects">
+                                            <a href="/hire/architect">Architects</a>
+                                        </div>
 
-                                <div className="intdes">
-                                    <a href="/hire/interior-designer">Interior Designers</a>
+                                        <div className="spacer-mini" />
+
+                                        <div className="intdes">
+                                            <a href="/hire/interior-designer">Interior Designers</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <Footer />
                     </div>
-                </div>
-                <Footer />
+
+                    :
+
+                    <div>
+                        <Dimmer active inverted>
+                            <Loader inverted></Loader>
+                        </Dimmer>
+                    </div>
+                }
             </div>
         )
     }

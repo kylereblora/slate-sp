@@ -1,0 +1,50 @@
+.project-card {
+    /* margin:0px 10px; */
+}
+
+.project-preview-main {
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.project-picture-preview img {
+    width: 380px;
+    height:270px;
+    object-fit: cover;
+}
+
+.project-misc {
+    width: 380px;
+}
+
+.project-misc p {
+    margin: 0;
+}
+
+.project-name {
+    font-size: 15px;
+    font-family: 'Circular Std Bold', sans-serif;
+}
+
+@media only screen and (max-width: 1140px) {
+    .project-preview-main {
+        width: 100%;
+        max-width: 320px;
+        display: flex;
+        flex-direction: column;
+    
+    }
+    .project-picture-preview img {
+        width: 320px;
+        height:270px;
+        object-fit: cover;
+    }
+    
+    .project-misc {
+        width: 320px;
+    }
+}

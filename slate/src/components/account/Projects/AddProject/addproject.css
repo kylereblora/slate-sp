@@ -67,3 +67,19 @@
     font-size: 15px;
     margin: 0 0 30px 0;
 }
+
+@media only screen and (max-width: 768px) {
+    .add-project-guidelines {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    .add-project-form {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 4;
+    }
+}

@@ -10,9 +10,9 @@ import './wishlist.css'
 
 export class Wishlist extends Component {
     render() {
-        const { auth, profile, wishlist} = this.props;
+        const { auth, profile, wishlist, id } = this.props;
         if (!auth.uid) return <Redirect to='/' />
-        
+        if (auth.uid !== id) return <Redirect to={'/wishlist/'+ auth.uid} />
         return (
             <div className="wishlist-site">
                 <Navbar />
@@ -47,7 +47,8 @@ const mapStateToProps = (state, ownProps) => {
     return { 
         auth: state.firebase.auth,
         profile: state.firebase.profile,
-        wishlist
+        wishlist,
+        id
     }
 }
 
