@@ -12,7 +12,7 @@
 }
 
 .navbar-items .active-item {
-    color: rgb(235, 141, 1);
+    color: #F66F56;
 }
 
 .navbar-items a {
@@ -34,7 +34,7 @@
 
 
 .navlink-hover:hover{
-    color: rgb(235, 141, 1);
+    color: #F66F56;
 }
 
 .navlink-hover:after {
@@ -45,7 +45,7 @@
     right: 0;
     width: 100%;
     height: 0px;
-    background-color:  rgb(235, 141, 1);
+    background-color:  #F66F56;
     opacity: 0;
     transition: .25s ease;
 }
@@ -59,7 +59,7 @@
     right: 0;
     width: 100%;
     height: 3px;
-    background-color:  rgb(235, 141, 1);
+    background-color:  #F66F56;
     opacity: 1;
     transition: .25s ease;
 }
@@ -72,7 +72,7 @@
     right: 0;
     width: 100%;
     height: 3px;
-    background-color:  rgb(235, 141, 1);
+    background-color:  #F66F56;
     opacity: 1;
 } 
 

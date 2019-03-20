@@ -9,6 +9,8 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux'
 import { getProductFromWishlist } from '../Wishlist/wishlistFunctions'
 import { Redirect } from 'react-router-dom'
+import { loginBtn } from '../../../assets/styles/styles'
+
 
 export class ItemDetails extends Component {
     state = {
@@ -68,7 +70,7 @@ export class ItemDetails extends Component {
                                                     this.state.addedToWishlist || inWishlist ? 
                                                     <Button fluid disabled>Added to Wishlist</Button>
                                                     :
-                                                    <Button fluid color='orange' onClick={this.handleAddToWishlist}>Add to Wishlist</Button>
+                                                    <Button fluid style={loginBtn} onClick={this.handleAddToWishlist}>Add to Wishlist</Button>
                                                 }
                                             </div>
                                         </div>

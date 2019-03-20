@@ -21,7 +21,7 @@ export class ProfileProjects extends Component {
                     {
                         isCurrent ? 
                         <div className="contact-btn">
-                            <Button inverted color='orange' size='large' onClick={this.handleClick}><Icon name='add' />Add Project</Button>
+                            <Button inverted color='orange' size='small' onClick={this.handleClick}><Icon name='add' />Add Project</Button>
                         </div>
                         : 
                         null

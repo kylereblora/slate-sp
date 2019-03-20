@@ -4,21 +4,21 @@
 
 .project-preview-main {
     width: 100%;
-    max-width: 380px;
+    max-width: 370px;
     display: flex;
     flex-direction: column;
-
 }
 
 
 .project-picture-preview img {
-    width: 380px;
+    width: 370px;
     height:270px;
     object-fit: cover;
+    border-radius: 5px;
 }
 
 .project-misc {
-    width: 380px;
+    width: 370px;
 }
 
 .project-misc p {
@@ -30,21 +30,44 @@
     font-family: 'Circular Std Bold', sans-serif;
 }
 
-@media only screen and (max-width: 1140px) {
+@media only screen and (max-width: 768px) {
     .project-preview-main {
         width: 100%;
-        max-width: 320px;
-        display: flex;
-        flex-direction: column;
-    
+        max-width: 170px;
     }
+
     .project-picture-preview img {
-        width: 320px;
-        height:270px;
+        width: 170px;
+        height:150px;
         object-fit: cover;
     }
     
     .project-misc {
-        width: 320px;
+        width: 170px;
+    }
+}
+
+@media only screen and (max-width: 705px) {
+    .project-preview-main {
+        width: 100%;
+        max-width: 130px;
+    }
+
+    .project-picture-preview img {
+        width: 130px;
+        height:100px;
+        object-fit: cover;
+    }
+    
+    .project-misc {
+        width: 130px;
+    }
+
+    .project-name {
+        font-size: 12px;
+    }
+
+    .project-location {
+        font-size: 10px;
     }
 }

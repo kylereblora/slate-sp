@@ -37,7 +37,7 @@ export class ItemInWishlist extends Component {
                 <div className="spacer" />
                 
                 <div className="action-buttons">
-                    <Button icon='close' color='red' onClick={(e) => this.handleDelete(e, product)}/>
+                    <Button basic icon='close' color='red' onClick={(e) => this.handleDelete(e, product)}/>
                 </div>
             </div>
         )

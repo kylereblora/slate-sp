@@ -1,13 +1,39 @@
+.signin-site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #fafafa;
+}
+
 .signin-main {
-    height: 650px;
-    line-height: 650px;
+    flex: 1 0 auto;
+    text-align: center;
+}
+
+.signin-content {
+    width: 100%;
+    max-width: 1150px;
+    display: inline-block;
+    text-align: left;
+}
+
+.signin-grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 20px;
+    margin: 0px 30px;
+    
+}
+
+.signin-flex > div {
+    display: inline-block;
 }
 
 .sg {
-    line-height: 650px;
-    vertical-align: middle;
-    display: inline-block;
-    margin: 0 0 0 80px;
+    /* line-height: 600px; */
+    padding:120px 0px 0px 0px;
+    grid-column-start: 1;
+    grid-column-end: 2;
 }
 
 .signin-card {
@@ -38,7 +64,8 @@
 }
 
 .login-instead a {
-    color: #E28324;
+    color: #F66F56;
+    font-family: 'Circular Std Book', sans-serif;
 }
 
 .submit-btn {
@@ -51,4 +78,15 @@
     font-weight: 700;
     padding-bottom: 20px;
     font-size: 25px;
+}
+
+.login-illustration {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.login-illustration img{
+    width: 600px;
+    height: 600px;
+    margin: 0px 0px 0px 70px;
 }
