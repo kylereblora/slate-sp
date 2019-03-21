@@ -4,6 +4,7 @@ import './signup.css'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signUp } from '../../../store/actions/authActions'
+import { signUpBtn } from '../../../assets/styles/styles';
 
 const options = [
     {key: 1, text: 'Architect', value: 'Architect'},
@@ -29,7 +30,12 @@ export class SignUp extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        this.props.signUp(this.state)
+        if((this.state.firstName && this.state.lastName && this.state.email && this.state.password) !== '') {
+            this.props.signUp(this.state);
+        }else {
+            console.log("bro");
+            
+        }
         
     }
 
@@ -94,12 +100,12 @@ export class SignUp extends Component {
                                     }
 
                                     <div className="form-buttons">
-                                        <div className="login-instead">
-                                            <a href="/signin">Log in instead</a>
+                                        <div className="submit-btn">
+                                            <Button style={signUpBtn} type='submit'>Sign Up</Button>
                                         </div>
 
-                                        <div className="submit-btn">
-                                            <Button inverted color="orange" type='submit'>Sign Up</Button>
+                                        <div className="login-instead">
+                                            <a href="/signin">Log in instead</a>
                                         </div>
                                     </div>
 

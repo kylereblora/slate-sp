@@ -3,6 +3,7 @@
     --space: 2em 0;
 }
 
+
 .item-site {
     display: flex;
     flex-direction: column;
@@ -11,9 +12,12 @@
 
 .item-details-main {
     margin: 0px 100px;
-    padding: 110px 0px;
+    flex: 1 0 auto;
+    text-align: center;
+    padding-top: 100px;
     font-family: 'Circular Std Book', sans-serif;
     text-align: center;
+    color: #414141;
 }
 
 .item-two-columns {

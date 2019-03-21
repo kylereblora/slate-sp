@@ -3,6 +3,8 @@ import { Button, Icon } from 'semantic-ui-react'
 import './profile.css'
 import { Link } from 'react-router-dom'
 import ProjectPreviews from '../Projects/ProjectPreviews/ProjectPreviews';
+import { loginBtn } from '../../../assets/styles/styles'
+
 
 export class ProfileProjects extends Component {
 
@@ -11,7 +13,7 @@ export class ProfileProjects extends Component {
     } 
 
     render() {
-        const { user, isCurrent } = this.props;
+        const { user, id, isCurrent } = this.props;
         console.log(user);
         return (
             <div>
@@ -21,7 +23,7 @@ export class ProfileProjects extends Component {
                     {
                         isCurrent ? 
                         <div className="contact-btn">
-                            <Button inverted color='orange' size='small' onClick={this.handleClick}><Icon name='add' />Add Project</Button>
+                            <Button style={loginBtn} size='small' onClick={this.handleClick}><Icon name='add' />Add Project</Button>
                         </div>
                         : 
                         null
@@ -34,7 +36,7 @@ export class ProfileProjects extends Component {
                         {
                             user.projects.map((project, index) => {
                                 return (
-                                    <Link className='project-link-style' to={'/projects/'+ index} key={index}>
+                                    <Link className='project-link-style' to={'/' + id + '/projects/'+ index} key={index}>
                                         <ProjectPreviews project = {project} />
                                     </Link>
                                 )

@@ -22,8 +22,11 @@ export class Profile extends Component {
                        
                             {
                                 user.occupation === "Regular" || user.occupation === "Seller" ? 
-                                <div className="profile-header">
-                                    <ProfileHeader user={user} id={id} auth={auth} />
+                                
+                                <div className="profile-current-user-grid-container">
+                                    <div className="profile-header">
+                                        <ProfileHeader user={user} id={id} auth={auth} />
+                                    </div>
                                 </div>
                                 :
 
@@ -36,9 +39,9 @@ export class Profile extends Component {
                                         {
                                             id === auth.uid ? 
 
-                                            <ProfileProjects user={user} isCurrent={true}/>
+                                            <ProfileProjects user={user} id={id} isCurrent={true}/>
                                             :
-                                            <ProfileProjects user={user} isCurrent={false}/>
+                                            <ProfileProjects user={user} id={id} isCurrent={false}/>
                                             
                                         }
 

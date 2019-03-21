@@ -13,6 +13,7 @@ import CreateItem from './components/admin/Items/CreateItem/CreateItem';
 import Wishlist from './components/client/Wishlist/Wishlist';
 import Profile from './components/account/Profile/Profile';
 import AddProject from './components/account/Projects/AddProject/AddProject';
+import ProjectDetails from './components/account/Projects/ProjectDetails/ProjectDetails';
 
 class App extends React.Component {
     render() {
@@ -25,19 +26,25 @@ class App extends React.Component {
                         <Route exact={true} path='/register' component = {SignUp} />
                         <Route exact={true} path='/signin' component = {SignIn} />
                         <Route exact={true} path='/home' component = {Home} />
-                        <Route exact={true} path='/add/project' component = {AddProject} />
                         
+
+                        {/* HIRE/PROS */}
                         <Route exact={true} path='/hire' component = {Hire} />
                         <Route exact={true} path='/hire/:category' component = {Hire} />
                         <Route exact={true} path='/pro/:category/:id' component = {ProsDetails} />
                         
+                        {/* PROFILE */}
                         <Route exact={true} path='/wishlist/:id' component = {Wishlist} />
                         <Route exact={true} path='/profile/:id' component = {Profile} />
+                        <Route exact={true} path='/add/project' component = {AddProject} />
+                        <Route exact={true} path='/:id/projects/:index' component = {ProjectDetails} />
                         
 
+                        {/* SHOP/PRODUCTS */}
                         <Route exact={true} path='/shop' component = {Shop} />
                         <Route exact={true} path='/item/:category/:id' component = {ItemDetails} />
                         
+                        {/* ADMIN FUNCTIONALITIES */}
                         <Route exact={true} path='/home/admin' component = {HomeAdmin} />
                         <Route exact={true} path='/create_item' component = {CreateItem} />
                     </Switch>

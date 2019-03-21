@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, Progress } from 'semantic-ui-react'
 import { storage } from '../../../../firebase/index'
 import './itemupload.css'
+import { invertedBtn } from '../../../../assets/styles/styles';
 
 export class ItemUpload extends Component {
     constructor(props) {
@@ -52,12 +53,11 @@ export class ItemUpload extends Component {
     render() {
         return (
             <div className="item-upload-main">
-                <Progress percent={this.state.progress} size="small" inverted indicating />
+                <Progress  percent={this.state.progress} size="small" inverted indicating />
                 <div className="item-upload-input">
                     <input type="file" accept="image/*" onChange={this.handleUploadChange}/>
-                    <Button inverted color="orange" onClick={this.handleUpload}>Upload</Button>
+                    <Button style={invertedBtn} onClick={this.handleUpload} icon='angle double up' />
                 </div>
-                {/* <img src={this.state.url || 'http://via.placeholder.com/400x300'} alt={"uploaded image"} /> */}
             </div>
         )
     }

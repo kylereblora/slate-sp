@@ -49,7 +49,7 @@
 }
 
 .signin-logo a {
-    color: #313131;
+    color: #414141;
 }
 
 .form-buttons {
@@ -78,6 +78,7 @@
     font-weight: 700;
     padding-bottom: 20px;
     font-size: 25px;
+    color: #414141;
 }
 
 .login-illustration {

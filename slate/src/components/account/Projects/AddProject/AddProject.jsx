@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import { createProject } from '../../../../store/actions/projectActions'
 import { Redirect } from 'react-router-dom'
 import ItemUpload from '../../../admin/Items/CreateItem/ItemUpload'
+import { loginBtn } from '../../../../assets/styles/styles'
 
 export class AddProject extends Component {
 
@@ -114,7 +115,7 @@ export class AddProject extends Component {
 
                                             
                                             <div className="form-buttons">
-                                                <Button fluid color="orange" type='submit' onClick={this.handleSubmit}>Add Project</Button>
+                                                <Button fluid style={loginBtn} type='submit' onClick={this.handleSubmit}>Add Project</Button>
                                             </div>
                                         </Form>
                                     </div>

@@ -87,12 +87,36 @@
 
 
 .profile-name h1 {
-    padding: 8px 0px;
+    padding: 0px 0px 8px 0px;
+    /* margin: 0 0 10px 0; */
+    font-family: 'GT Walsheim', sans-serif;
+    /* font-weight: 600; */
+    font-size: 60px;
+    color: #414141;
 }
+
+.architect-span, .intdes-span {
+    padding: 10px 20px;
+    color: white;
+    font-family: 'Circular Std Book', sans-serif;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 10px;
+}
+
+.architect-span {
+    background: #8697bd;
+}
+
+.intdes-span {
+    background: #cc8fbf;
+}
+
 .profile-name h3 {
     font-family: 'Circular Std Book', sans-serif;
     font-size: 15px;
-    color: #2b2b2b;
+    color: #414141;
 }
 
 .profile-description{
@@ -111,10 +135,13 @@
 .description-heading, .project-heading, .review-heading {
     font-family: 'Circular Std Bold', sans-serif;
     font-size: 25px;
+    color: #414141;
 }
 
 .description-content {
     font-family: 'Circular Std Book', sans-serif;
+    color: #414141;
+    
 }
 
 .project-header {
@@ -161,13 +188,13 @@
 }
 
 .project-link-style {
-    color: #313131;
+    color: #414141;
     max-width: 370px;
     margin: 10px 10px;
 }
 
 .project-link-style:hover {
-    color: #7a4418;
+    color: rgb(190, 87, 68);
 }
 
 .project-list {
@@ -194,7 +221,39 @@
     
     }
 
+    .profile-name h1 {
+        font-size: 40px
+    }
+
+    .profile-picture {
+        max-width:90px;
+    }
+
+    .profile-picture img{
+        max-width:90px;
+        max-height:90px;
+    }
+
     .profile-current-user-grid-container {
         margin: 0px 20px 30px 20px;
+    }
+
+    .description-heading, .project-heading, .review-heading {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .profile-name h1 {
+        font-size: 30px
+    }
+
+    .architect-span, .intdes-span {
+        padding: 7px 10px;
+        font-size: 10px;
+    }
+
+    .description-heading, .project-heading, .review-heading {
+        font-size: 18px;
     }
 }

@@ -4,6 +4,7 @@ import { provinces } from './provinces'
 import ItemUpload from '../../../admin/Items/CreateItem/ItemUpload'
 import { editUser } from '../../../../store/actions/authActions'
 import { connect } from 'react-redux'
+import { loginBtn } from '../../../../assets/styles/styles'
 
 export class EditProfile extends Component {
     constructor(props) {
@@ -33,13 +34,19 @@ export class EditProfile extends Component {
 
 
     handleSubmit = (e) => {
-        console.log(this.state);
+        // console.log(this.state);
         
-        const sub = {
-            ...this.props.user,
-            id: this.props.id
+        if((this.state.firstName && this.state.lastName && this.state.province && this.state.contactNumber
+            && this.state.proDescription) !== '') {
+            const sub = {
+                ...this.props.user,
+                id: this.props.id
+            }
+            this.props.editUser(sub, this.state)
+        }else {
+            console.log("Bro");
         }
-        this.props.editUser(sub, this.state)
+        
     }
 
     imageUrlCallback = (data) => {
@@ -49,7 +56,7 @@ export class EditProfile extends Component {
 
     render() {
         return (
-            <Modal trigger={<Button inverted color='orange' size='small'><Icon name='pencil alternate' />Edit Profile</Button>} closeIcon>
+            <Modal trigger={<Button style={loginBtn} size='small'><Icon name='pencil alternate' />Edit Profile</Button>} closeIcon>
                 <Modal.Content>
                     <div className="edit-item-form">
                         <h1>Edit Profile</h1>
@@ -72,7 +79,7 @@ export class EditProfile extends Component {
 
                             <Form.Field required onChange={this.handleChange}>
                                 <label>Contact Number</label>
-                                <Input id="contactNumber" value={this.state.contactNumber}/>
+                                <Input id="contactNumber" value={this.state.contactNumber} />
                             </Form.Field>
 
                             <Form.Field required onChange={this.handleChange}>
@@ -86,7 +93,7 @@ export class EditProfile extends Component {
                             </Form.Field>
 
                             <div className="form-buttons">
-                                <Button fluid color="orange" type='submit' onClick={this.handleSubmit}>Edit Profile</Button>
+                                <Button fluid style={loginBtn} type='submit' onClick={this.handleSubmit}>Edit Profile</Button>
                             </div>
                         </Form>
                     </div>
