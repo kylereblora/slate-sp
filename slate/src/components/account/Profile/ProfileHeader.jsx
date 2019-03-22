@@ -14,15 +14,28 @@ export class ProfileHeader extends Component {
                     </div>
                     <div className="profile-name">
                         <h1>{user.firstName} {user.lastName}</h1>
-                        {/* <h3>{user.contactNumber ? user.contactNumber : "No Contact Number"}</h3>
-                        <h3>{user.province ? user.province : "No Location"}</h3> */}
-
                         {
                             user.occupation === 'Architect' ? 
                             <span className="architect-span">{user.occupation}</span>
                             :
                             <span className="intdes-span">{user.occupation}</span>
                         }
+
+                        <div className="profile-info-misc">
+                            <div className="info-container-profile">
+                                <div className="icon-container-profile">
+                                    <i className="fas fa-map-marker-alt"></i>
+                                </div>
+                                <p>{user.province ? user.province : "No Location"}</p>
+                            </div>
+
+                            <div className="info-container-profile">
+                                <div className="icon-container-profile">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <p>{user.contactNumber ? user.contactNumber : "No Contact Number"}</p>
+                            </div>
+                        </div>
                     </div>
                     
                     <div className="spacer"></div>
@@ -35,10 +48,7 @@ export class ProfileHeader extends Component {
                     </div>
                 </div>
 
-                <div className="profile-description">
-                    <p className="description-heading">Description</p>
-                    <p className="description-content">{user.proDescription ? user.proDescription : "No Description Yet"}</p>
-                </div>
+                
             </div>
         )
     }

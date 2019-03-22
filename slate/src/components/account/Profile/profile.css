@@ -57,18 +57,25 @@
     grid-row-end: 2;
 }
 
+.profile-description{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
 .profile-projects {
     grid-column-start: 1;
     grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 5;
 }
 
 .profile-reviews {
     grid-column-start: 3;
     grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
 }
 
 
@@ -88,15 +95,13 @@
 
 .profile-name h1 {
     padding: 0px 0px 8px 0px;
-    /* margin: 0 0 10px 0; */
     font-family: 'GT Walsheim', sans-serif;
-    /* font-weight: 600; */
     font-size: 60px;
     color: #414141;
 }
 
 .architect-span, .intdes-span {
-    padding: 10px 20px;
+    padding: 8px 10px;
     color: white;
     font-family: 'Circular Std Book', sans-serif;
     border-radius: 5px;
@@ -106,11 +111,13 @@
 }
 
 .architect-span {
-    background: #8697bd;
+    border: 2px solid #8697bd;
+    color : #8697bd;
 }
 
 .intdes-span {
-    background: #cc8fbf;
+    border: 2px solid #cc8fbf;
+    color : #cc8fbf;
 }
 
 .profile-name h3 {
@@ -119,9 +126,7 @@
     color: #414141;
 }
 
-.profile-description{
-    padding-top: 30px;
-}
+
 
 .description-heading, .description-content {
     margin: 0;
@@ -129,7 +134,7 @@
 }
 
 .description-heading {
-    padding: 0px 0px 5px 0px;
+    padding: 0px 0px 15px 0px;
 }
 
 .description-heading, .project-heading, .review-heading {
@@ -141,7 +146,9 @@
 .description-content {
     font-family: 'Circular Std Book', sans-serif;
     color: #414141;
-    
+    width: 100%;
+    max-width: 800px;
+    white-space: pre-line;
 }
 
 .project-header {
@@ -156,11 +163,27 @@
     max-height: 150px;
 }
 
+.profile-info-misc {
+    margin: 20px 0 0 0;
+}
+
+.info-container-profile {
+    display:flex;
+    color: #414141;
+}
+
+.info-container-profile p {
+    font-family: 'Circular Std Book', sans-serif;
+}
+
+.icon-container-profile {
+    width: 100%;
+    max-width: 25px;
+}
+
 .profile-picture img{
     max-width:150px;
     max-height:150px;
-    /* width: auto;
-    height: auto; */
     object-fit: contain;
     border-radius: 1000px;
 }
@@ -206,14 +229,6 @@
     flex: 1 1 10px;
 }
 
-/* @media only screen and (max-width: 1140px) {
-    .project-link-style {
-        max-width: 350px;
-        margin: 20px 0px;
-    }
-    
-} */
-
 @media only screen and (max-width: 768px) {
     :root {
         --space: 0 0;
@@ -241,6 +256,7 @@
     .description-heading, .project-heading, .review-heading {
         font-size: 20px;
     }
+
 }
 
 @media only screen and (max-width: 540px) {

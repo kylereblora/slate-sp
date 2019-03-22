@@ -35,6 +35,11 @@ export class Profile extends Component {
                                         <ProfileHeader user={user} id={id} auth={auth} />
                                     </div>
 
+                                    <div className="profile-description">
+                                        <p className="description-heading">Description</p>
+                                        <p className="description-content">{user.proDescription ? user.proDescription : "No Description Yet"}</p>
+                                    </div>
+
                                     <div className="profile-projects">
                                         {
                                             id === auth.uid ? 

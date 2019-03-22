@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
-import { Button, Dimmer, Loader} from 'semantic-ui-react'
+import { Button, Dimmer, Loader, Modal} from 'semantic-ui-react'
 import Navbar from '../../../client/Navbar/Navbar';
 import Footer from '../../../client/Footer/Footer';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux'
+import { Link } from 'react-router-dom'
 import './projectdetails.css';
 
 export class ProjectDetails extends Component {
     render() {
-        const { id, project } = this.props;
-        
-        console.log(project);
+        const { id, project, user } = this.props;
         
         if(project) {
             return (
@@ -19,16 +18,72 @@ export class ProjectDetails extends Component {
                     <Navbar />
                     <div className="project-main">
                         <div className="project-content">
-                            <div className="project-banner">
-                                <img src={project.projectImageUrl} alt="project image"/>
-                            </div>
-                            
-                            <div className="project-info">
-                                <h1>{project.projectName}</h1>
-                                <p>{project.projectLocation}</p>
-                                <p>{project.projectYear}</p>
-                                <p>₱{project.projectCost}</p>
-                                <p>{project.projectDescription}</p>
+                            <div className="project-details-grid-container">
+                                
+                                    <Modal trigger = {
+                                        <div className="project-banner">
+                                            <img src={project.projectImageUrl} alt="project image"/>
+                                        </div>
+                                    }>
+                                        <Modal.Content>
+                                            <div className="modal-content-image">
+                                                <img src={project.projectImageUrl} alt="project image"/>
+                                            </div>
+                                        </Modal.Content>
+                                    </Modal>
+                                
+                                
+                                
+                                <div className="project-info">
+                                    <h1>{project.projectName}</h1>
+
+                                    <div className="info-container">
+                                        <div className="icon-container">
+                                            <i className="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <p>{project.projectLocation}</p>
+                                    </div>
+
+                                    <div className="info-container">
+                                        <div className="icon-container">
+                                            <i className="far fa-calendar-alt"></i>
+                                        </div>
+                                        <p>{project.projectYear}</p>
+                                    </div>
+                                    
+                                    <div className="info-container">
+                                        <div className="icon-container">
+                                            <i className="fas fa-coins"></i>
+                                        </div>
+                                        <p>{project.projectCost}</p>
+                                    </div>
+
+                                   <div className="project-description-detailed">
+                                        <h3>About this project</h3>
+                                        <p className="project-description-newline-format">{project.projectDescription}</p>
+                                   </div>
+                                </div>
+
+                                <div className="spacer-grid"></div>
+
+                                <div className="project-author">
+                                    <div className="author-picture">
+                                        <img src={user.proImageUrl || "https://via.placeholder.com/150"} alt="avatar"/>
+                                    </div>
+
+                                    <div className="about-the-author">
+                                        <Link className='author-link-style' to={'/profile/' + id}>
+                                            <p>{user.firstName} {user.lastName}</p>
+                                        </Link>
+
+                                        {
+                                            user.occupation === 'Architect' ? 
+                                            <span className="architect-span-author">{user.occupation}</span>
+                                            :
+                                            <span className="intdes-span-author">{user.occupation}</span>
+                                        }
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -51,15 +106,14 @@ export class ProjectDetails extends Component {
 const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id
     const index = ownProps.match.params.index
-    // const products = state.firestore.data.products
-    // const product = products ? products[id] : null
     const users = state.firestore.data.users
     const project = users ? users[id].projects[index] : null
-    
+    const user = users ? users[id] : null
     
     return {
         id,
-        project
+        project,
+        user
     }
 }
 

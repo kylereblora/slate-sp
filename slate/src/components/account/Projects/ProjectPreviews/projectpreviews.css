@@ -27,6 +27,10 @@
     font-family: 'Circular Std Bold', sans-serif;
 }
 
+.project-location {
+    font-family: 'Circular Std Book', sans-serif;
+}
+
 @media only screen and (max-width: 768px) {
     .project-preview-main {
         width: 100%;
