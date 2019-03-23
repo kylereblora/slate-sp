@@ -10,6 +10,14 @@ const projectReducer = (state = initState, action) => {
             console.log('added project to user error', action.err);
             return state;
 
+        case 'DELETE_PROJECT_FROM_USER':
+            console.log('deleted project', action.project);
+            return state;
+
+        case 'DELETE_PROJECT_FROM_USER_ERROR':
+            console.log('deleted project error', action.err);
+            return state;
+
         default: 
             return state;
     }

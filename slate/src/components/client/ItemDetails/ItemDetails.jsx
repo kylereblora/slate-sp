@@ -74,6 +74,10 @@ export class ItemDetails extends Component {
                                                 }
                                             </div>
                                         </div>
+
+                                        <div className="item-quantity-remaining">
+                                            <p>{product.itemQuantity} remaining</p>
+                                        </div>
                                         
                                         <Divider />
                                         

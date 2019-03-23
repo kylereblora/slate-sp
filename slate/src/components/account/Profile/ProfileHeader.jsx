@@ -31,7 +31,7 @@ export class ProfileHeader extends Component {
 
                             <div className="info-container-profile">
                                 <div className="icon-container-profile">
-                                    <i class="fas fa-phone"></i>
+                                    <i className="fas fa-phone"></i>
                                 </div>
                                 <p>{user.contactNumber ? user.contactNumber : "No Contact Number"}</p>
                             </div>

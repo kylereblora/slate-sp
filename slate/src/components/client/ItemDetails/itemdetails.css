@@ -104,12 +104,16 @@
     padding: 0px 10px 0px 0px;
 }
 
+.item-quantity-remaining {
+    color: #707070;
+}
+
 .add-to-wishlist {
     width: 300px;
 }
 
 .quantity label {
-    font-size: 18px;
+    font-size: 15px;
     font-family: 'Circular Std Medium', sans-serif;
 }
 

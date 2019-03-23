@@ -19,3 +19,23 @@ export const createProject = (project, state) => {
         })
     }
 } 
+
+export const deleteProject = (id, project) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        return new Promise((resolve, reject) => {
+            const firestore = getFirestore();
+            const firebase = getFirebase();
+
+            firestore.collection('users').doc(id).update({
+                projects: firebase.firestore.FieldValue.arrayRemove({...project})
+            }).then(() => {
+                // dispatch to create the project in firestore
+                dispatch({ type: 'DELETE_PROJECT_FROM_USER', project});
+            }).then(() => {
+                resolve();
+            }).catch((err) => {
+                dispatch({ type: 'DELETE_PROJECT_FROM_USER_ERROR', err});
+            });
+        })
+    }
+}

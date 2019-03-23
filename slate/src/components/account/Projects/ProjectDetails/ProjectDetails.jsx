@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Dimmer, Loader, Modal} from 'semantic-ui-react'
+import { Button, Dimmer, Loader, Modal, Icon} from 'semantic-ui-react'
 import Navbar from '../../../client/Navbar/Navbar';
 import Footer from '../../../client/Footer/Footer';
 import { connect } from 'react-redux';
@@ -7,10 +7,12 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux'
 import { Link } from 'react-router-dom'
 import './projectdetails.css';
+import {  defaultBtn } from '../../../../assets/styles/styles';
+import DeleteProject from '../DeleteProject/DeleteProject';
 
 export class ProjectDetails extends Component {
     render() {
-        const { id, project, user } = this.props;
+        const { id, project, user, auth } = this.props;
         
         if(project) {
             return (
@@ -36,6 +38,19 @@ export class ProjectDetails extends Component {
                                 
                                 <div className="project-info">
                                     <h1>{project.projectName}</h1>
+                                    
+                                    {
+                                        id === auth.uid ? 
+
+                                        <div className="edit-and-del-project">
+                                            <Button style={defaultBtn}><Icon name='pencil alternate' />Edit Project</Button>
+                                            <DeleteProject project={project} id={id}/>
+                                        </div>
+
+                                        :
+
+                                        null
+                                    }
 
                                     <div className="info-container">
                                         <div className="icon-container">
@@ -109,11 +124,13 @@ const mapStateToProps = (state, ownProps) => {
     const users = state.firestore.data.users
     const project = users ? users[id].projects[index] : null
     const user = users ? users[id] : null
-    
+    const auth = state.firebase.auth
+
     return {
         id,
         project,
-        user
+        user,
+        auth,
     }
 }
 
