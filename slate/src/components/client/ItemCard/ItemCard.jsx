@@ -1,6 +1,7 @@
 import React from 'react' // rafce
 import './itemcard.css';
 import { Rating } from 'semantic-ui-react'
+import { numberWithCommas } from '../ItemDetails/priceWithCommas'
 
 const ItemCard = ({product}) => {
     return (
@@ -17,9 +18,9 @@ const ItemCard = ({product}) => {
                 <div className="spacer" />
 
                 <div className="item-misc">
+                    <p className="item-category">{product.itemCategory}</p>
                     <p className="item-name">{product.itemName}</p>
-                    <p className="item-price">{product.itemCategory}</p>
-                    <p className="item-price">&#8369;{product.itemPrice}</p>
+                    <p className="item-price-card">&#8369;{numberWithCommas(product.itemPrice) }</p>
                     <Rating icon="star" defaultRating = {product.itemRating} maxRating = {5} disabled/>
                 </div>
             </div>

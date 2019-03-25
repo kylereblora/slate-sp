@@ -91,13 +91,15 @@
 }
 
 .item-info-2  .item-price {
-    font-size: 30px;
-    font-family: 'Circular Std Book', sans-serif;
+    font-size: 32px;
+    font-family: 'Circular Std Bold', sans-serif;
     margin: 0;
 }
 
+
 .item-info-quantity {
     display: flex;
+    margin: 10px 0 0 0;
 }
 
 .item-info-quantity p {
@@ -114,17 +116,18 @@
 
 .quantity label {
     font-size: 15px;
-    font-family: 'Circular Std Medium', sans-serif;
+    font-family: 'Circular Std Book', sans-serif;
+    color: #646464;
 }
 
-.quantity input{
-    padding: 8px;
-    border: 1px solid #fafafa;
-    border-radius: 5px;
+.quantity label span {
+    font-size: 20px;
 }
 
 .quantity {
-    margin-right: 10px;
+    height: 35px;
+    line-height: 35px;
+    margin-right: 50px;
 }
 
 .item-description p {

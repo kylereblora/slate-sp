@@ -26,7 +26,6 @@
     position: relative;
     text-transform: uppercase;
     font-size: 12px;
-    /* margin: 0 10px; */
     line-height: 65px;
     background: #fff;
     border-bottom: 1px solid #EAEAE8;
@@ -98,7 +97,7 @@
 
 
 .profile-initials-circle {
-    background: #a3a3a3;
+    background: rgb(207, 207, 207);
     padding: 10px;
     border-radius: 20px;
 }

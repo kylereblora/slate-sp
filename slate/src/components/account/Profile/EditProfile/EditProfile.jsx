@@ -5,6 +5,7 @@ import ItemUpload from '../../../admin/Items/CreateItem/ItemUpload'
 import { editUser } from '../../../../store/actions/authActions'
 import { connect } from 'react-redux'
 import { loginBtn, disabledLoginBtn } from '../../../../assets/styles/styles'
+import './editprofile.css'
 
 export class EditProfile extends Component {
     constructor(props) {
@@ -68,12 +69,14 @@ export class EditProfile extends Component {
     render() {
         return (
             <Modal 
-                trigger={<Button style={loginBtn} size='small'  onClick={this.handleOpen}><Icon name='pencil alternate' />Edit Profile</Button>} closeIcon
+                trigger={<Button style={loginBtn} size='small'  onClick={this.handleOpen}><Icon name='pencil alternate' />Edit Profile</Button>} 
                 open={this.state.modalOpen}
+                closeIcon
             >
+                <Modal.Header><h1>Edit Profile</h1></Modal.Header>
                 <Modal.Content>
                     <div className="edit-item-form">
-                        <h1>Edit Profile</h1>
+                        
                         <Form>
                             <Form.Field required onChange={this.handleChange}>
                                 <label>First Name</label>
@@ -98,7 +101,7 @@ export class EditProfile extends Component {
 
                             <Form.Field required onChange={this.handleChange}>
                                 <label>Description</label>
-                                <TextArea id="proDescription" value={this.state.proDescription} />
+                                <TextArea id="proDescription" value={this.state.proDescription} style={{ minHeight: 150 }}/>
                             </Form.Field>
 
                             <Form.Field required>

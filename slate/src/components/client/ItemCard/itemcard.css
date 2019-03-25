@@ -43,10 +43,18 @@
     font-family: 'Circular Std Bold', sans-serif;
 }
 
-.item-price {
+.item-price-card {
     font-family: 'GT Walsheim', sans-serif;
     font-weight: 600;
     font-size: 15px;
+    color: #414141;
+}
+
+.item-category {
+    font-family: 'GT Walsheim', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase
 }
 
 .item-picture img {

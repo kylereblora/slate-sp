@@ -9,6 +9,8 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux'
 import { getProductFromWishlist } from '../Wishlist/wishlistFunctions'
 import { loginBtn } from '../../../assets/styles/styles'
+import { numberWithCommas } from './priceWithCommas'
+
 
 
 export class ItemDetails extends Component {
@@ -56,13 +58,14 @@ export class ItemDetails extends Component {
                                     <div>
                                         <p className="item-name">{ product.itemName }</p>
                                         <Rating icon="star" defaultRating = { product.itemRating } maxRating = {5} disabled/>                
-                                        <p className="item-price">&#8369;{ product.itemPrice }</p>
+                                        <p className="item-price">&#8369;{ numberWithCommas(product.itemPrice) }</p>
                                     </div>
                                     <div>
                                         <div className="item-info-quantity">
                                             <div className="quantity">
-                                                <label htmlFor="input">Quantity: </label>
-                                                <input type="number" min='1' max={product.itemQuantity} placeholder='1'/>
+                                                {/* <label htmlFor="input">Quantity: </label>
+                                                <input type="number" min='1' max={product.itemQuantity} placeholder='1'/> */}
+                                                <label><span>{product.itemQuantity}</span> in stock</label>
                                             </div>
                                             <div className="add-to-wishlist">
                                                 { 
@@ -74,9 +77,8 @@ export class ItemDetails extends Component {
                                             </div>
                                         </div>
 
-                                        <div className="item-quantity-remaining">
-                                            <p>{product.itemQuantity} remaining</p>
-                                        </div>
+                                        {/* <div className="item-quantity-remaining">
+                                        </div> */}
                                         
                                         <Divider />
                                         

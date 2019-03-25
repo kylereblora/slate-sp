@@ -1,0 +1,8 @@
+.ui.form textarea:focus {
+    border-color: #F66F56;
+}
+
+.ui.form input[type=text]:focus {
+    border-color: #F66F56;
+    
+}
