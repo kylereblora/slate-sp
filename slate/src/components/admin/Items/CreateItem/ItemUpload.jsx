@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Progress, Icon } from 'semantic-ui-react'
+import { Button, Progress } from 'semantic-ui-react'
 import { storage } from '../../../../firebase/index'
 import './itemupload.css'
 import { signUpBtn } from '../../../../assets/styles/styles';

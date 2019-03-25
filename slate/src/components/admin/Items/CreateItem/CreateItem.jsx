@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import ItemUpload from './ItemUpload';
 import { Redirect } from 'react-router-dom'
 import { options } from '../../Items/CreateItem/itemoptions'
+import { loginBtn, disabledLoginBtn } from '../../../../assets/styles/styles';
 
 
 export class CreateItem extends Component {
@@ -108,7 +109,15 @@ export class CreateItem extends Component {
 
                             
                             <div className="form-buttons">
-                                <Button fluid color="orange" type='submit' onClick={this.handleSubmit}>Add Item</Button>
+                                {
+                                    (this.state.itemName && this.state.itemPrice && this.state.itemQuantity && this.state.itemDescription
+                                        && this.state.itemCategory && this.state.itemImageUrl) === '' ?
+
+                                        <Button fluid style={disabledLoginBtn}>Add Item</Button>
+                                        :
+                                        <Button fluid style={loginBtn} type='submit' onClick={this.handleSubmit}>Add Item</Button>
+                                }
+                                
                             </div>
                         </Form>
                     </div>

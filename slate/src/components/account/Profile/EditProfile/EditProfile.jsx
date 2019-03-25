@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, TextArea, Label, Input, Dropdown, Modal, Icon, Message } from 'semantic-ui-react'
+import { Button, Form, TextArea, Input, Dropdown, Modal, Icon } from 'semantic-ui-react'
 import { provinces } from './provinces'
 import ItemUpload from '../../../admin/Items/CreateItem/ItemUpload'
 import { editUser } from '../../../../store/actions/authActions'
@@ -16,7 +16,8 @@ export class EditProfile extends Component {
             contactNumber : this.props.user.contactNumber,
             proDescription: this.props.user.proDescription,
             proImageUrl: this.props.user.proImageUrl,
-            editError: false,
+            modalOpen:          false,
+            clicked :           false,
         }
     }
 
@@ -25,6 +26,10 @@ export class EditProfile extends Component {
         this.setState({
             [e.target.id] : e.target.value
         })
+    }
+
+    handleOpen = () => {
+        this.setState({modalOpen: true})
     }
 
     handleDropdownChange = (e, {name, value}) => {
@@ -37,16 +42,20 @@ export class EditProfile extends Component {
     handleSubmit = (e) => {
         if((this.state.firstName && this.state.lastName && this.state.province && this.state.contactNumber
             && this.state.proDescription) !== '') {
-            this.setState({editError: false}, () => {
+
+            this.setState({clicked: true}, () => {
                 const sub = {
                     ...this.props.user,
                     id: this.props.id
                 }
-                this.props.editUser(sub, this.state)
+                this.props.editUser(sub, this.state).then(() => {
+                    this.setState({
+                        modalOpen: false,
+                        clicked: false,
+                    }) 
+                })
             })
-            
-        }else {
-            this.setState({editError: true});
+                
         }
         
     }
@@ -58,7 +67,10 @@ export class EditProfile extends Component {
 
     render() {
         return (
-            <Modal trigger={<Button style={loginBtn} size='small'><Icon name='pencil alternate' />Edit Profile</Button>} closeIcon>
+            <Modal 
+                trigger={<Button style={loginBtn} size='small'  onClick={this.handleOpen}><Icon name='pencil alternate' />Edit Profile</Button>} closeIcon
+                open={this.state.modalOpen}
+            >
                 <Modal.Content>
                     <div className="edit-item-form">
                         <h1>Edit Profile</h1>
@@ -94,27 +106,26 @@ export class EditProfile extends Component {
                                 <ItemUpload callbackFromParent = {this.imageUrlCallback} store={'users'} />
                             </Form.Field>
 
-                            <div className="form-buttons">
+                            <div className="edit-form-buttons">
                                 {
                                     (this.state.firstName && this.state.lastName && this.state.province && this.state.contactNumber
                                         && this.state.proDescription) === '' ?
                                         
                                         <Button fluid style={disabledLoginBtn}>Edit Profile</Button>
                                         :
-                                        <Button fluid style={loginBtn} type='submit' onClick={this.handleSubmit}>Edit Profile</Button>
+
+                                        <div className="edit-form-buttons">
+                                            {
+                                                this.state.clicked ?
+                                                <Button fluid loading>Editing item...</Button>
+                                                :
+                                                <Button fluid style={loginBtn} type='submit' onClick={this.handleSubmit}>Edit Profile</Button>
+                                            }
+                                        </div>
 
                                 }
                             </div>
 
-                            {
-                                 this.state.editError === true ? 
-                                 <Message negative>
-                                     <Message.Header>Edit Error!</Message.Header>
-                                     <p>Invalid/incomplete credentials while editing.</p>
-                                 </Message>
-                                 : 
-                                 null
-                            }
                         </Form>
                     </div>
                 </Modal.Content>

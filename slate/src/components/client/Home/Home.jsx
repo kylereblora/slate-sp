@@ -22,7 +22,7 @@ export class Home extends Component {
         if (auth.email === 'tester@gmail.com') return <Redirect to='/home/admin' />
 
         if(products) {
-            productPreviewArr = getRandom(products, 4);
+            productPreviewArr = getRandom(products, 1);
         }
 
         return (

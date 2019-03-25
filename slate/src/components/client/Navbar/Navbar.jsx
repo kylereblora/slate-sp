@@ -4,7 +4,6 @@ import '../../../assets/fonts/style.css';
 import SignedOutLinks from './SignedOutLinks';   
 import SignedInLinks from './SignedInLinks';   
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 
 const Navbar = (props) => {
     const { auth, profile } = props;
@@ -15,14 +14,6 @@ const Navbar = (props) => {
     return (
         <div className="navbar"> 
             <div className="navbar-main">
-                {/* <div className="navbar-logo">
-                    {
-                        auth.uid ? <h1><a href="/home">slate</a></h1> : <h1><a href="/">slate</a></h1>
-                    }
-                </div>
-                <div className="spacer"></div> */}
-
-                
                 <div className="menu">
                     { links }
                 </div>

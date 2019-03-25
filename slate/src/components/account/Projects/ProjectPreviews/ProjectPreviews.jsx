@@ -11,7 +11,7 @@ export class ProjectPreviews extends Component {
                     {/* <div className="dummy"></div> */}
                     
                     <div className="project-picture-preview">
-                        <img src={project.projectImageUrl} alt="project image"/>
+                        <img src={project.projectImageUrl} alt={project.projectName}/>
                     
                     </div>
 

@@ -141,6 +141,12 @@
     padding: 0px 0px 5px 0px;
 }
 
+.item-description-content {
+    font-family: 'Circular Std Book', sans-serif;
+    color: #414141;
+    white-space: pre-line;
+}
+
 .item-reviews {
     text-align: left;
 }

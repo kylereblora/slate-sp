@@ -59,24 +59,28 @@ export const signUp = (newUser) => {
 
 export const editUser = (user, state) => {
     return (dispatch, getState, {getFirebase, getFirestore}) => {
-        const firestore = getFirestore();
-        firestore.collection('users').doc(user.id).set({
-            firstName: state.firstName,
-            lastName: state.lastName,
-            initials: state.firstName[0] + state.lastName[0],
-            province : state.province,
-            contactNumber : state.contactNumber,
-            proDescription: state.proDescription,
-            proImageUrl: state.proImageUrl,
-            proRating: user.proRating,
-            wishlist: user.wishlist,
-            projects: user.projects,
-            reviews: user.reviews,
-            occupation : user.occupation
-        }).then(() => {
-            dispatch({ type: 'EDIT_PROFILE_SUCCESS' });
-        }).catch((err) => {
-            dispatch({ type: 'EDIT_PROFILE_ERROR', err});
+        return new Promise((resolve, reject) => {
+            const firestore = getFirestore();
+            firestore.collection('users').doc(user.id).set({
+                firstName: state.firstName,
+                lastName: state.lastName,
+                initials: state.firstName[0] + state.lastName[0],
+                province : state.province,
+                contactNumber : state.contactNumber,
+                proDescription: state.proDescription,
+                proImageUrl: state.proImageUrl,
+                proRating: user.proRating,
+                wishlist: user.wishlist,
+                projects: user.projects,
+                reviews: user.reviews,
+                occupation : user.occupation
+            }).then(() => {
+                dispatch({ type: 'EDIT_PROFILE_SUCCESS' });
+            }).then(() => {
+                resolve();
+            }).catch((err) => {
+                dispatch({ type: 'EDIT_PROFILE_ERROR', err});
+            })
         })
     }    
 }

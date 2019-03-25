@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Dimmer, Loader, Modal, Icon} from 'semantic-ui-react'
+import { Dimmer, Loader, Modal } from 'semantic-ui-react'
 import Navbar from '../../../client/Navbar/Navbar';
 import Footer from '../../../client/Footer/Footer';
 import { connect } from 'react-redux';
@@ -7,7 +7,6 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux'
 import { Link } from 'react-router-dom'
 import './projectdetails.css';
-import {  defaultBtn } from '../../../../assets/styles/styles';
 import DeleteProject from '../DeleteProject/DeleteProject';
 import EditProject from '../EditProject/EditProject';
 
@@ -25,12 +24,12 @@ export class ProjectDetails extends Component {
                                 
                                     <Modal trigger = {
                                         <div className="project-banner">
-                                            <img src={project.projectImageUrl} alt="project image"/>
+                                            <img src={project.projectImageUrl} alt={project.projectName}/>
                                         </div>
                                     }>
                                         <Modal.Content>
                                             <div className="modal-content-image">
-                                                <img src={project.projectImageUrl} alt="project image"/>
+                                                <img src={project.projectImageUrl} alt={project.projectName}/>
                                             </div>
                                         </Modal.Content>
                                     </Modal>

@@ -4,6 +4,9 @@ import { options } from '../Items/CreateItem/itemoptions'
 import ItemUpload from '../Items/CreateItem/ItemUpload'
 import { editProduct } from '../../../store/actions/productActions'
 import { connect } from 'react-redux'
+import { disabledLoginBtn, signUpBtn } from '../../../assets/styles/styles';
+import './itemedit.css'
+
 
 export class ItemEdit extends Component {
     constructor(props) {
@@ -15,6 +18,8 @@ export class ItemEdit extends Component {
             itemDescription:    this.props.product.itemDescription,
             itemCategory:       this.props.product.itemCategory,
             itemImageUrl:       this.props.product.itemImageUrl,
+            modalOpen:          false,
+            clicked :           false,
         }
     }
 
@@ -26,6 +31,10 @@ export class ItemEdit extends Component {
         })
     }
 
+    handleOpen = () => {
+        this.setState({modalOpen: true})
+    }
+
     handleDropdownChange = (e, {name, value}) => {
         this.setState({
             [name]: value
@@ -33,7 +42,17 @@ export class ItemEdit extends Component {
     }
 
     handleSubmit = (e) => {
-        this.props.editProduct(this.props.product, this.state)
+        if((this.state.itemName && this.state.itemPrice && this.state.itemQuantity && this.state.itemDescription
+            && this.state.itemCategory && this.state.itemImageUrl) !== '') {
+            this.setState({clicked: true}, () => {
+                this.props.editProduct(this.props.product, this.state).then(() => {
+                    this.setState({
+                        modalOpen: false,
+                        clicked: false,
+                    })
+                })
+            })
+        }
     }
 
     imageUrlCallback = (data) => {
@@ -43,7 +62,10 @@ export class ItemEdit extends Component {
 
     render() {
         return (
-            <Modal trigger={<Button icon='edit' color='yellow' />}>
+            <Modal 
+                trigger={<Button icon='edit' color='yellow' onClick={this.handleOpen}/>}
+                open={this.state.modalOpen}
+            >
                 <Modal.Content>
                     <div className="edit-item-form">
                         <h1>Edit Item</h1>
@@ -86,8 +108,24 @@ export class ItemEdit extends Component {
                             </Form.Field>
 
                             
-                            <div className="form-buttons">
-                                <Button fluid color="orange" type='submit' onClick={this.handleSubmit}>Edit Item</Button>
+                            <div className="edit-form-buttons">
+                                {
+                                    (this.state.itemName && this.state.itemPrice && this.state.itemQuantity && this.state.itemDescription
+                                        && this.state.itemCategory && this.state.itemImageUrl) === '' ?
+
+
+                                        <Button fluid style={disabledLoginBtn}>Edit Item</Button>
+                                        :
+                                        <div className="edit-form-buttons">
+                                            {
+                                                this.state.clicked ?
+                                                <Button fluid loading>Editing item...</Button>
+                                                :
+                                                <Button fluid style={signUpBtn} type='submit' onClick={this.handleSubmit}>Edit Item</Button>
+                                            }
+                                        </div>
+                                }
+
                             </div>
                         </Form>
                     </div>

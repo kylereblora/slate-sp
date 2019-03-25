@@ -19,7 +19,7 @@ export class ItemInWishlist extends Component {
                 <div className="responsive-container-wishlist">
                     <div className="dummy"></div>
                     <div className="item-picture-preview">
-                        <img src={product.itemImageUrl} alt="image"/>
+                        <img src={product.itemImageUrl} alt={product.itemName}/>
                     </div>
                 </div>
                 

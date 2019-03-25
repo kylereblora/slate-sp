@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './itempreviews.css'
-import { Button, Rating, Divider } from 'semantic-ui-react'
+import { Button, Rating } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { deleteProduct } from '../../../store/actions/productActions'
 import { connect } from 'react-redux'
@@ -20,7 +20,7 @@ export class ItemPreviews extends Component {
                     <div className="dummy"></div>
                     
                     <div className="item-picture-preview-preview">
-                        <img src={product.itemImageUrl} alt="image"/>
+                        <img src={product.itemImageUrl} alt={product.itemName}/>
                     </div>
                 </div>
                 

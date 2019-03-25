@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Input, Label, TextArea, Dropdown, Dimmer, Loader } from 'semantic-ui-react'
+import { Form, Button, Input, TextArea, Dropdown, Dimmer, Loader } from 'semantic-ui-react'
 import Navbar from '../../../client/Navbar/Navbar';
 import Footer from '../../../client/Footer/Footer';
 import './addproject.css';

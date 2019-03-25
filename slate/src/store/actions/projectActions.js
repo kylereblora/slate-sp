@@ -46,8 +46,6 @@ export const editProject = (project, state, id) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         return new Promise((resolve, reject) => {
             const firestore = getFirestore();
-            const firebase = getFirebase();
-
             firestore.collection('users').doc(id).get().then((doc) => {
                 if(doc.exists) {
                     // get the user document first
@@ -95,6 +93,8 @@ export const editProject = (project, state, id) => {
             }).then(() => {
                 // dispatch to edit the project in firestore
                 dispatch({ type: 'EDIT_PROJECT_IN_USER_SUCCESS', project});
+            }).then(() => {
+                resolve();
             }).catch((err) => {
                 dispatch({ type: 'EDIT_PROJECT_IN_USER_ERROR', err});
                 

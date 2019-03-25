@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux'
 import { getProductFromWishlist } from '../Wishlist/wishlistFunctions'
-import { Redirect } from 'react-router-dom'
 import { loginBtn } from '../../../assets/styles/styles'
 
 
@@ -29,7 +28,7 @@ export class ItemDetails extends Component {
     }
 
     render() {
-        const { id, product, auth, wishlist } = this.props;
+        const { id, product, wishlist } = this.props;
         let inWishlist = null
 
         if (wishlist) {
@@ -83,8 +82,19 @@ export class ItemDetails extends Component {
                                         
                                         <div className="item-description">
                                             <p className="item-description-header">Item Description</p>
-                                            <p>{product.itemDescription}</p>
+                                            <p className="item-description-content">{product.itemDescription}</p>
                                         </div>
+
+                                        <Divider />
+
+                                        <div className="item-reviews">
+                                            <p className="item-description-header">Item Reviews</p>
+                                            <div className="item-reviews-list">
+                                                {
+                                                    product.reviews
+                                                }
+                                            </div>
+                                        </div>                                        
                                     </div>                                
                                 </div>
                             </div>

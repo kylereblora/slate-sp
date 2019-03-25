@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { defaultBtn, loginBtn } from '../../../../assets/styles/styles';
-import { Button, Modal, Icon, Form, Message, Input, Dropdown, TextArea } from 'semantic-ui-react'
+import { defaultBtn, loginBtn, disabledLoginBtn } from '../../../../assets/styles/styles';
+import { Button, Modal, Icon, Form, Input, Dropdown, TextArea } from 'semantic-ui-react'
 import './editproject.css'
 import ItemUpload from '../../../admin/Items/CreateItem/ItemUpload'
 import { years } from '../AddProject/years';
@@ -16,7 +16,8 @@ export class EditProject extends Component {
         projectYear: this.props.project.projectYear,
         projectDescription: this.props.project.projectDescription,
         projectImageUrl : this.props.project.projectImageUrl,
-        editError: false,
+        modalOpen:          false,
+        clicked :           false,
     }
 
     handleChange = (e) => {
@@ -37,32 +38,34 @@ export class EditProject extends Component {
         this.setState({projectImageUrl : data})        
     }
 
+    handleOpen = () => {
+        this.setState({modalOpen: true})
+    }
+    
     handleSubmit = (e) => {
 
         if((this.state.projectName && this.state.projectCost && this.state.projectLocation && this.state.projectYear
         && this.state.projectDescription && this.state.projectImageUrl) !== '') {
             
-            this.setState({editError: false}, () => {
+            this.setState({clicked: true}, () => {
                 
                 this.props.editProject(this.props.project, this.state, this.props.id).then(() => {
-                    window.location.href = this.props.auth.uid + '/projects/' + this.props.project.id;
+                    this.setState({
+                        modalOpen: false,
+                        clicked: false,
+                    }) 
                 })
             })
-            
-
-        } else {
-            this.setState({editError: true});
         }
-
-        
     }
 
     render() {
         return (
             <Modal
-                trigger={<Button style={defaultBtn}><Icon name='pencil alternate' />Edit Project</Button>}
+                trigger={<Button style={defaultBtn} onClick={this.handleOpen}><Icon name='pencil alternate' />Edit Project</Button>}
+                open={this.state.modalOpen}
                 size='small'
-                >
+            >
                 <Modal.Content>
                     <div className="edit-project-form">
                         <h1 className='edit-project-header'>Edit Project</h1>
@@ -102,18 +105,23 @@ export class EditProject extends Component {
                                 <ItemUpload callbackFromParent = {this.imageUrlCallback} store={'projects'}/>
                             </Form.Field>
 
-                            {
-                                 this.state.editError === true ? 
-                                 <Message negative>
-                                     <Message.Header>Edit Error!</Message.Header>
-                                     <p>Invalid/incomplete credentials while editing.</p>
-                                 </Message>
-                                 : 
-                                 null
-                            }
+                            <div className="edit-form-buttons">
+                                {
+                                    (this.state.projectName && this.state.projectCost && this.state.projectLocation && this.state.projectYear
+                                        && this.state.projectDescription && this.state.projectImageUrl) === '' ?
 
-                            <div className="form-buttons">
-                                <Button fluid style={loginBtn} type='submit' onClick={this.handleSubmit}>Edit Project</Button>
+                                        <Button fluid style={disabledLoginBtn}>Edit Project</Button>
+                                        :
+                                        <div className="edit-form-buttons">
+                                            {
+                                                this.state.clicked ?
+                                                <Button fluid loading>Editing item...</Button>
+                                                :
+                                                <Button fluid style={loginBtn} type='submit' onClick={this.handleSubmit}>Edit Project</Button>
+                                            }
+                                        </div>
+                                }
+                                
                             </div>
                         </Form>
                     </div>

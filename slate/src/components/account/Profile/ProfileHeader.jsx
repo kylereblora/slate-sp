@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './profile.css'
-import { Button, Rating } from 'semantic-ui-react'
 import EditProfile from './EditProfile/EditProfile';
 
 export class ProfileHeader extends Component {

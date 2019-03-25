@@ -28,7 +28,7 @@ const projectReducer = (state = initState, action) => {
 
         case 'NO_USER_DOC_FOUND':
             console.log('no user document found.');
-            
+            return state;
             
 
         default: 

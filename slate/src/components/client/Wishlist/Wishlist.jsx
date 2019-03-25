@@ -10,7 +10,7 @@ import './wishlist.css'
 
 export class Wishlist extends Component {
     render() {
-        const { auth, profile, wishlist, id } = this.props;
+        const { auth, wishlist, id } = this.props;
         if (!auth.uid) return <Redirect to='/' />
         if (auth.uid !== id) return <Redirect to={'/wishlist/'+ auth.uid} />
         return (

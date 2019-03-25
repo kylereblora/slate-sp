@@ -1,6 +1,6 @@
 import React from 'react' // rafce
 import './itemcard.css';
-import { Button, Rating, Divider } from 'semantic-ui-react'
+import { Rating } from 'semantic-ui-react'
 
 const ItemCard = ({product}) => {
     return (
@@ -10,7 +10,7 @@ const ItemCard = ({product}) => {
                     <div className="dummy"></div>
                     
                     <div className="item-picture">
-                        <img src={product.itemImageUrl} alt="image"/>
+                        <img src={product.itemImageUrl} alt={product.itemName}/>
                     </div>
                 </div>
 
