@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import './projectdetails.css';
 import {  defaultBtn } from '../../../../assets/styles/styles';
 import DeleteProject from '../DeleteProject/DeleteProject';
+import EditProject from '../EditProject/EditProject';
 
 export class ProjectDetails extends Component {
     render() {
@@ -43,7 +44,7 @@ export class ProjectDetails extends Component {
                                         id === auth.uid ? 
 
                                         <div className="edit-and-del-project">
-                                            <Button style={defaultBtn}><Icon name='pencil alternate' />Edit Project</Button>
+                                            <EditProject project={project} id={id} />
                                             <DeleteProject project={project} id={id}/>
                                         </div>
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Button, Form, TextArea, Label, Input, Dropdown, Modal, Icon } from 'semantic-ui-react'
+import { Button, Form, TextArea, Label, Input, Dropdown, Modal, Icon, Message } from 'semantic-ui-react'
 import { provinces } from './provinces'
 import ItemUpload from '../../../admin/Items/CreateItem/ItemUpload'
 import { editUser } from '../../../../store/actions/authActions'
 import { connect } from 'react-redux'
-import { loginBtn } from '../../../../assets/styles/styles'
+import { loginBtn, disabledLoginBtn } from '../../../../assets/styles/styles'
 
 export class EditProfile extends Component {
     constructor(props) {
@@ -16,6 +16,7 @@ export class EditProfile extends Component {
             contactNumber : this.props.user.contactNumber,
             proDescription: this.props.user.proDescription,
             proImageUrl: this.props.user.proImageUrl,
+            editError: false,
         }
     }
 
@@ -34,17 +35,18 @@ export class EditProfile extends Component {
 
 
     handleSubmit = (e) => {
-        // console.log(this.state);
-        
         if((this.state.firstName && this.state.lastName && this.state.province && this.state.contactNumber
             && this.state.proDescription) !== '') {
-            const sub = {
-                ...this.props.user,
-                id: this.props.id
-            }
-            this.props.editUser(sub, this.state)
+            this.setState({editError: false}, () => {
+                const sub = {
+                    ...this.props.user,
+                    id: this.props.id
+                }
+                this.props.editUser(sub, this.state)
+            })
+            
         }else {
-            console.log("Bro");
+            this.setState({editError: true});
         }
         
     }
@@ -93,8 +95,26 @@ export class EditProfile extends Component {
                             </Form.Field>
 
                             <div className="form-buttons">
-                                <Button fluid style={loginBtn} type='submit' onClick={this.handleSubmit}>Edit Profile</Button>
+                                {
+                                    (this.state.firstName && this.state.lastName && this.state.province && this.state.contactNumber
+                                        && this.state.proDescription) === '' ?
+                                        
+                                        <Button fluid style={disabledLoginBtn}>Edit Profile</Button>
+                                        :
+                                        <Button fluid style={loginBtn} type='submit' onClick={this.handleSubmit}>Edit Profile</Button>
+
+                                }
                             </div>
+
+                            {
+                                 this.state.editError === true ? 
+                                 <Message negative>
+                                     <Message.Header>Edit Error!</Message.Header>
+                                     <p>Invalid/incomplete credentials while editing.</p>
+                                 </Message>
+                                 : 
+                                 null
+                            }
                         </Form>
                     </div>
                 </Modal.Content>

@@ -13,6 +13,14 @@ export const signUpBtn = {
 }
 
 
+export const disabledLoginBtn = {
+    background: '#ff9e8c',
+    color: 'white',
+    padding: '10px 30px',
+    cursor: 'default'
+}
+
+
 export const invertedBtn = {
     background: 'inherit',
     color: '#F66F56',

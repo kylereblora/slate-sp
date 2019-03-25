@@ -9,12 +9,11 @@ import { loginBtn } from '../../../assets/styles/styles'
 export class ProfileProjects extends Component {
 
     handleClick = (e) => {
-        window.location.href = '/add/project';
+        window.location.href = '/add/project/'+ this.props.id ;
     } 
 
     render() {
         const { user, id, isCurrent } = this.props;
-        console.log(user);
         return (
             <div>
                 <div className="project-header">

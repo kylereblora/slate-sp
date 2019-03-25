@@ -4,7 +4,7 @@ import './signup.css'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signUp } from '../../../store/actions/authActions'
-import { signUpBtn } from '../../../assets/styles/styles';
+import { signUpBtn, disabledLoginBtn } from '../../../assets/styles/styles';
 
 const options = [
     {key: 1, text: 'Architect', value: 'Architect'},
@@ -40,7 +40,11 @@ export class SignUp extends Component {
     }
 
     toggle = (e) => {
-        this.setState({ checked : !this.state.checked })
+        this.setState({ checked : !this.state.checked }, () => {
+            if(this.state.checked === false) {
+                this.setState({occupation:'Regular'});
+            }
+        })
     }
 
     handleDropdownChange = (e, {name, value}) => {
@@ -101,7 +105,14 @@ export class SignUp extends Component {
 
                                     <div className="form-buttons">
                                         <div className="submit-btn">
-                                            <Button style={signUpBtn} type='submit'>Sign Up</Button>
+                                            {
+                                                (this.state.firstName && this.state.lastName && this.state.email && this.state.password) === '' ?
+                                                <Button style={disabledLoginBtn}>Sign Up</Button>
+                                                :
+                                                <Button style={signUpBtn} type='submit'>Sign Up</Button>
+                                            }
+
+
                                         </div>
 
                                         <div className="login-instead">

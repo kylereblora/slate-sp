@@ -36,7 +36,7 @@ class App extends React.Component {
                         {/* PROFILE */}
                         <Route exact={true} path='/wishlist/:id' component = {Wishlist} />
                         <Route exact={true} path='/profile/:id' component = {Profile} />
-                        <Route exact={true} path='/add/project' component = {AddProject} />
+                        <Route exact={true} path='/add/project/:id' component = {AddProject} />
                         <Route exact={true} path='/:id/projects/:index' component = {ProjectDetails} />
                         
 

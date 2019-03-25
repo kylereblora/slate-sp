@@ -6,10 +6,12 @@ import './addproject.css';
 import { years } from './years';
 import { costs } from './costs';
 import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 import { createProject } from '../../../../store/actions/projectActions'
 import { Redirect } from 'react-router-dom'
 import ItemUpload from '../../../admin/Items/CreateItem/ItemUpload'
-import { loginBtn } from '../../../../assets/styles/styles'
+import { loginBtn, disabledLoginBtn } from '../../../../assets/styles/styles'
 
 export class AddProject extends Component {
 
@@ -52,22 +54,20 @@ export class AddProject extends Component {
             this.props.createProject(this.state, this.props.auth.uid).then(() => {
                 window.location.href = '/profile/'+this.props.auth.uid;
             })
-        } else {
-            console.log("bro");
-            
         }
+
     }
 
     
 
     render() {
-        const { auth } = this.props;
-
+        const { auth, user } = this.props;
+        
         if (!auth.uid) return <Redirect to='/signin' />
         return (
             <div>
                 {
-                    auth ?
+                    auth && user ?
 
                     <div className='add-project-site'>
                         <Navbar />
@@ -115,7 +115,15 @@ export class AddProject extends Component {
 
                                             
                                             <div className="form-buttons">
-                                                <Button fluid style={loginBtn} type='submit' onClick={this.handleSubmit}>Add Project</Button>
+                                                {
+                                                    (this.state.projectName && this.state.projectCost && this.state.projectLocation && this.state.projectYear
+                                                        && this.state.projectDescription && this.state.projectImageUrl) === '' ?
+
+                                                    <Button fluid style={disabledLoginBtn}>Add Project</Button>
+                                                    :
+                                                    <Button fluid style={loginBtn} type='submit' onClick={this.handleSubmit}>Add Project</Button>
+                                                    
+                                                }
                                             </div>
                                         </Form>
                                     </div>
@@ -144,9 +152,14 @@ export class AddProject extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+    const id = ownProps.match.params.id
+    const users = state.firestore.data.users;
+    const user = users ? users[id] : null
+
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        user
     }
 }
 
@@ -156,4 +169,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 } 
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddProject)
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    firestoreConnect(['users'])
+)(AddProject)

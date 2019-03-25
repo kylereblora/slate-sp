@@ -18,6 +18,19 @@ const projectReducer = (state = initState, action) => {
             console.log('deleted project error', action.err);
             return state;
 
+        case 'EDIT_PROJECT_IN_USER_SUCCESS':
+            console.log('edited project to user success', action.project);
+            return state;
+
+        case 'EDIT_PROJECT_IN_USER_ERROR':
+            console.log('edit project error', action.err);
+            return state;
+
+        case 'NO_USER_DOC_FOUND':
+            console.log('no user document found.');
+            
+            
+
         default: 
             return state;
     }
