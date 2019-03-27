@@ -16,7 +16,9 @@ export class Shop extends Component {
                 <Navbar />
                 <div className="shop-main">
                     {
-                        products ? <ItemList products={products} /> 
+                        products ? 
+                        
+                        <ItemList products={products} /> 
                         :
                         <div>
                             <Dimmer active inverted>

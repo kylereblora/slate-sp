@@ -17,7 +17,6 @@ export class EditProfile extends Component {
             contactNumber : this.props.user.contactNumber,
             proDescription: this.props.user.proDescription,
             proImageUrl: this.props.user.proImageUrl,
-            modalOpen:          false,
             clicked :           false,
         }
     }
@@ -51,7 +50,6 @@ export class EditProfile extends Component {
                 }
                 this.props.editUser(sub, this.state).then(() => {
                     this.setState({
-                        modalOpen: false,
                         clicked: false,
                     }) 
                 })
@@ -70,7 +68,7 @@ export class EditProfile extends Component {
         return (
             <Modal 
                 trigger={<Button style={loginBtn} size='small'  onClick={this.handleOpen}><Icon name='pencil alternate' />Edit Profile</Button>} 
-                open={this.state.modalOpen}
+                
                 closeIcon
             >
                 <Modal.Header><h1>Edit Profile</h1></Modal.Header>

@@ -21,14 +21,20 @@ export class Home extends Component {
         // admin email
         if (auth.email === 'tester@gmail.com') return <Redirect to='/home/admin' />
 
-        if(products) {
-            productPreviewArr = getRandom(products, 1);
-        }
+        if(products && products.length > 0) {
+            let previewNumber = 0;
+            if(products.length > 4) previewNumber = 4;
+            else previewNumber = products.length;
+
+            productPreviewArr = getRandom(products, previewNumber);
+        } else if(products && products.length === 0){
+            productPreviewArr = []
+        } 
 
         return (
             <div>
                 {
-                    products && productPreviewArr ? 
+                    products && productPreviewArr !== null ? 
 
                     <div className="home-site">
                         <Navbar />
@@ -38,6 +44,8 @@ export class Home extends Component {
                                     <p className="product-section-heading">Discover home products</p>
                                     <div className="product-previews">
                                         {
+                                            productPreviewArr.length > 0 ?
+
                                             productPreviewArr.map(product => {
                                                 return (
                                                     <Link className='item-link-style' to={'/item/'+ product.itemCategory + '/' + product.id} key={product.id}>
@@ -45,6 +53,10 @@ export class Home extends Component {
                                                     </Link>
                                                 )
                                             })
+
+                                            :
+
+                                            <p>No products currently listed.</p>
                                         }
                                     </div>
                                 </div>

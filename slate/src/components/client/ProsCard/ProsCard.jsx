@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './proscard.css';
 import PlaceholderImg from '../../../assets/img/placeholderhouse.jpg';
 import { Button, Rating } from 'semantic-ui-react';
+import { defaultBrandBtn } from '../../../assets/styles/styles';
 
 
 
@@ -17,7 +18,7 @@ export class ProsCard extends Component {
             <div className="pros-card">
                 <div className="pros-card-main">
                     <div className="pros-picture">
-                        <img src={PlaceholderImg} alt="house"/>
+                        <img src={pro.projects[0] ? pro.projects[0].projectImageUrl : "https://via.placeholder.com/350x240"} alt="house"/>
                     </div>
     
                     <div className="pros-misc">
@@ -34,7 +35,7 @@ export class ProsCard extends Component {
     
                     <div className="spacer" />
                     <div className="card-action">
-                        <Button inverted color="orange" onClick={(e) => this.handleClick(e, pro.id)}>View</Button>
+                        <Button style={defaultBrandBtn} onClick={(e) => this.handleClick(e, pro.id)}>View</Button>
                     </div>
                 </div>
             </div>

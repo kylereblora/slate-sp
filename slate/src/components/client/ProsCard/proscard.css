@@ -7,20 +7,21 @@
 }
 
 
-.pros-picture {
-    height: 250px;
-    background: #414242;
-}
-
 .pros-picture img {
-    height: 250px;
+    width: 350px;
+    height:240px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
 .pros-misc {
     margin-left: 20px;
     display: flex;
     flex-direction: column;
+    font-family: 'Circular Std Book', sans-serif;
+    
 }
+
 
 .pros-name {
     font-family: 'Circular Std Medium', sans-serif;

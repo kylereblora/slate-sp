@@ -8,8 +8,6 @@ export class ProjectPreviews extends Component {
             <div className="project-card">
                <div className="project-preview-main">
 
-                    {/* <div className="dummy"></div> */}
-                    
                     <div className="project-picture-preview">
                         <img src={project.projectImageUrl} alt={project.projectName}/>
                     

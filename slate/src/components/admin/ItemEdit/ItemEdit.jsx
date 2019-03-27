@@ -18,7 +18,6 @@ export class ItemEdit extends Component {
             itemDescription:    this.props.product.itemDescription,
             itemCategory:       this.props.product.itemCategory,
             itemImageUrl:       this.props.product.itemImageUrl,
-            modalOpen:          false,
             clicked :           false,
         }
     }
@@ -47,7 +46,6 @@ export class ItemEdit extends Component {
             this.setState({clicked: true}, () => {
                 this.props.editProduct(this.props.product, this.state).then(() => {
                     this.setState({
-                        modalOpen: false,
                         clicked: false,
                     })
                 })
@@ -64,7 +62,6 @@ export class ItemEdit extends Component {
         return (
             <Modal 
                 trigger={<Button icon='edit' color='yellow' onClick={this.handleOpen}/>}
-                open={this.state.modalOpen}
             >
                 <Modal.Content>
                     <div className="edit-item-form">

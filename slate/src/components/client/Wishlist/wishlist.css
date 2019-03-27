@@ -39,3 +39,20 @@
 .wishlist-products h1 {
     margin: 0 0 30px 0;
 }
+
+.wishlist-svg {
+    text-align: center;
+}
+
+.wishlist-svg img {
+    width: 300px;
+    height: 300px;
+}
+
+.wishlist-svg p {
+    font-size: 18px;
+    font-family: 'Circular Std Medium', sans-serif;
+    color: #414141;
+    margin: 0;
+    padding: 0 0 30px 0;
+}

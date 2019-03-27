@@ -7,6 +7,7 @@ import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import ItemInWishlist from './ItemInWishlist/ItemInWishlist'
 import './wishlist.css'
+import RelaxingSVG from '../../../assets/img/relaxing.svg'
 
 export class Wishlist extends Component {
     render() {
@@ -28,7 +29,10 @@ export class Wishlist extends Component {
                                 )
                             })
                             :
-                            <p>No items in wishlist yet.</p>
+                            <div className="wishlist-svg">
+                                <img src={RelaxingSVG} alt="svgfile"/>
+                                <p>Your wishlist seems empty...</p>
+                            </div>
                         }
                     </div>
                 

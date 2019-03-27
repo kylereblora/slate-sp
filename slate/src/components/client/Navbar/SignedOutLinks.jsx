@@ -19,7 +19,7 @@ const SignedOutLinks = () => {
                     activeClassName="active-item"
                     >Shop</NavLink> 
                 <NavLink 
-                    to="/hire"
+                    to="/hire/architects"
                     className="navlink-hover"
                     activeClassName="active-item"
                     >Hire</NavLink>

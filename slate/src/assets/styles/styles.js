@@ -42,3 +42,9 @@ export const basicDefaultBtn = {
     border: '1px solid #7c7c7c',
     padding: '10px 15px'    
 }
+
+export const defaultBrandBtn = {
+    background: '#F66F56',
+    color: 'white',
+    padding: '10px 30px',
+}

@@ -16,7 +16,6 @@ export class EditProject extends Component {
         projectYear: this.props.project.projectYear,
         projectDescription: this.props.project.projectDescription,
         projectImageUrl : this.props.project.projectImageUrl,
-        modalOpen:          false,
         clicked :           false,
     }
 
@@ -51,7 +50,6 @@ export class EditProject extends Component {
                 
                 this.props.editProject(this.props.project, this.state, this.props.id).then(() => {
                     this.setState({
-                        modalOpen: false,
                         clicked: false,
                     }) 
                 })
@@ -63,7 +61,6 @@ export class EditProject extends Component {
         return (
             <Modal
                 trigger={<Button style={defaultBtn} onClick={this.handleOpen}><Icon name='pencil alternate' />Edit Project</Button>}
-                open={this.state.modalOpen}
                 size='small'
             >
                 <Modal.Content>
