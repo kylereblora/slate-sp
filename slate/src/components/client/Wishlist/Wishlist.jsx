@@ -7,7 +7,7 @@ import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import ItemInWishlist from './ItemInWishlist/ItemInWishlist'
 import './wishlist.css'
-import RelaxingSVG from '../../../assets/img/relaxing.svg'
+import RelaxingSVG from '../../../assets/img/blankcanvas.svg'
 
 export class Wishlist extends Component {
     render() {

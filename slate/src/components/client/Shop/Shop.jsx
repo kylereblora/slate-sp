@@ -7,6 +7,7 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Dimmer, Loader } from 'semantic-ui-react'
 import './shop.css';
+import SearchStandard from '../Search/SearchStandard';
 
 export class Shop extends Component {
     render() {
@@ -18,7 +19,26 @@ export class Shop extends Component {
                     {
                         products ? 
                         
-                        <ItemList products={products} /> 
+                        <div className="shop-container-with-search">
+                            <div className="shop-content-with-search">
+                                <div className="shop-search">
+                                    <div className="shop-flex-container">
+                                        <div className="shop-header">
+                                            <h2>Shop Products</h2>
+                                            <p>Browse a wide catalog of items for your home design needs.</p>
+                                        </div>
+
+                                        <div className="search-standard">
+                                            <SearchStandard source={products} />
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div className="item-list-container-shop">
+                                    <ItemList products={products} /> 
+                                </div>
+                            </div>
+                        </div>
                         :
                         <div>
                             <Dimmer active inverted>

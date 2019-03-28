@@ -6,7 +6,7 @@
     left: 0;
     background: #ffffff;
     border-bottom: 1px solid #EAEAE8;
-    z-index:100;
+    z-index:10000;
     font-family: 'Circular Std Book', sans-serif;
 }
 
