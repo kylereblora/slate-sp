@@ -31,7 +31,6 @@ class App extends React.Component {
                         {/* HIRE/PROS */}
                         <Route exact={true} path='/hire/architects' component = {Hire} />
                         <Route exact={true} path='/hire/:category' component = {Hire} />
-                        <Route exact={true} path='/pro/:category/:id' component = {ProsDetails} />
                         
                         {/* PROFILE */}
                         <Route exact={true} path='/wishlist/:id' component = {Wishlist} />

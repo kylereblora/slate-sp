@@ -65,13 +65,13 @@ export class Home extends Component {
                                     <p className="pros-section-heading">Find pros for the design you need</p>
                                     <div className="pros-holder">
                                         <div className="architects">
-                                            <a href="/hire/architect">Architects</a>
+                                            <a href="/hire/architects">Architects</a>
                                         </div>
 
                                         <div className="spacer-mini" />
 
                                         <div className="intdes">
-                                            <a href="/hire/interior-designer">Interior Designers</a>
+                                            <a href="/hire/interior-designers">Interior Designers</a>
                                         </div>
                                     </div>
                                 </div>

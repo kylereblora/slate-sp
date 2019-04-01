@@ -7,6 +7,7 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Dimmer, Loader } from 'semantic-ui-react'
 import './hire.css';
+import SearchPro from '../Search/SearchPro';
 
 
 export class Hire extends Component {
@@ -21,7 +22,26 @@ export class Hire extends Component {
                     {
                         pros ?
 
-                        <ProsList category={category} pros={pros}/>
+                        <div className="hire-container-with-search">
+                            <div className="hire-content-with-search">
+                                <div className="hire-search">
+                                    <div className="hire-flex-container">
+                                        <div className="hire-header">
+                                            <h2>Hire Professionals</h2>
+                                            <p>Browse a wide catalog of items for your home design needs.</p>
+                                        </div>
+
+                                        <div className="search-standard">
+                                            <SearchPro source={pros} />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="pro-list-container-hire">
+                                    <ProsList category={category} pros={pros}/>
+                                </div>
+                            </div>
+                        </div>
                         :
                         <div>
                             <Dimmer active inverted>
@@ -37,7 +57,6 @@ export class Hire extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         pros: state.firestore.ordered.users
     }

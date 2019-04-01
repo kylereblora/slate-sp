@@ -4,9 +4,9 @@ import { Search, Label } from 'semantic-ui-react'
 
 
 			
-const resultRenderer = ({ itemName, itemPrice }) => <Label content={itemName} />
+const resultRenderer = ({ firstName, lastName }) => <Label content={firstName + ' ' + lastName} />
 
-export class SearchStandard extends Component {
+export class SearchPro extends Component {
 
 	state = {
 		isLoading : false,
@@ -16,7 +16,7 @@ export class SearchStandard extends Component {
 
 	resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
 
-	handleResultSelect = (e, { result }) => window.location.href = '/item/' + result.itemCategory + '/' + result.id
+	handleResultSelect = (e, { result }) => window.location.href = '/profile/' + result.id
 
 	handleSearchChange = (e, { value }) => {
 		this.setState({ isLoading: true, value })
@@ -25,11 +25,15 @@ export class SearchStandard extends Component {
 		  if (this.state.value.length < 1) return this.resetComponent()
 	
 		  const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
-		  const isMatch = result => re.test(result.itemName)
-	
-		  this.setState({
-			isLoading: false,
-			results: _.filter(this.props.source, isMatch),
+		  const isMatch = result => {
+				return (
+					re.test(result.firstName + ' ' + result.lastName) && (result.occupation === 'Architect' ||  result.occupation === 'Interior Designer')
+				)
+			}
+			
+			this.setState({
+				isLoading: false,
+				results: _.filter(this.props.source, isMatch),
 		  })
 		}, 300)
 	  }
@@ -51,4 +55,4 @@ export class SearchStandard extends Component {
 	}
 }
 
-export default SearchStandard
+export default SearchPro
