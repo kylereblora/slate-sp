@@ -7,3 +7,8 @@
     font-size: 18px;
     color: #414141;
 }
+
+.ui.form input[type=password]:focus, .ui.form textarea:focus, .ui.form input[type=text]:focus, 
+.ui.form input[type=number]:focus {
+    border-color: #35947f;
+}
