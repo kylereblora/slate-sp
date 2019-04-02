@@ -3,9 +3,6 @@ import _ from 'lodash'
 import { Search, Label } from 'semantic-ui-react'
 
 
-			
-const resultRenderer = ({ firstName, lastName }) => <Label content={firstName + ' ' + lastName} />
-
 export class SearchPro extends Component {
 
 	state = {
@@ -16,25 +13,34 @@ export class SearchPro extends Component {
 
 	resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
 
-	handleResultSelect = (e, { result }) => window.location.href = '/profile/' + result.id
+	handleResultSelect = (e, { result }) => window.location.href = '/profile/' + result.key
 
 	handleSearchChange = (e, { value }) => {
 		this.setState({ isLoading: true, value })
 	
 		setTimeout(() => {
-		  if (this.state.value.length < 1) return this.resetComponent()
+			if (this.state.value.length < 1) return this.resetComponent()
 	
-		  const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
-		  const isMatch = result => {
-				return (
-					re.test(result.firstName + ' ' + result.lastName) && (result.occupation === 'Architect' ||  result.occupation === 'Interior Designer')
-				)
-			}
+		  	const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
+	    	const res = [];
+		  
+			this.props.source.forEach(pro => {
+				if (re.test(pro.firstName + ' ' + pro.lastName)  &&
+				   (pro.occupation === 'Architect' ||  pro.occupation === 'Interior Designer') === true) 
+				   
+				   res.push({
+					   key: pro.id, 
+					   title: pro.firstName + ' ' + pro.lastName,
+					   description: pro.occupation,
+					});
+				// console.log(pro);
+				
+			});
 			
 			this.setState({
 				isLoading: false,
-				results: _.filter(this.props.source, isMatch),
-		  })
+				results: res
+		  	})
 		}, 300)
 	  }
 
@@ -48,7 +54,7 @@ export class SearchPro extends Component {
 				onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
 				results={results}
 				value={value}
-				resultRenderer={resultRenderer}
+				// resultRenderer={resultRenderer}
 				{...this.props}
 			/>
 		)

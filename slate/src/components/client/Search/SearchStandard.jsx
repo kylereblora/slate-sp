@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
 import { Search, Label } from 'semantic-ui-react'
-
-
-			
-const resultRenderer = ({ itemName, itemPrice }) => <Label content={itemName} />
+import './search.css'
 
 export class SearchStandard extends Component {
 
@@ -16,21 +13,32 @@ export class SearchStandard extends Component {
 
 	resetComponent = () => this.setState({ isLoading: false, results: [], value: '' })
 
-	handleResultSelect = (e, { result }) => window.location.href = '/item/' + result.itemCategory + '/' + result.id
+	handleResultSelect = (e, { result }) => window.location.href = '/item/' + result.description + '/' + result.key
 
 	handleSearchChange = (e, { value }) => {
 		this.setState({ isLoading: true, value })
 	
 		setTimeout(() => {
 		  if (this.state.value.length < 1) return this.resetComponent()
-	
+		  
 		  const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
-		  const isMatch = result => re.test(result.itemName)
-	
-		  this.setState({
-			isLoading: false,
-			results: _.filter(this.props.source, isMatch),
-		  })
+			const res = [];
+			
+			this.props.source.forEach(item => {
+				if (re.test(item.itemName) === true) 
+					res.push({
+						key: item.id, 
+						title: item.itemName, 
+						price: '₱' + item.itemPrice, 
+						description: item.itemCategory,
+					});
+			});
+
+			this.setState({
+				isLoading: false,
+				results: res
+			})
+			
 		}, 300)
 	  }
 
@@ -44,7 +52,6 @@ export class SearchStandard extends Component {
 				onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
 				results={results}
 				value={value}
-				resultRenderer={resultRenderer}
 				{...this.props}
 			/>
 		)
