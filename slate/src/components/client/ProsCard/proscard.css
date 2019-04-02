@@ -22,6 +22,9 @@
     
 }
 
+.spacer {
+    flex: 1
+}
 
 .pros-name {
     font-family: 'Circular Std Medium', sans-serif;
