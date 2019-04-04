@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
-import { Search, Label } from 'semantic-ui-react'
+import { Search } from 'semantic-ui-react'
 
 
 export class SearchPro extends Component {
@@ -33,8 +33,6 @@ export class SearchPro extends Component {
 					   title: pro.firstName + ' ' + pro.lastName,
 					   description: pro.occupation,
 					});
-				// console.log(pro);
-				
 			});
 			
 			this.setState({
@@ -46,7 +44,6 @@ export class SearchPro extends Component {
 
 	render() {
 		const { isLoading, value, results } = this.state
-		const { source } = this.props
 		return (
 			<Search
 				loading={isLoading}
@@ -54,7 +51,6 @@ export class SearchPro extends Component {
 				onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}
 				results={results}
 				value={value}
-				// resultRenderer={resultRenderer}
 				{...this.props}
 			/>
 		)

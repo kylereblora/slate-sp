@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './proscard.css';
-import PlaceholderImg from '../../../assets/img/placeholderhouse.jpg';
 import { Button, Rating } from 'semantic-ui-react';
 import { defaultBrandBtn } from '../../../assets/styles/styles';
 

@@ -44,6 +44,10 @@
     display: inline-block;
 }
 
+.spacer {
+    flex: 1
+}
+
 .item-misc-preview {
     width: 450px;
     max-width: 450px;
@@ -60,6 +64,6 @@
 }
 
 .item-link-style {
-    color: #313131;
+    color: #414141;
     max-width: 300px;
 }
