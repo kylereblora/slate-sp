@@ -13,6 +13,7 @@ import Wishlist from './components/client/Wishlist/Wishlist';
 import Profile from './components/account/Profile/Profile';
 import AddProject from './components/account/Projects/AddProject/AddProject';
 import ProjectDetails from './components/account/Projects/ProjectDetails/ProjectDetails';
+import SuperAdminHome from './components/superadmin/SuperAdminHome/SuperAdminHome';
 
 class App extends React.Component {
     render() {
@@ -42,9 +43,14 @@ class App extends React.Component {
                         <Route exact={true} path='/shop' component = {Shop} />
                         <Route exact={true} path='/item/:category/:id' component = {ItemDetails} />
                         
-                        {/* ADMIN FUNCTIONALITIES */}
-                        <Route exact={true} path='/home/admin' component = {HomeAdmin} />
+                        {/* SELLER FUNCTIONALITIES */}
+                        <Route exact={true} path='/home/seller' component = {HomeAdmin} />
                         <Route exact={true} path='/create_item' component = {CreateItem} />
+
+                        {/* ADMIN FUNCTIONALITIES */}
+                        <Route exact={true} path='/home/admin' component = {SuperAdminHome} />
+                        
+                        
                     </Switch>
                 </div>
             </Router>

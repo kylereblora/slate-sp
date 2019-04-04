@@ -16,10 +16,14 @@ export class Home extends Component {
         const { auth, products } = this.props;
         let productPreviewArr = null;
         // ROUTE GUARD -- if the user isn't logged in yet and tries to access this component, redirect.
-        if (!auth.uid) return <Redirect to='/signin' />
+        if (!auth.uid) return <Redirect to='/' />
+
+        // seller email
+        if (auth.email === 'tester@gmail.com') return <Redirect to='/home/seller' />
 
         // admin email
-        if (auth.email === 'tester@gmail.com') return <Redirect to='/home/admin' />
+        if (auth.email === 'superadminkbr@gmail.com') return <Redirect to='/home/admin' />
+
 
         if(products && products.length > 0) {
             let previewNumber = 0;

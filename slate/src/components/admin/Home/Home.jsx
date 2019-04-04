@@ -15,8 +15,11 @@ const Home = (props) => {
         window.location.href = '/create_item';
     }
 
-    const { products, auth } = props;
-    if (!(auth.email === 'tester@gmail.com')) return <Redirect to='/signin' />
+    const { auth, products, occupation } = props;
+
+    if(!auth.uid) return <Redirect to='/' />
+    
+    if (occupation && occupation !== 'Seller') return <Redirect to='/signin' />
     
     return(
         <div className="home-site">
@@ -50,8 +53,9 @@ const Home = (props) => {
 // get the products from the firestore database and assign it to this state's products
 const mapStateToProps = (state) => {
     return {
+        auth: state.firebase.auth,
         products: state.firestore.ordered.products,
-        auth : state.firebase.auth
+        occupation : state.firebase.profile.occupation
     }
 }
 

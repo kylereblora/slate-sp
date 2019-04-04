@@ -27,7 +27,7 @@ export class SignIn extends Component {
     render() {
         const { authError, auth } = this.props;
 
-        // ROUTE GUARD -- if the user isn't logged in yet and tries to access this component, redirect.
+        // ROUTE GUARD -- if the user is logged in yet tries to access this component, redirect.
         if (auth.uid) return <Redirect to='/home' />
         return (
             <div className="signin-site">
