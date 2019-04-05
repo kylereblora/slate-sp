@@ -13,6 +13,8 @@ import UserList from '../UserList/UserList'
 export class SuperAdminHome extends Component {
     render() {
         const { users, auth, occupation } = this.props;
+        console.log(auth);
+        
         let panes = null;
 
         if(!auth.uid) return <Redirect to='/' />

@@ -3,6 +3,7 @@ import _ from 'lodash'
 import { Table, Header, Image, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import './userlist.css'
+import axios from 'axios';
 
 export class UserList extends Component {
     state = {
@@ -32,7 +33,10 @@ export class UserList extends Component {
 
 
     handleDelete = (e, user) => {
-        console.log(user);
+        axios.delete(`https://us-central1-slate-sp2.cloudfunctions.net/removeUser?uid=${user.id}`).then(() => {
+            console.log('Deleted the user successfully! Hurray!');
+        })
+        
     }
 
     render() {
@@ -97,5 +101,6 @@ export class UserList extends Component {
         )
     }
 }
+
 
 export default UserList

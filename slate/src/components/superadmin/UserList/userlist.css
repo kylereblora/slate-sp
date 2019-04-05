@@ -1,3 +1,7 @@
+.userlist-content {
+    font-family: 'Circular Std Book', sans-serif;
+}
+
 .user-link-style {
     color: #313131;
     max-width: 300px;
@@ -9,6 +13,5 @@
 }
 
 .user-name-preview {
-    /* font-family: 'Circular Std Book', sans-serif; */
     font-size: 15px;
 }
