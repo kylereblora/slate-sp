@@ -32,9 +32,6 @@ export class SignUp extends Component {
 
         if((this.state.firstName && this.state.lastName && this.state.email && this.state.password) !== '') {
             this.props.signUp(this.state);
-        }else {
-            console.log("bro");
-            
         }
         
     }

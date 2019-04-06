@@ -34,7 +34,9 @@ export class UserList extends Component {
 
     handleDelete = (e, user) => {
         axios.delete(`https://us-central1-slate-sp2.cloudfunctions.net/removeUser?uid=${user.id}`).then(() => {
-            console.log('Deleted the user successfully! Hurray!');
+            // window.location.reload();
+            console.log('Delete user success');
+            
         })
         
     }

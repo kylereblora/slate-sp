@@ -16,7 +16,7 @@ export class EditProject extends Component {
         projectYear: this.props.project.projectYear,
         projectDescription: this.props.project.projectDescription,
         projectImageUrl : this.props.project.projectImageUrl,
-        clicked :           false,
+        clicked : false,
     }
 
     handleChange = (e) => {

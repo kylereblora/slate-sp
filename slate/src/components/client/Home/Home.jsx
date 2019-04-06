@@ -13,13 +13,15 @@ import { getRandom } from './getRandomPreviews'
 
 export class Home extends Component {
     render() {
-        const { auth, products } = this.props;
+        const { auth, products, user } = this.props;
         let productPreviewArr = null;
         // ROUTE GUARD -- if the user isn't logged in yet and tries to access this component, redirect.
         if (!auth.uid) return <Redirect to='/' />
 
+        
+
         // seller email
-        if (auth.email === 'tester@gmail.com') return <Redirect to='/home/seller' />
+        if (user && user[0] && user[0].occupation === 'Seller') return <Redirect to='/home/seller' />
 
         // admin email
         if (auth.email === 'superadminkbr@gmail.com') return <Redirect to='/home/admin' />
@@ -98,15 +100,18 @@ export class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
+    const auth = state.firebase.auth
+    const users = state.firestore.ordered.users
+    const user = users ? users.filter(user => user.id === auth.uid) : null
+    
     return {
-        auth : state.firebase.auth,
-        products : state.firestore.ordered.products
+        auth,
+        products : state.firestore.ordered.products,
+        user
     }
 }
 
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([
-        { collection : 'products' }
-    ])
+    firestoreConnect(['products', 'users'])
 )(Home);

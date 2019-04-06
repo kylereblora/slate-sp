@@ -27,15 +27,55 @@ exports.userJoined = functions.auth.user()
             .get()
             .then(doc => {
                 const newUser = doc.data();
+                console.log(newUser);
+                
                 const notification = {
                     content: 'Welcome to Slate!',
                     user: `${newUser.firstName} ${newUser.lastName}`,
-                    userId: `${newUser.uid}`,
+                    userId: `${newUser.id}`,
                     time: admin.firestore.FieldValue.serverTimestamp()
                 }
 
                 return createNotification(notification);
         })
+})
+
+exports.createSeller = functions.https.onRequest((req, res) => {
+    
+    return cors(req, res, () => {
+        if (req.method !== 'POST') {
+            return res.status(500).json({
+                message: 'Not allowed'
+            })
+        }
+
+        const seller = req.body.seller;
+
+        return admin.auth().createUser({
+            email: seller.email,
+            password: seller.password,
+            displayName: seller.firstName + ' ' + seller.lastName,
+            disabled: false
+        }).then((userRecord) => {
+            return admin.firestore().collection('users').doc(userRecord.uid).set({
+                firstName: seller.firstName,
+                lastName: seller.lastName,
+                initials: seller.firstName[0] + seller.lastName[0],
+                occupation: 'Seller',
+                province : '',
+                proDescription: '',
+                proImageUrl: '',
+                products: []
+            }).then(() => {
+                res.status(200).send('Seller created successfully.');
+            }).catch((error) => {
+                console.log('Error creating seller', error);
+            })
+        }).catch((error) => {
+            console.log('Error creating seller', error);
+            
+        })
+    })
 })
 
 exports.removeUser = functions.https.onRequest((req, res) => {
@@ -67,3 +107,9 @@ function removeSpecificUser(uid) {
         console.log('Deletion of inactive user account failed', error);
     });
 }
+
+// function createSpecificSeller(sellerRecord) {
+//     return firestore.collection('users').doc(sellerRecord.uid).set({
+
+//     })
+// }

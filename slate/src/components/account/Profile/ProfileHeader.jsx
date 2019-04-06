@@ -41,7 +41,7 @@ export class ProfileHeader extends Component {
                 
                     <div className="contact-btn">
                         {
-                            id && auth && id === auth.uid ? 
+                            id && auth && id === auth.uid && user.occupation !== 'Seller' ? 
                             <EditProfile user={user} id={id} /> : null
                         }
                     </div>
