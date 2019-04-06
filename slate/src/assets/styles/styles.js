@@ -48,3 +48,7 @@ export const defaultBrandBtn = {
     color: 'white',
     padding: '10px 30px',
 }
+
+export const secondaryBrandColor = {
+    color : '#35947f'
+}

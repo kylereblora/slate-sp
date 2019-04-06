@@ -8,10 +8,13 @@ import Footer from '../../client/Footer/Footer'
 import './profile.css'
 import { ProfileHeader } from './ProfileHeader';
 import { ProfileProjects } from './ProfileProjects';
+import { Redirect } from 'react-router-dom'
 
 export class Profile extends Component {
     render() {
         const { id, auth, profile, user } = this.props;
+
+        
         return (
             <div className="profile-site">
                 <Navbar />

@@ -19,7 +19,7 @@
     display: flex;
     flex-direction: column;
     font-family: 'Circular Std Book', sans-serif;
-    
+    color: #414141;
 }
 
 .spacer {
@@ -33,9 +33,14 @@
     margin: 0;
 }
 
-.pros-location, .pros-description {
+.pros-location {
     margin: 0px;
     font-size: 15px;
+}
+
+.pros-description {
+    margin: 2px 0 0 0;
+    font-size: 13px;
 }
 
 @media only screen and (max-width: 768px) {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Modal, Icon, Form, Input, Dropdown, TextArea } from 'semantic-ui-react'
+import { Button, Modal, Icon, Form } from 'semantic-ui-react'
 import  { defaultBrandBtn, disabledLoginBtn, loginBtn }  from '../../../assets/styles/styles';
 import './createseller.css'
 import axios from 'axios'

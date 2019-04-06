@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import './projectdetails.css';
 import DeleteProject from '../DeleteProject/DeleteProject';
 import EditProject from '../EditProject/EditProject';
+import { Redirect } from 'react-router-dom'
 
 export class ProjectDetails extends Component {
     render() {

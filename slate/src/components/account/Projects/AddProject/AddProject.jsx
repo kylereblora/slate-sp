@@ -12,6 +12,7 @@ import { createProject } from '../../../../store/actions/projectActions'
 import { Redirect } from 'react-router-dom'
 import ItemUpload from '../../../admin/Items/CreateItem/ItemUpload'
 import { loginBtn, disabledLoginBtn } from '../../../../assets/styles/styles'
+import PhotoGuideline from '../../../../assets/img/photoguideline2.svg'
 
 export class AddProject extends Component {
 
@@ -63,7 +64,7 @@ export class AddProject extends Component {
     render() {
         const { auth, user } = this.props;
         
-        if (!auth.uid) return <Redirect to='/signin' />
+        if (!auth.uid) return <Redirect to='/' />
         return (
             <div>
                 {
@@ -129,7 +130,19 @@ export class AddProject extends Component {
                                     </div>
 
                                     <div className="add-project-guidelines">
-                                        <h2>guidelines</h2>
+                                        <h2>Guidelines</h2>
+                                        
+                                        <div className="guidelines-main">
+                                            <div className="photo-guidelines-svg">
+                                                <img src={PhotoGuideline} alt="photoguideline"/>
+                                            </div>
+                                            <div className="guidelines-ul">
+                                                <ul>
+                                                    <li><p>Format your project location properly (e.g Quezon City, NCR)</p></li>
+                                                    <li><p>Upload high quality photos (1MB or more)</p></li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                     
                                 </div>

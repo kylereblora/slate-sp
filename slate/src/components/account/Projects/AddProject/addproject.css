@@ -52,14 +52,32 @@
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 3;
+    
 }
 
 .add-project-form h1{
     margin: 0;
+    color: #414141;
+    
 }
+
 
 .add-project-form label {
     font-family: 'Circular Std Book', sans-serif;
+}
+
+.add-project-guidelines {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    color: #414141;
+    
+}
+
+.guidelines-main {
+    display: flex;
+    
 }
 
 .add-project-desc {
@@ -68,6 +86,27 @@
     font-size: 15px;
     margin: 0 0 30px 0;
 }
+
+.add-project-guidelines p {
+    font-size: 13px;
+    font-family: 'Circular Std Book', sans-serif;
+    max-width: 200px;
+    
+}
+
+.photo-guidelines-svg {
+    text-align: center;
+    float: right;
+}
+
+.photo-guidelines-svg img {
+    width: 120px;
+}
+
+.guidelines-ul {
+    float:right;
+}
+
 
 @media only screen and (max-width: 768px) {
     .add-project-guidelines {
@@ -82,5 +121,22 @@
         grid-column-end: 4;
         grid-row-start: 2;
         grid-row-end: 4;
+    }
+
+    .add-project-guidelines p {
+        font-size: 11px;
+        font-family: 'Circular Std Book', sans-serif;
+        max-width: 200px;
+        
+    }
+
+    .photo-guidelines-svg img {
+        width: 80px;
+    }
+
+    .add-project-main {
+        flex: 1 0 auto;
+        text-align: center;
+        padding: 70px 20px;
     }
 }

@@ -8,6 +8,7 @@ import { compose } from 'redux'
 import { Dimmer, Loader } from 'semantic-ui-react'
 import './hire.css';
 import SearchPro from '../Search/SearchPro';
+import { Redirect } from 'react-router-dom'
 
 
 export class Hire extends Component {
@@ -15,6 +16,7 @@ export class Hire extends Component {
     render() {
         const category = this.props.match.params.category;
         const { pros } = this.props;
+        
         return (
             <div className="hire-site">
                 <Navbar />
@@ -57,6 +59,7 @@ export class Hire extends Component {
 }
 
 const mapStateToProps = (state) => {
+    
     return {
         pros: state.firestore.ordered.users
     }

@@ -88,3 +88,64 @@
 .shop-sidenav-selected, .shop-sidenav-selected:hover {
     color: #f69656;
 }
+
+
+@media only screen and (max-width: 768px) {
+
+    .shop-content-grid-container > div {
+        padding: 15px;
+    }
+
+    .shop-sidenav {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    .shop-item-list {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 4;
+    }
+
+    .shop-sidenav > a {
+        display: inline-flex;
+        width: 100%;
+        max-width: 110px;
+        margin: 0 20px 0 0;
+    }
+
+    .shop-sidenav-link-style {
+        font-size: 12px;
+    }
+
+    .item-group-container h1 {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+
+    .shop-content-grid-container > div {
+        padding: 10px;
+    }
+
+    .shop-sidenav {
+        display: flex;
+        padding: 0px;
+    }
+
+    .shop-sidenav p {
+        font-size: 15px;
+    }
+    
+    .item-group-container h1 {
+        font-size: 20px;
+    }
+
+    .shop-sidenav-link-style {
+        font-size: 10px;
+    }
+}

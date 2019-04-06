@@ -5,7 +5,7 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import './superadminhome.css'
-import { Tab,  Dimmer, Loader, Button } from 'semantic-ui-react'
+import { Tab,  Dimmer, Loader } from 'semantic-ui-react'
 import UserList from '../UserList/UserList'
 import CreateSeller from '../CreateSeller/CreateSeller'
 
@@ -13,8 +13,6 @@ import CreateSeller from '../CreateSeller/CreateSeller'
 export class SuperAdminHome extends Component {
     render() {
         const { users, auth, occupation } = this.props;
-        console.log(auth);
-        
         let panes = null;
 
         if(!auth.uid) return <Redirect to='/' />
@@ -36,7 +34,10 @@ export class SuperAdminHome extends Component {
 
                     <div className="super-admin-home-main">
                         <div className="user-list-section">
-                            <CreateSeller />
+                            <div className="create-seller-button">
+                                <CreateSeller />
+                            </div>
+                            {/* <Button content='create a seller' floated="right" /> */}
                             <Tab 
                                 menu={{ secondary: true }} 
                                 panes={panes} 

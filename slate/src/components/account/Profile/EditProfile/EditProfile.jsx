@@ -104,6 +104,7 @@ export class EditProfile extends Component {
 
                             <Form.Field required>
                                 <label>Profile Image</label>
+                                <p>Image must be a square (e.g. 150x150)</p>
                                 <ItemUpload callbackFromParent = {this.imageUrlCallback} store={'users'} />
                             </Form.Field>
 

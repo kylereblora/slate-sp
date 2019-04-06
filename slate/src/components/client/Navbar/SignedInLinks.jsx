@@ -14,7 +14,7 @@ const SignedInLinks = (props) => {
             <label className="hamburger" htmlFor="toggle">&#9776;</label>
             <input type="checkbox" id="toggle"/>
             <div className="navbar-items">
-            <NavLink 
+                <NavLink 
                     to="/shop"
                     className="navlink-hover"
                     activeClassName="active-item"

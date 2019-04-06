@@ -76,3 +76,7 @@ h2 {
 .hire-sidenav-link-selected, .hire-sidenav-link-selected:hover {
     color: #f67b56;
 }
+
+.pros-list h1 {
+    color: #414141;
+}
