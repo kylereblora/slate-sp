@@ -8,48 +8,53 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 
+
 export class UserList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             column: null,
+            data : this.props.users,
             direction: null,
         }
     }
 
     handleSort = clickedColumn => () => {
-        const { column, direction } = this.state
+        const { column, data, direction } = this.state
     
         if (column !== clickedColumn) {
+
             this.setState({
                 column: clickedColumn,
+                data : _.sortBy(data, [clickedColumn]),
                 direction: 'ascending',
-            }, () => {
-                this.props.users = _.sortBy(this.props.users, [clickedColumn])
             })
     
             return
         }
 
-        
-    
         this.setState({
             direction: direction === 'ascending' ? 'descending' : 'ascending',
-        }, () => {
-            this.props.users = this.props.users.reverse()
+            data: data.reverse()
         })
     }
 
 
     handleDelete = (e, user) => {
         axios.delete(`https://us-central1-slate-sp2.cloudfunctions.net/removeUser?uid=${user.id}`)
-        
     }
+
+    componentDidUpdate(prevProps, prevState) {
+        // this lifecycle method is fired if the previous state's data is not equal to the new users array
+        if (prevState.data !== this.props.users) {
+            this.setState({data:this.props.users})
+        }
+    }
+
 
     render() {
         const { users } = this.props; 
-        const { column, direction } = this.state
-
+        const { column, data, direction } = this.state
 
         return (
             <div className="userlist-content">
@@ -75,7 +80,7 @@ export class UserList extends Component {
                         </Table.Header>
 
                         <Table.Body>
-                            {_.map(users, user => {
+                            {data.map(user => {
                                 if (user.occupation !== 'Admin') return (
                                     <Table.Row key={user.id}>
                                         

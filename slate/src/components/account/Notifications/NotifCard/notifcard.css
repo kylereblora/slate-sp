@@ -1,0 +1,19 @@
+.notif-sender {
+    font-size: 18px;
+    font-family: 'Circular Std Medium', sans-serif;
+}
+
+.notif-card-main p {
+    margin: 0;
+    padding: 0;
+    font-family: 'Circular Std Book', sans-serif;
+}
+
+.notif-card-main {
+    padding: 10px 0px;
+}
+
+.notif-content, .notif-date p {
+    font-size: 13px;
+}
+

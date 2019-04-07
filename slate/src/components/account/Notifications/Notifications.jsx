@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom'
 import './notifications.css'
 import NotifCard from './NotifCard/NotifCard'
 
+
 export class Notifications extends Component {
     render() {
         const { auth, notifications } = this.props
@@ -22,8 +23,8 @@ export class Notifications extends Component {
                         <h1>Notifications</h1>
                         {
                             notifications && notifications.map(notif => {
-                                return (
-                                   <NotifCard notif={notif} />
+                                if (notif.userId === auth.uid) return (
+                                   <NotifCard notif={notif} key={notif.id}/>
                                 )
                             })
                         }
@@ -46,5 +47,5 @@ const mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([{collection: 'notifications', limit: 5}])
+    firestoreConnect([{collection: 'notifications', limit: 10, orderBy: ['time', 'desc']}])
 )(Notifications)

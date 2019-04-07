@@ -8,7 +8,6 @@ import { compose } from 'redux'
 import { Dimmer, Loader } from 'semantic-ui-react'
 import './shop.css';
 import SearchStandard from '../Search/SearchStandard';
-import { Redirect } from 'react-router-dom'
 
 export class Shop extends Component {
     render() {

@@ -21,6 +21,8 @@ const createNotification = (notification => {
 
 exports.userJoined = functions.auth.user()
     .onCreate(user => {
+        console.log(user);
+        
 
         return admin.firestore().collection('users')
             .doc(user.uid)

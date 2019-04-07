@@ -8,7 +8,6 @@ import { compose } from 'redux'
 import { Dimmer, Loader } from 'semantic-ui-react'
 import './hire.css';
 import SearchPro from '../Search/SearchPro';
-import { Redirect } from 'react-router-dom'
 
 
 export class Hire extends Component {
