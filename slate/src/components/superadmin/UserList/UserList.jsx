@@ -4,50 +4,57 @@ import { Table, Header, Image, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import './userlist.css'
 import axios from 'axios';
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 
 export class UserList extends Component {
-    state = {
-        column: null,
-        data: this.props.users,
-        direction: null,
+    constructor(props) {
+        super(props);
+        this.state = {
+            column: null,
+            direction: null,
+        }
     }
 
     handleSort = clickedColumn => () => {
-        const { column, data, direction } = this.state
+        const { column, direction } = this.state
     
         if (column !== clickedColumn) {
             this.setState({
                 column: clickedColumn,
-                data : _.sortBy(data, [clickedColumn]),
                 direction: 'ascending',
+            }, () => {
+                this.props.users = _.sortBy(this.props.users, [clickedColumn])
             })
     
             return
         }
+
+        
     
         this.setState({
-            data: data.reverse(),
             direction: direction === 'ascending' ? 'descending' : 'ascending',
+        }, () => {
+            this.props.users = this.props.users.reverse()
         })
     }
 
 
     handleDelete = (e, user) => {
-        axios.delete(`https://us-central1-slate-sp2.cloudfunctions.net/removeUser?uid=${user.id}`).then(() => {
-            // window.location.reload();
-            console.log('Delete user success');
-            
-        })
+        axios.delete(`https://us-central1-slate-sp2.cloudfunctions.net/removeUser?uid=${user.id}`)
         
     }
 
     render() {
-        const { column, data, direction } = this.state
+        const { users } = this.props; 
+        const { column, direction } = this.state
+
 
         return (
             <div className="userlist-content">
                 {
-                    data.length > 0 ?
+                    users && users.length > 0 ?
 
                     <Table sortable celled fixed>
                         <Table.Header>
@@ -68,7 +75,7 @@ export class UserList extends Component {
                         </Table.Header>
 
                         <Table.Body>
-                            {_.map(data, user => {
+                            {_.map(users, user => {
                                 if (user.occupation !== 'Admin') return (
                                     <Table.Row key={user.id}>
                                         
@@ -104,5 +111,16 @@ export class UserList extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        users : state.firestore.ordered.users,
+    }
+}
 
-export default UserList
+
+export default  compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        { collection : 'users' }
+    ])
+)(UserList)

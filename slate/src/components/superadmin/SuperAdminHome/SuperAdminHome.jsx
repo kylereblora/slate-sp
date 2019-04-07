@@ -21,7 +21,7 @@ export class SuperAdminHome extends Component {
 
         if(users) {
             panes = [
-                { menuItem: 'Users', pane: <Tab.Pane attached={false} key={'userlist'}><UserList users={users}/></Tab.Pane>},
+                { menuItem: 'Users', pane: <Tab.Pane attached={false} key={'userlist'}><UserList/></Tab.Pane>},
                 { menuItem: 'Reviews', pane: <Tab.Pane attached={false} key={'reviews'}>Reviews</Tab.Pane>},
             ]
         } 

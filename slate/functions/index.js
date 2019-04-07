@@ -32,8 +32,9 @@ exports.userJoined = functions.auth.user()
                 const notification = {
                     content: 'Welcome to Slate!',
                     user: `${newUser.firstName} ${newUser.lastName}`,
-                    userId: `${newUser.id}`,
-                    time: admin.firestore.FieldValue.serverTimestamp()
+                    userId: `${user.uid}`,
+                    time: admin.firestore.FieldValue.serverTimestamp(),
+                    sender: 'Slate'
                 }
 
                 return createNotification(notification);

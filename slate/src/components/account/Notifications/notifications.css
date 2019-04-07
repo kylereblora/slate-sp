@@ -1,0 +1,39 @@
+:root {
+    --space: 1.5em 0;
+    --space: 2em 0;
+}
+
+.notifications-site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #fafafa;
+}
+
+.notifications-main {
+    margin: 0px 100px;
+    flex: 1 0 auto;
+    text-align: center;
+}
+
+.notifications-main:after {
+    content: '\00a0';
+    display: block;
+    margin-top: var(--space);
+    height: 0;
+    visibility: hidden;
+}
+
+.notifications {
+    margin: 90px 0px 30px 0px;
+    background: #fff;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 1150px;
+    display: inline-block;
+    text-align: left;
+}

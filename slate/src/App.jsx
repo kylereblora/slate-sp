@@ -14,6 +14,7 @@ import Profile from './components/account/Profile/Profile';
 import AddProject from './components/account/Projects/AddProject/AddProject';
 import ProjectDetails from './components/account/Projects/ProjectDetails/ProjectDetails';
 import SuperAdminHome from './components/superadmin/SuperAdminHome/SuperAdminHome';
+import Notifications from './components/account/Notifications/Notifications';
 
 class App extends React.Component {
     render() {
@@ -37,6 +38,7 @@ class App extends React.Component {
                         <Route exact={true} path='/profile/:id' component = {Profile} />
                         <Route exact={true} path='/add/project/:id' component = {AddProject} />
                         <Route exact={true} path='/:id/projects/:index' component = {ProjectDetails} />
+                        <Route exact={true} path='/notifications/:id' component = {Notifications} />
                         
 
                         {/* SHOP/PRODUCTS */}
