@@ -15,12 +15,14 @@ import AddProject from './components/account/Projects/AddProject/AddProject';
 import ProjectDetails from './components/account/Projects/ProjectDetails/ProjectDetails';
 import SuperAdminHome from './components/superadmin/SuperAdminHome/SuperAdminHome';
 import Notifications from './components/account/Notifications/Notifications';
+import NotFound from './components/client/NotFound/NotFound';
 
 class App extends React.Component {
     render() {
         return(
             <Router>
                 <div>
+                    
                     <Switch>
                         <Route exact={true} path='/landing' component = {Landing} /> 
                         <Route exact={true} path='/' component = {Landing} /> 
@@ -52,7 +54,8 @@ class App extends React.Component {
                         {/* ADMIN FUNCTIONALITIES */}
                         <Route exact={true} path='/home/admin' component = {SuperAdminHome} />
                         
-                        
+                        {/* 404 COMPONENT */}
+                        <Route component={NotFound} />
                     </Switch>
                 </div>
             </Router>

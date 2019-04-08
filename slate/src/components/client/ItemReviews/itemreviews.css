@@ -1,0 +1,22 @@
+.review-card {
+    /* border: 1px solid #ececec; */
+    /* border-radius: 10px; */
+    margin: 10px 0px 20px 0;
+}
+
+.review-content-p {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    color: #7a7a7a;
+    font-family: 'Circular Std Book', sans-serif;
+}
+
+.header-content-rating {
+    margin: 0px 10px;
+}
+
+.header-content-flex {
+    display: flex;
+}
+

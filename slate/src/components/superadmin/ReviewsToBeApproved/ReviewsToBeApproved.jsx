@@ -41,11 +41,6 @@ export class ReviewsToBeApproved extends Component {
     render() {
         const { unapproved_reviews, products } = this.props; 
         
-        // console.log(unapproved_reviews);
-        console.log(products);
-        
-        
-
         return (
             <div className="reviews-to-be-approved-content">
                 {

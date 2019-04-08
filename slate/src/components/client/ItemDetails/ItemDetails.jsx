@@ -11,7 +11,8 @@ import { getProductFromWishlist } from '../Wishlist/wishlistFunctions'
 import { loginBtn } from '../../../assets/styles/styles'
 import { numberWithCommas } from './priceWithCommas'
 import AddItemReview from '../ItemReviews/AddItemReview/AddItemReview'
-
+import { Redirect } from 'react-router-dom'
+import ItemReviews from '../ItemReviews/ItemReviews';
 
 export class ItemDetails extends Component {
     state = {
@@ -30,7 +31,7 @@ export class ItemDetails extends Component {
     }
 
     render() {
-        const { id, product, auth, profile, wishlist } = this.props;
+        const { id, product, auth, profile, wishlist, users } = this.props;
         let inWishlist = null
 
         if (wishlist) {
@@ -101,7 +102,7 @@ export class ItemDetails extends Component {
                                                 {
                                                     product.itemReviews.length > 0 ?
 
-                                                    <p>reviews are greater than 0</p>
+                                                    <ItemReviews reviews={product.itemReviews} users={users} />
 
                                                     :
 
@@ -148,6 +149,7 @@ const mapStateToProps = (state, ownProps) => {
         product,
         auth: state.firebase.auth,
         profile: state.firebase.profile,
+        users: state.firestore.ordered.users,
         wishlist
     }
 }
