@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Rating, Divider, Dimmer, Loader} from 'semantic-ui-react'
+import { Button, Rating, Divider, Dimmer, Loader } from 'semantic-ui-react'
 import './itemdetails.css';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
@@ -10,7 +10,7 @@ import { compose } from 'redux'
 import { getProductFromWishlist } from '../Wishlist/wishlistFunctions'
 import { loginBtn } from '../../../assets/styles/styles'
 import { numberWithCommas } from './priceWithCommas'
-
+import AddItemReview from '../ItemReviews/AddItemReview/AddItemReview'
 
 
 export class ItemDetails extends Component {
@@ -30,7 +30,7 @@ export class ItemDetails extends Component {
     }
 
     render() {
-        const { id, product, wishlist } = this.props;
+        const { id, product, auth, profile, wishlist } = this.props;
         let inWishlist = null
 
         if (wishlist) {
@@ -58,16 +58,23 @@ export class ItemDetails extends Component {
                                     <div>
                                         <p className="item-name">{ product.itemName }</p>
                                         <p className="item-seller">by {product.seller}</p>
-                                        <Rating icon="star" defaultRating = { product.itemRating } maxRating = {5} disabled/>                
+                                        <div className="item-rating-summary">
+                                            <div>
+                                                <Rating icon="star" defaultRating = { product.itemRating } maxRating = {5} disabled/>                
+                                            </div>
+                                            
+                                            <div className="rating-count"><p>{product.itemReviews.length} Ratings</p></div>
+                                        </div>
                                         <p className="item-price">&#8369;{ numberWithCommas(product.itemPrice) }</p>
                                     </div>
                                     <div>
                                         <div className="item-info-quantity">
                                             <div className="quantity">
-                                                {/* <label htmlFor="input">Quantity: </label>
-                                                <input type="number" min='1' max={product.itemQuantity} placeholder='1'/> */}
                                                 <label><span>{product.itemQuantity}</span> in stock</label>
                                             </div>
+                                            
+                                            <div className="spacer"></div>
+
                                             <div className="add-to-wishlist">
                                                 { 
                                                     this.state.addedToWishlist || inWishlist ? 
@@ -78,26 +85,37 @@ export class ItemDetails extends Component {
                                             </div>
                                         </div>
 
-                                        {/* <div className="item-quantity-remaining">
-                                        </div> */}
-                                        
                                         <Divider />
                                         
                                         <div className="item-description">
                                             <p className="item-description-header">Item Description</p>
                                             <p className="item-description-content">{product.itemDescription}</p>
                                         </div>
-
+                                        
                                         <Divider />
+                                        
 
                                         <div className="item-reviews">
                                             <p className="item-description-header">Item Reviews</p>
                                             <div className="item-reviews-list">
                                                 {
-                                                    product.reviews
+                                                    product.itemReviews.length > 0 ?
+
+                                                    <p>reviews are greater than 0</p>
+
+                                                    :
+
+                                                    <p>This product does not currently have reviews.</p>
                                                 }
                                             </div>
-                                        </div>                                        
+                                        </div>  
+                                        
+                                        <Divider />
+
+                                        <div className="add-item-reviews">
+                                            <p className="item-description-header">Submit a Review</p>
+                                            <AddItemReview product={product} id={id} auth={auth} profile={profile} />
+                                        </div>                                      
                                     </div>                                
                                 </div>
                             </div>
@@ -129,6 +147,7 @@ const mapStateToProps = (state, ownProps) => {
         id,
         product,
         auth: state.firebase.auth,
+        profile: state.firebase.profile,
         wishlist
     }
 }

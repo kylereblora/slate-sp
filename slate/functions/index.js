@@ -109,3 +109,56 @@ function removeSpecificUser(uid) {
         console.log('Deletion of inactive user account failed', error);
     });
 }
+
+exports.approveReview = functions.https.onRequest((req, res) => {
+    return cors(req, res, () => {
+        if (req.method !== 'POST') {
+            return res.status(500).json({
+                message: 'Not allowed'
+            })
+        }
+
+        const review = req.body.review;
+
+
+        return admin.firestore().collection('products').doc(review.productId).update({
+            itemReviews: admin.firestore.FieldValue.arrayUnion({
+                content: review.content,
+                maxRating: review.maxRating,
+                createdAt: review.createdAt,
+                productId: review.productId,
+                rating: review.rating,
+                user: review.user, 
+                id: review.id 
+            })
+        })
+        .then(() => {
+            return admin.firestore().collection('products').doc(review.productId).get().then((docRef) => {
+                    const dat = docRef.data()                    
+                    let r = dat.itemReviews;
+                    let newRating = 0;
+
+                    r.forEach(element => {
+                        newRating += element.rating
+                    })
+
+                    newRating = newRating/r.length;
+
+                    admin.firestore().collection('products').doc(review.productId).update({
+                        itemRating: newRating
+                    })
+            })
+
+        })
+        .then(() => {
+            return admin.firestore().collection('unapproved_reviews').doc(review.id).delete().then(() => {
+                res.status(200).send('Review approved.');
+            }).catch((error) => {
+                console.log('Error approving review', error);
+            })
+
+        }).catch((error) => {
+            console.log('Error approving review', error);
+        })
+    })
+})

@@ -8,7 +8,6 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 
-
 export class UserList extends Component {
     constructor(props) {
         super(props);
@@ -16,8 +15,11 @@ export class UserList extends Component {
             column: null,
             data : this.props.users,
             direction: null,
+            clicked:false,
         }
     }
+
+	resetComponent = () => this.setState({ clicked: false })
 
     handleSort = clickedColumn => () => {
         const { column, data, direction } = this.state
@@ -41,7 +43,11 @@ export class UserList extends Component {
 
 
     handleDelete = (e, user) => {
-        axios.delete(`https://us-central1-slate-sp2.cloudfunctions.net/removeUser?uid=${user.id}`)
+        this.setState({clicked: true}, () => {
+            axios.delete(`https://us-central1-slate-sp2.cloudfunctions.net/removeUser?uid=${user.id}`).then(() => {
+                this.resetComponent()
+            })
+        })
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -98,7 +104,14 @@ export class UserList extends Component {
                                         <Table.Cell>{user.occupation}</Table.Cell>
 
                                         <Table.Cell>
-                                            <Button onClick={(e) => this.handleDelete(e, user)}>Delete</Button>
+                                            <div >
+                                                {
+                                                    this.state.clicked ?
+                                                    <Button fluid loading>Creating seller...</Button>
+                                                    :
+                                                    <Button onClick={(e) => this.handleDelete(e, user)}>Delete</Button>
+                                                }
+                                            </div>
                                         </Table.Cell>
                                         
                                     </Table.Row>

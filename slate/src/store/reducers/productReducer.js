@@ -37,6 +37,14 @@ const productReducer = (state = initState, action) => {
             console.log('edit product error', action.err);
             return state;
 
+        case 'REVIEW_PRODUCT' :
+            console.log('reviewed product');
+            return state;
+
+        case 'REVIEW_PRODUCT_ERROR' :
+            console.log('review product error', action.err);
+            return state;
+
         default: 
             return state;
     }

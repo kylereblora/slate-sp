@@ -59,3 +59,24 @@ export const editProduct = (product, state) => {
         })
     }
 }
+
+
+export const addProductReview = (state) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        return new Promise((resolve, reject) => {
+            const firestore = getFirestore();
+            const firebase = getFirebase();
+            
+            firestore.collection('unapproved_reviews').add({
+                ...state,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            }).then(() => {
+                dispatch({ type: 'REVIEW_PRODUCT' });
+            }).then(() => {
+                resolve();
+            }).catch((err) => {
+                dispatch({ type: 'REVIEW_PRODUCT_ERROR', err});
+            });
+        })
+    }
+}
