@@ -57,6 +57,7 @@ export class ItemDetails extends Component {
                                 <div className="item-info-2">
                                     <div>
                                         <p className="item-name">{ product.itemName }</p>
+                                        <p className="item-seller">by {product.seller}</p>
                                         <Rating icon="star" defaultRating = { product.itemRating } maxRating = {5} disabled/>                
                                         <p className="item-price">&#8369;{ numberWithCommas(product.itemPrice) }</p>
                                     </div>

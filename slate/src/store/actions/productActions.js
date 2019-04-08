@@ -1,10 +1,13 @@
-export const createProduct = (product) => {
+export const createProduct = (product, seller) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         return new Promise((resolve, reject) => {
             // make async call to db
             const firestore = getFirestore();
+            const firebase = getFirebase();
             firestore.collection('products').add({
                 ...product,
+                seller: seller.displayName,
+                sellerId: seller.uid,
                 itemRating: 0,
                 itemReviews: [],
                 createdAt: new Date()
@@ -38,6 +41,8 @@ export const editProduct = (product, state) => {
                 itemRating:         product.itemRating,
                 createdAt:          product.createdAt,
                 itemReviews :       product.itemReviews,
+                seller :            product.seller,
+                sellerId:           product.sellerId,
                 itemName:           state.itemName,
                 itemPrice:          state.itemPrice,
                 itemQuantity:       state.itemQuantity,

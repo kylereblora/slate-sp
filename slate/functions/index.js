@@ -68,7 +68,6 @@ exports.createSeller = functions.https.onRequest((req, res) => {
                 province : '',
                 proDescription: '',
                 proImageUrl: '',
-                products: []
             }).then(() => {
                 res.status(200).send('Seller created successfully.');
             }).catch((error) => {
@@ -110,9 +109,3 @@ function removeSpecificUser(uid) {
         console.log('Deletion of inactive user account failed', error);
     });
 }
-
-// function createSpecificSeller(sellerRecord) {
-//     return firestore.collection('users').doc(sellerRecord.uid).set({
-
-//     })
-// }
