@@ -11,7 +11,6 @@ import { getProductFromWishlist } from '../Wishlist/wishlistFunctions'
 import { loginBtn } from '../../../assets/styles/styles'
 import { numberWithCommas } from './priceWithCommas'
 import AddItemReview from '../ItemReviews/AddItemReview/AddItemReview'
-import { Redirect } from 'react-router-dom'
 import ItemReviews from '../ItemReviews/ItemReviews';
 
 export class ItemDetails extends Component {
@@ -31,7 +30,7 @@ export class ItemDetails extends Component {
     }
 
     render() {
-        const { id, product, auth, profile, wishlist, users } = this.props;
+        const { id, product, auth, profile, wishlist, users, userId } = this.props;
         let inWishlist = null
 
         if (wishlist) {
@@ -115,7 +114,7 @@ export class ItemDetails extends Component {
 
                                         <div className="add-item-reviews">
                                             <p className="item-description-header">Submit a Review</p>
-                                            <AddItemReview product={product} id={id} auth={auth} profile={profile} />
+                                            <AddItemReview product={product} id={id} auth={auth} profile={profile} userId={userId} />
                                         </div>                                      
                                     </div>                                
                                 </div>
@@ -144,12 +143,14 @@ const mapStateToProps = (state, ownProps) => {
     const users = state.firestore.data.users
     const wishlist = users && state.firebase.auth.uid ? users[state.firebase.auth.uid].wishlist : null
     
+    
     return {
         id,
         product,
         auth: state.firebase.auth,
         profile: state.firebase.profile,
         users: state.firestore.ordered.users,
+        userId: state.firebase.auth.uid,
         wishlist
     }
 }

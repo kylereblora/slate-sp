@@ -8,11 +8,15 @@ import Footer from '../../client/Footer/Footer'
 import './profile.css'
 import { ProfileHeader } from './ProfileHeader';
 import { ProfileProjects } from './ProfileProjects';
+import AddReview from '../Reviews/Reviews'
+import ReviewCard from '../Reviews/ReviewCard';
 
 export class Profile extends Component {
     render() {
-        const { id, auth, profile, user } = this.props;
+        const { id, auth, profile, user, currentlyLogged } = this.props;
 
+        if(user) console.log(user);
+        
         
         return (
             <div className="profile-site">
@@ -62,15 +66,40 @@ export class Profile extends Component {
                                     <div className="profile-reviews">
                                         <p className="review-heading">Reviews</p>
                                         {
-                                            profile.proReviews ? 
+                                            user.reviews.length > 0 ? 
 
-                                            <div>Yay</div>
+                                            <div>
+                                                {
+                                                    user.reviews.map(review => {
+                                                        return (
+                                                            <div key={review.id}>
+                                                                <ReviewCard review={review} />
+                                                            </div>
+                                                        )
+                                                    })   
+                                                }
+                                            </div>
                                             :
                                             <div className="no-projects-yet">
                                                 <span className="no-projects-span"><h1>No reviews for this pro yet.</h1></span>
                                             </div> 
                                         }
                                     </div>
+                                    
+
+                                    {
+                                        auth && id !== auth.uid ?
+
+                                        <div className="rate-this-pro">
+                                            <p className="rate-this-pro-heading">Rate this Pro</p>
+                                            <p className="rate-this-pro-subheading">Worked with this pro before? Leave a review to let everyone know your experience!</p>
+                                            <AddReview proId={id} currentUser={currentlyLogged.firstName + ' ' + currentlyLogged.lastName} auth={auth} />
+                                        </div>
+                                        :
+                                        null
+                                    }
+
+                                    
                                 </div>
 
                             }
@@ -98,12 +127,15 @@ export class Profile extends Component {
 const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id
     const users = state.firestore.data.users;
-    const user = users ? users[id] : null
+    const user = users ? users[id] : null;
+    const currentlyLogged = users ? users[state.firebase.auth.uid] : null;
+
     return {
         id,
         auth: state.firebase.auth,
         profile: state.firebase.profile,
-        user
+        user,
+        currentlyLogged
     }
 }
 

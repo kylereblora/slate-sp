@@ -124,11 +124,10 @@ exports.approveReview = functions.https.onRequest((req, res) => {
         return admin.firestore().collection('products').doc(review.productId).update({
             itemReviews: admin.firestore.FieldValue.arrayUnion({
                 content: review.content,
-                maxRating: review.maxRating,
-                createdAt: review.createdAt,
                 productId: review.productId,
                 rating: review.rating,
                 user: review.user, 
+                userId: review.userId,
                 id: review.id 
             })
         })

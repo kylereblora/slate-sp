@@ -3,7 +3,6 @@ const initState = {}
 const projectReducer = (state = initState, action) => {
     switch (action.type) {
         case 'ADD_PROJECT_TO_USER':
-            console.log('added project to user', action.project);
             return state;
             
         case 'ADD_PROJECT_TO_USER_ERROR':
@@ -11,7 +10,6 @@ const projectReducer = (state = initState, action) => {
             return state;
 
         case 'DELETE_PROJECT_FROM_USER':
-            console.log('deleted project', action.project);
             return state;
 
         case 'DELETE_PROJECT_FROM_USER_ERROR':
@@ -19,7 +17,6 @@ const projectReducer = (state = initState, action) => {
             return state;
 
         case 'EDIT_PROJECT_IN_USER_SUCCESS':
-            console.log('edited project to user success', action.project);
             return state;
 
         case 'EDIT_PROJECT_IN_USER_ERROR':

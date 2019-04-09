@@ -69,7 +69,6 @@ export const addProductReview = (state) => {
             
             firestore.collection('unapproved_reviews').add({
                 ...state,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
             }).then(() => {
                 dispatch({ type: 'REVIEW_PRODUCT' });
             }).then(() => {

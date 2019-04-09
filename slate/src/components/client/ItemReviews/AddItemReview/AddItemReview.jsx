@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { disabledLoginBtn, signUpBtn } from '../../../../assets/styles/styles';
 import { Button, Rating, Form, TextArea, Confirm} from 'semantic-ui-react'
 import './additemreview.css'
-import { Redirect } from 'react-router-dom';
 import { addProductReview } from '../../../../store/actions/productActions';
 import { connect } from 'react-redux';
 
@@ -12,6 +11,7 @@ export class AddItemReview extends Component {
         this.state = {
             productId: this.props.id,
             user: this.props.profile.firstName + ' ' + this.props.profile.lastName,
+            userId: this.props.userId,
             content : '',
             rating : 0,
             open: false,
@@ -72,7 +72,7 @@ export class AddItemReview extends Component {
                     </div>
                 </Form>
 
-                 <Confirm open={this.state.open} onCancel={this.close} content='Your review has been sent for admin approval. Thanks!' onConfirm={this.close} />
+                <Confirm open={this.state.open} onCancel={this.close} content='Your review has been sent for admin approval. Thanks!' onConfirm={this.close} />
             </div>
         )
     }

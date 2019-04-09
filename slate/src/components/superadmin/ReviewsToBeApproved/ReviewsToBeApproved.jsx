@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import _ from 'lodash'
-import { Table, Header, Image, Button, Modal, Rating } from 'semantic-ui-react'
+import { Table, Header, Image, Button,  Rating } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import './reviewstobeapproved.css'
 import axios from 'axios';
