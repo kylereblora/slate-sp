@@ -20,7 +20,7 @@ export class AddItemReview extends Component {
 
     open = () => this.setState({ open: true })
 
-    close = () => window.location.reload();
+    close = () => this.setState({ open: false });
 
     resetComponent = () => this.setState({
         productId: this.props.id, 
@@ -56,10 +56,10 @@ export class AddItemReview extends Component {
         return (
             <div className="add-item-review-main">
                 <Form>
-                    <Rating icon='star' onRate={this.handleRate} maxRating={5}/>
+                    <Rating icon='star' onRate={this.handleRate} rating={this.state.rating} maxRating={5}/>
 
                     <Form.Field required onChange={this.handleChange}>
-                        <TextArea id="content" placeholder='Tell us something about this product..' />
+                        <TextArea id="content" value={this.state.content} placeholder='Tell us something about this product..' />
                     </Form.Field>
 
                     <div className="add-review-btn">

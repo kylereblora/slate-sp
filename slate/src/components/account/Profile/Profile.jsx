@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dimmer, Loader, Image } from 'semantic-ui-react'
+import { Dimmer, Loader } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
@@ -15,9 +15,6 @@ export class Profile extends Component {
     render() {
         const { id, auth, profile, user, currentlyLogged } = this.props;
 
-        if(user) console.log(user);
-        
-        
         return (
             <div className="profile-site">
                 <Navbar />
@@ -88,7 +85,7 @@ export class Profile extends Component {
                                     
 
                                     {
-                                        auth && id !== auth.uid ?
+                                        auth && currentlyLogged && id !== auth.uid && user.reviews.filter(review => auth.uid === review.userId).length < 1 ?
 
                                         <div className="rate-this-pro">
                                             <p className="rate-this-pro-heading">Rate this Pro</p>
@@ -113,8 +110,6 @@ export class Profile extends Component {
                         <Dimmer active inverted>
                             <Loader inverted></Loader>
                         </Dimmer>
-
-                        <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
                     </div>
                 }
                 <Footer />

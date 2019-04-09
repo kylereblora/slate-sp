@@ -14,6 +14,7 @@ export const addProRating = (state) => {
                     let incomingRating = {
                         content: state.content,
                         user: state.currentUser,
+                        userId: state.userId,
                         rating: state.rating, 
                         id: uuidv1()
                     }

@@ -11,6 +11,7 @@ export class Reviews extends Component {
         this.state = {
             currentUser: this.props.currentUser,
             proId: this.props.proId,
+            userId: this.props.auth.uid,
             content : '',
             rating : 0,
             open: false,
@@ -29,6 +30,13 @@ export class Reviews extends Component {
 
     close = () => this.setState({ open: false });
 
+    resetComponent = () => this.setState({
+        content : '',
+        rating : 0,
+    }, () => {
+        this.open()
+    })
+
     handleClick = (e) => {
         if (this.props.auth.uid) {
             if (this.state.rating !== 0 && this.content !== '') this.props.addProRating(this.state).then(() => {
@@ -39,23 +47,16 @@ export class Reviews extends Component {
         }
     }
     
-    resetComponent = () => this.setState({
-        proId: this.props.proId,
-        currentUser: this.props.currentUser,
-        content : '',
-        rating : 0,
-    }, () => {
-        this.open()
-    })
+    
 
     render() {
         return (
             <div className="add-pro-review-main">
                 <Form>
-                    <Rating icon='star' onRate={this.handleRate} maxRating={5}/>
+                    <Rating icon='star' onRate={this.handleRate} rating={this.state.rating} maxRating={5}/>
 
                     <Form.Field required onChange={this.handleChange}>
-                        <TextArea id="content" placeholder='Tell us something about this pro..' />
+                        <TextArea id="content" value={this.state.content} placeholder='Tell us something about this pro..' />
                     </Form.Field>
 
                     <div className="add-pro-review-btn">
@@ -68,7 +69,7 @@ export class Reviews extends Component {
                     </div>
                 </Form>
 
-                <Confirm open={this.state.open} onCancel={this.close} content='Your review has been sent. Thanks!' onConfirm={this.close} />
+                {/* <Confirm open={this.state.open} onCancel={this.close} content='Your review has been sent. Thanks!' onConfirm={this.close} /> */}
             </div>
         )
     }
