@@ -113,7 +113,7 @@ export class ItemDetails extends Component {
                                         <Divider />
 
                                         {
-                                            auth && product.itemReviews.filter(review => auth.uid === review.userId).length < 1 ?
+                                            auth && product.itemReviews.filter(review => auth.uid === review.userId).length < 1 && profile.occupation !== 'Seller' ?
                                             <div className="add-item-reviews">
                                                 <p className="item-description-header">Submit a Review</p>
                                                 <AddItemReview product={product} id={id} auth={auth} profile={profile} userId={userId} />

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { Table, Header, Image, Button,  Rating } from 'semantic-ui-react'
+import { Table, Header, Image, Button,  Rating, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import './reviewstobeapproved.css'
 import axios from 'axios';
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import Disapprove from './Disapprove';
 
 const TableHeaders = () => (
     <Table.Header>
@@ -80,9 +81,20 @@ export class ReviewsToBeApproved extends Component {
                                                 <div >
                                                     {
                                                         this.state.clicked ?
-                                                        <Button fluid loading>Approving review...</Button>
+                                                        <div>
+                                                            <Button fluid loading>Approving review...</Button>
+                                                            <Button fluid loading>Approving review...</Button>
+                                                        </div>
                                                         :
-                                                        <Button onClick={(e) => this.handleApprove(e, review)}>Approve</Button>
+                                                        <div>
+                                                            <Button color='green' onClick={(e) => this.handleApprove(e, review)} icon='check'/>
+                                                            <Disapprove 
+                                                                userId={review.userId} 
+                                                                revieweeName={products.filter(product => product.id === review.productId)[0].itemName}
+                                                                revieweeId={review.productId}
+                                                                reviewId={review.id}    
+                                                            />
+                                                        </div>
                                                     }
                                                 </div>
                                             </Table.Cell>

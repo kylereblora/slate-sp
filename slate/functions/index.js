@@ -161,3 +161,34 @@ exports.approveReview = functions.https.onRequest((req, res) => {
         })
     })
 })
+
+exports.disapproveReview = functions.https.onRequest((req, res) => {
+    return cors(req, res, () => {
+        if (req.method !== 'POST') {
+            return res.status(500).json({
+                message: 'Not allowed'
+            })
+        }
+
+        let disapproval = req.body.disapproval;
+        let newContent = 'Your review for ' + disapproval.revieweeName + ' has been rejected due to ' + disapproval.content
+        disapproval = {
+            content : newContent,
+            sender: 'Slate',
+            reviewId: disapproval.reviewId,
+            revieweeName: disapproval.revieweeName,
+            userId: disapproval.userId,            
+            time: admin.firestore.FieldValue.serverTimestamp(),
+        }
+
+        return admin.firestore().collection('notifications').add(disapproval).then(() => {
+            return admin.firestore().collection('unapproved_reviews').doc(disapproval.reviewId).delete().then(() => {
+                res.status(200).send('Review disapproved.');
+            }).catch((error) => {
+                console.log('Error disapproving review', error);
+            })
+        }).catch((error) => {
+            console.log('Error disapproving review', error);
+        })
+    })
+})

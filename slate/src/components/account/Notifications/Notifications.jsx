@@ -14,6 +14,8 @@ export class Notifications extends Component {
 
         if (!auth.uid) return <Redirect to='/' />
         
+        if (notifications) console.log(notifications);
+        
 
         return (
             <div className="notifications-site">
@@ -38,6 +40,8 @@ export class Notifications extends Component {
 
 
 const mapStateToProps = (state) => {
+    console.log(state);
+    
     return { 
         auth: state.firebase.auth,
         notifications: state.firestore.ordered.notifications
@@ -47,5 +51,5 @@ const mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([{collection: 'notifications', limit: 10, orderBy: ['time', 'desc']}])
+    firestoreConnect([{collection: 'notifications', orderBy: ['time', 'desc']}])
 )(Notifications)
