@@ -38,10 +38,6 @@ export class Disapprove extends Component {
                 reviewId: this.state.reviewId,
             }
 
-            console.log(disapproval);
-            
-
-            
             axios.post('https://us-central1-slate-sp2.cloudfunctions.net/disapproveReview', {disapproval}).then(()=> {
                 this.resetComponent();
             })

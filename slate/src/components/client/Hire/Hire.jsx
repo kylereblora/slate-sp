@@ -29,7 +29,7 @@ export class Hire extends Component {
                                     <div className="hire-flex-container">
                                         <div className="hire-header">
                                             <h2>Hire Professionals</h2>
-                                            <p>Browse a wide catalog of items for your home design needs.</p>
+                                            <p>Choose among various professionals in the platform</p>
                                         </div>
 
                                         <div className="search-standard">

@@ -41,8 +41,12 @@
 }
 
 .hire-search {
-    background: #fff;
-    padding: 40px 20px;
+    background: url('../../../assets/img/teamwork2.svg');
+    background-repeat: no-repeat;
+    background-position: 100% 56%;
+    background-size: 500px;
+    background-color: #ffffff;
+    padding: 50px 20px;
     border-radius: 5px;
     -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
     -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
@@ -60,12 +64,14 @@
     font-family: 'GT Walsheim', sans-serif;
     font-weight: 600;
     color: #414141;
+    margin: 0 0 5px 0;
 }
 
 .hire-search p {
     font-size: 14px;
     font-family: 'Circular Std Book', sans-serif;
     color: #414141;
+    margin: 0;
 }
 
 .hire-header {
