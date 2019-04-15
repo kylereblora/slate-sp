@@ -2,9 +2,7 @@
     height: 100px;
     max-height: 100px;
     display: flex;
-    /* grid-template-columns: auto auto auto;
-    grid-column-gap: 80px; */
-    width: 1080px;
+    width: 100%;
 }
 
 .responsive-container-wishlist {
@@ -56,4 +54,36 @@
 .item-link-style {
     color: #313131;
     max-width: 300px;
+}
+
+@media only screen and (max-width: 768px) {
+    .item-misc-preview {
+        width: 100%;
+        max-width: 200px;
+        text-align: left;
+    }
+
+    .item-preview {
+        display: flex;
+        width: 100%;
+    }
+    
+    .item-picture-preview img {
+        max-height: 40px;
+        max-width:  40px;
+        width: auto;
+        height: auto;
+        margin: 0 10px 0 0;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+
+    .item-name-preview, .item-price-preview {
+        font-size: 10px;
+    }
+
+    .item-picture-preview img {
+        margin: 0 3px 0 0;
+    }
 }

@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import './proscard.css';
-import { Button, Rating } from 'semantic-ui-react';
+import { Rating } from 'semantic-ui-react';
 import { defaultBrandBtn } from '../../../assets/styles/styles';
+import { Link } from 'react-router-dom'
 
 
 
 export class ProsCard extends Component {
 
-    handleClick = (e, id) => {
-        window.location.href = '/profile/' + id;
+    truncateText = (s) => {
+        if (s.length > 100) return s.substring(0, 100)+ '...';
+        else return s
     }
 
     render() {
@@ -22,19 +24,31 @@ export class ProsCard extends Component {
     
                     <div className="pros-misc">
                         <div className="pros-details">
-                            <p className="pros-name">{pro.firstName} {pro.lastName}</p>
-                            <p className="pros-location">{pro.province || "N/A"}</p>
+                            <Link className='pro-link-style' to={'/profile/'+ pro.id}>
+                                <p className="pros-name">{pro.firstName} {pro.lastName}</p>
+                            </Link>
+                            <div className="info-container-pro">
+                                <div className="icon-container-pro">
+                                    <i className="fas fa-map-marker-alt"></i>
+                                </div>
+                                <p className="pros-location">{pro.province || "N/A"}</p>
+                            </div>
+                            
                             <Rating icon="star" defaultRating = {pro.proRating} maxRating = {5} disabled/>
-                            <p className="pros-description">{pro.proDescription}</p>
+                            
+                            <span style={{overflow: 'hidden', textOverflow: 'ellipsis'}}>
+                                <p className="pros-description">{this.truncateText(pro.proDescription)}</p>
+                            </span>
                         </div>
     
                         <div className="spacer" />
-                        <p className="contact-no">{pro.contactNumber || "N/A"}</p>
-                    </div>
-    
-                    <div className="spacer" />
-                    <div className="card-action">
-                        <Button style={defaultBrandBtn} onClick={(e) => this.handleClick(e, pro.id)}>View</Button>
+
+                        <div className="info-container-pro">
+                            <div className="icon-container-pro">
+                                <i className="fas fa-phone"></i>
+                            </div>
+                            <p className="contact-no">{pro.contactNumber || "N/A"}</p>
+                        </div>
                     </div>
                 </div>
             </div>

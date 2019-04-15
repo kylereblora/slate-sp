@@ -30,7 +30,6 @@ export class SignIn extends Component {
         // ROUTE GUARD -- if the user is logged in yet tries to access this component, redirect.
         if (auth.uid) return <Redirect to='/home' />
         return (
-            <div className="signin-site">
                 <div className="signin-main">
                     <div className="signin-content">
                         <div className="signin-grid-container">
@@ -72,13 +71,13 @@ export class SignIn extends Component {
                                 </div>
                             </div>
 
+
                             <div className="login-illustration">
                                 <img src={LoginSVG} alt="svgfile"/>
                             </div>
                         </div>
                     </div>  
                 </div>
-            </div>
         )
     }
 }

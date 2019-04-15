@@ -74,7 +74,7 @@
 } 
 
 .bath > *, .curtains > *, .home-interior > *, .lightings > *, .walls-flooring > * {
-    flex: 1 1 250px;
+    flex: 1 1 30px;
 }
 
 .item-link-style {

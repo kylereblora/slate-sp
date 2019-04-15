@@ -126,19 +126,19 @@
 
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 475px) {
     .item-card-main {
         max-width: 75px;
     }
 
     .responsive-container {
-        width: 75px;
-        max-height: 95px;
+        width: 65px;
+        max-height: 65px;
     }
 
     .item-picture img {
-        max-height: 95px;
-        max-width:  75px;
+        max-height: 65px;
+        max-width:  65px;
         width: auto;
         height: auto;
     }
@@ -147,11 +147,12 @@
         width: 75px;
     }
 
-    .item-name {
+    .item-name, .item-category {
         font-size: 10px;
     }
 
     .item-price {
         font-size: 8px;
     }
+
 }
