@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './proscard.css';
 import { Rating } from 'semantic-ui-react';
-import { defaultBrandBtn } from '../../../assets/styles/styles';
 import { Link } from 'react-router-dom'
 
 

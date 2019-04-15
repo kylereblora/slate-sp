@@ -87,6 +87,11 @@
     margin: 0 0 30px 0;
 }
 
+.add-project-guidelines h2 {
+    font-family: 'GT Walsheim', sans-serif;
+    
+}
+
 .add-project-guidelines p {
     font-size: 13px;
     font-family: 'Circular Std Book', sans-serif;

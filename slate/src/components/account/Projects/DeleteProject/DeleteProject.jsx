@@ -38,7 +38,7 @@ export class DeleteProject extends Component {
                 <Modal.Actions>
                     {
                         this.state.clicked ?
-                        <Button disabled>
+                        <Button disabled loading>
                             Deleting...
                         </Button>
                         :

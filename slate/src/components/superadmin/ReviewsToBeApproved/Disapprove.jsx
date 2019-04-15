@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Form, Modal, Button, Dropdown, Icon } from 'semantic-ui-react'
+import { Form, Modal, Button, Dropdown } from 'semantic-ui-react'
 import { reasons }  from './reasonsForDisapproval'
-import { basicDefaultBtn } from '../../../assets/styles/styles';
 import './disapprove.css'
 import axios from 'axios'
 

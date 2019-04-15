@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Table, Header, Image, Button,  Rating, Icon } from 'semantic-ui-react'
+import { Table, Header, Image, Button,  Rating } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import './reviewstobeapproved.css'
 import axios from 'axios';

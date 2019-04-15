@@ -26,6 +26,7 @@ export class AddProject extends Component {
             projectYear : '',
             projectDescription : '',
             projectImageUrl : '',
+            clicked: false,
         }
     }
 
@@ -52,9 +53,12 @@ export class AddProject extends Component {
         if((this.state.projectName && this.state.projectCost && this.state.projectLocation && this.state.projectYear
         && this.state.projectDescription && this.state.projectImageUrl) !== '') {
             
-            this.props.createProject(this.state, this.props.auth.uid).then(() => {
-                window.location.href = '/profile/'+this.props.auth.uid;
+            this.setState({clicked: true}, () => {
+                this.props.createProject(this.state, this.props.auth.uid).then(() => {
+                    window.location.href = '/profile/'+this.props.auth.uid;
+                })
             })
+            
         }
 
     }
@@ -122,7 +126,16 @@ export class AddProject extends Component {
 
                                                     <Button fluid style={disabledLoginBtn}>Add Project</Button>
                                                     :
-                                                    <Button fluid style={loginBtn} type='submit' onClick={this.handleSubmit}>Add Project</Button>
+
+                                                    <div className="edit-form-buttons">
+                                                        {
+                                                            this.state.clicked ?
+                                                            <Button fluid loading>Adding project...</Button>
+                                                            :
+                                                            <Button fluid style={loginBtn} type='submit' onClick={this.handleSubmit}>Add Project</Button>
+                                                        }
+                                                    </div>
+                                                    
                                                     
                                                 }
                                             </div>

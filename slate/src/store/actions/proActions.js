@@ -4,7 +4,6 @@ export const addProRating = (state) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         return new Promise((resolve, reject) => {
             const firestore = getFirestore();
-            const firebase = getFirebase();
             
             firestore.collection('users').doc(state.proId).get().then((doc) => {
                 if (doc.exists) {

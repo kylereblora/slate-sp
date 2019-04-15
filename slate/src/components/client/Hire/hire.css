@@ -90,24 +90,11 @@
     grid-row-end: 3;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1020px) {
     .hire-main {
-        margin: 0px 30px;
-    }
-
-    .hire-header h2 {
-        font-size: 30px;
-    }
-
-    .hire-header p {
-        font-size: 12px;
-    }
-
-    .hire-search {
-        padding: 20px 20px;
+        margin: 0px 20px;
     }
 }
-
 
 @media only screen and (max-width: 820px) {
     .hire-header p {
@@ -124,10 +111,17 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .hire-main {
-        margin: 0 12px;
+    .hire-header h2 {
+        font-size: 30px;
     }
 
+    .hire-header p {
+        font-size: 12px;
+    }
+
+    .hire-search {
+        padding: 20px 20px;
+    }
 }
 
 @media only screen and (max-width: 497px) {

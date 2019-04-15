@@ -3,7 +3,6 @@ export const createProduct = (product, seller) => {
         return new Promise((resolve, reject) => {
             // make async call to db
             const firestore = getFirestore();
-            const firebase = getFirebase();
             firestore.collection('products').add({
                 ...product,
                 seller: seller.displayName,
@@ -65,7 +64,6 @@ export const addProductReview = (state) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         return new Promise((resolve, reject) => {
             const firestore = getFirestore();
-            const firebase = getFirebase();
             
             firestore.collection('unapproved_reviews').add({
                 ...state,

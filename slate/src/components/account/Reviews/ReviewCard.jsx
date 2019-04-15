@@ -1,5 +1,5 @@
 import React from 'react'
-import { Rating, Header, Image } from 'semantic-ui-react'
+import { Rating, Header } from 'semantic-ui-react'
 import './reviews.css'
 
 const ReviewCard = ({review}) => {

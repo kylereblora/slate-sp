@@ -12,7 +12,7 @@
 .project-main {
     flex: 1 0 auto;
     text-align: center;
-    padding: 100px 0px;
+    padding: 100px 100px;
     font-family: 'Circular Std Book', sans-serif;
     color: #414141;
 }
@@ -88,7 +88,10 @@
 }
 
 .project-author {
-    margin: 10px 0px 0px 0px;
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 3;
 }
 
 
@@ -173,4 +176,61 @@
 
 .edit-and-del-project {
     margin: 10px 0px 20px 0;
+}
+
+@media only screen and (max-width: 826px) {
+    .project-main {
+        padding: 80px 20px;
+    }
+}
+
+@media only screen and (max-width: 626px) {
+    .project-info h1 {
+        font-size: 30px;
+        color: #414141;
+        max-width: 400px;
+    }
+
+    .info-container {
+        font-size: 15px;
+    }
+
+    .project-description-detailed h3 {
+        font-size: 20px;
+    }
+
+    .project-description-newline-format {
+        font-size: 15px;
+    }
+
+    .spacer-grid {
+        display: none;
+    }
+
+    .project-info {
+        grid-column-start: 1;
+        grid-column-end: 6;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+    .project-author {
+        grid-column-start: 1;
+        grid-column-end: 6;
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
+
+    .about-the-author, .author-picture {
+        text-align: left;
+    }
+}
+
+
+@media only screen and (max-width: 418px) {
+    .project-info h1 {
+        font-size: 25px;
+        color: #414141;
+    }
+
 }
