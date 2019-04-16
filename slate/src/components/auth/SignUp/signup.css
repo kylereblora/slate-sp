@@ -1,24 +1,22 @@
-.signup {
-    height: 650px;
-    line-height: 650px;
-    text-align: center;
+.ui.form input[type=password]:focus, .ui.form textarea:focus, .ui.form input[type=text]:focus, 
+.ui.form input[type=number]:focus {
+    border-color: #35947f;
 }
 
 .signup-main {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 650px;
     width: 450px;
     text-align: center;
-    line-height: normal;
-    vertical-align: middle;
-    display: inline-block;
-    padding: 50px;
-    border: 1px solid #dfdfdf;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-top: 15px solid #E28324;
-    /* border-image: linear-gradient(to left, #E28324 50%, #EB5FB3 100%) 
-              100% 0 100% 0/3px 0 3px 0 stretch; */
+    padding: 30px 50px;
+    /* border-radius: 10px; */
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
 }
-
 
 .signup-logo {
     font-family: 'Wavehaus Bold', sans-serif;
@@ -58,4 +56,12 @@
 
 .signup-form {
     text-align: left;
+    color: #fff;
+}
+
+
+@media only screen and (max-width: 1075px) {
+    .signup-card {
+        margin: auto;
+    }
 }

@@ -6,7 +6,14 @@ import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import './notifications.css'
 import NotifCard from './NotifCard/NotifCard'
+import { Dimmer, Loader } from 'semantic-ui-react'
+import NotFound from '../../../assets/img/notfound.svg';
 
+function checkIfUserHasNotif(uid) {
+    return function(notif) {
+        return notif.userId === uid;
+    }
+}
 
 export class Notifications extends Component {
     render() {
@@ -24,11 +31,34 @@ export class Notifications extends Component {
                     <div className="notifications">
                         <h1>Notifications</h1>
                         {
-                            notifications && notifications.map(notif => {
-                                if (notif.userId === auth.uid) return (
-                                   <NotifCard notif={notif} key={notif.id}/>
-                                )
-                            })
+                            notifications ?
+
+                            <div>
+                                 {
+                                    notifications.filter(checkIfUserHasNotif(auth.uid)).length > 0 ?
+                                    
+                                    <div>
+                                        {
+                                            notifications.filter(checkIfUserHasNotif(auth.uid)).map(notif => {
+                                                return (
+                                                <NotifCard notif={notif} key={notif.id}/>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                    :
+                                    <div className="notif-svg">
+                                        <img src={NotFound} alt="svgfile"/>
+                                        <p>You currently have no notifications.</p>
+                                    </div>
+                                }
+                            </div>
+
+                            :
+
+                            <Dimmer active inverted>
+                                <Loader inverted></Loader>
+                            </Dimmer>
                         }
                     </div>
                 </div>
@@ -40,8 +70,6 @@ export class Notifications extends Component {
 
 
 const mapStateToProps = (state) => {
-    console.log(state);
-    
     return { 
         auth: state.firebase.auth,
         notifications: state.firestore.ordered.notifications

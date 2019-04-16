@@ -69,4 +69,8 @@
     .wishlist-svg img {
         width: 200px;
     }
+
+    .wishlist-products h1 {
+        font-size: 30px;
+    }
 }

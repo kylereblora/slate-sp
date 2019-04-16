@@ -16,8 +16,6 @@
     max-width: 1150px;
     display: inline-block;
     text-align: left;
-    
-    
 }
 
 .signin-grid-container {
@@ -112,6 +110,12 @@
         text-align: center;
     }
 
+}
+
+@media only screen and (max-width: 415px) {
+    .signin-card {
+        width: 300px;
+    }    
 }
 
 @media only screen and (max-width: 410px) {

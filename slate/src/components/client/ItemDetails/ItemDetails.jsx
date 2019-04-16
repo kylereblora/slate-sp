@@ -30,12 +30,18 @@ export class ItemDetails extends Component {
     }
 
     render() {
-        const { id, product, auth, profile, wishlist, users, userId } = this.props;
+        const { id, product, products, auth, profile, wishlist, users, userId } = this.props;
         let inWishlist = null
 
+        
         if (wishlist) {
             inWishlist = wishlist.find(getProductFromWishlist(id))
+
+            if (products && products[id] === undefined) window.location.href='/404';
+            
         }
+
+        
         
         
         if (product) {
@@ -105,7 +111,7 @@ export class ItemDetails extends Component {
 
                                                     :
 
-                                                    <p>This product does not currently have reviews.</p>
+                                                    <p className="item-description-content">This product does not currently have reviews.</p>
                                                 }
                                             </div>
                                         </div>  
@@ -152,6 +158,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         id,
         product,
+        products,
         auth: state.firebase.auth,
         profile: state.firebase.profile,
         users: state.firestore.ordered.users,

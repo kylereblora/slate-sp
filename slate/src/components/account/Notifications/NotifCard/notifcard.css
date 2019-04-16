@@ -1,6 +1,7 @@
 .notif-sender {
     font-size: 18px;
     font-family: 'Circular Std Medium', sans-serif;
+    color: rgb(236, 97, 72);
 }
 
 .notif-card-main p {
@@ -10,10 +11,21 @@
 }
 
 .notif-card-main {
-    padding: 10px 0px;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 0 10px 0; 
+    -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
 }
 
-.notif-content, .notif-date p {
+.notif-content {
     font-size: 13px;
+    color: #414141;
 }
 
+.notif-date {
+    font-family: 'Circular Std Book', sans-serif;
+    font-size: 11px;
+    color: #616161;
+}

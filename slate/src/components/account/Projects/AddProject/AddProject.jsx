@@ -86,7 +86,7 @@ export class AddProject extends Component {
                                         <Form>
                                             <Form.Field required onChange={this.handleChange}>
                                                 <label>Project Name</label>
-                                                <Input id="projectName" placeholder='Three-Storey Contemporary House' />
+                                                <Input id="projectName" type='text' placeholder='Three-Storey Contemporary House' />
                                             </Form.Field>
 
                                             <Form.Field required onChange={this.handleChange}>
@@ -98,7 +98,7 @@ export class AddProject extends Component {
                                             <Form.Field required onChange={this.handleChange}>
                                                 <label>Project Location</label>
                                             
-                                                <Input id="projectLocation" />
+                                                <Input id="projectLocation" type='text'/>
                                             </Form.Field>
                                             
                                             <Form.Field required onChange={this.handleChange}>

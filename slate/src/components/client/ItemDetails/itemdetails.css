@@ -70,7 +70,7 @@
 
 .item-info {
     display: inline-block;
-    width: 1150px;
+    width: 100%;
     max-width: 1150px;
     text-align: left;
     
@@ -134,8 +134,6 @@
     margin: 0;
 }
 
-
-
 .item-description-header {
     font-family: 'Circular Std Medium', sans-serif;
     font-size: 18px;
@@ -147,6 +145,7 @@
     font-family: 'Circular Std Book', sans-serif;
     color: #414141;
     white-space: pre-line;
+    font-weight: 100;
 }
 
 .item-reviews {
@@ -177,6 +176,123 @@
     }
 }
 
-@media only screen and (max-width: 1175px) {
+
+
+@media only screen and (max-width: 962px) {
+    .item-picture-details img {
+        max-height: 300px;
+        max-width:  300px;
+    }
+
+    .responsive-container-details {
+        width: 350px;
+        max-height: 350px;
+    }
+
+    .item-picture-details {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #fff;
+        text-align:center; /* Align center inline elements */
+    }
     
+    .quantity label span {
+        font-size: 15px;
+    }
+
+    .quantity label {
+        font-size: 12px;
+    }
+
+    .add-to-wishlist {
+        width: 200px;
+    }
+
+}
+
+
+@media only screen and (max-width: 726px) {
+    .add-to-wishlist {
+        width: 150px;
+    }
+
+}
+
+
+@media only screen and (max-width: 716px) {
+    .responsive-container-details {
+        margin: auto;
+    }
+
+    .item-picture-details {
+        text-align: center;
+    }
+
+    .item-info-2 {
+        width: 300px;
+        margin: 0;
+        text-align: left;
+        margin: auto;
+        padding: 0;
+    }
+
+    .item-info-2 .item-name {
+        font-size: 25px;
+    }
+
+    .item-seller {
+        font-size: 12px;
+    }
+
+    .item-info-2  .item-price {
+        font-size: 23px;
+    }
+
+    .item-description-header {
+        font-size: 14px;
+    }
+
+    .item-description-content {
+        font-size: 13px;
+    }
+    
+}
+
+@media only screen and (max-width: 623px) {
+    .item-two-columns {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .responsive-container-details {
+        width: 300px;
+        max-height: 300px;
+    }    
+
+    .spacer {
+        display: none;
+        flex: 0;
+    }
+
+}
+
+
+@media only screen and (max-width: 320px) {
+    .item-picture-details img {
+        max-height: 250px;
+        max-width:  250px;
+    }
+
+    .responsive-container-details {
+        width: 250px;
+        max-height: 250px;
+    }   
+
+    .item-info-2 {
+        width: 280px;
+    }
+
 }

@@ -54,14 +54,13 @@ export class SignUp extends Component {
     render() {
         const { auth, authError } = this.props;
 
-        // ROUTE GUARD -- if the user isn't logged in yet and tries to access this component, redirect.
+        // ROUTE GUARD -- if the user is logged in and tries to access this component, redirect.
         if (auth.uid) return <Redirect to='/home' />
         return (
-            <div className="signup">
-                <div className="signup-main">
+            <div className="signup-main">
+                <div className="signup-content">
                     <div className="signup-card">
                         <div className="brand-color" />
-
                         <div>
                             <h1 className="signup-logo"><a href="/">slate</a></h1>
                             <h1 className="create-your-acc">Create your account</h1>
@@ -69,11 +68,11 @@ export class SignUp extends Component {
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Field required onChange={this.handleChange}>
                                         <label>First Name</label>
-                                        <input id="firstName" placeholder='First Name' />
+                                        <input id="firstName" type='text' placeholder='First Name' />
                                     </Form.Field>
                                     <Form.Field required onChange={this.handleChange}>
                                         <label>Last Name</label>
-                                        <input id="lastName" placeholder='Last Name' />
+                                        <input id="lastName" type='text' placeholder='Last Name' />
                                     </Form.Field>
                                     <Form.Field required onChange={this.handleChange}>
                                         <label>Email</label>
@@ -85,7 +84,7 @@ export class SignUp extends Component {
                                     </Form.Field>
 
                                     <Form.Field onChange={this.handleChange}>
-                                        <Checkbox label='Registering as a pro?' toggle onChange={this.toggle} checked={this.state.checked} />
+                                        <Checkbox label='Signing up as a pro?' toggle onChange={this.toggle} checked={this.state.checked} />
                                     </Form.Field>
 
                                     {
@@ -132,7 +131,7 @@ export class SignUp extends Component {
                             
                         </div>
                     </div>
-                </div>  
+                </div>
             </div>
         )
     }
