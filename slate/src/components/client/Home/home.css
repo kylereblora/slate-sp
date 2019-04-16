@@ -158,6 +158,13 @@
 
 }
 
+@media only screen and (max-width: 379px) and (min-width: 365px) {
+    .product-previews > * {
+        flex: 1 1 100px;
+    }
+
+}
+
 @media only screen and (max-width: 398px) {
     .product-section-heading, .pros-section-heading {
         font-size: 30px;
