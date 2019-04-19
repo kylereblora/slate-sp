@@ -21,7 +21,7 @@ export class SearchStandard extends Component {
 		setTimeout(() => {
 		  if (this.state.value.length < 1) return this.resetComponent()
 		  
-		  const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
+		  	const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
 			const res = [];
 			
 			this.props.source.forEach(item => {

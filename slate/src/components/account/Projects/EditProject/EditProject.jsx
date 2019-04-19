@@ -16,6 +16,7 @@ export class EditProject extends Component {
         projectYear: this.props.project.projectYear,
         projectDescription: this.props.project.projectDescription,
         projectImageUrl : this.props.project.projectImageUrl,
+        projectImagesArray: this.props.project.projectImagesArray,
         clicked : false,
     }
 
@@ -35,6 +36,30 @@ export class EditProject extends Component {
     imageUrlCallback = (data) => {
         // gets the image url from the ItemUpload child for later use
         this.setState({projectImageUrl : data})        
+    }
+
+    projectImagesUrlCallback = (data) => {
+        const { projectImagesArray } = this.state;
+
+        let arr = projectImagesArray.slice();
+
+        if(arr.length < 5) arr.push(data);
+        else if (arr.length === 5) alert('You have exceeded the maximum number of photos allowed. If you wish to edit specific photos, upload ')
+
+        this.setState({projectImagesArray : arr});
+    }
+
+    handleDeleteProjectImage = (e, index) => {
+        const { projectImagesArray } = this.state;
+ 
+        let arr = projectImagesArray.slice();
+        arr.splice(index, 1)
+ 
+        this.setState({projectImagesArray : arr});
+    }
+
+    handleDeleteProjectBanner = () => {
+        this.setState({projectImageUrl: ''})
     }
 
     handleOpen = () => {
@@ -57,7 +82,12 @@ export class EditProject extends Component {
         }
     }
 
+    
+
     render() {
+        const { projectImagesArray } = this.state; 
+        let newProjectImagesArray = ['0', '0', '0', '0', '0']
+
         return (
             <Modal
                 trigger={<Button style={defaultBtn} onClick={this.handleOpen}><Icon name='pencil alternate' />Edit Project</Button>}
@@ -70,7 +100,7 @@ export class EditProject extends Component {
                         <Form>
                             <Form.Field required onChange={this.handleChange}>
                                 <label>Project Name</label>
-                                <Input id="projectName" value={this.state.projectName} />
+                                <Input id="projectName" type='text' value={this.state.projectName} />
                             </Form.Field>
 
                             <Form.Field required onChange={this.handleChange}>
@@ -88,7 +118,7 @@ export class EditProject extends Component {
                             <Form.Field required onChange={this.handleChange}>
                                 <label>Project Year</label>
                             
-                                <Dropdown placeholder={this.state.projectYear} name='projectYear' options={years} onChange={this.handleDropdownChange} selection />
+                                <Dropdown value={this.state.projectYear} name='projectYear' options={years} onChange={this.handleDropdownChange} selection />
                             </Form.Field>
 
                             <Form.Field required onChange={this.handleChange}>
@@ -99,7 +129,46 @@ export class EditProject extends Component {
                             <Form.Field required>
                                 <label>Project Image Cover</label>
                                 <p>This will be used as your project's cover photo.</p>
+                                {
+                                    this.state.projectImageUrl !== '' ?
+                                    <div className="edit-project-images-preview">
+                                        <div className="edit-project-image">
+                                            <span className='delete-project-image'><Button floated="right" icon='close' onClick={() => this.handleDeleteProjectBanner()} size='mini'/></span>
+                                            <img src={this.state.projectImageUrl} alt="projectimage"/>
+                                        </div>
+                                    </div>
+
+                                    :
+                                    null
+                                }
                                 <ItemUpload callbackFromParent = {this.imageUrlCallback} store={'projects'}/>
+                            </Form.Field>
+
+                            <Form.Field required>
+                                <label>Project Images</label>
+                                <p>You can upload up to five images of your project.</p>
+                                <div className="edit-project-images-preview">
+                                    {
+                                        projectImagesArray.map((projectimage, index) => {
+                                            return (
+                                                <div className="edit-project-image" key={index}>
+                                                    <span className='delete-project-image'><Button floated="right" icon='close' onClick={(e) => this.handleDeleteProjectImage(e, index)} size='mini'/></span>
+                                                    <img src={projectimage} alt="projectimage"/>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+
+                                {
+                                    newProjectImagesArray.slice(0, 5).map((element, index) => {
+                                        return (
+                                            <div key={index}>
+                                                <ItemUpload callbackFromParent = {this.projectImagesUrlCallback} store={'projects'}/>
+                                            </div>
+                                        )
+                                    })
+                                }
                             </Form.Field>
 
                             <div className="edit-form-buttons">

@@ -60,7 +60,6 @@ export class SignUp extends Component {
             <div className="signup-main">
                 <div className="signup-content">
                     <div className="signup-card">
-                        <div className="brand-color" />
                         <div>
                             <h1 className="signup-logo"><a href="/">slate</a></h1>
                             <h1 className="create-your-acc">Create your account</h1>

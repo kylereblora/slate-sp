@@ -77,7 +77,37 @@ export class ProjectDetails extends Component {
                                         <h3>About this project</h3>
                                         <p className="project-description-newline-format">{project.projectDescription}</p>
                                    </div>
+                                    
+                                   <div className="additional-project-images">
+                                        <h3>Project Photos</h3>
+                                        <div className="project-photos">
+                                                {
+                                                    project.projectImagesArray.length > 0 ?
+                                                    
+                                                    project.projectImagesArray.map((photo, index) => {
+                                                        return (
+                                                            <Modal key={index} trigger = {
+                                                                <div className="project-pic">
+                                                                    <img src={photo} alt={'project_photo'}/>
+                                                                </div>
+                                                            }>
+                                                                <Modal.Content>
+                                                                    <div className="modal-content-image">
+                                                                        <img src={photo} alt={'project_photo'}/>
+                                                                    </div>
+                                                                </Modal.Content>
+                                                            </Modal>
+                                                        )
+                                                    })
+
+                                                    :
+
+                                                    <p>This project does not have additional photos.</p>
+                                                }
+                                        </div>
+                                   </div>
                                 </div>
+                                
 
                                 <div className="spacer-grid"></div>
 

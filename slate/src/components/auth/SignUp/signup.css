@@ -10,12 +10,14 @@
     right: 0;
     bottom: 0;
     left: 0;
-    height: 650px;
-    width: 450px;
+    width: 100%;
+    height: 100%;
+    max-width: 375px;
+    max-height: 600px;
     text-align: center;
-    padding: 30px 50px;
-    /* border-radius: 10px; */
-    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+}
+
+.signup-card {
 }
 
 .signup-logo {
@@ -60,8 +62,9 @@
 }
 
 
-@media only screen and (max-width: 1075px) {
-    .signup-card {
-        margin: auto;
+@media only screen and (max-width: 375px) {
+    .signup-main {
+        max-width: 280px;
+        top: 70px;
     }
 }

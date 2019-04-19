@@ -26,6 +26,7 @@ export class AddProject extends Component {
             projectYear : '',
             projectDescription : '',
             projectImageUrl : '',
+            projectImagesArray : [],
             clicked: false,
         }
     }
@@ -46,6 +47,29 @@ export class AddProject extends Component {
     imageUrlCallback = (data) => {
         // gets the image url from the ItemUpload child for later use
         this.setState({projectImageUrl : data})        
+    }
+
+    projectImagesUrlCallback = (data) => {
+        const { projectImagesArray } = this.state;
+
+        let arr = projectImagesArray.slice();
+
+        arr.push(data);
+
+        this.setState({projectImagesArray : arr});
+    }
+
+    handleDeleteProjectImage = (e, index) => {
+        const { projectImagesArray } = this.state;
+ 
+        let arr = projectImagesArray.slice();
+        arr.splice(index, 1)
+ 
+        this.setState({projectImagesArray : arr});
+    }
+
+    handleDeleteProjectBanner = () => {
+        this.setState({projectImageUrl: ''})
     }
 
     handleSubmit = (e) => {
@@ -69,6 +93,10 @@ export class AddProject extends Component {
         const { auth, user } = this.props;
         
         if (!auth.uid) return <Redirect to='/' />
+
+        const { projectImagesArray } = this.state; 
+        let newProjectImagesArray = ['0', '0', '0', '0', '0']
+        
         return (
             <div>
                 {
@@ -115,7 +143,47 @@ export class AddProject extends Component {
                                             <Form.Field required>
                                                 <label>Project Image Cover</label>
                                                 <p>This will be used as your project's cover photo.</p>
+                                                {
+                                                    this.state.projectImageUrl !== '' ?
+                                                    <div className="edit-project-images-preview">
+                                                        <div className="edit-project-image">
+                                                            <span className='delete-project-image'><Button floated="right" icon='close' onClick={() => this.handleDeleteProjectBanner()} size='mini'/></span>
+                                                            <img src={this.state.projectImageUrl} alt="projectimage"/>
+                                                        </div>
+                                                    </div>
+
+                                                    :
+                                                    null
+                                                }
                                                 <ItemUpload callbackFromParent = {this.imageUrlCallback} store={'projects'}/>
+                                            </Form.Field>
+
+
+                                            <Form.Field required>
+                                                <label>Project Images</label>
+                                                <p>You can upload up to five images of your project.</p>
+                                                <div className="edit-project-images-preview">
+                                                    {
+                                                        projectImagesArray.map((projectimage, index) => {
+                                                            return (
+                                                                <div className="edit-project-image" key={index}>
+                                                                    <span className='delete-project-image'><Button floated="right" icon='close' onClick={(e) => this.handleDeleteProjectImage(e, index)} size='mini'/></span>
+                                                                    <img src={projectimage} alt="projectimage"/>
+                                                                </div>
+                                                            )
+                                                        })
+                                                    }
+                                                </div>
+
+                                                {
+                                                    newProjectImagesArray.slice(0, 5).map((element, index) => {
+                                                        return (
+                                                            <div key={index}>
+                                                                <ItemUpload callbackFromParent = {this.projectImagesUrlCallback} store={'projects'}/>
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
                                             </Form.Field>
 
                                             

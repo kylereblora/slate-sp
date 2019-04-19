@@ -18,7 +18,7 @@ export class ProfileProjects extends Component {
             <div>
                 <div className="project-header">
                     <p className="project-heading">Projects</p>
-                    <div className="spacer" />
+                    <div className="spacer-profile" />
                     {
                         isCurrent ? 
                         <div className="contact-btn">

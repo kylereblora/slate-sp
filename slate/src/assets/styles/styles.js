@@ -52,3 +52,9 @@ export const defaultBrandBtn = {
 export const secondaryBrandColor = {
     color : '#35947f'
 }
+
+export const uploadButton = {
+    background: '#F66F56',
+    color: 'white',
+    padding: '10px 35px',
+}

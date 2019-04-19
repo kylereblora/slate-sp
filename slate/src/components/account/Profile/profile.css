@@ -165,6 +165,10 @@
     display: flex
 }
 
+.spacer-profile {
+    flex: 1;
+}
+
 
 .profile-picture {
     width: 100%;

@@ -37,7 +37,7 @@ export class ProfileHeader extends Component {
                         </div>
                     </div>
                     
-                    <div className="spacer"></div>
+                    <div className="spacer-profile"></div>
                 
                     <div className="contact-btn">
                         {
