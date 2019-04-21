@@ -162,6 +162,69 @@ exports.approveReview = functions.https.onRequest((req, res) => {
     })
 })
 
+exports.approveProReview = functions.https.onRequest((req, res) => {
+    return cors(req, res, () => {
+        if (req.method !== 'POST') {
+            return res.status(500).json({
+                message: 'Not allowed'
+            })
+        }
+
+        const review = req.body.review;
+
+        return admin.firestore().collection('users').doc(review.proId).update({
+            reviews: admin.firestore.FieldValue.arrayUnion({
+                content: review.content,
+                proId: review.proId,
+                rating: review.rating,
+                user: review.currentUser, 
+                userId: review.userId,
+                id: review.id 
+            })
+        })
+        .then(() => {
+            return admin.firestore().collection('users').doc(review.proId).get().then((docRef) => {
+                    const dat = docRef.data()                    
+                    let r = dat.reviews;
+                    let newRating = 0;
+
+                    r.forEach(element => {
+                        newRating += element.rating
+                    })
+
+                    newRating = newRating/r.length;
+
+                    admin.firestore().collection('users').doc(review.proId).update({
+                        rating: newRating
+                    })
+            })
+        })
+        .then(() => {
+            let newContent = review.currentUser + ' has rated you, ' + review.rating + ' stars on your profile!' 
+            let notification = {
+                sender: review.currentUser,
+                content: newContent,
+                userId: review.proId,
+                time: admin.firestore.FieldValue.serverTimestamp(),
+            }
+
+            return createNotification(notification)
+
+        })
+        .then(() => {
+            return admin.firestore().collection('unapproved_reviews_pros').doc(review.id).delete().then(() => {
+                res.status(200).send('Review approved.');
+            }).catch((error) => {
+                console.log('Error approving review', error);
+            })
+
+        }).catch((error) => {
+            console.log('Error approving review', error);
+        })
+    })
+
+})
+
 exports.disapproveReview = functions.https.onRequest((req, res) => {
     return cors(req, res, () => {
         if (req.method !== 'POST') {
@@ -172,6 +235,8 @@ exports.disapproveReview = functions.https.onRequest((req, res) => {
 
         let disapproval = req.body.disapproval;
         let newContent = 'Your review for ' + disapproval.revieweeName + ' has been rejected due to ' + disapproval.content
+        let review_collection  = req.body.disapproval.reviewCollection;
+
         disapproval = {
             content : newContent,
             sender: 'Slate',
@@ -182,7 +247,7 @@ exports.disapproveReview = functions.https.onRequest((req, res) => {
         }
 
         return admin.firestore().collection('notifications').add(disapproval).then(() => {
-            return admin.firestore().collection('unapproved_reviews').doc(disapproval.reviewId).delete().then(() => {
+            return admin.firestore().collection(review_collection).doc(disapproval.reviewId).delete().then(() => {
                 res.status(200).send('Review disapproved.');
             }).catch((error) => {
                 console.log('Error disapproving review', error);

@@ -11,6 +11,7 @@ export class Disapprove extends Component {
         revieweeName: this.props.revieweeName,
         revieweeId: this.props.revieweeId,
         reviewId: this.props.reviewId,
+        reviewCollection: this.props.reviewCollection,
         clicked: false,
         open: false,
     }
@@ -19,7 +20,7 @@ export class Disapprove extends Component {
 
     close = (e) => this.setState({open: false})
 
-    resetComponent = () => this.setState({ clicked: false, open: false, content: '' })
+    resetComponent = () => this.setState({ clicked: false, open: false })
     
     handleDropdownChange = (e, {name, value}) => {
         this.setState({
@@ -35,6 +36,7 @@ export class Disapprove extends Component {
                 revieweeName: this.state.revieweeName,
                 revieweeId: this.state.revieweeId,
                 reviewId: this.state.reviewId,
+                reviewCollection: this.state.reviewCollection
             }
 
             axios.post('https://us-central1-slate-sp2.cloudfunctions.net/disapproveReview', {disapproval}).then(()=> {

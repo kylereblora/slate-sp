@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Rating, Form, TextArea } from 'semantic-ui-react'
+import { Button, Rating, Form, TextArea, Confirm} from 'semantic-ui-react'
 import './reviews.css'
 import { disabledLoginBtn, signUpBtn } from '../../../assets/styles/styles';
 import { connect } from 'react-redux';
@@ -69,7 +69,7 @@ export class Reviews extends Component {
                     </div>
                 </Form>
 
-                {/* <Confirm open={this.state.open} onCancel={this.close} content='Your review has been sent. Thanks!' onConfirm={this.close} /> */}
+                <Confirm open={this.state.open} onCancel={this.close} content='Your review has been sent for admin approval. Thanks!' onConfirm={this.close} />
             </div>
         )
     }

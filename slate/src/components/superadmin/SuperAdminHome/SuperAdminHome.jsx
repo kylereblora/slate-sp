@@ -9,6 +9,7 @@ import { Tab,  Dimmer, Loader } from 'semantic-ui-react'
 import UserList from '../UserList/UserList'
 import CreateSeller from '../CreateSeller/CreateSeller'
 import ReviewList from '../ReviewsToBeApproved/ReviewsToBeApproved'
+import ProReviewList from '../ReviewsToBeApproved/ProReviewsToBeApproved'
 
 export class SuperAdminHome extends Component {
     render() {
@@ -22,7 +23,9 @@ export class SuperAdminHome extends Component {
         if(users) {
             panes = [
                 { menuItem: 'Users', pane: <Tab.Pane attached={false} key={'userlist'}><UserList/></Tab.Pane>},
-                { menuItem: 'Reviews', pane: <Tab.Pane attached={false} key={'reviews'}><ReviewList /></Tab.Pane>},
+                { menuItem: 'Product Reviews', pane: <Tab.Pane attached={false} key={'reviews'}><ReviewList /></Tab.Pane>},
+                { menuItem: 'Professional Reviews', pane: <Tab.Pane attached={false} key={'pro_reviews'}><ProReviewList /></Tab.Pane>},
+                
             ]
         } 
 
