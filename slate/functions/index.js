@@ -21,9 +21,6 @@ const createNotification = (notification => {
 
 exports.userJoined = functions.auth.user()
     .onCreate(user => {
-        console.log(user);
-        
-
         return admin.firestore().collection('users')
             .doc(user.uid)
             .get()
@@ -145,6 +142,15 @@ exports.approveReview = functions.https.onRequest((req, res) => {
 
                     admin.firestore().collection('products').doc(review.productId).update({
                         itemRating: newRating
+                    }).then(() => {
+                        const notification = {
+                            content: 'Your rating for '+ dat.itemName + ' has been approved.',
+                            userId: review.userId,
+                            time: admin.firestore.FieldValue.serverTimestamp(),
+                            sender: 'Slate'
+                        }
+        
+                        return createNotification(notification);
                     })
             })
 
@@ -196,6 +202,15 @@ exports.approveProReview = functions.https.onRequest((req, res) => {
 
                     admin.firestore().collection('users').doc(review.proId).update({
                         rating: newRating
+                    }).then(() => {
+                        const notification = {
+                            content: 'Your rating for '+ dat.firstName + ' ' + dat.lastName + ' has been approved.',
+                            userId: review.userId,
+                            time: admin.firestore.FieldValue.serverTimestamp(),
+                            sender: 'Slate'
+                        }
+        
+                        return createNotification(notification);
                     })
             })
         })
