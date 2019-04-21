@@ -54,7 +54,9 @@ export class EditProject extends Component {
  
         let arr = projectImagesArray.slice();
         arr.splice(index, 1)
- 
+
+        console.log(arr);
+        
         this.setState({projectImagesArray : arr});
     }
 

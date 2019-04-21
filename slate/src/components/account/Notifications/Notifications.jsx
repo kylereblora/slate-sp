@@ -21,8 +21,6 @@ export class Notifications extends Component {
 
         if (!auth.uid) return <Redirect to='/' />
         
-        if (notifications) console.log(notifications);
-        
 
         return (
             <div className="notifications-site">
