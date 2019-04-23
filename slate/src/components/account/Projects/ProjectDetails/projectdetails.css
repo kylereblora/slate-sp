@@ -86,10 +86,7 @@
 .project-photos {
     display: flex;
     flex-wrap: wrap;
-}
-
-.project-photos > * {
-    flex: 1 1 150px;
+    flex-flow: row;
 }
 
 .project-pic {
@@ -135,6 +132,8 @@
     max-width: 100px;
     max-height: 100px;
     border-radius:1000px;
+    border: 5px solid rgb(236, 159, 145);
+    padding: 10px;
 }
 
 
@@ -253,6 +252,14 @@
         grid-column-end: 6;
         grid-row-start: 2;
         grid-row-end: 3;
+    }
+    
+    .project-photos{
+        flex-flow: nowrap;
+    }
+
+    .project-photos > *{
+        flex: 1 1 150px;
     }
 
     .project-author {

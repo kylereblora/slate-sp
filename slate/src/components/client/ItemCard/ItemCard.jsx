@@ -3,7 +3,14 @@ import './itemcard.css';
 import { Rating } from 'semantic-ui-react'
 import { numberWithCommas } from '../ItemDetails/priceWithCommas'
 
+const truncateText = (s) => {
+    if (s.length > 30) return s.substring(0, 30) + '...'
+    else return s
+}
+
 const ItemCard = ({product}) => {
+    
+
     return (
         <div className="item-card">
             <div className="item-card-main">
@@ -19,7 +26,7 @@ const ItemCard = ({product}) => {
 
                 <div className="item-misc">
                     <p className="item-category">{product.itemCategory}</p>
-                    <p className="item-name">{product.itemName}</p>
+                    <p className="item-name">{truncateText(product.itemName)}</p>
                     <p className="item-price-card">&#8369;{numberWithCommas(product.itemPrice) }</p>
                     <Rating icon="star" defaultRating = {product.itemRating} maxRating = {5} disabled/>
                 </div>
