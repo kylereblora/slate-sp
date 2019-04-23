@@ -201,7 +201,7 @@ exports.approveProReview = functions.https.onRequest((req, res) => {
                     newRating = newRating/r.length;
 
                     admin.firestore().collection('users').doc(review.proId).update({
-                        rating: newRating
+                        proRating: newRating
                     }).then(() => {
                         const notification = {
                             content: 'Your rating for '+ dat.firstName + ' ' + dat.lastName + ' has been approved.',

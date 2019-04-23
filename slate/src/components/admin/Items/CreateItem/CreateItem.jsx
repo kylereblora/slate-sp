@@ -64,7 +64,6 @@ export class CreateItem extends Component {
         // ROUTE GUARD -- if the user isn't logged in yet and tries to access this component, redirect.
         if (!auth.uid) return <Redirect to='/' />
 
-        console.log(auth);
         
         return (
             <div className="create-item-site">
