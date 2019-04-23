@@ -54,7 +54,7 @@ class Landing extends React.Component {
                             </div>
                             <div className="illustration">
                                 <div className="fig">
-                                    <img src={HeroImage} alt="hero image"/>
+                                    <img src={HeroImage} alt="people on a blob"/>
                                 </div>
                             </div>
                         </main>

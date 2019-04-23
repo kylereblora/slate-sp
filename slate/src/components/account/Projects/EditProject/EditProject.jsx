@@ -44,7 +44,7 @@ export class EditProject extends Component {
         let arr = projectImagesArray.slice();
 
         if(arr.length < 5) arr.push(data);
-        else if (arr.length === 5) alert('You have exceeded the maximum number of photos allowed. If you wish to edit specific photos, upload ')
+        else if (arr.length === 5) alert('You have exceeded the maximum number of photos allowed. If you wish to add more photos, remove other images currently uploaded.')
 
         this.setState({projectImagesArray : arr});
     }
@@ -55,8 +55,6 @@ export class EditProject extends Component {
         let arr = projectImagesArray.slice();
         arr.splice(index, 1)
 
-        console.log(arr);
-        
         this.setState({projectImagesArray : arr});
     }
 
@@ -92,6 +90,7 @@ export class EditProject extends Component {
 
         return (
             <Modal
+                closeIcon
                 trigger={<Button style={defaultBtn} onClick={this.handleOpen}><Icon name='pencil alternate' />Edit Project</Button>}
                 size='small'
             >

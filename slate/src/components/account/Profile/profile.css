@@ -252,6 +252,39 @@
     max-width: 270px;
 }
 
+.review-heading span {
+    margin: 0;
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 100px;
+    background: #6F6AEC;
+    font-size: 15px;
+    color: #fff;
+    font-family: 'Circular Std Book', sans-serif;
+
+}
+
+/* .contact-btn {
+    display: flex;
+    flex-direction: column;
+} */
+
+.profile-header-rating{
+    border-radius: 5px;
+    padding: 20px;
+    background: #6F6AEC;
+    margin: 2em;
+    font-family: 'Circular Std Bold', sans-serif;
+    font-size: 30px;
+    color: white;
+}
+
+/* .editprofile {
+    margin: 2em;
+    
+} */
+
+
 @media only screen and (max-width: 768px) {
     :root {
         --space: 0 0;

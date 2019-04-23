@@ -53,8 +53,8 @@ export class ItemDetails extends Component {
                             <div className="item-two-columns">
 
                                 <div className="responsive-container-details">
-                                    <div className="dummy"></div>
                                     <div className="item-picture-details">
+                                        <span className="helper"></span>
                                         <img src={ product.itemImageUrl } alt="placeholder"/>
                                     </div>
                                 </div>
@@ -116,14 +116,18 @@ export class ItemDetails extends Component {
                                             </div>
                                         </div>  
                                         
-                                        <Divider />
 
                                         {
                                             auth && product.itemReviews.filter(review => auth.uid === review.userId).length < 1 && profile.occupation !== 'Seller' ?
-                                            <div className="add-item-reviews">
-                                                <p className="item-description-header">Submit a Review</p>
-                                                <AddItemReview product={product} id={id} auth={auth} profile={profile} userId={userId} />
-                                            </div>    
+                                            
+                                            <div>
+                                                <Divider />
+                                            
+                                                <div className="add-item-reviews">
+                                                    <p className="item-description-header">Submit a Review</p>
+                                                    <AddItemReview product={product} id={id} auth={auth} profile={profile} userId={userId} />
+                                                </div>    
+                                            </div>
                                             :
                                             null
                                         }                                  

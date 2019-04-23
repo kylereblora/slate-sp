@@ -61,7 +61,7 @@ export class Profile extends Component {
                                     </div>
 
                                     <div className="profile-reviews">
-                                        <p className="review-heading">Reviews</p>
+                                        <p className="review-heading">Reviews <span>{user.reviews.length} ratings</span></p>
                                         {
                                             user.reviews.length > 0 ? 
 
@@ -85,7 +85,7 @@ export class Profile extends Component {
                                     
 
                                     {
-                                        auth && currentlyLogged && id !== auth.uid && user.reviews.filter(review => auth.uid === review.userId).length < 1 ?
+                                        auth && currentlyLogged && currentlyLogged.occupation !== ('Seller' || 'Admin') && id !== auth.uid && user.reviews.filter(review => auth.uid === review.userId).length < 1 ?
 
                                         <div className="rate-this-pro">
                                             <p className="rate-this-pro-heading">Rate this Pro</p>
@@ -95,10 +95,7 @@ export class Profile extends Component {
                                         :
                                         null
                                     }
-
-                                    
                                 </div>
-
                             }
 
                        </div>

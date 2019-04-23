@@ -17,9 +17,6 @@ const ProsList = ({pros, category}) => {
     else if(categ === "architects") categ = 'Architects';
     else categ = "Architects";
     
-    console.log(categ);
-    
-
     return(
         <div className="hire-content">
             <div className="hire-content-grid-container">

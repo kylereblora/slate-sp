@@ -8,12 +8,29 @@ import { Redirect } from 'react-router-dom'
 import ItemInWishlist from './ItemInWishlist/ItemInWishlist'
 import './wishlist.css'
 import RelaxingSVG from '../../../assets/img/blankcanvas.svg'
+import { getProductFromWishlist } from './wishlistFunctions'
+
+
 
 export class Wishlist extends Component {
     render() {
-        const { auth, wishlist, id } = this.props;
+        const { auth, wishlist, products, id } = this.props;
+        let tempWishlist = [];
+
         if (!auth.uid) return <Redirect to='/' />
         if (auth.uid !== id) return <Redirect to={'/wishlist/'+ auth.uid} />
+
+        if (wishlist && wishlist.length > 0 && products) {
+            wishlist.map((productId, index) => {
+                let p = products.filter(getProductFromWishlist(productId.id))[0];
+                
+                if(p) { tempWishlist.push(p) }
+                
+            })
+            
+        }
+        
+        
         return (
             <div className="wishlist-site">
                 <Navbar />
@@ -22,11 +39,13 @@ export class Wishlist extends Component {
                     <div className="wishlist-products">
                         <h1>Wishlist</h1>
                         {
-                            wishlist && wishlist.length > 0 ? 
-                            wishlist.map(product => {
-                                return (
-                                    <ItemInWishlist product={product} key={product.id} currentUser={auth.uid}/>
-                                )
+                            tempWishlist && tempWishlist.length > 0 && products ? 
+                            tempWishlist.map((productId, index) => {
+                                let p = products.filter(getProductFromWishlist(productId.id))[0];
+                                
+                                    return (
+                                        <ItemInWishlist product={p} key={p.id} currentUser={auth.uid}/>
+                                    )
                             })
                             :
                             <div className="wishlist-svg">
@@ -51,6 +70,7 @@ const mapStateToProps = (state, ownProps) => {
     return { 
         auth: state.firebase.auth,
         profile: state.firebase.profile,
+        products: state.firestore.ordered.products,
         wishlist,
         id
     }
@@ -58,5 +78,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect(['users'])
+    firestoreConnect(['users', 'products'])
 )(Wishlist)

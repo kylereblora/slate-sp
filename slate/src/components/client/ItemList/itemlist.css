@@ -74,20 +74,21 @@
 } 
 
 .bath > *, .curtains > *, .home-interior > *, .lightings > *, .walls-flooring > * {
-    flex: 1 1 30px;
+    flex: 1 1 50px;
 }
 
-.item-link-style {
+.item-link-style-shop {
     color: #313131;
-    max-width: 300px;
+    width: 100%;
+    max-width: 220px;
 }
 
-.item-link-style:hover {
+.item-link-style-shop:hover {
     color: #525252;
 }
 
 .shop-sidenav-selected, .shop-sidenav-selected:hover {
-    color: #f69656;
+    color: #F66F56;
 }
 
 

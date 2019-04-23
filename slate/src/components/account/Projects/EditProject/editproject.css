@@ -50,3 +50,14 @@
     z-index: 3;
 }
 
+@media only screen and (max-width: 460px) {
+    .edit-project-image {
+        max-width: 100px;
+    }
+    
+    .edit-project-image img {
+        max-width: 100px;
+        width: 100%;
+        height: 80px;
+    }
+}

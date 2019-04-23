@@ -3,8 +3,18 @@ import './profile.css'
 import EditProfile from './EditProfile/EditProfile';
 
 export class ProfileHeader extends Component {
+    truncateText(s) {
+        let r = s.toString();
+
+        if (r.length > 4) return r.substring(0,4);
+        else return r
+        
+        
+    }
+
     render() {
         const {user, id, auth} = this.props;
+
         return (
             <div>
                 <div className="profile-header-items">
@@ -40,10 +50,22 @@ export class ProfileHeader extends Component {
                     <div className="spacer-profile"></div>
                 
                     <div className="contact-btn">
+                        {/* <div className="header-rating">
+                        {
+                            user.occupation === ('Architect')
+                            ?
+                            <span className="profile-header-rating">{this.truncateText(user.proRating)}/5</span>
+                            :
+                            null
+                        }
+                        </div> */}
+                        
+                        <div className="editprofile">
                         {
                             id && auth && id === auth.uid && user.occupation !== 'Seller' ? 
                             <EditProfile user={user} id={id} /> : null
                         }
+                        </div>
                     </div>
                 </div>
 

@@ -91,7 +91,7 @@ const ItemList = ({products}) => {
                         <div className="bath" >
                             { products && products.filter(isBath).map(product => {
                                 return(
-                                    <Link className='item-link-style' to={'/item/'+ product.itemCategory + '/' + product.id} key={product.id}>
+                                    <Link className='item-link-style-shop' to={'/item/'+ product.itemCategory + '/' + product.id} key={product.id}>
                                         <ItemCard product={product} />
                                     </Link>
                                 )
@@ -104,7 +104,7 @@ const ItemList = ({products}) => {
                         <div className="curtains">
                             { products && products.filter(isCurtains).map(product => {
                                 return(
-                                    <Link className='item-link-style' to={'/item/'+ product.itemCategory + '/' + product.id} key={product.id}>
+                                    <Link className='item-link-style-shop' to={'/item/'+ product.itemCategory + '/' + product.id} key={product.id}>
                                         <ItemCard product={product} />
                                     </Link>
                                 )
@@ -118,7 +118,7 @@ const ItemList = ({products}) => {
                         <div className="home-interior">
                             { products && products.filter(isHomeInterior).map(product => {
                                 return(
-                                    <Link className='item-link-style' to={'/item/'+ product.itemCategory + '/' + product.id} key={product.id}>
+                                    <Link className='item-link-style-shop' to={'/item/'+ product.itemCategory + '/' + product.id} key={product.id}>
                                         <ItemCard product={product} />
                                     </Link>
                                 )
@@ -132,7 +132,7 @@ const ItemList = ({products}) => {
                         <div className="lightings" >
                             { products && products.filter(isLightings).map(product => {
                                 return(
-                                    <Link className='item-link-style' to={'/item/'+ product.itemCategory + '/' + product.id} key={product.id}>
+                                    <Link className='item-link-style-shop' to={'/item/'+ product.itemCategory + '/' + product.id} key={product.id}>
                                         <ItemCard product={product} />
                                     </Link>
                                 )
@@ -145,7 +145,7 @@ const ItemList = ({products}) => {
                         <div className="walls-flooring">
                             { products && products.filter(isWalls).map(product => {
                                 return(
-                                    <Link className='item-link-style' to={'/item/'+ product.itemCategory + '/' + product.id} key={product.id}>
+                                    <Link className='item-link-style-shop' to={'/item/'+ product.itemCategory + '/' + product.id} key={product.id}>
                                         <ItemCard product={product} />
                                     </Link>
                                 )

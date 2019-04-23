@@ -54,7 +54,8 @@ export class AddProject extends Component {
 
         let arr = projectImagesArray.slice();
 
-        arr.push(data);
+        if(arr.length < 5) arr.push(data);
+        else if (arr.length === 5) alert('You have exceeded the maximum number of photos allowed. If you wish to add more photos, remove other images currently uploaded.')
 
         this.setState({projectImagesArray : arr});
     }
