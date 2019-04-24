@@ -37,7 +37,7 @@ export class SignIn extends Component {
                                 <h1 className="signin-logo"><a href="/">slate</a></h1>
                                 <div className="signin-card">
                                     <div className="signin-form">
-                                        <h1 className="create-your-acc">Welcome back!</h1>
+                                        <h1 className="welcome-back">Welcome back!</h1>
                                         <Form onSubmit={this.handleSubmit}>
                                             <Form.Field required onChange={this.handleChange}>
                                                 <Input type="email" id="email" placeholder='Email'/>
