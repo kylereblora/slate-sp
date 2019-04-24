@@ -4,13 +4,14 @@ import './signin.css'
 import { connect } from 'react-redux'
 import { signIn } from '../../../store/actions/authActions'
 import { Redirect } from 'react-router-dom'
-import { loginBtn } from '../../../../src/assets/styles/styles'
+import { disabledLoginBtn , signUpBtn } from '../../../../src/assets/styles/styles'
 import LoginSVG from '../../../assets/img/loginSVG.svg';
 
 export class SignIn extends Component {
     state = {
         email: '',
         password: '',
+        clicked: false,
     }
 
     handleChange = (e) => {
@@ -21,7 +22,13 @@ export class SignIn extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.signIn(this.state);
+        
+        this.setState({clicked: true} , () => {
+            this.props.signIn(this.state).then(() => {
+                this.setState({clicked: false});
+            });
+        })
+        
     }
 
     render() {
@@ -48,7 +55,19 @@ export class SignIn extends Component {
 
                                             <div className="form-buttons">
                                                 <div className="submit-btn">
-                                                    <Button style = {loginBtn} type='submit'>Log in</Button>
+                                                {
+                                                    (this.state.email && this.state.password) === '' ?
+                                                    <Button style={disabledLoginBtn}>Log In</Button>
+                                                    :
+                                                    <div>
+                                                        {
+                                                            this.state.clicked ?
+                                                            <Button loading>Logging in...</Button>
+                                                            :
+                                                            <Button style = {signUpBtn} type='submit'>Log in</Button>
+                                                        }
+                                                    </div>
+                                                }
                                                 </div>
 
                                                 <div className="login-instead">

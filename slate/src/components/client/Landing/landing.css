@@ -93,7 +93,7 @@ main {
 }
 
 .browse-items {
-    background: #fcfcfc;
+    background: rgb(241, 241, 241);
     width: 100%;
     max-width: 1920px;
 }
@@ -220,4 +220,11 @@ main {
     }
 
     
+}
+
+
+@media screen and (max-width: 320px) {
+    .fig img {
+        width: 250px;
+    }
 }

@@ -15,7 +15,7 @@ export class SignedInLinks extends Component {
         return(
             <div className="menu-choices">
                 <div className="navbar-logo">
-                        <h1><a href="/">slate</a></h1>
+                    <h1><a href="/">slate</a></h1>
                 </div>
 
                 <label className="hamburger" htmlFor="toggle">&#9776;</label>

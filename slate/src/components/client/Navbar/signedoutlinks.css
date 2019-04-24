@@ -9,6 +9,7 @@
 
 .navbar-logo h1 a {
     line-height: 65px;
+    font-family: 'Wavehaus Bold', sans-serif;
 }
 
 .navbar-items .active-item {

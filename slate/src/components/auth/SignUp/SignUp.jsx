@@ -19,6 +19,8 @@ export class SignUp extends Component {
         email: '',
         password: '',
         checked: false,
+        clicked: false,
+        
     }
 
     handleChange = (e) => {
@@ -31,7 +33,11 @@ export class SignUp extends Component {
         e.preventDefault();
 
         if((this.state.firstName && this.state.lastName && this.state.email && this.state.password) !== '') {
-            this.props.signUp(this.state);
+            this.setState({clicked: true} , () => {
+                this.props.signUp(this.state).then(() => {
+                    this.setState({clicked: false});
+                });
+            })
         }
         
     }
@@ -105,7 +111,15 @@ export class SignUp extends Component {
                                                     (this.state.firstName && this.state.lastName && this.state.email && this.state.password) === '' ?
                                                     <Button style={disabledLoginBtn}>Sign Up</Button>
                                                     :
-                                                    <Button style={signUpBtn} type='submit'>Sign Up</Button>
+
+                                                    <div>
+                                                        {
+                                                            this.state.clicked ?
+                                                            <Button loading>Signing up...</Button>
+                                                            :
+                                                            <Button style={signUpBtn} type='submit'>Sign Up</Button>
+                                                        }
+                                                    </div>
                                                 }
 
 

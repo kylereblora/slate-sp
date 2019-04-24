@@ -115,6 +115,7 @@ class Landing extends React.Component {
                     </Dimmer>
                     
                 }
+                <Footer />
             </div>
         );
     }
