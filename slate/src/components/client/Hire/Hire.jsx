@@ -15,6 +15,7 @@ export class Hire extends Component {
     render() {
         const category = this.props.match.params.category;
         const { pros } = this.props;
+        
         return (
             <div className="hire-site">
                 <Navbar />
@@ -28,7 +29,7 @@ export class Hire extends Component {
                                     <div className="hire-flex-container">
                                         <div className="hire-header">
                                             <h2>Hire Professionals</h2>
-                                            <p>Browse a wide catalog of items for your home design needs.</p>
+                                            <p>Choose among various professionals in the platform</p>
                                         </div>
 
                                         <div className="search-standard">
@@ -57,6 +58,7 @@ export class Hire extends Component {
 }
 
 const mapStateToProps = (state) => {
+    
     return {
         pros: state.firestore.ordered.users
     }

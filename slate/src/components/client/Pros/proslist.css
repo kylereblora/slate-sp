@@ -24,6 +24,7 @@
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 65px;
+    z-index: 100;
 }
 
 .hire-sidenav > * {
@@ -35,7 +36,8 @@
 
 .hire-sidenav p {
     color: #414141;
-    font-family: 'Circular Std Medium', sans-serif;
+    font-family: 'GT Walsheim', sans-serif;
+    font-weight: 600;
     font-size: 18px;
     margin: 0 0 10px 0;
 } 
@@ -60,7 +62,7 @@
     margin: 10px;
 }
 
-h2 {
+h1 {
     font-family: 'GT Walsheim', sans-serif;
 }
 
@@ -74,5 +76,69 @@ h2 {
 }
 
 .hire-sidenav-link-selected, .hire-sidenav-link-selected:hover {
-    color: #f67b56;
+    color: #F66F56;
+}
+
+.pros-list h1 {
+    color: #414141;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .hire-content-grid-container > div {
+        padding: 15px;
+    }
+
+    .hire-sidenav {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    .pros-list {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 4;
+    }
+
+    .hire-sidenav > a {
+        display: inline-flex;
+        width: 100%;
+        max-width: 110px;
+        margin: 0 20px 0 0;
+    }
+
+    .hire-sidenav-link {
+        font-size: 12px;
+    }
+
+    .pros-list h1 {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+
+    .shop-content-grid-container > div {
+        padding: 10px;
+    }
+
+    .shop-sidenav {
+        display: flex;
+        padding: 0px;
+    }
+
+    .shop-sidenav p {
+        font-size: 15px;
+    }
+    
+    .item-group-container h1 {
+        font-size: 20px;
+    }
+
+    .shop-sidenav-link-style {
+        font-size: 10px;
+    }
 }

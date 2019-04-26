@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button, Progress } from 'semantic-ui-react'
 import { storage } from '../../../../firebase/index'
 import './itemupload.css'
-import { signUpBtn } from '../../../../assets/styles/styles';
+import { uploadButton } from '../../../../assets/styles/styles';
 
 export class ItemUpload extends Component {
     constructor(props) {
@@ -10,7 +10,8 @@ export class ItemUpload extends Component {
         this.state = {
             image : null,
             url : '',
-            progress: 0
+            progress: 0,
+            clicked: false,
         }
     }
 
@@ -24,30 +25,36 @@ export class ItemUpload extends Component {
     handleUpload = (e) => {
         if(this.state.image !== null) {
             const { image } = this.state;
-            const uploadTask =  storage.ref(`${this.props.store}/${image.name}`).put(image);
 
-            uploadTask.on('state_changed', 
-                (snapshot) => {
-                    const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-                    this.setState({progress})
-                },
-                (error) => { 
-                    console.log(error) 
-                },
-                () => {
-                    storage.ref(`${this.props.store}`)
-                        .child(image.name)
-                        .getDownloadURL()
-                        .then(url => {
-                            this.setState({url});
-                        })
-                        .then(() => {
-                            this.props.callbackFromParent(this.state.url);
-                        })
+            this.setState({clicked: true}, () => {
+                if (image.type.split("/")[0] === 'image') {
+                    const uploadTask =  storage.ref(`${this.props.store}/${image.name}`).put(image);
+    
+                    uploadTask.on('state_changed', 
+                        (snapshot) => {
+                            const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                            this.setState({progress})
+                        },
+                        (error) => { 
+                            console.log(error) 
+                        },
+                        () => {
+                            storage.ref(`${this.props.store}`)
+                                .child(image.name)
+                                .getDownloadURL()
+                                .then(url => {
+                                    this.setState({url, clicked:false});
+                                })
+                                .then(() => {
+                                    this.props.callbackFromParent(this.state.url);
+                                })
+                        }
+                    )
+                } else {
+                    alert('File uploaded is not an image.');
                 }
-            )
+            });
         }
-        
     }
 
     render() {
@@ -55,7 +62,14 @@ export class ItemUpload extends Component {
             <div className="item-upload-main">
                 <div className="item-upload-input">
                     <input type="file" accept="image/*" onChange={this.handleUploadChange}/>
-                    <Button style={signUpBtn} onClick={this.handleUpload}>Upload</Button>
+                        {
+                            this.state.clicked ?
+
+                            <Button loading>Uploading...</Button>
+                            :
+                            <Button style={uploadButton} onClick={this.handleUpload}>Upload</Button>
+
+                        }
                 </div>
                 {
                     this.state.progress === 100 ?

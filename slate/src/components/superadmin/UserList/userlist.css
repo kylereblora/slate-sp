@@ -1,0 +1,17 @@
+.userlist-content {
+    font-family: 'Circular Std Book', sans-serif;
+}
+
+.user-link-style {
+    color: #313131;
+    max-width: 300px;
+}
+
+.user-link-style:hover {
+    color: #6d6c6c;
+    max-width: 300px;
+}
+
+.user-name-preview {
+    font-size: 15px;
+}

@@ -1,10 +1,12 @@
-export const createProduct = (product) => {
+export const createProduct = (product, seller) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         return new Promise((resolve, reject) => {
             // make async call to db
             const firestore = getFirestore();
             firestore.collection('products').add({
                 ...product,
+                seller: seller.displayName,
+                sellerId: seller.uid,
                 itemRating: 0,
                 itemReviews: [],
                 createdAt: new Date()
@@ -38,6 +40,8 @@ export const editProduct = (product, state) => {
                 itemRating:         product.itemRating,
                 createdAt:          product.createdAt,
                 itemReviews :       product.itemReviews,
+                seller :            product.seller,
+                sellerId:           product.sellerId,
                 itemName:           state.itemName,
                 itemPrice:          state.itemPrice,
                 itemQuantity:       state.itemQuantity,
@@ -51,6 +55,25 @@ export const editProduct = (product, state) => {
             }).catch((err) => {
                 dispatch({ type: 'EDIT_PRODUCT_ERROR', err});
             })
+        })
+    }
+}
+
+
+export const addProductReview = (state) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        return new Promise((resolve, reject) => {
+            const firestore = getFirestore();
+            
+            firestore.collection('unapproved_reviews').add({
+                ...state,
+            }).then(() => {
+                dispatch({ type: 'REVIEW_PRODUCT' });
+            }).then(() => {
+                resolve();
+            }).catch((err) => {
+                dispatch({ type: 'REVIEW_PRODUCT_ERROR', err});
+            });
         })
     }
 }

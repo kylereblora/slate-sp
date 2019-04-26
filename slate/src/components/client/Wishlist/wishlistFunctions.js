@@ -1,5 +1,5 @@
-export function getProductFromWishlist(id) {
+export function getProductFromWishlist(productId) {
     return function(obj) {
-        return obj.id === id;
+        return obj.id === productId;
     }
 }

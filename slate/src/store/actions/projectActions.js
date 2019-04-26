@@ -62,6 +62,7 @@ export const editProject = (project, state, id) => {
                         projectYear: state.projectYear,
                         projectDescription: state.projectDescription,
                         projectImageUrl : state.projectImageUrl,
+                        projectImagesArray: state.projectImagesArray,
                         id : project.id,
                     }
 
@@ -102,6 +103,7 @@ export const editProject = (project, state, id) => {
         })
     }
 }
+
 
 function getProjectWithSameId(id) {
     return function(obj) {

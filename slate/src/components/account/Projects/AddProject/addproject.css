@@ -52,14 +52,32 @@
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 3;
+    
 }
 
 .add-project-form h1{
     margin: 0;
+    color: #414141;
+    
 }
+
 
 .add-project-form label {
     font-family: 'Circular Std Book', sans-serif;
+}
+
+.add-project-guidelines {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    color: #414141;
+    
+}
+
+.guidelines-main {
+    display: flex;
+    
 }
 
 .add-project-desc {
@@ -68,6 +86,63 @@
     font-size: 15px;
     margin: 0 0 30px 0;
 }
+
+.add-project-guidelines h2 {
+    font-family: 'GT Walsheim', sans-serif;
+    
+}
+
+.add-project-guidelines p {
+    font-size: 13px;
+    font-family: 'Circular Std Book', sans-serif;
+    max-width: 200px;
+    
+}
+
+.photo-guidelines-svg {
+    text-align: center;
+    float: right;
+}
+
+.photo-guidelines-svg img {
+    width: 120px;
+}
+
+.guidelines-ul {
+    float:right;
+}
+
+.edit-project-images-preview {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.edit-project-image {
+    max-width: 200px;
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.edit-project-image img {
+    max-width: 200px;
+    width: 100%;
+    border-radius: 5px;
+    /* position: absolute; */
+    object-fit: cover;
+    height: 120px;
+    z-index: 2;
+}
+
+.delete-project-image {
+    position: absolute;
+    top: 12px;
+    z-index: 3;
+}
+
+
 
 @media only screen and (max-width: 768px) {
     .add-project-guidelines {
@@ -82,5 +157,22 @@
         grid-column-end: 4;
         grid-row-start: 2;
         grid-row-end: 4;
+    }
+
+    .add-project-guidelines p {
+        font-size: 11px;
+        font-family: 'Circular Std Book', sans-serif;
+        max-width: 200px;
+        
+    }
+
+    .photo-guidelines-svg img {
+        width: 80px;
+    }
+
+    .add-project-main {
+        flex: 1 0 auto;
+        text-align: center;
+        padding: 70px 20px;
     }
 }

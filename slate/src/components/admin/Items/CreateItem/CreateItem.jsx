@@ -38,7 +38,7 @@ export class CreateItem extends Component {
         if((this.state.itemName && this.state.itemPrice && this.state.itemQuantity && this.state.itemDescription
         && this.state.itemCategory && this.state.itemImageUrl) !== '') {
             
-            this.props.createProduct(this.state).then(() => {
+            this.props.createProduct(this.state, this.props.auth).then(() => {
                 this.setState({
                     itemName:           '',
                     itemPrice:          '',
@@ -60,9 +60,11 @@ export class CreateItem extends Component {
 
     render() {
         const { auth } = this.props;
-
+        
         // ROUTE GUARD -- if the user isn't logged in yet and tries to access this component, redirect.
-        if (!auth.uid) return <Redirect to='/signin' />
+        if (!auth.uid) return <Redirect to='/' />
+
+        
         return (
             <div className="create-item-site">
                 <Navbar />
@@ -135,7 +137,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createProduct: (product) => dispatch(createProduct(product))
+        createProduct: (product, seller) => dispatch(createProduct(product, seller))
     }
 } 
 

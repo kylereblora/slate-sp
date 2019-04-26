@@ -78,12 +78,12 @@ export class EditProfile extends Component {
                         <Form>
                             <Form.Field required onChange={this.handleChange}>
                                 <label>First Name</label>
-                                <Input id="firstName" value={this.state.firstName}/>
+                                <Input id="firstName" type='text' value={this.state.firstName}/>
                             </Form.Field>
 
                             <Form.Field required onChange={this.handleChange}>
                                 <label>Last Name</label>
-                                <Input id="lastName" value={this.state.lastName}/>
+                                <Input id="lastName" type='text' value={this.state.lastName}/>
                             </Form.Field>
 
                             
@@ -94,7 +94,7 @@ export class EditProfile extends Component {
 
                             <Form.Field required onChange={this.handleChange}>
                                 <label>Contact Number</label>
-                                <Input id="contactNumber" value={this.state.contactNumber} />
+                                <Input id="contactNumber" type='text' value={this.state.contactNumber} />
                             </Form.Field>
 
                             <Form.Field required onChange={this.handleChange}>
@@ -104,6 +104,7 @@ export class EditProfile extends Component {
 
                             <Form.Field required>
                                 <label>Profile Image</label>
+                                <p>Image must be a square (e.g. 150x150)</p>
                                 <ItemUpload callbackFromParent = {this.imageUrlCallback} store={'users'} />
                             </Form.Field>
 

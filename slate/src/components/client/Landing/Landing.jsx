@@ -1,11 +1,18 @@
 import React from 'react';
 import './landing.css';
-import { Button } from 'semantic-ui-react';
+import { Button, Dimmer, Loader } from 'semantic-ui-react';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
+import ItemCard from '../ItemCard/ItemCard';
+import { getRandom } from '../Home/getRandomPreviews'
+import { loginBtn } from '../../../assets/styles/styles';
+import HeroImage from '../../../assets/img/heroimage4.png'
+import FindPros from '../../../assets/img/find-pros.svg';
+import ViewAndRatePros from '../../../assets/img/view-rate-pros.svg';
 
 class Landing extends React.Component {
     
@@ -13,59 +20,115 @@ class Landing extends React.Component {
         window.location.href = '/signin';
     }
 
+    
+
     render() {
-        const { auth } = this.props;
+        const { auth, products } = this.props;
+        let productPreviewArr = null;
         
          // ROUTE GUARD -- if the user isn't logged in yet and tries to access this component, redirect.
-         if (auth.uid) return <Redirect to='/home' />
+        if (auth.uid) return <Redirect to='/home' />
+
+        if(products && products.length > 0) {
+            let previewNumber = 0;
+            if(products.length > 4) previewNumber = 4;
+            else previewNumber = products.length;
+
+            productPreviewArr = getRandom(products, previewNumber);
+        } else if(products && products.length === 0){
+            productPreviewArr = []
+        } 
 
         return(
-            <div>
+            <div className="landing-site">
                 <Navbar />
-                <div className="landing-main">
-                    <div className="landing-header">
-                        <span>
-                            <h1>Local minds, great designs.</h1>
-                            <p>Browse item collections and hire experienced pros.</p>
-                            <Button size="large" color="orange" onClick = {this.handleGetStartedClick}>Get Started</Button>
-                        </span>
-                    </div>
+                {
+                    products ?
                     
-                    <div className="shop-preview">
-                        <p>What's hot</p>
-                        <p>Browse trending items in the Shop</p>
-                    </div>
+                    <div>
+                        <main className="container">
+                            <div className="hero container">
+                                <h1>Local minds,<br/>great designs.</h1>
+                                <p>Browse item collections and hire experienced pros.</p>
+                                <Button style={loginBtn} onClick={this.handleGetStartedClick} content='Get Started' />
+                            </div>
+                            <div className="illustration">
+                                <div className="fig">
+                                    <img src={HeroImage} alt="people on a blob"/>
+                                </div>
+                            </div>
+                        </main>
+                        
+                        <div className="browse-items container">
+                            <h3>Browse products from the Shop</h3>
+                            <div className="landing-item-previews">
+                                {
+                                    products && productPreviewArr && productPreviewArr.length > 0 ?
 
-                    <div className="pros-prods-action-header">
-                        <div className="shop-items">
-                            <span>
-                                <h1>Shop for Items</h1>
-                                <Button size="large" color="orange" onClick = {() => {window.location.href = '/shop'}}>Shop ></Button>
-                            </span>
+                                    productPreviewArr.map(product => {
+                                        return (
+                                            <Link className='landing-link-style' to={'/item/'+ product.itemCategory + '/' + product.id} key={product.id}>
+                                                <ItemCard product={product}/>
+                                            </Link>
+                                        )
+                                    })
+
+                                    :
+
+                                    <p>No products currently listed.</p>
+                                }
+                            </div>
                         </div>
 
-                        <div className="hire-pros">
-                            <span>
-                                <h1>Search for Pros</h1>
-                                <Button size="large" color="orange" onClick = {() => {window.location.href = '/hire'}}>Hire ></Button>
-                            </span>
+                        <div className="discover-pros container">
+                            <h3>Discover home professionals</h3>
+                            <div className="discover-pros-cards">
+                                <div className="landing-pro-card">
+                                    <div className="fig-pro">
+                                        <img src={FindPros} alt="Find professionals"/>
+                                    </div>
+
+                                    <div className="headings">
+                                        <h2>Find pros for your next project</h2>
+                                        <p>Choose from a wide variety of architects and interior designers</p>
+                                    </div>
+                                </div>
+
+                                <div className="landing-pro-card">
+                                    <div className="fig-pro">
+                                        <img src={ViewAndRatePros} alt="View and rate pros"/>
+                                    </div>
+
+                                    <div className="headings">
+                                        <h2>View and rate professionals</h2>
+                                        <p>Rate and review professionals you've worked with before</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                    :
+
+                    <Dimmer active inverted>
+                        <Loader inverted></Loader>
+                    </Dimmer>
+                    
+                }
                 <Footer />
-                
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
-        auth : state.firebase.auth
+        auth : state.firebase.auth,
+        products : state.firestore.ordered.products,
     }
 }
 
 export default compose(
-    connect(mapStateToProps)
+    connect(mapStateToProps),
+    firestoreConnect(['products', 'users'])
 )(Landing);

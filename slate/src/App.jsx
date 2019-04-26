@@ -13,12 +13,16 @@ import Wishlist from './components/client/Wishlist/Wishlist';
 import Profile from './components/account/Profile/Profile';
 import AddProject from './components/account/Projects/AddProject/AddProject';
 import ProjectDetails from './components/account/Projects/ProjectDetails/ProjectDetails';
+import SuperAdminHome from './components/superadmin/SuperAdminHome/SuperAdminHome';
+import Notifications from './components/account/Notifications/Notifications';
+import NotFound from './components/client/NotFound/NotFound';
 
 class App extends React.Component {
     render() {
         return(
             <Router>
                 <div>
+                    
                     <Switch>
                         <Route exact={true} path='/landing' component = {Landing} /> 
                         <Route exact={true} path='/' component = {Landing} /> 
@@ -36,15 +40,22 @@ class App extends React.Component {
                         <Route exact={true} path='/profile/:id' component = {Profile} />
                         <Route exact={true} path='/add/project/:id' component = {AddProject} />
                         <Route exact={true} path='/:id/projects/:index' component = {ProjectDetails} />
+                        <Route exact={true} path='/notifications/:id' component = {Notifications} />
                         
 
                         {/* SHOP/PRODUCTS */}
                         <Route exact={true} path='/shop' component = {Shop} />
                         <Route exact={true} path='/item/:category/:id' component = {ItemDetails} />
                         
-                        {/* ADMIN FUNCTIONALITIES */}
-                        <Route exact={true} path='/home/admin' component = {HomeAdmin} />
+                        {/* SELLER FUNCTIONALITIES */}
+                        <Route exact={true} path='/home/seller' component = {HomeAdmin} />
                         <Route exact={true} path='/create_item' component = {CreateItem} />
+
+                        {/* ADMIN FUNCTIONALITIES */}
+                        <Route exact={true} path='/home/admin' component = {SuperAdminHome} />
+                        
+                        {/* 404 COMPONENT */}
+                        <Route component={NotFound} />
                     </Switch>
                 </div>
             </Router>

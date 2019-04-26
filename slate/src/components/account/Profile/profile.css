@@ -13,7 +13,7 @@
 .profile-main {
     flex: 1 0 auto;
     text-align: center;
-    padding-top: 100px;
+    padding-top: 90px;
 }
 
 .profile-main:after {
@@ -68,7 +68,7 @@
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 3;
-    grid-row-end: 5;
+    grid-row-end: 6;
 }
 
 .profile-reviews {
@@ -78,6 +78,12 @@
     grid-row-end: 4;
 }
 
+.rate-this-pro {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 4;
+    grid-row-end: 5;
+}
 
 .profile-header-items {
     display: flex;
@@ -100,25 +106,6 @@
     color: #414141;
 }
 
-.architect-span, .intdes-span {
-    padding: 8px 10px;
-    color: white;
-    font-family: 'Circular Std Book', sans-serif;
-    border-radius: 5px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 10px;
-}
-
-.architect-span {
-    border: 2px solid #8697bd;
-    color : #8697bd;
-}
-
-.intdes-span {
-    border: 2px solid #cc8fbf;
-    color : #cc8fbf;
-}
 
 .profile-name h3 {
     font-family: 'Circular Std Book', sans-serif;
@@ -126,7 +113,26 @@
     color: #414141;
 }
 
+.header-rating {
+    margin: 0 0 10px 0;
+}
 
+.rating-summary {
+    display: flex;
+}
+
+
+.rating-summary span {
+    margin: 0 0 0 7px;
+    line-height: 5px;
+    font-size: 15px;
+    font-family: 'Circular Std Book', sans-serif;
+    font-weight: 200;
+    color: #fff;
+    padding: 5px 7px;
+    border-radius: 10px;
+    background: #F66F56;
+}
 
 .description-heading, .description-content {
     margin: 0;
@@ -137,9 +143,13 @@
     padding: 0px 0px 15px 0px;
 }
 
-.description-heading, .project-heading, .review-heading {
+.rate-this-pro-heading {
+    margin: 0 0 10px 0;
+}
+
+.description-heading, .project-heading, .review-heading, .rate-this-pro-heading {
     font-family: 'Circular Std Bold', sans-serif;
-    font-size: 25px;
+    font-size: 20px;
     color: #414141;
 }
 
@@ -153,6 +163,10 @@
 
 .project-header {
     display: flex
+}
+
+.spacer-profile {
+    flex: 1;
 }
 
 
@@ -229,6 +243,28 @@
     flex: 1 1 10px;
 }
 
+.rate-this-pro-subheading {
+    font-size: 13px;
+    font-family: 'Circular Std Book', sans-serif;
+    color: #7a7a7a;
+    font-weight: 200;
+    margin: 0 0 10px 0;
+    max-width: 270px;
+}
+
+.review-heading span {
+    margin: 0;
+    padding: 3px 10px;
+    text-align: center;
+    border-radius: 100px;
+    background: #6F6AEC;
+    font-size: 15px;
+    color: #fff;
+    font-family: 'Circular Std Book', sans-serif;
+}
+
+
+
 @media only screen and (max-width: 768px) {
     :root {
         --space: 0 0;
@@ -255,6 +291,27 @@
 
     .description-heading, .project-heading, .review-heading {
         font-size: 20px;
+    }
+
+    .profile-projects {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+
+    .profile-reviews {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
+
+    .rate-this-pro {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 5;
+        grid-row-end: 6;
     }
 
 }

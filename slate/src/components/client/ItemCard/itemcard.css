@@ -12,9 +12,9 @@
 
 .responsive-container {
     position: relative;
-    width: 250px;
+    width: 200px;
     height: 100%;
-    max-height: 270px;
+    max-height: 220px;
 }
 
 .dummy {
@@ -59,13 +59,13 @@
 
 .item-picture img {
     width: 100%;
-    max-height:250px;
+    max-height:200px;
     vertical-align: middle;
     display: inline-block;
 }
 
 .item-misc {
-    width: 250px;
+    width: 220px;
 }
 
 .item-misc p {
@@ -126,19 +126,19 @@
 
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 475px) {
     .item-card-main {
         max-width: 75px;
     }
 
     .responsive-container {
-        width: 75px;
-        max-height: 95px;
+        width: 65px;
+        max-height: 65px;
     }
 
     .item-picture img {
-        max-height: 95px;
-        max-width:  75px;
+        max-height: 65px;
+        max-width:  65px;
         width: auto;
         height: auto;
     }
@@ -147,11 +147,12 @@
         width: 75px;
     }
 
-    .item-name {
+    .item-name, .item-category {
         font-size: 10px;
     }
 
     .item-price {
         font-size: 8px;
     }
+
 }

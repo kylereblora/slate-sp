@@ -12,6 +12,7 @@ import { createProject } from '../../../../store/actions/projectActions'
 import { Redirect } from 'react-router-dom'
 import ItemUpload from '../../../admin/Items/CreateItem/ItemUpload'
 import { loginBtn, disabledLoginBtn } from '../../../../assets/styles/styles'
+import PhotoGuideline from '../../../../assets/img/photoguideline2.svg'
 
 export class AddProject extends Component {
 
@@ -25,6 +26,8 @@ export class AddProject extends Component {
             projectYear : '',
             projectDescription : '',
             projectImageUrl : '',
+            projectImagesArray : [],
+            clicked: false,
         }
     }
 
@@ -46,14 +49,41 @@ export class AddProject extends Component {
         this.setState({projectImageUrl : data})        
     }
 
+    projectImagesUrlCallback = (data) => {
+        const { projectImagesArray } = this.state;
+
+        let arr = projectImagesArray.slice();
+
+        if(arr.length < 5) arr.push(data);
+        else if (arr.length === 5) alert('You have exceeded the maximum number of photos allowed. If you wish to add more photos, remove other images currently uploaded.')
+
+        this.setState({projectImagesArray : arr});
+    }
+
+    handleDeleteProjectImage = (e, index) => {
+        const { projectImagesArray } = this.state;
+ 
+        let arr = projectImagesArray.slice();
+        arr.splice(index, 1)
+ 
+        this.setState({projectImagesArray : arr});
+    }
+
+    handleDeleteProjectBanner = () => {
+        this.setState({projectImageUrl: ''})
+    }
+
     handleSubmit = (e) => {
 
         if((this.state.projectName && this.state.projectCost && this.state.projectLocation && this.state.projectYear
         && this.state.projectDescription && this.state.projectImageUrl) !== '') {
             
-            this.props.createProject(this.state, this.props.auth.uid).then(() => {
-                window.location.href = '/profile/'+this.props.auth.uid;
+            this.setState({clicked: true}, () => {
+                this.props.createProject(this.state, this.props.auth.uid).then(() => {
+                    window.location.href = '/profile/'+this.props.auth.uid;
+                })
             })
+            
         }
 
     }
@@ -63,7 +93,11 @@ export class AddProject extends Component {
     render() {
         const { auth, user } = this.props;
         
-        if (!auth.uid) return <Redirect to='/signin' />
+        if (!auth.uid) return <Redirect to='/' />
+
+        const { projectImagesArray } = this.state; 
+        let newProjectImagesArray = ['0', '0', '0', '0', '0']
+        
         return (
             <div>
                 {
@@ -81,7 +115,7 @@ export class AddProject extends Component {
                                         <Form>
                                             <Form.Field required onChange={this.handleChange}>
                                                 <label>Project Name</label>
-                                                <Input id="projectName" placeholder='Three-Storey Contemporary House' />
+                                                <Input id="projectName" type='text' placeholder='Three-Storey Contemporary House' />
                                             </Form.Field>
 
                                             <Form.Field required onChange={this.handleChange}>
@@ -93,7 +127,7 @@ export class AddProject extends Component {
                                             <Form.Field required onChange={this.handleChange}>
                                                 <label>Project Location</label>
                                             
-                                                <Input id="projectLocation" />
+                                                <Input id="projectLocation" type='text'/>
                                             </Form.Field>
                                             
                                             <Form.Field required onChange={this.handleChange}>
@@ -110,7 +144,47 @@ export class AddProject extends Component {
                                             <Form.Field required>
                                                 <label>Project Image Cover</label>
                                                 <p>This will be used as your project's cover photo.</p>
+                                                {
+                                                    this.state.projectImageUrl !== '' ?
+                                                    <div className="edit-project-images-preview">
+                                                        <div className="edit-project-image">
+                                                            <span className='delete-project-image'><Button floated="right" icon='close' onClick={() => this.handleDeleteProjectBanner()} size='mini'/></span>
+                                                            <img src={this.state.projectImageUrl} alt="projectimage"/>
+                                                        </div>
+                                                    </div>
+
+                                                    :
+                                                    null
+                                                }
                                                 <ItemUpload callbackFromParent = {this.imageUrlCallback} store={'projects'}/>
+                                            </Form.Field>
+
+
+                                            <Form.Field required>
+                                                <label>Project Images</label>
+                                                <p>You can upload up to five images of your project.</p>
+                                                <div className="edit-project-images-preview">
+                                                    {
+                                                        projectImagesArray.map((projectimage, index) => {
+                                                            return (
+                                                                <div className="edit-project-image" key={index}>
+                                                                    <span className='delete-project-image'><Button floated="right" icon='close' onClick={(e) => this.handleDeleteProjectImage(e, index)} size='mini'/></span>
+                                                                    <img src={projectimage} alt="projectimage"/>
+                                                                </div>
+                                                            )
+                                                        })
+                                                    }
+                                                </div>
+
+                                                {
+                                                    newProjectImagesArray.slice(0, 5).map((element, index) => {
+                                                        return (
+                                                            <div key={index}>
+                                                                <ItemUpload callbackFromParent = {this.projectImagesUrlCallback} store={'projects'}/>
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
                                             </Form.Field>
 
                                             
@@ -121,7 +195,16 @@ export class AddProject extends Component {
 
                                                     <Button fluid style={disabledLoginBtn}>Add Project</Button>
                                                     :
-                                                    <Button fluid style={loginBtn} type='submit' onClick={this.handleSubmit}>Add Project</Button>
+
+                                                    <div className="edit-form-buttons">
+                                                        {
+                                                            this.state.clicked ?
+                                                            <Button fluid loading>Adding project...</Button>
+                                                            :
+                                                            <Button fluid style={loginBtn} type='submit' onClick={this.handleSubmit}>Add Project</Button>
+                                                        }
+                                                    </div>
+                                                    
                                                     
                                                 }
                                             </div>
@@ -129,7 +212,19 @@ export class AddProject extends Component {
                                     </div>
 
                                     <div className="add-project-guidelines">
-                                        <h2>guidelines</h2>
+                                        <h2>Guidelines</h2>
+                                        
+                                        <div className="guidelines-main">
+                                            <div className="photo-guidelines-svg">
+                                                <img src={PhotoGuideline} alt="photoguideline"/>
+                                            </div>
+                                            <div className="guidelines-ul">
+                                                <ul>
+                                                    <li><p>Format your project location properly (e.g Quezon City, NCR)</p></li>
+                                                    <li><p>Upload high quality photos (1MB or more)</p></li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                     
                                 </div>

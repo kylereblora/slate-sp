@@ -4,13 +4,14 @@ import './signin.css'
 import { connect } from 'react-redux'
 import { signIn } from '../../../store/actions/authActions'
 import { Redirect } from 'react-router-dom'
-import { loginBtn } from '../../../../src/assets/styles/styles'
-import LoginSVG from '../../../assets/img/loginSVG.svg';
+import { disabledLoginBtn , signUpBtn } from '../../../../src/assets/styles/styles'
+import LoginSVG from '../../../assets/img/login.svg';
 
 export class SignIn extends Component {
     state = {
         email: '',
         password: '',
+        clicked: false,
     }
 
     handleChange = (e) => {
@@ -21,16 +22,21 @@ export class SignIn extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.signIn(this.state);
+        
+        this.setState({clicked: true} , () => {
+            this.props.signIn(this.state).then(() => {
+                this.setState({clicked: false});
+            });
+        })
+        
     }
 
     render() {
         const { authError, auth } = this.props;
 
-        // ROUTE GUARD -- if the user isn't logged in yet and tries to access this component, redirect.
+        // ROUTE GUARD -- if the user is logged in yet tries to access this component, redirect.
         if (auth.uid) return <Redirect to='/home' />
         return (
-            <div className="signin-site">
                 <div className="signin-main">
                     <div className="signin-content">
                         <div className="signin-grid-container">
@@ -38,7 +44,7 @@ export class SignIn extends Component {
                                 <h1 className="signin-logo"><a href="/">slate</a></h1>
                                 <div className="signin-card">
                                     <div className="signin-form">
-                                        <h1 className="create-your-acc">Welcome back!</h1>
+                                        <h1 className="welcome-back">Welcome back!</h1>
                                         <Form onSubmit={this.handleSubmit}>
                                             <Form.Field required onChange={this.handleChange}>
                                                 <Input type="email" id="email" placeholder='Email'/>
@@ -49,7 +55,19 @@ export class SignIn extends Component {
 
                                             <div className="form-buttons">
                                                 <div className="submit-btn">
-                                                    <Button style = {loginBtn} type='submit'>Log in</Button>
+                                                {
+                                                    (this.state.email && this.state.password) === '' ?
+                                                    <Button style={disabledLoginBtn}>Log In</Button>
+                                                    :
+                                                    <div>
+                                                        {
+                                                            this.state.clicked ?
+                                                            <Button loading>Logging in...</Button>
+                                                            :
+                                                            <Button style = {signUpBtn} type='submit'>Log in</Button>
+                                                        }
+                                                    </div>
+                                                }
                                                 </div>
 
                                                 <div className="login-instead">
@@ -72,13 +90,13 @@ export class SignIn extends Component {
                                 </div>
                             </div>
 
+
                             <div className="login-illustration">
                                 <img src={LoginSVG} alt="svgfile"/>
                             </div>
                         </div>
                     </div>  
                 </div>
-            </div>
         )
     }
 }

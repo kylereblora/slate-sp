@@ -12,3 +12,52 @@
 .ui.form input[type=number]:focus {
     border-color: #35947f;
 }
+
+.edit-form-buttons {
+    display: flex;
+    height:50px;
+    line-height: 50px;
+    width: 100%;
+}
+
+.edit-project-images-preview {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.edit-project-image {
+    max-width: 200px;
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.edit-project-image img {
+    max-width: 200px;
+    width: 100%;
+    border-radius: 5px;
+    /* position: absolute; */
+    object-fit: cover;
+    height: 120px;
+    z-index: 2;
+}
+
+.delete-project-image {
+    position: absolute;
+    top: 12px;
+    z-index: 3;
+}
+
+@media only screen and (max-width: 460px) {
+    .edit-project-image {
+        max-width: 100px;
+    }
+    
+    .edit-project-image img {
+        max-width: 100px;
+        width: 100%;
+        height: 80px;
+    }
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
-import { Search, Label } from 'semantic-ui-react'
+import { Search } from 'semantic-ui-react'
 import './search.css'
 
 export class SearchStandard extends Component {
@@ -21,7 +21,7 @@ export class SearchStandard extends Component {
 		setTimeout(() => {
 		  if (this.state.value.length < 1) return this.resetComponent()
 		  
-		  const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
+		  	const re = new RegExp(_.escapeRegExp(this.state.value), 'i')
 			const res = [];
 			
 			this.props.source.forEach(item => {
@@ -44,7 +44,6 @@ export class SearchStandard extends Component {
 
 	render() {
 		const { isLoading, value, results } = this.state
-		const { source } = this.props
 		return (
 			<Search
 				loading={isLoading}

@@ -1,0 +1,9 @@
+.review-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.reviews-to-be-approved-content {
+    font-family: 'Circular Std Book', sans-serif;
+}
+

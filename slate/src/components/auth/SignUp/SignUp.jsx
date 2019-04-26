@@ -19,6 +19,8 @@ export class SignUp extends Component {
         email: '',
         password: '',
         checked: false,
+        clicked: false,
+        
     }
 
     handleChange = (e) => {
@@ -31,10 +33,11 @@ export class SignUp extends Component {
         e.preventDefault();
 
         if((this.state.firstName && this.state.lastName && this.state.email && this.state.password) !== '') {
-            this.props.signUp(this.state);
-        }else {
-            console.log("bro");
-            
+            this.setState({clicked: true} , () => {
+                this.props.signUp(this.state).then(() => {
+                    this.setState({clicked: false});
+                });
+            })
         }
         
     }
@@ -57,85 +60,93 @@ export class SignUp extends Component {
     render() {
         const { auth, authError } = this.props;
 
-        // ROUTE GUARD -- if the user isn't logged in yet and tries to access this component, redirect.
+        // ROUTE GUARD -- if the user is logged in and tries to access this component, redirect.
         if (auth.uid) return <Redirect to='/home' />
         return (
             <div className="signup">
                 <div className="signup-main">
-                    <div className="signup-card">
-                        <div className="brand-color" />
-
-                        <div>
-                            <h1 className="signup-logo"><a href="/">slate</a></h1>
-                            <h1 className="create-your-acc">Create your account</h1>
-                            <div className="signup-form">
-                                <Form onSubmit={this.handleSubmit}>
-                                    <Form.Field required onChange={this.handleChange}>
-                                        <label>First Name</label>
-                                        <input id="firstName" placeholder='First Name' />
-                                    </Form.Field>
-                                    <Form.Field required onChange={this.handleChange}>
-                                        <label>Last Name</label>
-                                        <input id="lastName" placeholder='Last Name' />
-                                    </Form.Field>
-                                    <Form.Field required onChange={this.handleChange}>
-                                        <label>Email</label>
-                                        <input type="email" id="email" placeholder='Email' />
-                                    </Form.Field>
-                                    <Form.Field required onChange={this.handleChange}>
-                                        <label>Password</label>
-                                        <input type="password" id="password" placeholder='Password' />
-                                    </Form.Field>
-
-                                    <Form.Field onChange={this.handleChange}>
-                                        <Checkbox label='Registering as a pro?' toggle onChange={this.toggle} checked={this.state.checked} />
-                                    </Form.Field>
-
-                                    {
-                                        this.state.checked === true ? 
-
-                                        <Form.Field required>
-                                            <label>Category</label>
-                                            <Dropdown placeholder='Architect' name='occupation' clearable options={options} onChange={this.handleDropdownChange} selection />
-                                            
+                    <div className="signup-content">
+                        <div className="signup-card">
+                            <div>
+                                <h1 className="signup-logo"><a href="/">slate</a></h1>
+                                <h1 className="create-your-acc">Create your account</h1>
+                                <div className="signup-form">
+                                    <Form onSubmit={this.handleSubmit}>
+                                        <Form.Field required onChange={this.handleChange}>
+                                            <label>First Name</label>
+                                            <input id="firstName" type='text' placeholder='First Name' />
+                                        </Form.Field>
+                                        <Form.Field required onChange={this.handleChange}>
+                                            <label>Last Name</label>
+                                            <input id="lastName" type='text' placeholder='Last Name' />
+                                        </Form.Field>
+                                        <Form.Field required onChange={this.handleChange}>
+                                            <label>Email</label>
+                                            <input type="email" id="email" placeholder='Email' />
+                                        </Form.Field>
+                                        <Form.Field required onChange={this.handleChange}>
+                                            <label>Password</label>
+                                            <input type="password" id="password" placeholder='Password' />
                                         </Form.Field>
 
-                                        : null
-                                    }
+                                        <Form.Field onChange={this.handleChange}>
+                                            <Checkbox label='Signing up as a pro?' toggle onChange={this.toggle} checked={this.state.checked} />
+                                        </Form.Field>
 
-                                    <div className="form-buttons">
-                                        <div className="submit-btn">
-                                            {
-                                                (this.state.firstName && this.state.lastName && this.state.email && this.state.password) === '' ?
-                                                <Button style={disabledLoginBtn}>Sign Up</Button>
-                                                :
-                                                <Button style={signUpBtn} type='submit'>Sign Up</Button>
-                                            }
+                                        {
+                                            this.state.checked === true ? 
 
+                                            <Form.Field required>
+                                                <label>Category</label>
+                                                <Dropdown placeholder='Architect' name='occupation' clearable options={options} onChange={this.handleDropdownChange} selection />
+                                                
+                                            </Form.Field>
 
-                                        </div>
-
-                                        <div className="login-instead">
-                                            <a href="/signin">Log in instead</a>
-                                        </div>
-                                    </div>
-
-                                    <div className="message-negative">
-                                        { 
-                                            authError ? 
-                                            <Message negative>
-                                                <Message.Header>Oof. Sign Up failed.</Message.Header>
-                                                <p>{ authError }</p>
-                                            </Message>
                                             : null
                                         }
-                                    </div>
-                                </Form>
+
+                                        <div className="form-buttons">
+                                            <div className="submit-btn">
+                                                {
+                                                    (this.state.firstName && this.state.lastName && this.state.email && this.state.password) === '' ?
+                                                    <Button style={disabledLoginBtn}>Sign Up</Button>
+                                                    :
+
+                                                    <div>
+                                                        {
+                                                            this.state.clicked ?
+                                                            <Button loading>Signing up...</Button>
+                                                            :
+                                                            <Button style={signUpBtn} type='submit'>Sign Up</Button>
+                                                        }
+                                                    </div>
+                                                }
+
+
+                                            </div>
+
+                                            <div className="login-instead">
+                                                <a href="/signin">Log in instead</a>
+                                            </div>
+                                        </div>
+
+                                        <div className="message-negative">
+                                            { 
+                                                authError ? 
+                                                <Message negative>
+                                                    <Message.Header>Oof. Sign Up failed.</Message.Header>
+                                                    <p>{ authError }</p>
+                                                </Message>
+                                                : null
+                                            }
+                                        </div>
+                                    </Form>
+                                </div>
+                                
                             </div>
-                            
                         </div>
                     </div>
-                </div>  
+                </div>
             </div>
         )
     }

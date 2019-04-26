@@ -12,7 +12,7 @@
 .project-main {
     flex: 1 0 auto;
     text-align: center;
-    padding: 100px 0px;
+    padding: 100px 100px;
     font-family: 'Circular Std Book', sans-serif;
     color: #414141;
 }
@@ -69,6 +69,40 @@
     font-size: 18px;
 }
 
+.additional-project-images {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 4;
+
+}
+
+.additional-project-images h3{
+    margin: 0 0 8px 0;
+    color: #414141;
+    font-family: 'Circular Std Book', sans-serif;
+}
+
+
+.project-photos {
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row;
+}
+
+.project-pic {
+    padding: 10px 10px 0 0;
+}
+
+.project-pic img{
+    max-width: 180px;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .spacer-grid {
     grid-column-start: 4;
     grid-column-end: 5;
@@ -88,7 +122,10 @@
 }
 
 .project-author {
-    margin: 10px 0px 0px 0px;
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 3;
 }
 
 
@@ -96,6 +133,8 @@
     max-width: 100px;
     max-height: 100px;
     border-radius:1000px;
+    border: 5px solid rgb(236, 159, 145);
+    padding: 10px;
 }
 
 
@@ -150,10 +189,16 @@
 }
 
 .project-description-detailed {
-    margin: 40px 0 0 0;
+    margin: 40px 0;
 }
 
 .project-description-detailed h3{
+    margin: 0 0 8px 0;
+    color: #414141;
+    font-family: 'Circular Std Book', sans-serif;
+}
+
+.project-photos h3{
     margin: 0 0 8px 0;
     color: #414141;
 }
@@ -173,4 +218,76 @@
 
 .edit-and-del-project {
     margin: 10px 0px 20px 0;
+}
+
+@media only screen and (max-width: 826px) {
+    .project-main {
+        padding: 80px 20px;
+    }
+}
+
+@media only screen and (max-width: 626px) {
+    .project-info h1 {
+        font-size: 30px;
+        color: #414141;
+        max-width: 400px;
+    }
+
+    .info-container {
+        font-size: 15px;
+    }
+
+    .project-description-detailed h3 {
+        font-size: 20px;
+    }
+
+    .project-description-newline-format {
+        font-size: 15px;
+    }
+
+    .spacer-grid {
+        display: none;
+    }
+
+    .project-info {
+        grid-column-start: 1;
+        grid-column-end: 6;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+    
+    .project-photos{
+        flex-flow: nowrap;
+    }
+
+    .project-photos > *{
+        flex: 1 1 150px;
+    }
+
+    .project-author {
+        grid-column-start: 1;
+        grid-column-end: 6;
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
+
+    .about-the-author, .author-picture {
+        text-align: center;
+    }
+}
+
+
+@media only screen and (max-width: 418px) {
+    .project-info h1 {
+        font-size: 25px;
+        color: #414141;
+    }
+
+}
+
+
+@media only screen and (max-width: 339px) {
+    .project-photos > * {
+        flex: 1 1 100px;
+    }
 }

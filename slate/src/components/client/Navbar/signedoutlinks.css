@@ -9,6 +9,7 @@
 
 .navbar-logo h1 a {
     line-height: 65px;
+    font-family: 'Wavehaus Bold', sans-serif;
 }
 
 .navbar-items .active-item {
@@ -126,5 +127,14 @@
 
     #toggle:checked + .navbar-items {
         display: block;
+    }
+}
+
+
+@media only screen and (max-width: 320px) {
+    .navbar-items a {
+        display: block;
+        margin: 0;
+        padding: 9px 10px;
     }
 }

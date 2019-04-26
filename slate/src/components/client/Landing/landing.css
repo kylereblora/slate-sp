@@ -1,107 +1,230 @@
-.landing-main {
-    padding-top: 64px;
-    height: 100%;
+:root {
+    --space: 1.5em 0;
+    --space: 2em 0;
 }
 
-.landing-header {
-    height: 550px;
-    text-align: center;
-    line-height: 550px;
-    background: url(../../../assets/img/Old-parking-lot-in-Paris-turned-into-a-beautiful-modern-apartment.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: 3% 40%;
-}
-
-.landing-header span {
-    line-height: normal;
-    vertical-align: middle;
-    display: inline-block;
-    color: white;
-}
-
-.landing-header span h1 {
-    font-size: 60px;
-    font-family: 'Circular Std Medium', sans-serif;
-    margin: 10px;
-}
-
-.landing-header span p {
-    font-size: 20px;
-    margin: 10px;
-}
-
-.shop-preview {
-    height: 500px;
-}
-
-.pros-prods-action-header {
-    display: flex;
-    flex-direction: row;
-}
-
-.shop-items {
-    background: rgba(8,155,8,1);
-    background: -moz-linear-gradient(45deg, rgba(8,155,8,1) 0%, rgba(25,254,216,1) 100%);
-    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(8,155,8,1)), color-stop(100%, rgba(25,254,216,1)));
-    background: -webkit-linear-gradient(45deg, rgba(8,155,8,1) 0%, rgba(25,254,216,1) 100%);
-    background: -o-linear-gradient(45deg, rgba(8,155,8,1) 0%, rgba(25,254,216,1) 100%);
-    background: -ms-linear-gradient(45deg, rgba(8,155,8,1) 0%, rgba(25,254,216,1) 100%);
-    background: linear-gradient(45deg, rgba(8,155,8,1) 0%, rgba(25,254,216,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#089b08', endColorstr='#19fed8', GradientType=1 );
-}
-
-.hire-pros {
-    background: rgba(74,124,181,1);
-    background: -moz-linear-gradient(45deg, rgba(74,124,181,1) 0%, rgba(213,118,246,1) 100%);
-    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(74,124,181,1)), color-stop(100%, rgba(213,118,246,1)));
-    background: -webkit-linear-gradient(45deg, rgba(74,124,181,1) 0%, rgba(213,118,246,1) 100%);
-    background: -o-linear-gradient(45deg, rgba(74,124,181,1) 0%, rgba(213,118,246,1) 100%);
-    background: -ms-linear-gradient(45deg, rgba(74,124,181,1) 0%, rgba(213,118,246,1) 100%);
-    background: linear-gradient(45deg, rgba(74,124,181,1) 0%, rgba(213,118,246,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4a7cb5', endColorstr='#d576f6', GradientType=1 );
-}
-
-.shop-items, .hire-pros {
-    flex: 0.5;
-    text-align: center;
-    min-height: 400px;
-    line-height: 400px;
-    color: white;
-}
-
-.shop-items span, .hire-pros span {
-    line-height: normal;
-    vertical-align: middle;
-    display: inline-block;
-}
-
-.shop-items h1, .hire-pros h1 {
-    font-size: 30px;
+.landing-site {
     font-family: 'Circular Std Book', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-@media only screen and (max-width: 768px) {
 
-    .pros-prods-action-header {
-        flex-direction: column;
+.container {
+    margin: 64px auto;
+    width: 100%;
+    max-width: 1150px;
+    padding: 2em 1em;
+}
+
+main {
+    display: flex;
+    flex-flow: column;
+}
+
+.hero {
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.5em;
+    font-family: 'Circular Std Book', sans-serif;
+    color: #414141;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin: 2em auto;
+    color: #414141;
+    
+}
+
+.fig {
+    text-align: center;
+}
+
+.fig img {
+    margin: 1em auto 0;
+    width: 350px;
+}
+
+
+.browse-items, .discover-pros {
+    text-align: center;
+}
+
+.browse-items h3, .discover-pros h3 {
+    font-size: 1.5em;
+    font-family: 'GT Walsheim', sans-serif;
+    color: #414141;
+}
+
+.landing-item-previews {
+    display: flex;
+    text-align: left;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+}
+
+.landing-link-style {
+    padding: 10px;
+    background: #fff;
+    margin: 1em auto;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    color: #414141;
+}
+
+
+.fig-pro {
+    text-align: center;
+    width: 130px;
+    margin: auto;
+}
+
+.fig-pro img {
+    margin: 1em auto 0;
+    width: 130px;
+}
+
+.browse-items {
+    background: rgb(241, 241, 241);
+    width: 100%;
+    max-width: 1920px;
+}
+
+.discover-pros {
+    background: url('../../../assets/img/landing-pro-bg.svg') no-repeat center top;
+    background-size: 1000px;
+}
+
+.discover-pros-cards {
+    width: 100%;
+    max-width: 250px;
+    margin: auto;
+}
+
+.headings {
+    text-align: center;
+}
+
+.headings h2 {
+    font-size: 1.2em;
+    font-family: 'Circular Std Book', sans-serif;
+    color: #414141;
+    width: 150px;
+    margin: 1em auto;
+}
+
+.headings p {
+    font-size: 0.8em;
+    font-family: 'Circular Std Book', sans-serif;
+    color: #414141;
+    width: 170px;
+    margin: auto;
+    
+}
+
+.landing-link-style:hover {
+    color: rgb(190, 87, 68);
+    -webkit-box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 10px -1px rgba(0,0,0,0.2);
+}
+
+.landing-pro-card {
+    -webkit-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 5px -1px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    margin: 1em auto;
+    padding: 2em;
+    background: #fff;
+    
+}
+
+
+@media screen and (min-width: 992px) {
+    .container {
+        margin: 64px auto;
+        padding: 2em 0em;
+        
     }
 
-    .shop-items, .hire-pros {
-        flex: 1;
+    main {
+        flex-flow: row;
     }
 
-    .landing-header {
-        background-size: cover;
-        height: 400px;
-        line-height: 400px;
+    .hero {
+        text-align: left;
     }
 
-    .landing-header span h1 {
-        font-size: 30px;
+    .hero h1 {
+        font-size: 4em;
     }
 
-    .landing-header span p {
-        font-size: 15px;
+    .hero p {
+        font-size: 1.3em;
+    }
+
+    .fig {
+        text-align: right;
+    }
+
+    .fig img {
+        width: 650px;
+        margin: 2em auto 0;
+    }
+
+    .browse-items {
+        text-align: center;
+    }
+
+    .landing-item-previews {
+        max-width: 1150px;
+        flex-flow: row;
+    }
+
+    .discover-pros {
+        background-size: 800px;
+    }
+
+    .discover-pros-cards {
+        max-width: 700px;
+        display: flex;    
+        flex-flow: row;
+            
+    }
+    
+    .headings h2 {
+        font-size: 1.7em;
+        font-family: 'Circular Std Book', sans-serif;
+        font-weight: 500;
+        color: #414141;
+        width: 200px;
+        margin: 1em auto;
+    }
+    
+    .headings p {
+        font-size: 1em;
+        font-family: 'Circular Std Book', sans-serif;
+        color: #414141;
+        width: 170px;
+        margin: auto;
+        
+    }
+
+    
+}
+
+
+@media screen and (max-width: 320px) {
+    .fig img {
+        width: 250px;
     }
 }

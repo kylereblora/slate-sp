@@ -1,10 +1,21 @@
 import React, { Component } from 'react'
 import './profile.css'
 import EditProfile from './EditProfile/EditProfile';
+import { Rating } from 'semantic-ui-react';
 
 export class ProfileHeader extends Component {
+    truncateText(s) {
+        let r = s.toString();
+
+        if (r.length > 4) return r.substring(0,4);
+        else return r
+        
+        
+    }
+
     render() {
         const {user, id, auth} = this.props;
+
         return (
             <div>
                 <div className="profile-header-items">
@@ -13,13 +24,19 @@ export class ProfileHeader extends Component {
                     </div>
                     <div className="profile-name">
                         <h1>{user.firstName} {user.lastName}</h1>
+                        <div className="header-rating">
                         {
-                            user.occupation === 'Architect' ? 
-                            <span className="architect-span">{user.occupation}</span>
+                            user.occupation === ('Architect' || 'Interior Designer')
+                            ?
+                            <div className="rating-summary">
+                                <Rating rating={user.proRating} icon='star' disabled maxRating={5}/>
+                                <span>{this.truncateText(user.proRating)}/5</span>
+                            </div>
                             :
-                            <span className="intdes-span">{user.occupation}</span>
+                            null
                         }
-
+                        </div>
+                       
                         <div className="profile-info-misc">
                             <div className="info-container-profile">
                                 <div className="icon-container-profile">
@@ -37,13 +54,17 @@ export class ProfileHeader extends Component {
                         </div>
                     </div>
                     
-                    <div className="spacer"></div>
+                    <div className="spacer-profile"></div>
                 
                     <div className="contact-btn">
+                        
+                        
+                        <div className="editprofile">
                         {
-                            id && auth && id === auth.uid ? 
+                            id && auth && id === auth.uid && user.occupation !== 'Seller' ? 
                             <EditProfile user={user} id={id} /> : null
                         }
+                        </div>
                     </div>
                 </div>
 

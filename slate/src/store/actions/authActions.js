@@ -1,57 +1,72 @@
 export const signIn = (credentials) => {
     return (dispatch, getState, {getFirebase}) => {
-        const firebase = getFirebase();
+        return new Promise((resolve, reject) => {
+            const firebase = getFirebase();
 
-        firebase.auth().signInWithEmailAndPassword(
-            credentials.email,
-            credentials.password,
-        ).then(() => {
-            dispatch({ type: 'LOGIN_SUCCESS' })
-        }).catch((err) => {
-            dispatch({ type: 'LOGIN_ERROR', err})
-        });
-
-        
+            firebase.auth().signInWithEmailAndPassword(
+                credentials.email,
+                credentials.password,
+            ).then(() => {
+                dispatch({ type: 'LOGIN_SUCCESS' })
+            }).then(() => {
+                resolve();
+            }).catch((err) => {
+                dispatch({ type: 'LOGIN_ERROR', err})
+            }).then(() => {
+                resolve();
+            });
+        })
     }
 }
 
 
 export const signOut = () => {
     return (dispatch, getState, {getFirebase}) => {
-        const firebase = getFirebase();
+        return new Promise((resolve, reject) => {
+            const firebase = getFirebase();
 
-        firebase.auth().signOut().then(() => {
-            dispatch({ type: 'SIGNOUT_SUCCESS' });
+            firebase.auth().signOut().then(() => {
+                dispatch({ type: 'SIGNOUT_SUCCESS' });
+            }).then(() => {
+                resolve();
+            })
         })
     }
 }
 
 export const signUp = (newUser) => {
     return (dispatch, getState, {getFirebase, getFirestore}) => {
-        const firebase = getFirebase();
-        const firestore = getFirestore();
+        return new Promise((resolve, reject) => {
+            const firebase = getFirebase();
+            const firestore = getFirestore();
 
-        firebase.auth().createUserWithEmailAndPassword(
-            newUser.email,
-            newUser.password
-        ).then((response) => {
-            return firestore.collection('users').doc(response.user.uid).set({
-                firstName: newUser.firstName,
-                lastName: newUser.lastName,
-                initials: newUser.firstName[0] + newUser.lastName[0],
-                occupation: newUser.occupation,
-                province : '',
-                proDescription: '',
-                proImageUrl: '',
-                proRating: 0,
-                wishlist: [],
-                projects: [],
-                reviews: []
+            firebase.auth().createUserWithEmailAndPassword(
+                newUser.email,
+                newUser.password
+            ).then((response) => {
+                return firestore.collection('users').doc(response.user.uid).set({
+                    contactNumber: '',
+                    firstName: newUser.firstName,
+                    lastName: newUser.lastName,
+                    initials: newUser.firstName[0] + newUser.lastName[0],
+                    occupation: newUser.occupation,
+                    province : '',
+                    proDescription: '',
+                    proImageUrl: '',
+                    proRating: 0,
+                    wishlist: [],
+                    projects: [],
+                    reviews: []
+                })
+            }).then(() => {
+                dispatch({ type: 'SIGNUP_SUCCESS' });
+            }).then(() => {
+                resolve();
+            }).catch((err) => {
+                dispatch({ type: 'SIGNUP_ERROR', err});
+            }).then(() => {
+                resolve();
             })
-        }).then(() => {
-            dispatch({ type: 'SIGNUP_SUCCESS' });
-        }).catch((err) => {
-            dispatch({ type: 'SIGNUP_ERROR', err});
         })
     }
 }

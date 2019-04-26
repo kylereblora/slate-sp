@@ -2,3 +2,8 @@
 .ui.form input[type=number]:focus {
     border-color: #35947f;
 }
+
+label {
+    font-family: 'Circular Std Book', sans-serif;
+    font-weight: 300;   
+}
