@@ -106,25 +106,6 @@
     color: #414141;
 }
 
-.architect-span, .intdes-span {
-    padding: 8px 10px;
-    color: white;
-    font-family: 'Circular Std Book', sans-serif;
-    border-radius: 5px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 10px;
-}
-
-.architect-span {
-    border: 2px solid #8697bd;
-    color : #8697bd;
-}
-
-.intdes-span {
-    border: 2px solid #cc8fbf;
-    color : #cc8fbf;
-}
 
 .profile-name h3 {
     font-family: 'Circular Std Book', sans-serif;
@@ -132,7 +113,26 @@
     color: #414141;
 }
 
+.header-rating {
+    margin: 0 0 10px 0;
+}
 
+.rating-summary {
+    display: flex;
+}
+
+
+.rating-summary span {
+    margin: 0 0 0 7px;
+    line-height: 5px;
+    font-size: 15px;
+    font-family: 'Circular Std Book', sans-serif;
+    font-weight: 200;
+    color: #fff;
+    padding: 5px 7px;
+    border-radius: 10px;
+    background: #F66F56;
+}
 
 .description-heading, .description-content {
     margin: 0;
@@ -254,35 +254,15 @@
 
 .review-heading span {
     margin: 0;
-    padding: 5px 10px;
+    padding: 3px 10px;
     text-align: center;
     border-radius: 100px;
     background: #6F6AEC;
     font-size: 15px;
     color: #fff;
     font-family: 'Circular Std Book', sans-serif;
-
 }
 
-/* .contact-btn {
-    display: flex;
-    flex-direction: column;
-} */
-
-.profile-header-rating{
-    border-radius: 5px;
-    padding: 20px;
-    background: #6F6AEC;
-    margin: 2em;
-    font-family: 'Circular Std Bold', sans-serif;
-    font-size: 30px;
-    color: white;
-}
-
-/* .editprofile {
-    margin: 2em;
-    
-} */
 
 
 @media only screen and (max-width: 768px) {

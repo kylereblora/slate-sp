@@ -61,7 +61,7 @@ export class Profile extends Component {
                                     </div>
 
                                     <div className="profile-reviews">
-                                        <p className="review-heading">Reviews <span>{user.reviews.length} ratings</span></p>
+                                        <p className="review-heading">Reviews <span>{user.reviews.length} rating/s</span></p>
                                         {
                                             user.reviews.length > 0 ? 
 

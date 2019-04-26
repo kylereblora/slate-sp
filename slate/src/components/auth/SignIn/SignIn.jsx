@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { signIn } from '../../../store/actions/authActions'
 import { Redirect } from 'react-router-dom'
 import { disabledLoginBtn , signUpBtn } from '../../../../src/assets/styles/styles'
-import LoginSVG from '../../../assets/img/loginSVG.svg';
+import LoginSVG from '../../../assets/img/login.svg';
 
 export class SignIn extends Component {
     state = {
