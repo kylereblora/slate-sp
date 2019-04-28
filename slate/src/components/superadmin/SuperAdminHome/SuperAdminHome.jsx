@@ -10,6 +10,7 @@ import UserList from '../UserList/UserList'
 import CreateSeller from '../CreateSeller/CreateSeller'
 import ReviewList from '../ReviewsToBeApproved/ReviewsToBeApproved'
 import ProReviewList from '../ReviewsToBeApproved/ProReviewsToBeApproved'
+import Orders from '../Orders/Orders'
 
 export class SuperAdminHome extends Component {
     render() {
@@ -25,6 +26,7 @@ export class SuperAdminHome extends Component {
                 { menuItem: 'Users', pane: <Tab.Pane attached={false} key={'userlist'}><UserList/></Tab.Pane>},
                 { menuItem: 'Product Reviews', pane: <Tab.Pane attached={false} key={'reviews'}><ReviewList /></Tab.Pane>},
                 { menuItem: 'Professional Reviews', pane: <Tab.Pane attached={false} key={'pro_reviews'}><ProReviewList /></Tab.Pane>},
+                { menuItem: 'Orders', pane: <Tab.Pane attached={false} key={'orders'}><Orders /></Tab.Pane>},
                 
             ]
         } 
