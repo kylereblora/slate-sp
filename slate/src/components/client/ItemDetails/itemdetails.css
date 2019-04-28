@@ -100,7 +100,11 @@
 }
 
 .add-to-wishlist {
-    width: 300px;
+    width: 170px;
+}
+
+.add-to-cart {
+    width: 170px;
 }
 
 .quantity label {
@@ -202,7 +206,7 @@
     }
 
     .add-to-wishlist {
-        width: 200px;
+        width: 150px;
     }
 
 }
@@ -210,7 +214,7 @@
 
 @media only screen and (max-width: 726px) {
     .add-to-wishlist {
-        width: 150px;
+        width: 130px;
     }
 
 }
@@ -252,7 +256,7 @@
     .item-description-content {
         font-size: 13px;
     }
-    
+
 }
 
 @media only screen and (max-width: 623px) {
@@ -266,9 +270,6 @@
         max-height: 300px;
     }    
 
-    .spacer {
-        flex: 1;
-    }
 
 }
 

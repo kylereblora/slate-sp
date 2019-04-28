@@ -4,6 +4,7 @@ import './itemdetails.css';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import { addItemToWishlist } from '../../../store/actions/wishlistActions'
+import { addItemToCart } from '../../../store/actions/cartActions'
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux'
@@ -15,7 +16,8 @@ import ItemReviews from '../ItemReviews/ItemReviews';
 
 export class ItemDetails extends Component {
     state = {
-        addedToWishlist: false
+        addedToWishlist: false,
+        addedToCart: false,
     }
 
     handleAddToWishlist = (e) => {
@@ -29,13 +31,32 @@ export class ItemDetails extends Component {
         }
     }
 
+
+    handleAddToCart = (e) => {
+
+        if(this.props.auth.uid) {
+            this.props.addItemToCart(this.props.id,  this.props.auth.uid).then(() => {
+                this.setState({addedToCart: true})
+            })
+        } else {
+            window.location.href = '/signin'
+        }
+    }
+
     render() {
-        const { id, product, products, auth, profile, wishlist, users, userId } = this.props;
-        let inWishlist = null
+        const { id, product, products, auth, profile, wishlist, cart, users, userId } = this.props;
+        let inWishlist, inCart = null
 
         
         if (wishlist) {
             inWishlist = wishlist.find(getProductFromWishlist(id))
+
+            if (products && products[id] === undefined) window.location.href='/404';
+            
+        }
+
+        if (cart) {
+            inCart = cart.find(getProductFromWishlist(id))
 
             if (products && products[id] === undefined) window.location.href='/404';
             
@@ -84,9 +105,20 @@ export class ItemDetails extends Component {
                                             <div className="add-to-wishlist">
                                                 { 
                                                     this.state.addedToWishlist || inWishlist ? 
-                                                    <Button fluid disabled>Added to Wishlist</Button>
+                                                    <Button  disabled>Added to Wishlist</Button>
                                                     :
-                                                    <Button fluid style={loginBtn} onClick={this.handleAddToWishlist}>Add to Wishlist</Button>
+                                                    <Button  style={loginBtn} onClick={this.handleAddToWishlist}>Add to Wishlist</Button>
+                                                }
+
+                                                
+                                            </div>
+                                            
+                                            <div className="add-to-cart">
+                                                { 
+                                                    this.state.addedToCart || inCart ? 
+                                                    <Button  disabled>Added to Cart</Button>
+                                                    :
+                                                    <Button  style={loginBtn} onClick={this.handleAddToCart}>Add to Cart</Button>
                                                 }
                                             </div>
                                         </div>
@@ -157,6 +189,7 @@ const mapStateToProps = (state, ownProps) => {
     const product = products ? products[id] : null
     const users = state.firestore.data.users
     const wishlist = users && state.firebase.auth.uid ? users[state.firebase.auth.uid].wishlist : null
+    const cart = users && state.firebase.auth.uid ? users[state.firebase.auth.uid].cart : null
     
     
     return {
@@ -167,13 +200,15 @@ const mapStateToProps = (state, ownProps) => {
         profile: state.firebase.profile,
         users: state.firestore.ordered.users,
         userId: state.firebase.auth.uid,
-        wishlist
+        wishlist,
+        cart
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addItemToWishlist: (id, product, state) => dispatch(addItemToWishlist(id, product, state))
+        addItemToWishlist: (id, product, state) => dispatch(addItemToWishlist(id, product, state)),
+        addItemToCart: (id, state) => dispatch(addItemToCart(id, state))
     }
 } 
 

@@ -15,7 +15,7 @@ export class ProfileHeader extends Component {
 
     render() {
         const {user, id, auth} = this.props;
-
+        
         return (
             <div>
                 <div className="profile-header-items">
@@ -50,6 +50,13 @@ export class ProfileHeader extends Component {
                                     <i className="fas fa-phone"></i>
                                 </div>
                                 <p>{user.contactNumber ? user.contactNumber : "No Contact Number"}</p>
+                            </div>
+
+                            <div className="info-container-profile">
+                                <div className="icon-container-profile">
+                                    <i className="fas fa-envelope"></i>
+                                </div>
+                                <p>{user.email ? user.email : "No Email"}</p>
                             </div>
                         </div>
                     </div>

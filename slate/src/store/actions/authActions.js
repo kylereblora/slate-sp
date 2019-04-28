@@ -50,11 +50,13 @@ export const signUp = (newUser) => {
                     lastName: newUser.lastName,
                     initials: newUser.firstName[0] + newUser.lastName[0],
                     occupation: newUser.occupation,
+                    email: newUser.email,
                     province : '',
                     proDescription: '',
                     proImageUrl: '',
                     proRating: 0,
                     wishlist: [],
+                    cart: [],
                     projects: [],
                     reviews: []
                 })
@@ -81,11 +83,13 @@ export const editUser = (user, state) => {
                 lastName: state.lastName,
                 initials: state.firstName[0] + state.lastName[0],
                 province : state.province,
+                email: state.email,
                 contactNumber : state.contactNumber,
                 proDescription: state.proDescription,
                 proImageUrl: state.proImageUrl,
                 proRating: user.proRating,
                 wishlist: user.wishlist,
+                cart: user.cart,
                 projects: user.projects,
                 reviews: user.reviews,
                 occupation : user.occupation

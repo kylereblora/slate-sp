@@ -14,7 +14,7 @@ import { getProductFromWishlist } from './wishlistFunctions'
 
 export class Wishlist extends Component {
     render() {
-        const { auth, wishlist, products, id } = this.props;
+        const { auth, wishlist, products, cart, id } = this.props;
         let tempWishlist = [];
 
         if (!auth.uid) return <Redirect to='/' />
@@ -44,7 +44,7 @@ export class Wishlist extends Component {
                                 let p = products.filter(getProductFromWishlist(productId.id))[0];
                                 
                                     return (
-                                        <ItemInWishlist product={p} key={p.id} currentUser={auth.uid}/>
+                                        <ItemInWishlist product={p} key={p.id} currentUser={auth.uid} cart={cart}/>
                                     )
                             })
                             :
@@ -66,12 +66,15 @@ const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id;
     const users = state.firestore.data.users;
     const wishlist = users ? users[id].wishlist : null 
+    const cart = users ? users[id].cart : null 
+    
 
     return { 
         auth: state.firebase.auth,
         profile: state.firebase.profile,
         products: state.firestore.ordered.products,
         wishlist,
+        cart,
         id
     }
 }
