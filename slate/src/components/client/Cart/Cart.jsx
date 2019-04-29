@@ -34,27 +34,36 @@ export class Cart extends Component {
 		})
 	}
 
+	itemQtyCallback = (productId, data) => {
+		console.log(productId+ ": " +data);
+		
+	}
+
 	render() {
 		const { auth, cart, products, id } = this.props;
 		let tempCart = [];
-		let subtotal=0;
+		let subtotal = 0;
         if (!auth.uid) return <Redirect to='/' />
         if (auth.uid !== id) return <Redirect to={'/cart/'+ auth.uid} />
 
         if (cart && cart.length > 0 && products) {
-            cart.map((productId, index) => {
-                let p = products.filter(getProductFromWishlist(productId.id))[0];
-                
-                if(p) { tempCart.push(p) }  
+            cart.map((product, index) => {
+                let p = products.filter(getProductFromWishlist(product.id))[0];
+				
+				let newP = {product: p, qty: product.qty};
+
+                if(newP) { tempCart.push(newP) }  
 			})
 		}
 
 		if (tempCart.length > 0) {
-			tempCart.map((productId, index) => {
-				let p = products.filter(getProductFromWishlist(productId.id))[0];
-				subtotal = subtotal + parseInt(p.itemPrice, 10);
+			tempCart.map((product, index) => {
+				let p = products.filter(getProductFromWishlist(product.product.id))[0];
+				
+				subtotal = subtotal + (parseInt((p.itemPrice), 10) * parseInt(product.qty, 10));
 				
 			})
+
 		}
 
 		return (
@@ -69,11 +78,11 @@ export class Cart extends Component {
 								<div className="cart-products">
 									<h1>Cart</h1>
 									{
-										tempCart.map((productId, index) => {
-											let p = products.filter(getProductFromWishlist(productId.id))[0];
+										tempCart.map((product, index) => {
+											let p = products.filter(getProductFromWishlist(product.product.id))[0];
 											
 												return (
-													<ItemInCart product={p} key={p.id} currentUser={auth.uid}/>
+													<ItemInCart product={p} qty={product.qty} key={p.id} callbackFromParent={this.itemQtyCallback} currentUser={auth.uid}/>
 												)
 										})
 									}

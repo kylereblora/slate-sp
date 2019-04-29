@@ -58,3 +58,8 @@ export const uploadButton = {
     color: 'white',
     padding: '10px 35px',
 }
+
+export const cartButton = {
+    background: '#E27979',
+    color: 'white',
+}

@@ -104,13 +104,18 @@
 }
 
 .add-to-cart {
-    width: 170px;
+    width: 150px;
 }
 
 .quantity label {
     font-size: 15px;
     font-family: 'Circular Std Book', sans-serif;
     color: #646464;
+}
+
+.quantity-dropdown input{
+    padding: 7px;
+    border-radius: 5px;
 }
 
 .quantity label span {

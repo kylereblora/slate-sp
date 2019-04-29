@@ -26,7 +26,7 @@ export class ProfileHeader extends Component {
                         <h1>{user.firstName} {user.lastName}</h1>
                         <div className="header-rating">
                         {
-                            user.occupation === ('Architect' || 'Interior Designer')
+                            (user.occupation === 'Architect' || user.occupation === 'Interior Designer')
                             ?
                             <div className="rating-summary">
                                 <Rating rating={user.proRating} icon='star' disabled maxRating={5}/>
