@@ -10,7 +10,7 @@ import './cart.css'
 import { getProductFromWishlist } from '../Wishlist/wishlistFunctions'
 import ItemInCart from './ItemInCart/ItemInCart';
 import { numberWithCommas } from '../ItemDetails/priceWithCommas';
-import { Divider, Button } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import { loginBtn } from '../../../assets/styles/styles';
 import { checkout } from '../../../store/actions/cartActions';
 import { Confirm } from 'semantic-ui-react'
@@ -19,6 +19,7 @@ export class Cart extends Component {
 	state = {
 		clicked: false,
 		open: false,
+		userCart: [],
 	}
 
 	open = () => this.setState({ open: true })
@@ -34,20 +35,27 @@ export class Cart extends Component {
 		})
 	}
 
-	itemQtyCallback = (productId, data) => {
-		console.log(productId+ ": " +data);
-		
+	static getDerivedStateFromProps(props, state) {
+		if(props.cart !== state.userCart) {
+			return {
+				userCart: props.cart
+			}
+		}
+		return null;
 	}
 
+
 	render() {
-		const { auth, cart, products, id } = this.props;
+		const { auth, products, id } = this.props;
+		const { userCart } = this.state;
 		let tempCart = [];
 		let subtotal = 0;
+
         if (!auth.uid) return <Redirect to='/' />
         if (auth.uid !== id) return <Redirect to={'/cart/'+ auth.uid} />
 
-        if (cart && cart.length > 0 && products) {
-            cart.map((product, index) => {
+        if (userCart && userCart.length > 0 && products) {
+            userCart.map((product, index) => {
                 let p = products.filter(getProductFromWishlist(product.id))[0];
 				
 				let newP = {product: p, qty: product.qty};
@@ -82,7 +90,7 @@ export class Cart extends Component {
 											let p = products.filter(getProductFromWishlist(product.product.id))[0];
 											
 												return (
-													<ItemInCart product={p} qty={product.qty} key={p.id} callbackFromParent={this.itemQtyCallback} currentUser={auth.uid}/>
+													<ItemInCart product={p} qty={product.qty} key={p.id} currentUser={auth.uid}/>
 												)
 										})
 									}

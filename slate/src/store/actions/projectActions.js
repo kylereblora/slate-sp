@@ -72,6 +72,7 @@ export const editProject = (project, state, id) => {
                     // modify firestore collection
                     firestore.collection('users').doc(id).set({
                         contactNumber : sub.contactNumber,
+                        cart: sub.cart,
                         firstName : sub.firstName,
                         lastName : sub.lastName,
                         initials : sub.initials,

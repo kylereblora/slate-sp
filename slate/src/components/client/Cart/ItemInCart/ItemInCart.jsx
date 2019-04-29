@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './itemincart.css'
 import { Link } from 'react-router-dom'
 import { Button, Rating } from 'semantic-ui-react'
-import { deleteItemFromCart } from '../../../../store/actions/cartActions'
+import { deleteItemFromCart, editItemQuantityInCart } from '../../../../store/actions/cartActions'
 import { connect } from 'react-redux'
 
 export class ItemInCart extends Component {
@@ -17,14 +17,18 @@ export class ItemInCart extends Component {
 
     handleDelete = (e, product) => {
         this.props.deleteItemFromCart(product.id, this.props.qty,this.props.currentUser);
-        
-        
     }
 
     handleChangeItemQty = (e) => {
-        this.setState({itemQty:e.target.value}, () => {
-            this.props.callbackFromParent(this.props.product.id ,this.state.itemQty)
-        });
+        if(parseInt(e.target.value, 10) <= parseInt(this.props.product.itemQuantity, 10)) {
+            this.setState({itemQty:e.target.value}, () => {
+                this.props.editItemQuantityInCart(this.props.product.id, this.props.currentUser, this.state.itemQty)
+            });
+        } else {
+            this.setState({itemQty:this.props.product.itemQuantity}, () => {
+                this.props.editItemQuantityInCart(this.props.product.id, this.props.currentUser, this.state.itemQty)
+            })
+        }
         
     }
 
@@ -52,7 +56,7 @@ export class ItemInCart extends Component {
 
                 <div className="quantity-dropdown-cart">
                     <label htmlFor="input">Qty: </label>
-                    <input onChange={this.handleChangeItemQty} type="number" defaultValue={qty || '1'} min='1' max={product.itemQuantity} placeholder='1'/>
+                    <input onChange={this.handleChangeItemQty} type="number"  defaultValue={qty || '1'} min='1' max={product.itemQuantity} placeholder='1'/>
                 </div>
 
                 
@@ -68,6 +72,7 @@ export class ItemInCart extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         deleteItemFromCart: (id, product, state) => dispatch(deleteItemFromCart(id, product, state)),
+        editItemQuantityInCart: (productId, user, qty) => dispatch(editItemQuantityInCart(productId, user, qty)),
     }
 } 
 

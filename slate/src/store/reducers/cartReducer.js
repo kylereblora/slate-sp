@@ -26,6 +26,14 @@ const wishlistReducer = (state = initState, action) => {
         case 'DELETE_PRODUCT_FROM_CART_ERROR':
             console.log('error deleting product from cart', action.err);
             return state;
+
+        case 'EDIT_ITEM_QUANTITY_IN_CART_SUCCESS':
+            console.log("successfully edited item quantity");
+            return state;
+        
+        case 'EDIT_ITEM_QUANTITY_IN_CART_ERROR':
+            console.log('error deleting product from cart', action.err);
+            return state;
             
         case 'CLEAR_CART':
             return state;

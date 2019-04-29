@@ -44,8 +44,8 @@
 }
 
 .item-misc-preview {
-    width: 100%;
-    max-width: 350px;
+    width: 300px;
+    max-width: 300px;
     text-align: left;
     grid-column-start: 2;
     grid-column-end: 3;
@@ -88,8 +88,8 @@
 
 @media only screen and (max-width: 768px) {
     .item-misc-preview {
-        width: 100%;
-        max-width: 200px;
+        width: 150px;
+        max-width: 150px;
         text-align: left;
     }
 
@@ -118,6 +118,11 @@
 }
 
 @media only screen and (max-width: 320px) {
+    .item-misc-preview {
+        width: 90px;
+        max-width: 90px;
+        text-align: left;
+    }
 
     .item-name-preview, .item-price-preview {
         font-size: 10px;
