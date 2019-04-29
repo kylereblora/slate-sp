@@ -9,6 +9,7 @@ import { numberWithCommas } from '../ItemDetails/priceWithCommas';
 export class OrderConfirm extends Component {
     state = {
         clicked: false,
+        subtotal: this.props.subtotal,
     }
     
     truncateText = (s) => {
@@ -18,15 +19,16 @@ export class OrderConfirm extends Component {
 
     handleCheckout = () => {
 		this.setState({clicked: true} , () => {
-            this.props.checkout(this.props.auth, this.props.tempCart).then(() => {
+            this.props.checkout(this.props.auth, this.state.subtotal, this.props.tempCart, ).then(() => {
 				window.location.href='/orderSuccess'
 			});
 		})
 	}
 
     render() {
-        const { tempCart, subtotal, auth } = this.props;
-        
+        const { tempCart, auth } = this.props;
+        const { subtotal } = this.state;
+
         if(tempCart) console.log(tempCart);
         
 
@@ -89,7 +91,7 @@ export class OrderConfirm extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        checkout : (state, tempCart) => dispatch(checkout(state, tempCart))
+        checkout : (state, tempCart, subtotal) => dispatch(checkout(state, tempCart, subtotal))
     }
 }
 

@@ -92,6 +92,7 @@ export class Cart extends Component {
 							<div className="cart-grid-container">
 								<div className="cart-products">
 									<h1>Cart</h1>
+									<div className="cart-products-gridded">
 									{
 										tempCart.map((product, index) => {
 											let p = products.filter(getProductFromWishlist(product.product.id))[0];
@@ -101,6 +102,7 @@ export class Cart extends Component {
 												)
 										})
 									}
+									</div>
 								</div>
 
 

@@ -47,6 +47,11 @@ export class SignedInLinks extends Component {
                         activeClassName="active-item"
                         >Cart</NavLink>
                     <NavLink 
+                        to={"/orders/"+ this.props.auth.uid}
+                        className="navlink-hover"
+                        activeClassName="active-item"
+                        >Orders</NavLink>
+                    <NavLink 
                         to={"/profile/"+ this.props.auth.uid}
                         className="navlink-hover"
                         activeClassName="active-item"

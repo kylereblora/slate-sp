@@ -83,7 +83,7 @@ export const editItemQuantityInCart = (productId, user, qty) => {
 }
 
 
-export const checkout = (user, orderList) => {
+export const checkout = (user, subtotal, orderList) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         return new Promise((resolve, reject) => {
             const firestore = getFirestore();
@@ -91,7 +91,8 @@ export const checkout = (user, orderList) => {
             firestore.collection('orders').add({
                 id: uuidv1(),
                 customer: user,
-                orderList
+                orderList,
+                subtotal
             }).then(() => {
                 resolve();
             }).then(() => {
