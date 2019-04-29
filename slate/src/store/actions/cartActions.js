@@ -83,18 +83,19 @@ export const editItemQuantityInCart = (productId, user, qty) => {
 }
 
 
-export const checkout = (state) => {
+export const checkout = (user, orderList) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         return new Promise((resolve, reject) => {
             const firestore = getFirestore();
             
             firestore.collection('orders').add({
                 id: uuidv1(),
-                customer: state,
+                customer: user,
+                orderList
             }).then(() => {
                 resolve();
             }).then(() => {
-                firestore.collection('users').doc(state).update({
+                firestore.collection('users').doc(user).update({
                     cart: []
                 }).catch((err) => {
                     dispatch({ type : 'CLEAR_CART_ERROR', err})

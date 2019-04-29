@@ -5,15 +5,15 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
-import RelaxingSVG from '../../../assets/img/blankcanvas.svg'
+import RelaxingSVG from '../../../assets/img/continue2.svg'
 import './cart.css'
 import { getProductFromWishlist } from '../Wishlist/wishlistFunctions'
 import ItemInCart from './ItemInCart/ItemInCart';
 import { numberWithCommas } from '../ItemDetails/priceWithCommas';
 import { Button } from 'semantic-ui-react';
 import { loginBtn } from '../../../assets/styles/styles';
-import { checkout } from '../../../store/actions/cartActions';
 import { Confirm } from 'semantic-ui-react'
+import OrderConfirm from './OrderConfirm';
 
 export class Cart extends Component {
 	state = {
@@ -26,12 +26,19 @@ export class Cart extends Component {
 	
 	close = () => this.setState({ open: false })
 	
+	truncateText = (s) => {
+        if (s.length > 35) return s.substring(0,35) + '...';
+        else return s;
+	}
+	
+	handleShopItems = () => {
+        window.location.href='/shop'
+    }
 
 	handleCheckout = () => {
 		this.setState({clicked: true} , () => {
-			this.props.checkout(this.props.id).then(() => {
-				this.open()
-			});
+			this.open()
+			
 		})
 	}
 
@@ -78,7 +85,7 @@ export class Cart extends Component {
 			<div className="cart-site">
 				<Navbar />
                 <div className="cart-main">
-                    <div>
+                    <div className="cart-content">
 						{
 							tempCart && tempCart.length > 0 && products ?
 
@@ -100,8 +107,25 @@ export class Cart extends Component {
 								<div className="checkout-cart">
 									<div>
 										<h1>Order Summary</h1>
+										
+
+										<div className="cart-summary">
+											{
+												tempCart.map(item => {
+													return (
+														<div className="item-in-cart-summary" key={item.product.id}>
+															<p>{this.truncateText(item.product.itemName)}</p>
+															<div className="spacer"></div>
+															<span>x{item.qty}</span>
+														</div>
+													)
+													
+												})
+											}
+										</div>
+
 										<div className="subtotal-container">
-											<p className="subtotal">Total: ({tempCart.length} product/s)</p>
+											<p className="subtotal">Total: </p>
 											<span>₱{numberWithCommas(subtotal)}</span>
 										</div>
 										
@@ -109,15 +133,7 @@ export class Cart extends Component {
 
 
 									
-									<div>
-										{
-											this.state.clicked? 
-											<Button fluid disabled>Processing...</Button>
-											:
-											<Button fluid style={loginBtn} onClick={this.handleCheckout}>Checkout</Button>
-											
-										}
-									</div>
+									<OrderConfirm tempCart={tempCart} subtotal={subtotal} auth={auth.uid} />
 									
 								</div>
 							</div>
@@ -129,6 +145,7 @@ export class Cart extends Component {
 								<div className="cart-svg">
 									<img src={RelaxingSVG} alt="svgfile"/>
 									<p>There are no products in your cart.</p>
+									<Button style={loginBtn} content='Shop for Items' onClick={this.handleShopItems} />
 								</div>
 							</div>
 						}
@@ -157,13 +174,8 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-		checkout: (state) => dispatch(checkout(state))
-    }
-} 
 
 export default compose(
-    connect(mapStateToProps, mapDispatchToProps),
+    connect(mapStateToProps),
     firestoreConnect(['users', 'products'])
 )(Cart)

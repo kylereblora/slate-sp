@@ -15,6 +15,7 @@
     flex: 1 0 auto;
     text-align: center;
     color: #414141;
+   
 }
 
 .cart-main:after {
@@ -23,6 +24,13 @@
     margin-top: var(--space);
     height: 0;
     visibility: hidden;
+}
+
+.cart-content {
+    width: 100%;
+    max-width: 1150px;
+    display: inline-block;
+    text-align: left;
 }
 
 .cart-grid-container {
@@ -81,6 +89,22 @@
     padding: 0 0 30px 0;
 }
 
+.cart-summary {
+    clear: both;
+    margin: 0 0 20px 0;
+}
+
+.item-in-cart-summary {
+    font-family: 'Circular Std Book', sans-serif;
+    color: #414141;
+    font-weight: 300;
+    display: flex;
+}
+
+.item-in-cart-summary p {
+    margin: 0;
+}
+
 .cart-no-products {
     width: 100%;
     max-width: 1150px;
@@ -115,7 +139,7 @@
 
 .subtotal-container span {
     float: right;
-    font-family: 'Circular Std Book', sans-serif;
+    font-family: 'Circular Std Bold', sans-serif;
     font-size: 20px;
 }
 

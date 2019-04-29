@@ -18,7 +18,7 @@ export class ItemInWishlist extends Component {
     }
 
     handleAddToCart = (e, productId) => {
-        this.props.addItemToCart(productId, this.props.currentUser).then(() => {
+        this.props.addItemToCart(productId, 1, this.props.currentUser).then(() => {
             this.setState({addedToCart: true})
         })
     }
@@ -74,7 +74,7 @@ export class ItemInWishlist extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         deleteItemFromWishlist: (id, product, state) => dispatch(deleteItemFromWishlist(id, product, state)),
-        addItemToCart: (id, state) => dispatch(addItemToCart(id, state))
+        addItemToCart: (id, qty, state) => dispatch(addItemToCart(id, qty, state))
     }
 } 
 
