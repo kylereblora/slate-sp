@@ -117,7 +117,7 @@
     .navbar-items a {
         display: block;
         margin: 0;
-        padding: 10px 8px;
+        padding: 5px 8px;
     }
 
     .hamburger {
@@ -135,6 +135,6 @@
     .navbar-items a {
         display: block;
         margin: 0;
-        padding: 3px 10px;
+        padding: 2px 10px;
     }
 }

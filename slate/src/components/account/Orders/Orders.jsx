@@ -18,6 +18,11 @@ function getOrdersWithSameId(id) {
 }
 
 export class Orders extends Component {
+
+    handleShopItems = () => {
+        window.location.href = '/shop'
+    }
+
     render() {
         const { id, auth, orders } = this.props; 
 
