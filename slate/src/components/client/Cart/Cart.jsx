@@ -79,7 +79,12 @@ export class Cart extends Component {
 				
 			})
 
+			
+
 		}
+
+		console.log(subtotal);
+		
 
 		return (
 			<div className="cart-site">
@@ -156,7 +161,6 @@ export class Cart extends Component {
                 </div>
                 <Footer />
 
-                <Confirm open={this.state.open} onCancel={this.close} content='[DEMO] Your cart has been processed for orders. Thanks!' onConfirm={this.close} />
 			</div>
 		)
 	}

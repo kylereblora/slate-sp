@@ -29,6 +29,10 @@ export class ReviewsToBeApproved extends Component {
 
     resetComponent = () => this.setState({ clicked: false })
     
+    truncateText = (s) => {
+        if (s.length > 20) return s.substring(0,20) + '...';
+        else return s
+    }
 
     handleApprove = (e, review) => {
         this.setState({clicked:true}, () => {
@@ -58,7 +62,7 @@ export class ReviewsToBeApproved extends Component {
                                                     <Image src={products.filter(product => product.id === review.productId)[0].itemImageUrl || 'https://via.placeholder.com/150'} rounded size='mini' />
                                                     <Header.Content>
                                                         <Link className='review-link-style' to={'/item/'+ products.filter(product => product.id === review.productId)[0].itemCategory + '/' + review.productId} key={review.id}>
-                                                            <p className="review-item-preview">{products.filter(product => product.id === review.productId)[0].itemName}</p>
+                                                            <p className="review-item-preview">{this.truncateText(products.filter(product => product.id === review.productId)[0].itemName)}</p>
                                                         </Link>
                                                     </Header.Content>
                                                 </Header>

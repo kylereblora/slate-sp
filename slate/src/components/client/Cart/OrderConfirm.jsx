@@ -9,7 +9,6 @@ import { numberWithCommas } from '../ItemDetails/priceWithCommas';
 export class OrderConfirm extends Component {
     state = {
         clicked: false,
-        subtotal: this.props.subtotal,
     }
     
     truncateText = (s) => {
@@ -19,18 +18,15 @@ export class OrderConfirm extends Component {
 
     handleCheckout = () => {
 		this.setState({clicked: true} , () => {
-            this.props.checkout(this.props.auth, this.state.subtotal, this.props.tempCart, ).then(() => {
+            this.props.checkout(this.props.auth, this.props.subtotal, this.props.tempCart, ).then(() => {
 				window.location.href='/orderSuccess'
 			});
 		})
 	}
 
     render() {
-        const { tempCart, auth } = this.props;
-        const { subtotal } = this.state;
+        const { tempCart, subtotal, auth } = this.props;
 
-        if(tempCart) console.log(tempCart);
-        
 
         return (
             <div className="order-confirm-main">
@@ -51,7 +47,7 @@ export class OrderConfirm extends Component {
                                             <div className="item-in-cart-summary" key={item.product.id}>
                                                 <p>{this.truncateText(item.product.itemName)}</p>
                                                 <div className="spacer"></div>
-                                                <span>x{item.qty}</span>
+                                                <span>x{item.qty}  (₱{numberWithCommas(item.product.itemPrice * item.qty)})</span>
                                             </div>
                                         )
                                         
