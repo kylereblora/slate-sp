@@ -59,11 +59,21 @@ export class ReviewsToBeApproved extends Component {
                                         <Table.Row key={review.id}>
                                             <Table.Cell>
                                                 <Header as='h4' image>
-                                                    <Image src={products.filter(product => product.id === review.productId)[0].itemImageUrl || 'https://via.placeholder.com/150'} rounded size='mini' />
+                                                    <Image src={'https://via.placeholder.com/150' || products.filter(product => product.id === review.productId)[0].itemImageUrl} rounded size='mini' />
                                                     <Header.Content>
-                                                        <Link className='review-link-style' to={'/item/'+ products.filter(product => product.id === review.productId)[0].itemCategory + '/' + review.productId} key={review.id}>
-                                                            <p className="review-item-preview">{this.truncateText(products.filter(product => product.id === review.productId)[0].itemName)}</p>
-                                                        </Link>
+                                                        {
+                                                            products.filter(product => product.id === review.productId)[0] !== undefined ?
+
+                                                            <Link className='review-link-style' to={'/item/'+ products.filter(product => product.id === review.productId)[0].itemCategory + '/' + review.productId} key={review.id}>
+                                                                <p className="review-item-preview">{this.truncateText(products.filter(product => product.id === review.productId)[0].itemName)}</p>
+                                                            </Link>
+
+                                                            :
+
+                                                            <div>
+                                                                <p>Product unavailable.</p>
+                                                            </div>
+                                                        }
                                                     </Header.Content>
                                                 </Header>
                                             </Table.Cell>
@@ -91,14 +101,22 @@ export class ReviewsToBeApproved extends Component {
                                                         </div>
                                                         :
                                                         <div>
-                                                            <Button color='green' onClick={(e) => this.handleApprove(e, review)} icon='check'/>
-                                                            <Disapprove 
-                                                                userId={review.userId} 
-                                                                revieweeName={products.filter(product => product.id === review.productId)[0].itemName}
-                                                                revieweeId={review.productId}
-                                                                reviewId={review.id}    
-                                                                reviewCollection={'unapproved_reviews'}
-                                                            />
+                                                            {
+                                                                products.filter(product => product.id === review.productId)[0] !== undefined ?
+
+                                                                <div>
+                                                                    <Button color='green' onClick={(e) => this.handleApprove(e, review)} icon='check'/>
+                                                                    <Disapprove 
+                                                                        userId={review.userId} 
+                                                                        revieweeName={products.filter(product => product.id === review.productId)[0].itemName}
+                                                                        revieweeId={review.productId}
+                                                                        reviewId={review.id}    
+                                                                        reviewCollection={'unapproved_reviews'}
+                                                                    />
+                                                                </div>
+                                                                :
+                                                                null
+                                                            }
                                                         </div>
                                                     }
                                                 </div>

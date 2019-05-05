@@ -83,7 +83,7 @@ export const editUser = (user, state) => {
                 lastName: state.lastName,
                 initials: state.firstName[0] + state.lastName[0],
                 province : state.province,
-                email: state.email,
+                email: user.email,
                 contactNumber : state.contactNumber,
                 proDescription: state.proDescription,
                 proImageUrl: state.proImageUrl,

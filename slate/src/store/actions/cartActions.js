@@ -58,6 +58,7 @@ export const editItemQuantityInCart = (productId, user, qty) => {
                         lastName : sub.lastName,
                         initials : sub.initials,
                         occupation : sub.occupation,
+                        email : sub.email,
                         proDescription : sub.proDescription,
                         proImageUrl : sub.proImageUrl,
                         proRating : sub.proRating,

@@ -63,11 +63,27 @@ export class Orders extends Component {
                                             return (
                                                 <div className="order-item-admin" key={index}>
                                                     <Header as='h4' image>
-                                                        <Image src={products.filter(product => product.id === item.product.id)[0].itemImageUrl || 'https://via.placeholder.com/150'} rounded size='mini' />
+                                                        {
+                                                            products.filter(product => product.id === item.product.id)[0] === undefined ?
+
+                                                            <Image src={ 'https://via.placeholder.com/150'} rounded size='mini' />
+                                                            :
+                                                            <Image src={products.filter(product => product.id === item.product.id)[0].itemImageUrl } rounded size='mini' />
+                                                        }
                                                         <Header.Content>
-                                                            <Link className='review-link-style' to={'/item/'+ products.filter(product => product.id === item.product.id)[0].itemCategory + '/' + item.product.id}>
-                                                                <p className="review-item-preview">{this.truncateText(products.filter(product => product.id === item.product.id)[0].itemName)}</p>
-                                                            </Link>
+                                                            {
+                                                                products.filter(product => product.id === item.product.id)[0] !== undefined ?
+
+                                                                <Link className='review-link-style' to={'/item/'+ products.filter(product => product.id === item.product.id)[0].itemCategory + '/' + item.product.id}>
+                                                                    <p className="review-item-preview">{this.truncateText(products.filter(product => product.id === item.product.id)[0].itemName)}</p>
+                                                                </Link>
+
+                                                                :
+
+                                                                <div>
+                                                                    <p>Item unavailable</p>
+                                                                </div>
+                                                            }
                                                         </Header.Content>
                                                     </Header>
 
