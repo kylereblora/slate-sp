@@ -1,0 +1,29 @@
+.order-confirm-main {
+    width: inherit;
+}
+
+.confirm-order-header {
+    font-family: 'GT Walsheim', sans-serif;
+    font-size: 35px;
+    margin: 0;
+}
+
+.please-check {
+    font-family: 'Circular Std Book', sans-serif;
+}
+
+.subtotal-container-recap {
+    display: flex;
+}
+
+.subtotal-recap {
+    font-family: 'Circular Std Book', sans-serif;
+    font-size: 15px;
+    margin: 0;
+}
+
+.subtotal-container-recap span {
+    font-family: 'Circular Std Bold', sans-serif;
+    font-size: 20px;
+    margin: 0;
+}

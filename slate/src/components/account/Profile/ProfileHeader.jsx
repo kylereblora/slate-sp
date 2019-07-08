@@ -15,7 +15,7 @@ export class ProfileHeader extends Component {
 
     render() {
         const {user, id, auth} = this.props;
-
+        
         return (
             <div>
                 <div className="profile-header-items">
@@ -26,7 +26,7 @@ export class ProfileHeader extends Component {
                         <h1>{user.firstName} {user.lastName}</h1>
                         <div className="header-rating">
                         {
-                            user.occupation === ('Architect' || 'Interior Designer')
+                            (user.occupation === 'Architect' || user.occupation === 'Interior Designer')
                             ?
                             <div className="rating-summary">
                                 <Rating rating={user.proRating} icon='star' disabled maxRating={5}/>
@@ -50,6 +50,13 @@ export class ProfileHeader extends Component {
                                     <i className="fas fa-phone"></i>
                                 </div>
                                 <p>{user.contactNumber ? user.contactNumber : "No Contact Number"}</p>
+                            </div>
+
+                            <div className="info-container-profile">
+                                <div className="icon-container-profile">
+                                    <i className="fas fa-envelope"></i>
+                                </div>
+                                <p>{user.email ? user.email : "No Email"}</p>
                             </div>
                         </div>
                     </div>

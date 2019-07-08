@@ -16,6 +16,9 @@ import ProjectDetails from './components/account/Projects/ProjectDetails/Project
 import SuperAdminHome from './components/superadmin/SuperAdminHome/SuperAdminHome';
 import Notifications from './components/account/Notifications/Notifications';
 import NotFound from './components/client/NotFound/NotFound';
+import Cart from './components/client/Cart/Cart';
+import OrderSuccess from './components/client/OrderSuccess/OrderSuccess';
+import Orders from './components/account/Orders/Orders';
 
 class App extends React.Component {
     render() {
@@ -37,10 +40,13 @@ class App extends React.Component {
                         
                         {/* PROFILE */}
                         <Route exact={true} path='/wishlist/:id' component = {Wishlist} />
+                        <Route exact={true} path='/cart/:id' component = {Cart} />
                         <Route exact={true} path='/profile/:id' component = {Profile} />
                         <Route exact={true} path='/add/project/:id' component = {AddProject} />
                         <Route exact={true} path='/:id/projects/:index' component = {ProjectDetails} />
                         <Route exact={true} path='/notifications/:id' component = {Notifications} />
+                        <Route exact={true} path='/orderSuccess' component = {OrderSuccess} />
+                        <Route exact={true} path='/orders/:id' component = {Orders} />
                         
 
                         {/* SHOP/PRODUCTS */}

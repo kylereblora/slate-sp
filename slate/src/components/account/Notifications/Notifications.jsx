@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Navbar from '../../client/Navbar/Navbar'
+import Footer from '../../client/Footer/Footer'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
@@ -60,6 +61,7 @@ export class Notifications extends Component {
                         }
                     </div>
                 </div>
+                <Footer />
             </div>
         )
     }

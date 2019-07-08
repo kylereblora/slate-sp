@@ -1,0 +1,9 @@
+.order-item-admin {
+    display: flex;
+    margin: 0;
+}
+
+.order-item-admin span {
+    margin: 0 0 0 15px;
+    padding: 0;
+}

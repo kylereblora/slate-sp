@@ -100,13 +100,22 @@
 }
 
 .add-to-wishlist {
-    width: 300px;
+    width: 170px;
+}
+
+.add-to-cart {
+    width: 150px;
 }
 
 .quantity label {
     font-size: 15px;
     font-family: 'Circular Std Book', sans-serif;
     color: #646464;
+}
+
+.quantity-dropdown input{
+    padding: 7px;
+    border-radius: 5px;
 }
 
 .quantity label span {
@@ -202,7 +211,7 @@
     }
 
     .add-to-wishlist {
-        width: 200px;
+        width: 150px;
     }
 
 }
@@ -210,7 +219,7 @@
 
 @media only screen and (max-width: 726px) {
     .add-to-wishlist {
-        width: 150px;
+        width: 130px;
     }
 
 }
@@ -252,7 +261,7 @@
     .item-description-content {
         font-size: 13px;
     }
-    
+
 }
 
 @media only screen and (max-width: 623px) {
@@ -266,9 +275,6 @@
         max-height: 300px;
     }    
 
-    .spacer {
-        flex: 1;
-    }
 
 }
 

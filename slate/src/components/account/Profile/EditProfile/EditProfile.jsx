@@ -48,6 +48,8 @@ export class EditProfile extends Component {
                     ...this.props.user,
                     id: this.props.id
                 }
+
+                
                 this.props.editUser(sub, this.state).then(() => {
                     this.setState({
                         clicked: false,

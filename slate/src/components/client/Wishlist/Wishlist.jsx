@@ -9,12 +9,19 @@ import ItemInWishlist from './ItemInWishlist/ItemInWishlist'
 import './wishlist.css'
 import RelaxingSVG from '../../../assets/img/blankcanvas.svg'
 import { getProductFromWishlist } from './wishlistFunctions'
+import { Button } from 'semantic-ui-react';
+import { loginBtn } from '../../../assets/styles/styles';
 
 
 
 export class Wishlist extends Component {
+
+    handleShopItems = () => {
+        window.location.href='/shop'
+    }
+
     render() {
-        const { auth, wishlist, products, id } = this.props;
+        const { auth, wishlist, products, cart, id } = this.props;
         let tempWishlist = [];
 
         if (!auth.uid) return <Redirect to='/' />
@@ -38,19 +45,21 @@ export class Wishlist extends Component {
                 
                     <div className="wishlist-products">
                         <h1>Wishlist</h1>
+                        <p className="wishlist-subheading-p">Add items to your wishlist for future purchases</p>
                         {
                             tempWishlist && tempWishlist.length > 0 && products ? 
                             tempWishlist.map((productId, index) => {
                                 let p = products.filter(getProductFromWishlist(productId.id))[0];
                                 
                                     return (
-                                        <ItemInWishlist product={p} key={p.id} currentUser={auth.uid}/>
+                                        <ItemInWishlist product={p} key={p.id} currentUser={auth.uid} cart={cart}/>
                                     )
                             })
                             :
                             <div className="wishlist-svg">
                                 <img src={RelaxingSVG} alt="svgfile"/>
                                 <p>Your wishlist seems empty...</p>
+                                <Button style={loginBtn} content='Continue Shopping' onClick={this.handleShopItems} />
                             </div>
                         }
                     </div>
@@ -66,12 +75,15 @@ const mapStateToProps = (state, ownProps) => {
     const id = ownProps.match.params.id;
     const users = state.firestore.data.users;
     const wishlist = users ? users[id].wishlist : null 
+    const cart = users ? users[id].cart : null 
+    
 
     return { 
         auth: state.firebase.auth,
         profile: state.firebase.profile,
         products: state.firestore.ordered.products,
         wishlist,
+        cart,
         id
     }
 }

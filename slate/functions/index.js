@@ -40,6 +40,8 @@ exports.userJoined = functions.auth.user()
         })
 })
 
+
+
 exports.createSeller = functions.https.onRequest((req, res) => {
     
     return cors(req, res, () => {

@@ -25,7 +25,7 @@ export class Shop extends Component {
                                     <div className="shop-flex-container">
                                         <div className="shop-header">
                                             <h2>Shop Products</h2>
-                                            <p>Browse a wide catalog of items for your home design needs.</p>
+                                            <p>Browse a wide catalog of items for your home design needs</p>
                                         </div>
 
                                         <div className="search-standard">
